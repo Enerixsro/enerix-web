@@ -90,7 +90,7 @@ export default function EnerixLandingPage() {
           <div className="relative">
             <div className="rounded-[2rem] border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-200">
               <img
-                src="/mnt/data/a_wide_photorealistic_exterior_scene_of_a_modern.png"
+                src="/discount.png"
                 alt="Moderní rodinný dům po renovaci"
                 className="h-[520px] w-full rounded-[1.5rem] object-cover"
               />
