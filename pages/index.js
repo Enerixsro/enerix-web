@@ -400,11 +400,15 @@ export default function EnerixLandingPage() {
   <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-10">
     
     <div>
-      <div className="text-lg font-semibold text-slate-900">
+     <footer className="border-t border-slate-800 bg-slate-950 py-8 text-white">
+  <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:flex-row md:items-start md:justify-between md:px-10">
+
+    <div>
+      <div className="text-xl font-bold">
         Enerix s.r.o.
       </div>
 
-      <div className="mt-2 space-y-1">
+      <div className="mt-3 space-y-1 text-sm text-slate-400">
         <div>IČO: DOPLNIT</div>
         <div>Sídlo: DOPLNIT</div>
         <div>jiri.cecka@enerix.cz</div>
@@ -412,23 +416,24 @@ export default function EnerixLandingPage() {
       </div>
     </div>
 
-    <div className="flex flex-col gap-2 text-left md:text-right">
+    <div className="flex flex-col gap-2 text-sm text-slate-400 md:items-end">
       <a
         href="/ochrana-osobnich-udaju"
-        className="transition hover:text-green-700"
+        className="transition hover:text-white"
       >
         Ochrana osobních údajů
       </a>
 
       <a
         href="#kontakt"
-        className="transition hover:text-green-700"
+        className="transition hover:text-white"
       >
         Kontakt
       </a>
     </div>
+
   </div>
-</footer>     
+</footer>
     </div>
   );
 }
