@@ -116,10 +116,7 @@ export default function EnerixLandingPage() {
         </div>
       </section>
 
-      <section
-        id="sluzby"
-        className="mx-auto max-w-7xl px-6 py-20 md:px-10"
-      >
+      <section id="sluzby" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
         <div className="max-w-2xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
             Služby
@@ -142,7 +139,6 @@ export default function EnerixLandingPage() {
               className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
-
               <div className="font-semibold text-slate-900">{service}</div>
             </div>
           ))}
@@ -157,7 +153,6 @@ export default function EnerixLandingPage() {
               className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur"
             >
               <div className="text-xl font-semibold">{item.title}</div>
-
               <p className="mt-3 text-sm leading-7 text-slate-300">
                 {item.text}
               </p>
@@ -237,15 +232,11 @@ export default function EnerixLandingPage() {
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
               <div className="text-sm text-green-100">Telefon</div>
-
-              <div className="mt-1 text-xl font-semibold">
-                720 480 861
-              </div>
+              <div className="mt-1 text-xl font-semibold">720 480 861</div>
             </div>
 
             <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
               <div className="text-sm text-green-100">E-mail</div>
-
               <div className="mt-1 text-xl font-semibold break-all">
                 jiri.cecka@enerix.cz
               </div>
@@ -253,7 +244,6 @@ export default function EnerixLandingPage() {
 
             <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
               <div className="text-sm text-green-100">Spolupráce</div>
-
               <div className="mt-1 text-xl font-semibold">
                 Rodinné domy a renovace
               </div>
@@ -263,17 +253,34 @@ export default function EnerixLandingPage() {
           <form
             action="https://formspree.io/f/xrejyodb"
             method="POST"
+            enctype="multipart/form-data"
             className="mx-auto mt-12 max-w-3xl space-y-4 rounded-[2rem] bg-white p-8 text-slate-900 shadow-2xl"
           >
+            <input
+              type="hidden"
+              name="_next"
+              value="https://www.enerix.cz/#kontakt"
+            />
+
             <div className="grid gap-4 md:grid-cols-2">
               <input
                 type="text"
                 name="jmeno"
-                placeholder="Jméno a příjmení"
+                placeholder="Jméno"
                 required
                 className="rounded-xl border border-slate-300 p-4"
               />
 
+              <input
+                type="text"
+                name="prijmeni"
+                placeholder="Příjmení"
+                required
+                className="rounded-xl border border-slate-300 p-4"
+              />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
               <input
                 type="tel"
                 name="telefon"
@@ -281,22 +288,31 @@ export default function EnerixLandingPage() {
                 required
                 className="rounded-xl border border-slate-300 p-4"
               />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                required
+                className="rounded-xl border border-slate-300 p-4"
+              />
             </div>
 
-            <input
-              type="email"
-              name="email"
-              placeholder="E-mail"
+            <select
+              name="okres"
               required
               className="w-full rounded-xl border border-slate-300 p-4"
-            />
-
-            <input
-              type="text"
-              name="obec"
-              placeholder="Obec / město"
-              className="w-full rounded-xl border border-slate-300 p-4"
-            />
+            >
+              <option value="">Vyberte okres</option>
+              <option>České Budějovice</option>
+              <option>Český Krumlov</option>
+              <option>Jindřichův Hradec</option>
+              <option>Písek</option>
+              <option>Prachatice</option>
+              <option>Strakonice</option>
+              <option>Tábor</option>
+              <option>Jiný okres</option>
+            </select>
 
             <select
               name="typ_poptavky"
@@ -316,11 +332,29 @@ export default function EnerixLandingPage() {
 
             <textarea
               name="zprava"
-              placeholder="Stručně popište váš projekt"
+              placeholder="Popište váš projekt, případně nahrajte fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci."
               rows="6"
-              required
               className="w-full rounded-xl border border-slate-300 p-4"
             />
+
+            <div className="rounded-xl border border-slate-300 p-4 text-left">
+              <label className="block text-sm font-semibold text-slate-700">
+                Fotografie, projekt nebo jiné dokumenty
+              </label>
+
+              <p className="mt-1 text-sm text-slate-500">
+                Nepovinné. Můžete přiložit fotografie domu, projektovou dokumentaci
+                nebo jiné podklady k rekonstrukci či dotaci.
+              </p>
+
+              <input
+                type="file"
+                name="podklady"
+                multiple
+                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
+                className="mt-3 w-full text-sm text-slate-600"
+              />
+            </div>
 
             <label className="flex items-start gap-3 text-left text-sm text-slate-600">
               <input type="checkbox" required className="mt-1" />
