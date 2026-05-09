@@ -329,13 +329,15 @@ export default function EnerixLandingPage() {
               className="w-full rounded-xl border border-slate-300 p-4"
             >
               <option value="">Typ poptávky</option>
+              <option>Komplexní rekonstrukce</option>
+              <option>Dotace a poradenství</option>
               <option>Zateplení fasády</option>
               <option>Výměna oken a dveří</option>
               <option>Rekonstrukce střechy</option>
               <option>Tepelné čerpadlo</option>
               <option>Fotovoltaika</option>
               <option>Rekuperace</option>
-              <option>Dotace a poradenství</option>
+              
               <option>Jiné</option>
             </select>
 
