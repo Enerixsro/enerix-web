@@ -337,8 +337,11 @@ export default function EnerixLandingPage() {
                 {[
                   "Komplexní renovace",
                   "Dotační poradenství",
+                  "Půdní vestavba",
+                  "Zateplení fasády",
                   "Zateplení fasády",
                   "Výměna oken a dveří",
+                  "Izolace střechy / půdy",
                   "Rekonstrukce střechy",
                   "Tepelné čerpadlo",
                   "Fotovoltaika",
