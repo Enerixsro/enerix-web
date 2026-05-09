@@ -375,85 +375,66 @@ export default function EnerixLandingPage() {
           </form>
         </div>
       </section>
-      {/* CTA SEKCE */}
-      <section className="bg-green-600 py-16 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+
+      <section className="bg-gradient-to-b from-green-600 to-green-700 px-6 py-16">
+        <div className="mx-auto max-w-6xl text-center">
+          <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">
             Připravíme návrh renovace i dotace
           </h2>
 
-          <p className="text-lg text-green-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+          <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-green-100">
             Pomůžeme vám s návrhem technického řešení, energetickým poradenstvím,
             dotační administrací i samotnou realizací rekonstrukce.
           </p>
 
           <a
             href="#kontakt"
-            className="inline-block bg-white text-green-700 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition"
+            className="inline-block rounded-2xl bg-white px-10 py-5 text-lg font-semibold text-green-700 shadow-lg transition hover:bg-gray-100"
           >
             Nezávazně poptat
           </a>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-gray-900 text-gray-300 py-14 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
-          
-          {/* LEVÁ ČÁST */}
+      <footer className="bg-[#0b1120] px-6 py-14 text-gray-300">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="mb-4 text-2xl font-bold text-white">
               Enerix s.r.o.
             </h3>
 
-            <p className="text-gray-400 leading-relaxed">
+            <p className="leading-relaxed text-gray-300">
               Energetické poradenství, dotační administrace a komplexní renovace
               rodinných i bytových domů.
             </p>
           </div>
 
-          {/* KONTAKT */}
           <div>
-            <h4 className="text-white font-semibold mb-4">
+            <h4 className="mb-4 font-semibold text-white">
               Kontakt
             </h4>
 
-            <div className="space-y-2 text-gray-400">
-              <p>
-                jiri.cecka@enerix.cz
-              </p>
-
-              <p>
-                +420 720 480 861
-              </p>
-
-              <p>
-                IČO: DOPLNIT
-              </p>
-
-              <p>
-                Sídlo: DOPLNIT
-              </p>
+            <div className="space-y-2 text-gray-300">
+              <p>jiri.cecka@enerix.cz</p>
+              <p>+420 720 480 861</p>
+              <p>IČO: DOPLNIT</p>
+              <p>Sídlo: DOPLNIT</p>
             </div>
           </div>
 
-          {/* ODKAZY */}
           <div>
-            <h4 className="text-white font-semibold mb-4">
+            <h4 className="mb-4 font-semibold text-white">
               Odkazy
             </h4>
 
-            <div className="flex flex-col space-y-2">
-              <a
-                href="#kontakt"
-                className="hover:text-white transition"
-              >
+            <div className="flex flex-col space-y-2 text-gray-300">
+              <a href="#kontakt" className="transition hover:text-white">
                 Kontakt
               </a>
 
               <a
                 href="/ochrana-osobnich-udaju"
-                className="hover:text-white transition"
+                className="transition hover:text-white"
               >
                 Ochrana osobních údajů
               </a>
@@ -461,8 +442,7 @@ export default function EnerixLandingPage() {
           </div>
         </div>
 
-        {/* SPODNÍ LINKA */}
-        <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
+        <div className="mx-auto mt-10 max-w-6xl border-t border-white/10 pt-6 text-center text-sm text-gray-400">
           © 2026 Enerix s.r.o. Všechna práva vyhrazena.
         </div>
       </footer>
