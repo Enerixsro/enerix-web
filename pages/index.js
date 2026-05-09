@@ -396,6 +396,39 @@ export default function EnerixLandingPage() {
           </form>
         </div>
       </section>
+           <footer className="border-t border-slate-200 bg-white py-10">
+  <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-10">
+    
+    <div>
+      <div className="text-lg font-semibold text-slate-900">
+        Enerix s.r.o.
+      </div>
+
+      <div className="mt-2 space-y-1">
+        <div>IČO: DOPLNIT</div>
+        <div>Sídlo: DOPLNIT</div>
+        <div>jiri.cecka@enerix.cz</div>
+        <div>720 480 861</div>
+      </div>
+    </div>
+
+    <div className="flex flex-col gap-2 text-left md:text-right">
+      <a
+        href="/ochrana-osobnich-udaju"
+        className="transition hover:text-green-700"
+      >
+        Ochrana osobních údajů
+      </a>
+
+      <a
+        href="#kontakt"
+        className="transition hover:text-green-700"
+      >
+        Kontakt
+      </a>
+    </div>
+  </div>
+</footer>     
     </div>
   );
 }
