@@ -375,32 +375,95 @@ export default function EnerixLandingPage() {
           </form>
         </div>
       </section>
+      {/* CTA SEKCE */}
+      <section className="bg-green-600 py-16 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Připravíme návrh renovace i dotace
+          </h2>
 
-      <footer className="border-t border-slate-800 bg-slate-950 py-8 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:flex-row md:items-start md:justify-between md:px-10">
+          <p className="text-lg text-green-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+            Pomůžeme vám s návrhem technického řešení, energetickým poradenstvím,
+            dotační administrací i samotnou realizací rekonstrukce.
+          </p>
+
+          <a
+            href="#kontakt"
+            className="inline-block bg-white text-green-700 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition"
+          >
+            Nezávazně poptat
+          </a>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-gray-900 text-gray-300 py-14 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+          
+          {/* LEVÁ ČÁST */}
           <div>
-            <div className="text-xl font-bold">Enerix s.r.o.</div>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Enerix s.r.o.
+            </h3>
 
-            <div className="mt-3 space-y-1 text-sm text-slate-400">
-              <div>IČO: DOPLNIT</div>
-              <div>Sídlo: DOPLNIT</div>
-              <div>jiri.cecka@enerix.cz</div>
-              <div>720 480 861</div>
+            <p className="text-gray-400 leading-relaxed">
+              Energetické poradenství, dotační administrace a komplexní renovace
+              rodinných i bytových domů.
+            </p>
+          </div>
+
+          {/* KONTAKT */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">
+              Kontakt
+            </h4>
+
+            <div className="space-y-2 text-gray-400">
+              <p>
+                jiri.cecka@enerix.cz
+              </p>
+
+              <p>
+                +420 720 480 861
+              </p>
+
+              <p>
+                IČO: DOPLNIT
+              </p>
+
+              <p>
+                Sídlo: DOPLNIT
+              </p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 text-sm text-slate-400 md:items-end">
-            <a
-              href="/ochrana-osobnich-udaju"
-              className="transition hover:text-white"
-            >
-              Ochrana osobních údajů
-            </a>
+          {/* ODKAZY */}
+          <div>
+            <h4 className="text-white font-semibold mb-4">
+              Odkazy
+            </h4>
 
-            <a href="#kontakt" className="transition hover:text-white">
-              Kontakt
-            </a>
+            <div className="flex flex-col space-y-2">
+              <a
+                href="#kontakt"
+                className="hover:text-white transition"
+              >
+                Kontakt
+              </a>
+
+              <a
+                href="/ochrana-osobnich-udaju"
+                className="hover:text-white transition"
+              >
+                Ochrana osobních údajů
+              </a>
+            </div>
           </div>
+        </div>
+
+        {/* SPODNÍ LINKA */}
+        <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
+          © 2026 Enerix s.r.o. Všechna práva vyhrazena.
         </div>
       </footer>
     </div>
