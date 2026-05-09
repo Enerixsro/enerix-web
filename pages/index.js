@@ -88,7 +88,10 @@ export default function EnerixLandingPage() {
                   className="rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm"
                 >
                   <div className="font-semibold">{title}</div>
-                  <div className="mt-1 text-sm text-slate-600">{text}</div>
+
+                  <div className="mt-1 text-sm text-slate-600">
+                    {text}
+                  </div>
                 </div>
               ))}
             </div>
@@ -143,7 +146,9 @@ export default function EnerixLandingPage() {
             >
               <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
 
-              <div className="font-semibold text-slate-900">{service}</div>
+              <div className="font-semibold text-slate-900">
+                {service}
+              </div>
             </div>
           ))}
         </div>
@@ -323,28 +328,43 @@ export default function EnerixLandingPage() {
               <option>Jiný okres</option>
             </select>
 
-            <select
-              name="typ_poptavky"
-              required
-              className="w-full rounded-xl border border-slate-300 p-4"
-            >
-              <option value="">Typ poptávky</option>
-              <option>Komplexní rekonstrukce</option>
-              <option>Dotace a poradenství</option>
-              <option>Zateplení fasády</option>
-              <option>Výměna oken a dveří</option>
-              <option>Rekonstrukce střechy</option>
-              <option>Tepelné čerpadlo</option>
-              <option>Fotovoltaika</option>
-              <option>Rekuperace</option>
-              
-              <option>Jiné</option>
-            </select>
+            <div className="rounded-xl border border-slate-300 p-4 text-left">
+              <div className="mb-3 text-sm font-semibold text-slate-700">
+                O jaké služby máte zájem?
+              </div>
+
+              <div className="grid gap-3 md:grid-cols-2">
+                {[
+                  "Komplexní renovace",
+                  "Dotační poradenství",
+                  "Zateplení fasády",
+                  "Výměna oken a dveří",
+                  "Rekonstrukce střechy",
+                  "Tepelné čerpadlo",
+                  "Fotovoltaika",
+                  "Rekuperace",
+                  "Jiné",
+                ].map((sluzba) => (
+                  <label
+                    key={sluzba}
+                    className="flex items-center gap-3 text-sm text-slate-700"
+                  >
+                    <input
+                      type="checkbox"
+                      name="typ_poptavky"
+                      value={sluzba}
+                      className="h-4 w-4"
+                    />
+
+                    <span>{sluzba}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
 
             <textarea
               name="zprava"
-              placeholder="(Toto pole není nutné vyplnit)
-                Můžete popsat Váš projekt a my Vás kontaktujeme. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
+              placeholder="Popište váš projekt. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
               rows="6"
               className="w-full rounded-xl border border-slate-300 p-4"
             />
