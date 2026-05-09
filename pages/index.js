@@ -211,38 +211,64 @@ export default function EnerixLandingPage() {
         </div>
       </section>
 
-      <section id="kontakt" className="bg-green-600 py-20 text-white">
-        <div className="mx-auto max-w-5xl px-6 text-center md:px-10">
-          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-100">
-            Kontakt
-          </div>
+      <section id="kontakt" className="bg-slate-50 px-6 py-20 md:px-10">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-slate-950 via-slate-900 to-green-950 p-8 text-white shadow-2xl md:p-10">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-green-500/20 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-green-300/10 blur-3xl" />
 
-          <h2 className="mt-3 text-3xl font-bold md:text-5xl">
-            Začněme nezávaznou konzultací
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-green-50">
-            Řekněte nám, co plánujete. Připravíme vám návrh řešení, které bude
-            dávat smysl technicky, ekonomicky i z pohledu dotací.
-          </p>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
-              <div className="text-sm text-green-100">Telefon</div>
-              <div className="mt-1 text-xl font-semibold">720 480 861</div>
-            </div>
-
-            <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
-              <div className="text-sm text-green-100">E-mail</div>
-              <div className="mt-1 text-xl font-semibold break-all">
-                jiri.cecka@enerix.cz
+            <div className="relative">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-300">
+                Kontakt
               </div>
-            </div>
 
-            <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
-              <div className="text-sm text-green-100">Spolupráce</div>
-              <div className="mt-1 text-xl font-semibold">
-                Rodinné domy a renovace
+              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                Začněme nezávaznou konzultací
+              </h2>
+
+              <p className="mt-6 text-lg leading-8 text-slate-300">
+                Řekněte nám, co plánujete. Připravíme návrh řešení, které bude
+                dávat smysl technicky, ekonomicky i z pohledu dotací.
+              </p>
+
+              <div className="mt-8 space-y-4">
+                {[
+                  "Základní posouzení záměru",
+                  "Doporučení vhodného postupu",
+                  "Prověření možností dotace a financování",
+                  "Návrh dalších kroků bez zbytečných závazků",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="mt-1 h-5 w-5 shrink-0 rounded-full bg-green-500" />
+                    <div className="text-slate-200">{item}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+                  <div className="text-sm text-slate-300">Telefon</div>
+                  <div className="mt-1 text-xl font-semibold">
+                    720 480 861
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+                  <div className="text-sm text-slate-300">E-mail</div>
+                  <div className="mt-1 break-all text-xl font-semibold">
+                    jiri.cecka@enerix.cz
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-green-400/20 bg-green-400/10 p-5">
+                <div className="text-sm font-semibold text-green-200">
+                  Zaměření
+                </div>
+                <div className="mt-1 text-slate-200">
+                  Rodinné domy, renovace, dotace, energetické poradenství a
+                  příprava realizace.
+                </div>
               </div>
             </div>
           </div>
@@ -250,7 +276,7 @@ export default function EnerixLandingPage() {
           <form
             action="https://formspree.io/f/xrejyodb"
             method="POST"
-            className="mx-auto mt-12 max-w-3xl space-y-4 rounded-[2rem] bg-white p-8 text-slate-900 shadow-2xl"
+            className="rounded-[2rem] border border-slate-200 bg-white p-6 text-slate-900 shadow-xl md:p-8"
           >
             <input
               type="hidden"
@@ -258,120 +284,136 @@ export default function EnerixLandingPage() {
               value="https://www.enerix.cz/#kontakt"
             />
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <input
-                type="text"
-                name="jmeno"
-                placeholder="Jméno"
-                required
-                className="rounded-xl border border-slate-300 p-4"
-              />
-
-              <input
-                type="text"
-                name="prijmeni"
-                placeholder="Příjmení"
-                required
-                className="rounded-xl border border-slate-300 p-4"
-              />
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <input
-                type="tel"
-                name="telefon"
-                placeholder="Telefon"
-                required
-                className="rounded-xl border border-slate-300 p-4"
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="E-mail"
-                required
-                className="rounded-xl border border-slate-300 p-4"
-              />
-            </div>
-
-            <select
-              name="okres"
-              required
-              className="w-full rounded-xl border border-slate-300 p-4"
-            >
-              <option value="">Vyberte okres</option>
-              <option>České Budějovice</option>
-              <option>Český Krumlov</option>
-              <option>Jindřichův Hradec</option>
-              <option>Písek</option>
-              <option>Prachatice</option>
-              <option>Strakonice</option>
-              <option>Tábor</option>
-              <option>Jiný okres</option>
-            </select>
-
-            <div className="rounded-xl border border-slate-300 p-4 text-left">
-              <div className="mb-3 text-sm font-semibold text-slate-700">
-                O jaké služby máte zájem?
+            <div className="mb-6">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                Nezávazná poptávka
               </div>
 
-              <div className="grid gap-3 md:grid-cols-2">
-                {[
-                  "Komplexní renovace",
-                  "Dotační poradenství",
-                  "Zateplení fasády",
-                  "Výměna oken a dveří",
-                  "Rekonstrukce střechy",
-                  "Tepelné čerpadlo",
-                  "Fotovoltaika",
-                  "Rekuperace",
-                  "Projektová dokumentace / Pasport stavby / Legalizace stavby",
-                  "Jiné",
-                ].map((sluzba) => (
-                  <label
-                    key={sluzba}
-                    className="flex items-center gap-3 text-sm text-slate-700"
+              <h3 className="mt-2 text-2xl font-bold md:text-3xl">
+                Napište nám pár základních informací
+              </h3>
+
+              <p className="mt-3 text-slate-600">
+                Ozveme se vám a domluvíme další postup podle typu projektu.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <input
+                  type="text"
+                  name="jmeno"
+                  placeholder="Jméno"
+                  required
+                  className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
+
+                <input
+                  type="text"
+                  name="prijmeni"
+                  placeholder="Příjmení"
+                  required
+                  className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <input
+                  type="tel"
+                  name="telefon"
+                  placeholder="Telefon"
+                  required
+                  className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  required
+                  className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                />
+              </div>
+
+              <select
+                name="okres"
+                required
+                className="w-full rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+              >
+                <option value="">Vyberte okres</option>
+                <option>České Budějovice</option>
+                <option>Český Krumlov</option>
+                <option>Jindřichův Hradec</option>
+                <option>Písek</option>
+                <option>Prachatice</option>
+                <option>Strakonice</option>
+                <option>Tábor</option>
+                <option>Jiný okres</option>
+              </select>
+
+              <div className="rounded-xl border border-slate-300 p-4 text-left">
+                <div className="mb-3 text-sm font-semibold text-slate-700">
+                  O jaké služby máte zájem?
+                </div>
+
+                <div className="grid gap-3 md:grid-cols-2">
+                  {[
+                    "Komplexní renovace",
+                    "Dotační poradenství",
+                    "Zateplení fasády",
+                    "Výměna oken a dveří",
+                    "Rekonstrukce střechy",
+                    "Tepelné čerpadlo",
+                    "Fotovoltaika",
+                    "Rekuperace",
+                    "Projektová dokumentace / Pasport stavby / Legalizace stavby",
+                    "Jiné",
+                  ].map((sluzba) => (
+                    <label
+                      key={sluzba}
+                      className="flex items-center gap-3 text-sm text-slate-700"
+                    >
+                      <input
+                        type="checkbox"
+                        name="typ_poptavky"
+                        value={sluzba}
+                        className="h-4 w-4"
+                      />
+                      <span>{sluzba}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <textarea
+                name="zprava"
+                placeholder="Popište váš projekt. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
+                rows="5"
+                className="w-full rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+              />
+
+              <label className="flex items-start gap-3 text-left text-sm text-slate-600">
+                <input type="checkbox" required className="mt-1" />
+
+                <span>
+                  Souhlasím se zpracováním osobních údajů za účelem vyřízení
+                  poptávky. Více informací naleznete na stránce{" "}
+                  <a
+                    href="/ochrana-osobnich-udaju"
+                    className="font-semibold underline"
                   >
-                    <input
-                      type="checkbox"
-                      name="typ_poptavky"
-                      value={sluzba}
-                      className="h-4 w-4"
-                    />
-                    <span>{sluzba}</span>
-                  </label>
-                ))}
-              </div>
+                    Ochrana osobních údajů
+                  </a>.
+                </span>
+              </label>
+
+              <button
+                type="submit"
+                className="w-full rounded-2xl bg-green-600 px-6 py-4 text-lg font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
+              >
+                Odeslat nezávaznou poptávku
+              </button>
             </div>
-
-            <textarea
-              name="zprava"
-              placeholder="Popište váš projekt. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
-              rows="6"
-              className="w-full rounded-xl border border-slate-300 p-4"
-            />
-
-            <label className="flex items-start gap-3 text-left text-sm text-slate-600">
-              <input type="checkbox" required className="mt-1" />
-
-              <span>
-                Souhlasím se zpracováním osobních údajů za účelem vyřízení
-                poptávky. Více informací naleznete na stránce{" "}
-                <a
-                  href="/ochrana-osobnich-udaju"
-                  className="font-semibold underline"
-                >
-                  Ochrana osobních údajů
-                </a>.
-              </span>
-            </label>
-
-            <button
-              type="submit"
-              className="w-full rounded-2xl bg-green-600 px-6 py-4 text-lg font-semibold text-white transition hover:bg-green-700"
-            >
-              Odeslat nezávaznou poptávku
-            </button>
           </form>
         </div>
       </section>
