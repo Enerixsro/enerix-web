@@ -342,7 +342,7 @@ export default function EnerixLandingPage() {
             <textarea
               name="zprava"
               placeholder="(Toto pole není nutné vyplnit)
-                Můžete posat váš projekt a my Vás kontaktujeme. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
+                Můžete popsat Váš projekt a my Vás kontaktujeme. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
               rows="6"
               className="w-full rounded-xl border border-slate-300 p-4"
             />
