@@ -88,10 +88,7 @@ export default function EnerixLandingPage() {
                   className="rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm"
                 >
                   <div className="font-semibold">{title}</div>
-
-                  <div className="mt-1 text-sm text-slate-600">
-                    {text}
-                  </div>
+                  <div className="mt-1 text-sm text-slate-600">{text}</div>
                 </div>
               ))}
             </div>
@@ -110,7 +107,6 @@ export default function EnerixLandingPage() {
               <div className="text-sm font-medium text-slate-500">
                 Na co se zaměřujeme
               </div>
-
               <div className="mt-2 text-lg font-semibold text-slate-900">
                 Úspora • Komfort • Hodnota domu
               </div>
@@ -119,10 +115,7 @@ export default function EnerixLandingPage() {
         </div>
       </section>
 
-      <section
-        id="sluzby"
-        className="mx-auto max-w-7xl px-6 py-20 md:px-10"
-      >
+      <section id="sluzby" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
         <div className="max-w-2xl">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
             Služby
@@ -145,10 +138,7 @@ export default function EnerixLandingPage() {
               className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
-
-              <div className="font-semibold text-slate-900">
-                {service}
-              </div>
+              <div className="font-semibold text-slate-900">{service}</div>
             </div>
           ))}
         </div>
@@ -162,7 +152,6 @@ export default function EnerixLandingPage() {
               className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur"
             >
               <div className="text-xl font-semibold">{item.title}</div>
-
               <p className="mt-3 text-sm leading-7 text-slate-300">
                 {item.text}
               </p>
@@ -190,7 +179,6 @@ export default function EnerixLandingPage() {
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-600 font-bold text-white">
                   {index + 1}
                 </div>
-
                 <div className="pt-1 text-slate-700">{step}</div>
               </div>
             ))}
@@ -215,7 +203,6 @@ export default function EnerixLandingPage() {
 
           <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm">
             <div className="font-semibold">Typický cíl klienta</div>
-
             <div className="mt-2 text-slate-600">
               Snížit náklady na energie, zvýšit komfort bydlení a zhodnotit dům
               bez zbytečných chyb v pořadí renovace.
@@ -242,15 +229,11 @@ export default function EnerixLandingPage() {
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
               <div className="text-sm text-green-100">Telefon</div>
-
-              <div className="mt-1 text-xl font-semibold">
-                720 480 861
-              </div>
+              <div className="mt-1 text-xl font-semibold">720 480 861</div>
             </div>
 
             <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
               <div className="text-sm text-green-100">E-mail</div>
-
               <div className="mt-1 text-xl font-semibold break-all">
                 jiri.cecka@enerix.cz
               </div>
@@ -258,7 +241,6 @@ export default function EnerixLandingPage() {
 
             <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
               <div className="text-sm text-green-100">Spolupráce</div>
-
               <div className="mt-1 text-xl font-semibold">
                 Rodinné domy a renovace
               </div>
@@ -336,11 +318,9 @@ export default function EnerixLandingPage() {
               <div className="grid gap-3 md:grid-cols-2">
                 {[
                   "Komplexní renovace",
-                  "Dotační poradenství / Renovační pas",
-                  "Půdní vestavba - zobytnění podkroví",                  
+                  "Dotační poradenství",
                   "Zateplení fasády",
                   "Výměna oken a dveří",
-                  "Izolace střechy / půdy",
                   "Rekonstrukce střechy",
                   "Tepelné čerpadlo",
                   "Fotovoltaika",
@@ -358,7 +338,6 @@ export default function EnerixLandingPage() {
                       value={sluzba}
                       className="h-4 w-4"
                     />
-
                     <span>{sluzba}</span>
                   </label>
                 ))}
@@ -396,44 +375,34 @@ export default function EnerixLandingPage() {
           </form>
         </div>
       </section>
-           <footer className="border-t border-slate-200 bg-white py-10">
-  <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-10">
-    
-    <div>
-     <footer className="border-t border-slate-800 bg-slate-950 py-8 text-white">
-  <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:flex-row md:items-start md:justify-between md:px-10">
 
-    <div>
-      <div className="text-xl font-bold">
-        Enerix s.r.o.
-      </div>
+      <footer className="border-t border-slate-800 bg-slate-950 py-8 text-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 md:flex-row md:items-start md:justify-between md:px-10">
+          <div>
+            <div className="text-xl font-bold">Enerix s.r.o.</div>
 
-      <div className="mt-3 space-y-1 text-sm text-slate-400">
-        <div>IČO: DOPLNIT</div>
-        <div>Sídlo: DOPLNIT</div>
-        <div>jiri.cecka@enerix.cz</div>
-        <div>720 480 861</div>
-      </div>
-    </div>
+            <div className="mt-3 space-y-1 text-sm text-slate-400">
+              <div>IČO: DOPLNIT</div>
+              <div>Sídlo: DOPLNIT</div>
+              <div>jiri.cecka@enerix.cz</div>
+              <div>720 480 861</div>
+            </div>
+          </div>
 
-    <div className="flex flex-col gap-2 text-sm text-slate-400 md:items-end">
-      <a
-        href="/ochrana-osobnich-udaju"
-        className="transition hover:text-white"
-      >
-        Ochrana osobních údajů
-      </a>
+          <div className="flex flex-col gap-2 text-sm text-slate-400 md:items-end">
+            <a
+              href="/ochrana-osobnich-udaju"
+              className="transition hover:text-white"
+            >
+              Ochrana osobních údajů
+            </a>
 
-      <a
-        href="#kontakt"
-        className="transition hover:text-white"
-      >
-        Kontakt
-      </a>
-    </div>
-
-  </div>
-</footer>
+            <a href="#kontakt" className="transition hover:text-white">
+              Kontakt
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
