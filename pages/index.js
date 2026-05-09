@@ -439,8 +439,8 @@ export default function EnerixLandingPage() {
             <div className="space-y-2 text-gray-300">
               <p>jiri.cecka@enerix.cz</p>
               <p>+420 720 480 861</p>
-              <p>IČO: DOPLNIT</p>
-              <p>Sídlo: DOPLNIT</p>
+              <p>IČO: 295 09 351</p>
+              <p>Sídlo: Nádražní 641, 37901 Třeboň</p>
             </div>
           </div>
 
