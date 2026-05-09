@@ -336,9 +336,8 @@ export default function EnerixLandingPage() {
               <div className="grid gap-3 md:grid-cols-2">
                 {[
                   "Komplexní renovace",
-                  "Dotační poradenství",
-                  "Půdní vestavba - zobytnění podkroví",
-                  "Zateplení fasády",
+                  "Dotační poradenství / Renovační pas",
+                  "Půdní vestavba - zobytnění podkroví",                  
                   "Zateplení fasády",
                   "Výměna oken a dveří",
                   "Izolace střechy / půdy",
@@ -346,6 +345,7 @@ export default function EnerixLandingPage() {
                   "Tepelné čerpadlo",
                   "Fotovoltaika",
                   "Rekuperace",
+                  "Projektová dokumentace / Pasport stavby / Legalizace stavby",
                   "Jiné",
                 ].map((sluzba) => (
                   <label
