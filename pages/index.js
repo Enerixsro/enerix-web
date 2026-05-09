@@ -337,7 +337,7 @@ export default function EnerixLandingPage() {
                 {[
                   "Komplexní renovace",
                   "Dotační poradenství",
-                  "Půdní vestavba",
+                  "Půdní vestavba - zobytnění podkroví",
                   "Zateplení fasády",
                   "Zateplení fasády",
                   "Výměna oken a dveří",
