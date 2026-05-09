@@ -376,26 +376,6 @@ export default function EnerixLandingPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-green-600 to-green-700 px-6 py-16">
-        <div className="mx-auto max-w-6xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">
-            Připravíme návrh renovace i dotace
-          </h2>
-
-          <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-green-100">
-            Pomůžeme vám s návrhem technického řešení, energetickým poradenstvím,
-            dotační administrací i samotnou realizací rekonstrukce.
-          </p>
-
-          <a
-            href="#kontakt"
-            className="inline-block rounded-2xl bg-white px-10 py-5 text-lg font-semibold text-green-700 shadow-lg transition hover:bg-gray-100"
-          >
-            Nezávazně poptat
-          </a>
-        </div>
-      </section>
-
       <footer className="bg-[#0b1120] px-6 py-14 text-gray-300">
         <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
           <div>
