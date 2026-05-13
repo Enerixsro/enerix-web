@@ -1,4 +1,33 @@
 export default function EnerixLandingPage() {
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xrejyodb", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        window.location.href = "/dekujeme";
+      } else {
+        alert(
+          "Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nás kontaktujte e-mailem."
+        );
+      }
+    } catch (error) {
+      alert(
+        "Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nás kontaktujte e-mailem."
+      );
+    }
+  }
+
   const services = [
     "Zateplení fasády",
     "Výměna oken a dveří",
@@ -55,8 +84,8 @@ export default function EnerixLandingPage() {
             </h1>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-              Pomáháme majitelům domů s renovací na klíč – od návrhu po realizaci.
-              Zajišťujeme zateplení, střechy, okna, tepelná čerpadla,
+              Pomáháme majitelům domů s renovací na klíč – od návrhu po
+              realizaci. Zajišťujeme zateplení, střechy, okna, tepelná čerpadla,
               fotovoltaiku i větrání. Vyřídíme dotace NZÚ, energetické
               poradenství i financování.
             </p>
@@ -191,7 +220,8 @@ export default function EnerixLandingPage() {
           </div>
 
           <h3 className="mt-3 text-3xl font-bold">
-            Nehledáme jen řešení, které jde udělat. Hledáme řešení, které dává smysl.
+            Nehledáme jen řešení, které jde udělat. Hledáme řešení, které dává
+            smysl.
           </h3>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
@@ -274,16 +304,9 @@ export default function EnerixLandingPage() {
           </div>
 
           <form
-            action="https://formspree.io/f/xrejyodb"
-            method="POST"
+            onSubmit={handleSubmit}
             className="rounded-[2rem] border border-slate-200 bg-white p-6 text-slate-900 shadow-xl md:p-8"
           >
-            <input
-              type="hidden"
-              name="_next"
-              value="https://www.enerix.cz/dekujeme"
-            />
-
             <div className="mb-6">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
                 Nezávazná poptávka
@@ -393,7 +416,13 @@ export default function EnerixLandingPage() {
               />
 
               <label className="flex items-start gap-3 text-left text-sm text-slate-600">
-                <input type="checkbox" required className="mt-1" />
+                <input
+                  type="checkbox"
+                  name="souhlas_osobni_udaje"
+                  value="ano"
+                  required
+                  className="mt-1"
+                />
 
                 <span>
                   Souhlasím se zpracováním osobních údajů za účelem vyřízení
@@ -432,9 +461,7 @@ export default function EnerixLandingPage() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold text-white">
-              Kontakt
-            </h4>
+            <h4 className="mb-4 font-semibold text-white">Kontakt</h4>
 
             <div className="space-y-2 text-gray-300">
               <p>jiri.cecka@enerix.cz</p>
@@ -445,9 +472,7 @@ export default function EnerixLandingPage() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold text-white">
-              Odkazy
-            </h4>
+            <h4 className="mb-4 font-semibold text-white">Odkazy</h4>
 
             <div className="flex flex-col space-y-2 text-gray-300">
               <a href="#kontakt" className="transition hover:text-white">
