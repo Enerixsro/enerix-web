@@ -281,7 +281,7 @@ export default function EnerixLandingPage() {
             <input
               type="hidden"
               name="_next"
-              value="https://www.enerix.cz/#kontakt"
+              value="https://www.enerix.cz/dekujeme"
             />
 
             <div className="mb-6">
