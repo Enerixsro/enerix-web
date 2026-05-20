@@ -141,6 +141,47 @@ export default function EnerixLandingPage() {
     "Popis rozsahu zakázky",
   ];
 
+  const renderServiceDetail = (service, className = "") => (
+    <div
+      className={`rounded-[2rem] border border-green-100 bg-green-50/60 p-6 shadow-sm md:p-8 ${className}`}
+    >
+      <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+        <div>
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+            Vybraná oblast
+          </div>
+          <h3 className="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">
+            {service.title}
+          </h3>
+          <p className="mt-4 text-lg leading-8 text-slate-700">
+            {service.detail}
+          </p>
+        </div>
+
+        <div className="border-l-4 border-green-500 pl-5">
+          <div className="font-semibold text-slate-900">
+            Co u toho typicky řešíme
+          </div>
+          <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+            {service.points.map((point) => (
+              <li key={point} className="flex gap-3">
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-green-600" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#kontakt"
+            className="mt-6 inline-flex items-center justify-center rounded-2xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
+          >
+            Chci řešit tuto oblast
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
   const benefits = [
     {
       title: "Renovace na klíč",
@@ -264,72 +305,41 @@ export default function EnerixLandingPage() {
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
-            <button
-              key={service.title}
-              type="button"
-              onClick={() =>
-                setActiveService(
-                  activeService === service.title ? null : service.title
-                )
-              }
-              className={`rounded-2xl border bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${
-                activeService === service.title
-                  ? "border-green-500 shadow-lg shadow-green-100"
-                  : "border-slate-200"
-              }`}
-              aria-expanded={activeService === service.title}
-            >
-              <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
-              <div className="font-semibold text-slate-900">
-                {service.title}
-              </div>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                {service.short}
-              </p>
-              <div className="mt-4 text-sm font-semibold text-green-700">
-                Zjistit více →
-              </div>
-            </button>
+            <div key={service.title}>
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveService(
+                    activeService === service.title ? null : service.title
+                  )
+                }
+                className={`w-full rounded-2xl border bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${
+                  activeService === service.title
+                    ? "border-green-500 shadow-lg shadow-green-100"
+                    : "border-slate-200"
+                }`}
+                aria-expanded={activeService === service.title}
+              >
+                <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
+                <div className="font-semibold text-slate-900">
+                  {service.title}
+                </div>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  {service.short}
+                </p>
+                <div className="mt-4 text-sm font-semibold text-green-700">
+                  Zjistit více →
+                </div>
+              </button>
+
+              {activeService === service.title &&
+                renderServiceDetail(service, "mt-4 lg:hidden")}
+            </div>
           ))}
         </div>
 
         {selectedService && (
-          <div className="mt-8 rounded-[2rem] border border-green-100 bg-green-50/60 p-6 shadow-sm md:p-8">
-            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-              <div>
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-                  Vybraná oblast
-                </div>
-                <h3 className="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">
-                  {selectedService.title}
-                </h3>
-                <p className="mt-4 text-lg leading-8 text-slate-700">
-                  {selectedService.detail}
-                </p>
-              </div>
-
-              <div className="border-l-4 border-green-500 pl-5">
-                <div className="font-semibold text-slate-900">
-                  Co u toho typicky řešíme
-                </div>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-                  {selectedService.points.map((point) => (
-                    <li key={point} className="flex gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-green-600" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#kontakt"
-                  className="mt-6 inline-flex items-center justify-center rounded-2xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
-                >
-                  Chci řešit tuto oblast
-                </a>
-              </div>
-            </div>
-          </div>
+          renderServiceDetail(selectedService, "mt-8 hidden lg:block")
         )}
       </section>
 
