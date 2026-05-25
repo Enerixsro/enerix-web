@@ -39,21 +39,6 @@ export default function EnerixLandingPage() {
     "Rekuperace",
   ];
 
-  const subsidyPreparationCards = [
-    {
-      title: "Sledujeme aktuální podmínky NZÚ",
-      text: "Pomůžeme vám zorientovat se v tom, jaké typy opatření mohou dávat smysl pro váš dům a jaké podklady bude potřeba připravit.",
-    },
-    {
-      title: "Navrhneme vhodný postup renovace",
-      text: "Posoudíme návaznosti mezi zateplením, okny, střechou, zdrojem tepla, fotovoltaikou a větráním, aby se jednotlivé kroky navzájem nepřebíjely.",
-    },
-    {
-      title: "Dotáhneme projekt k realizaci",
-      text: "Enerix není jen pomoc s žádostí. Cílem je připravit renovaci tak, aby mohla pokračovat do nacenění, koordinace a samotné realizace na klíč.",
-    },
-  ];
-
   const benefits = [
     {
       title: "Renovace na klíč",
@@ -159,90 +144,71 @@ export default function EnerixLandingPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-white via-green-50/60 to-slate-50 px-6 py-20 md:px-10">
+      <section className="px-6 py-10 md:px-10 md:py-12">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <div className="grid gap-6 rounded-[2rem] border border-green-100 bg-gradient-to-br from-green-50/70 via-white to-slate-50 p-6 shadow-sm md:p-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
             <div>
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
                 Dotace a příprava renovace
               </div>
 
-              <h2 className="mt-3 max-w-3xl text-3xl font-bold text-slate-900 md:text-4xl">
+              <h2 className="mt-3 max-w-3xl text-2xl font-bold text-slate-900 md:text-3xl">
                 Nová zelená úsporám se blíží. Připravte renovaci včas.
               </h2>
 
-              <div className="mt-6 max-w-3xl space-y-5 text-base leading-8 text-slate-600 md:text-lg">
-                <p>
-                  Nové dotační podmínky budou klást důraz nejen na samotnou
-                  žádost, ale hlavně na kvalitní přípravu renovace, energetické
-                  posouzení a správné pořadí opatření. U domu nestačí řešit jen
-                  jednu věc izolovaně — fasáda, okna, střecha, vytápění,
-                  fotovoltaika i větrání na sebe musí navazovat.
-                </p>
+              <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+                Nové dotační podmínky budou klást důraz na kvalitní přípravu,
+                energetické posouzení a správné pořadí opatření. Pomůžeme vám
+                zjistit, co dává smysl pro váš dům — a pokud se rozhodnete
+                pokračovat, zajistíme i samotnou realizaci.
+              </p>
 
-                <p>
-                  V Enerixu vám pomůžeme zorientovat se v možnostech podpory,
-                  navrhnout rozumný technický postup a připravit renovaci tak,
-                  aby dávala smysl dotačně, ekonomicky i z pohledu budoucí
-                  realizace.
-                </p>
+              <p className="mt-4 max-w-3xl text-sm font-medium leading-7 text-slate-800">
+                Dotaci neslibujeme automaticky. Hlídáme ale, aby renovace dávala
+                smysl technicky, ekonomicky i dotačně.
+              </p>
 
-                <p className="font-medium text-slate-800">
-                  Dotaci neslibujeme automaticky. Hlídáme ale, aby byl návrh
-                  připravený podle aktuálních pravidel a aby jednotlivá
-                  opatření dávala smysl i bez dotační zkratky.
-                </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {[
+                  "Aktuální dotační možnosti",
+                  "Odborné energetické poradenství",
+                  "Renovace připravená k realizaci",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-green-100 bg-white/80 px-3 py-1 text-sm font-medium text-green-800"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#kontakt"
-                  className="inline-flex items-center justify-center rounded-2xl bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
+                  className="inline-flex items-center justify-center rounded-2xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
                 >
                   Chci zjistit možnosti pro svůj dům
                 </a>
 
                 <a
                   href="#sluzby"
-                  className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-800 transition hover:border-slate-400"
+                  className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400"
                 >
                   Co umíme zajistit
                 </a>
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-green-100 bg-white/85 p-6 shadow-sm md:p-8">
-              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-                Odborné zázemí
-              </div>
-              <h3 className="mt-3 text-2xl font-bold text-slate-900">
+            <div className="rounded-2xl border border-slate-200 bg-white/85 p-5 shadow-sm">
+              <h3 className="text-lg font-bold text-slate-900">
                 Odborné energetické poradenství
               </h3>
-              <p className="mt-4 leading-8 text-slate-600">
-                Enerix staví poradenství na odborném základu. V oblasti
-                energetického poradenství máme absolvované odborné školení
-                zakončené ověřením znalostí a praktickou zkouškou. Díky tomu
-                řešíme renovace nejen obchodně, ale i s důrazem na energetiku,
-                návaznosti opatření a dotační připravenost.
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                Poradenství stavíme na odborné přípravě v oblasti energetiky,
+                návaznosti opatření a dotační připravenosti.
               </p>
             </div>
-          </div>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {subsidyPreparationCards.map((card) => (
-              <div
-                key={card.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-              >
-                <div className="mb-4 h-10 w-10 rounded-xl bg-green-100" />
-                <div className="font-semibold text-slate-900">
-                  {card.title}
-                </div>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  {card.text}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
