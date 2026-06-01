@@ -507,6 +507,10 @@ export default function EnerixLandingPage() {
               <h4 className="mb-4 font-semibold text-white">Odkazy</h4>
 
               <div className="flex flex-col space-y-2 text-gray-300">
+                <a href="/blog" className="transition hover:text-white">
+                  Blog
+                </a>
+
                 <a href="#kontakt" className="transition hover:text-white">
                   Kontakt
                 </a>
