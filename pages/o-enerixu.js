@@ -49,20 +49,44 @@ const specialistAreas = [
 
 const selectedExperience = [
   {
-    title: "Energetika veřejných budov",
-    text: "Zkušenosti s energetickou agendou Jihočeského kraje a energetickým managementem portfolia přibližně 800 budov.",
+    title: "Veřejné budovy",
+    fact: "Přibližně 800",
+    text: "budov v portfoliu energetické agendy",
   },
   {
-    title: "Energie ve větším měřítku",
-    text: "Práce s energetickým hospodářstvím v rozsahu přibližně 50 GWh elektřiny a 70 GWh plynu ročně, včetně nákupu energií v řádu stovek milionů korun za rok.",
+    title: "Energetické hospodářství",
+    fact: "50 + 70 GWh",
+    text: "přibližně 50 GWh elektřiny a 70 GWh plynu ročně",
   },
   {
-    title: "Dotace a modernizace",
-    text: "Příprava a řízení dotačních projektů, zkušenosti s obnovitelnými zdroji, akumulací, energetickými úsporami a modernizací budov.",
+    title: "Nákup energií",
+    fact: "Stovky milionů Kč",
+    text: "energie nakupované každoročně ve veřejném sektoru",
   },
   {
-    title: "Studie a inovativní projekty",
-    text: "Manažerská role u studií energeticky efektivních budov ve spolupráci s UCEEB ČVUT a zkušenost s inovativním projektem spotového dobíjení elektromobilů ve veřejné správě.",
+    title: "Dotační projekty",
+    fact: "Příprava a řízení",
+    text: "zkušenosti s přípravou, koordinací a řízením dotačních projektů",
+  },
+  {
+    title: "Energetické studie",
+    fact: "UCEEB ČVUT",
+    text: "spolupráce na studiích energeticky efektivních budov",
+  },
+  {
+    title: "Modernizace budov",
+    fact: "OZE a akumulace",
+    text: "projekty obnovitelných zdrojů, úspor a modernizace objektů",
+  },
+  {
+    title: "Energetický management",
+    fact: "Rozsáhlé portfolio",
+    text: "zkušenosti s řízením spotřeb a energetických dat budov",
+  },
+  {
+    title: "Inovace ve veřejné správě",
+    fact: "Spotové dobíjení",
+    text: "zkušenost s projektem dobíjení elektromobilů podle spotových cen",
   },
 ];
 
@@ -299,44 +323,48 @@ export default function OEnerixu() {
           </section>
 
           <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-              <div>
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-                  Vybrané zkušenosti
-                </div>
-                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-                  Praxe v energetice, dotacích a projektovém řízení
-                </h2>
-                <p className="mt-5 text-lg leading-8 text-slate-600">
-                  Před založením Enerixu získal Jiří Čečka zkušenosti v
-                  energetice veřejného sektoru, kde se podílel na práci s
-                  rozsáhlým portfoliem budov, přípravě energetických projektů a
-                  koordinaci odborných studií.
-                </p>
-                <p className="mt-5 leading-7 text-slate-600">
-                  Součástí této praxe byla také spolupráce na rozvoji energetiky
-                  v Jihočeském kraji. Enerix proto nevnímá renovaci domu jen jako
-                  jednotlivou stavební zakázku, ale jako součást širšího systému
-                  technických, ekonomických a dotačních rozhodnutí.
-                </p>
+            <div className="max-w-3xl">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                Vybrané zkušenosti
               </div>
+              <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                Praxe, na které Enerix staví
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-slate-600">
+                Před založením Enerixu získal Jiří Čečka zkušenosti v energetice
+                veřejného sektoru, dotačních projektech a přípravě energetických
+                koncepcí. Pracoval na projektech, kde bylo potřeba spojit
+                technické, ekonomické a dotační hledisko do jednoho funkčního
+                celku.
+              </p>
+            </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                {selectedExperience.map((experience) => (
-                  <article
-                    key={experience.title}
-                    className="border border-slate-200 bg-slate-50 p-6"
-                  >
-                    <div className="h-1 w-12 bg-green-600" />
-                    <h3 className="mt-5 text-lg font-semibold text-slate-900">
-                      {experience.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">
-                      {experience.text}
-                    </p>
-                  </article>
-                ))}
-              </div>
+            <div className="mt-10 grid gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-4">
+              {selectedExperience.map((experience) => (
+                <article
+                  key={experience.title}
+                  className="min-h-52 bg-white p-6"
+                >
+                  <div className="text-xs font-semibold uppercase tracking-[0.16em] text-green-700">
+                    {experience.title}
+                  </div>
+                  <div className="mt-6 text-2xl font-bold leading-tight text-slate-900">
+                    {experience.fact}
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-slate-600">
+                    {experience.text}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-8 border-l-4 border-green-600 bg-green-50/60 px-6 py-5">
+              <p className="max-w-5xl leading-7 text-slate-700">
+                Tyto zkušenosti se dnes promítají do přístupu Enerixu: neřešit
+                jednotlivá opatření izolovaně, ale skládat renovaci domu jako
+                celek — od prvního návrhu přes dotace a financování až po
+                koordinaci realizace.
+              </p>
             </div>
           </section>
 
