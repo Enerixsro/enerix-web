@@ -393,6 +393,59 @@ export default function EnerixLandingPage() {
           </div>
         </section>
 
+        <section className="px-6 pt-12 md:px-10 md:pt-16">
+          <div className="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-green-100 bg-green-50/70 p-6 shadow-sm md:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div>
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                Nová zelená úsporám 2026
+              </div>
+              <h2 className="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">
+                Dotace Nová zelená úsporám 2026 jsou spuštěny
+              </h2>
+              <p className="mt-4 max-w-2xl leading-7 text-slate-600">
+                Pomůžeme vám připravit renovační pas, zorientovat se v možnostech
+                dotace a navržená opatření převést do skutečné realizace. Vše řešíme
+                v souvislostech, aby renovace dávala smysl technicky i ekonomicky.
+              </p>
+              <a
+                href="#kontakt"
+                className="mt-6 inline-flex items-center justify-center rounded-2xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
+              >
+                Chci probrat možnosti renovace
+              </a>
+            </div>
+
+            <ul className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              {[
+                "Renovační pas",
+                "Dotace a financování",
+                "Realizace na klíč",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-3 rounded-2xl border border-green-100 bg-white px-4 py-3 font-semibold text-slate-800 shadow-sm"
+                >
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-700">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    >
+                      <path d="m6 12 4 4 8-8" />
+                    </svg>
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <section id="sluzby" className="mx-auto max-w-7xl px-6 py-20 md:px-10">
           <div className="max-w-2xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
