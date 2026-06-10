@@ -40,6 +40,7 @@ export default function EnerixLandingPage() {
   const services = [
     {
       title: "Zateplení fasády",
+      icon: "facade",
       short:
         "Pomůžeme navrhnout zateplení tak, aby dávalo smysl technicky, ekonomicky i dotačně.",
       detail:
@@ -52,6 +53,7 @@ export default function EnerixLandingPage() {
     },
     {
       title: "Výměna oken a dveří",
+      icon: "window",
       short:
         "Zajistíme výměnu výplní tak, aby navazovala na zateplení, komfort i energetiku domu.",
       detail:
@@ -64,6 +66,7 @@ export default function EnerixLandingPage() {
     },
     {
       title: "Rekonstrukce střechy",
+      icon: "roof",
       short:
         "Střechu posuzujeme z pohledu konstrukce, izolace, životnosti i návaznosti na další úpravy.",
       detail:
@@ -76,6 +79,7 @@ export default function EnerixLandingPage() {
     },
     {
       title: "Tepelná čerpadla",
+      icon: "heatPump",
       short:
         "Navrhneme vytápění podle potřeb domu, ne podle univerzální šablony.",
       detail:
@@ -88,6 +92,7 @@ export default function EnerixLandingPage() {
     },
     {
       title: "Fotovoltaika",
+      icon: "solar",
       short:
         "Fotovoltaiku zapojujeme do širší energetiky domu, aby dávala praktický i ekonomický smysl.",
       detail:
@@ -100,6 +105,7 @@ export default function EnerixLandingPage() {
     },
     {
       title: "Foukaná a stříkaná izolace",
+      icon: "insulation",
       short:
         "Řešení pro místa, kde je potřeba rychle a účinně doplnit tepelnou izolaci.",
       detail:
@@ -112,6 +118,7 @@ export default function EnerixLandingPage() {
     },
     {
       title: "Sádrokartony",
+      icon: "drywall",
       short:
         "Zajistíme sádrokartonové konstrukce jako součást rekonstrukcí, podkroví i technických úprav.",
       detail:
@@ -124,6 +131,7 @@ export default function EnerixLandingPage() {
     },
     {
       title: "Rekuperace",
+      icon: "ventilation",
       short:
         "Pomůžeme nastavit řízené větrání tak, aby dům lépe dýchal a neztrácel zbytečně teplo.",
       detail:
@@ -139,6 +147,79 @@ export default function EnerixLandingPage() {
   const selectedService = services.find(
     (service) => service.title === activeService
   );
+
+  const renderServiceIcon = (icon) => {
+    const iconPaths = {
+      facade: (
+        <>
+          <path d="M4 5h16v14H4z" />
+          <path d="M4 10h16M9 5v5m6 0v5M7 15h5m4 0h4" />
+        </>
+      ),
+      window: (
+        <>
+          <path d="M5 3h14v18H5z" />
+          <path d="M12 3v18M5 12h14" />
+          <path d="m9 9 3 3 3-3" />
+        </>
+      ),
+      roof: (
+        <>
+          <path d="m3 11 9-7 9 7" />
+          <path d="M5 10v10h14V10M9 20v-6h6v6" />
+        </>
+      ),
+      heatPump: (
+        <>
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 8v4l3 2M7 7l-2-2m12 2 2-2M7 17l-2 2m12-2 2 2" />
+        </>
+      ),
+      solar: (
+        <>
+          <path d="M4 14h16l-2 7H6z" />
+          <path d="m8 14-1 7m5-7v7m4-7 1 7M5 18h14" />
+          <path d="M12 2v3m-5.7-.7 2.1 2.1m9.3-2.1-2.1 2.1M4 10h3m10 0h3" />
+        </>
+      ),
+      insulation: (
+        <>
+          <path d="M4 7h10v4H4zM4 15h10v4H4z" />
+          <path d="M14 9h3l3 3-3 3h-3" />
+          <path d="M7 7V5m4 2V5M7 21v-2m4 2v-2" />
+        </>
+      ),
+      drywall: (
+        <>
+          <rect x="5" y="3" width="14" height="18" rx="1" />
+          <path d="M9 3v18m6-18v18M5 8h14m-14 8h14" />
+        </>
+      ),
+      ventilation: (
+        <>
+          <path d="M4 8h10a3 3 0 1 0-3-3" />
+          <path d="M4 12h14a3 3 0 1 1-3 3" />
+          <path d="M4 16h6" />
+        </>
+      ),
+    };
+
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6"
+        aria-hidden="true"
+      >
+        {iconPaths[icon]}
+      </svg>
+    );
+  };
 
   const renderServiceDetail = (service, className = "") => (
     <div
@@ -345,7 +426,9 @@ export default function EnerixLandingPage() {
                   }`}
                   aria-expanded={activeService === service.title}
                 >
-                  <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700">
+                    {renderServiceIcon(service.icon)}
+                  </div>
                   <div className="font-semibold text-slate-900">
                     {service.title}
                   </div>
