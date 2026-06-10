@@ -121,7 +121,8 @@ export default function Spoluprace() {
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
                   Síť partnerů už máme a dál ji cíleně rozšiřujeme. Enerix drží
                   komunikaci s klientem a průběh projektu, partner se může
-                  soustředit na svou práci.
+                  soustředit na svou práci. Projekty realizujeme především v
+                  Jihočeském kraji a okolí.
                 </p>
                 <a
                   href="#kontakt-spoluprace"
@@ -231,6 +232,11 @@ export default function Spoluprace() {
                 odbornost, spolehlivost a schopnost navazovat na práci dalších
                 profesí.
               </p>
+              <p className="mt-4 leading-7 text-slate-500">
+                Dlouhodobě spolupracujeme s partnery v oblastech fotovoltaiky,
+                tepelných čerpadel, izolací, projektové přípravy a dalších
+                profesí souvisejících s renovacemi domů.
+              </p>
             </div>
 
             <div className="space-y-8">
@@ -276,6 +282,32 @@ export default function Spoluprace() {
             </div>
           </section>
 
+          <section className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+            <div className="grid gap-8 border-y border-slate-200 py-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+              <div>
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                  Pro budoucí spolupracovníky
+                </div>
+                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                  Přidejte se k Enerixu
+                </h2>
+              </div>
+              <div>
+                <p className="text-lg leading-8 text-slate-600">
+                  Nemusíte být realizační firma, abychom se mohli poznat.
+                  Enerix postupně roste a rádi si poslechneme lidi, kteří mají
+                  blízko k renovacím, energetice, obchodu nebo projektovému
+                  řízení a mohli by se v budoucnu zapojit do našeho týmu či
+                  spolupráce.
+                </p>
+                <p className="mt-3 leading-7 text-slate-500">
+                  Nejde o klasický nábor. Spíš o otevřené dveře pro smysluplné
+                  spojení ve chvíli, kdy si profesně i lidsky sedneme.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section className="border-y border-green-100 bg-green-50/60 px-6 py-20 md:px-10">
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
               <div>
@@ -302,32 +334,6 @@ export default function Spoluprace() {
                   </li>
                 ))}
               </ul>
-            </div>
-          </section>
-
-          <section className="mx-auto max-w-7xl px-6 py-16 md:px-10">
-            <div className="grid gap-8 border-y border-slate-200 py-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-              <div>
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-                  Pro budoucí spolupracovníky
-                </div>
-                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-                  Přidejte se k Enerixu
-                </h2>
-              </div>
-              <div>
-                <p className="text-lg leading-8 text-slate-600">
-                  Nemusíte být realizační firma, abychom se mohli poznat.
-                  Enerix postupně roste a rádi si poslechneme lidi, kteří mají
-                  blízko k renovacím, energetice, obchodu nebo projektovému
-                  řízení a mohli by se v budoucnu zapojit do našeho týmu či
-                  spolupráce.
-                </p>
-                <p className="mt-3 leading-7 text-slate-500">
-                  Nejde o klasický nábor. Spíš o otevřené dveře pro smysluplné
-                  spojení ve chvíli, kdy si profesně i lidsky sedneme.
-                </p>
-              </div>
             </div>
           </section>
 
