@@ -31,15 +31,18 @@ const partnerBenefits = [
   },
 ];
 
-const specializations = [
+const prioritySpecializations = [
   "Fasády a zateplení",
+  "Projektanti",
+  "Stavební firmy",
+];
+
+const otherSpecializations = [
   "Okna a dveře",
   "Tepelná čerpadla",
   "Fotovoltaické elektrárny",
   "Stříkané a foukané izolace",
-  "Stavební práce",
   "SDK a interiéry",
-  "Projektanti",
   "Energetičtí specialisté",
   "Další specializované profese",
 ];
@@ -111,13 +114,14 @@ export default function Spoluprace() {
                   Spolupráce s Enerixem
                 </h1>
                 <p className="mt-6 max-w-2xl text-xl leading-9 text-slate-700">
-                  Budujeme síť spolehlivých partnerů pro realizaci renovací
-                  rodinných domů.
+                  Pomáháme majitelům domů zvládnout renovaci od prvního návrhu
+                  až po hotovou práci. Aby vše dobře navazovalo, spolupracujeme
+                  se spolehlivými firmami a specialisty.
                 </p>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-                  Pomáháme klientům s návrhem řešení, dotacemi, koordinací
-                  projektu i samotnou realizací. Proto hledáme firmy a
-                  specialisty, na které se můžeme dlouhodobě spolehnout.
+                  Síť partnerů už máme a dál ji cíleně rozšiřujeme. Enerix drží
+                  komunikaci s klientem a průběh projektu, partner se může
+                  soustředit na svou práci.
                 </p>
                 <a
                   href="#kontakt-spoluprace"
@@ -229,20 +233,46 @@ export default function Spoluprace() {
               </p>
             </div>
 
-            <div className="grid gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-2">
-              {specializations.map((specialization, index) => (
-                <div
-                  key={specialization}
-                  className="flex items-center gap-4 bg-white px-5 py-4"
-                >
-                  <span className="text-xs font-bold text-green-700">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-semibold text-slate-800">
-                    {specialization}
-                  </span>
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">
+                  Aktuálně rozšiřujeme síť
+                </h3>
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {prioritySpecializations.map((specialization) => (
+                    <div
+                      key={specialization}
+                      className="border border-green-200 bg-green-50 px-5 py-5"
+                    >
+                      <span className="text-xs font-bold uppercase tracking-[0.16em] text-green-700">
+                        Priorita
+                      </span>
+                      <div className="mt-2 font-bold text-slate-900">
+                        {specialization}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-slate-800">
+                  Další oblasti spolupráce
+                </h3>
+                <div className="mt-4 grid gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-2">
+                  {otherSpecializations.map((specialization) => (
+                    <div
+                      key={specialization}
+                      className="flex items-center gap-3 bg-white px-5 py-4"
+                    >
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-slate-300" />
+                      <span className="font-medium text-slate-700">
+                        {specialization}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -275,6 +305,32 @@ export default function Spoluprace() {
             </div>
           </section>
 
+          <section className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+            <div className="grid gap-8 border-y border-slate-200 py-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+              <div>
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                  Pro budoucí spolupracovníky
+                </div>
+                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                  Přidejte se k Enerixu
+                </h2>
+              </div>
+              <div>
+                <p className="text-lg leading-8 text-slate-600">
+                  Nemusíte být realizační firma, abychom se mohli poznat.
+                  Enerix postupně roste a rádi si poslechneme lidi, kteří mají
+                  blízko k renovacím, energetice, obchodu nebo projektovému
+                  řízení a mohli by se v budoucnu zapojit do našeho týmu či
+                  spolupráce.
+                </p>
+                <p className="mt-3 leading-7 text-slate-500">
+                  Nejde o klasický nábor. Spíš o otevřené dveře pro smysluplné
+                  spojení ve chvíli, kdy si profesně i lidsky sedneme.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section
             id="kontakt-spoluprace"
             className="bg-slate-950 px-6 py-16 text-white md:px-10"
@@ -292,10 +348,10 @@ export default function Spoluprace() {
 
               <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
                 <a
-                  href="mailto:jiri.cecka@enerix.cz?subject=Zájem o spolupráci s Enerixem"
+                  href="/#kontakt"
                   className="inline-flex items-center justify-center rounded-2xl bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
                 >
-                  Kontaktovat Enerix
+                  Napsat přes formulář
                 </a>
                 <a
                   href="tel:+420720480861"
