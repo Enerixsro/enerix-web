@@ -1,6 +1,9 @@
 import Script from "next/script";
+import { useState } from "react";
 
 export default function EnerixLandingPage() {
+  const [activeService, setActiveService] = useState(null);
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -35,15 +38,148 @@ export default function EnerixLandingPage() {
   }
 
   const services = [
-    "Zateplení fasády",
-    "Výměna oken a dveří",
-    "Rekonstrukce střechy",
-    "Tepelná čerpadla",
-    "Fotovoltaika",
-    "Foukaná a stříkaná izolace",
-    "Sádrokartony",
-    "Rekuperace",
+    {
+      title: "Zateplení fasády",
+      short:
+        "Pomůžeme navrhnout zateplení tak, aby dávalo smysl technicky, ekonomicky i dotačně.",
+      detail:
+        "Zateplení fasády řešíme jako důležitou část celkové renovace domu. Nejde jen o nový vzhled, ale hlavně o snížení tepelných ztrát, lepší komfort bydlení a správnou návaznost na okna, střechu a další opatření. Připravíme návrh, posoudíme možnosti dotace a provedeme vás celým procesem od prvního rozhodnutí až po realizaci.",
+      points: [
+        "vhodnou skladbu zateplení a tloušťku izolace",
+        "návaznosti na okna, sokl, střechu a detaily fasády",
+        "podklady pro dotace a smysluplné pořadí renovace",
+      ],
+    },
+    {
+      title: "Výměna oken a dveří",
+      short:
+        "Zajistíme výměnu výplní tak, aby navazovala na zateplení, komfort i energetiku domu.",
+      detail:
+        "Okna a dveře výrazně ovlivňují úniky tepla, hluk, větrání i každodenní komfort. Pomůžeme vybrat řešení, které odpovídá stavu domu a plánované renovaci. Hlídáme technické návaznosti, aby výměna nebyla jen samostatný zásah, ale součást promyšleného celku.",
+      points: [
+        "výběr vhodných parametrů oken a dveří",
+        "správné napojení na zateplení a ostění",
+        "dopad na energetické hodnocení a dotace",
+      ],
+    },
+    {
+      title: "Rekonstrukce střechy",
+      short:
+        "Střechu posuzujeme z pohledu konstrukce, izolace, životnosti i návaznosti na další úpravy.",
+      detail:
+        "Rekonstrukce střechy bývá u starších domů jedním z klíčových kroků. Řešíme, co je potřeba opravit, jak správně pracovat s izolací a jak střechu připravit na budoucí provoz domu. Cílem je spolehlivé řešení, které pomůže ochránit dům a podpoří jeho energetickou úspornost.",
+      points: [
+        "stav konstrukce, krytiny a tepelných úniků",
+        "zateplení střechy nebo podkroví",
+        "návaznost na fotovoltaiku, větrání a další opatření",
+      ],
+    },
+    {
+      title: "Tepelná čerpadla",
+      short:
+        "Navrhneme vytápění podle potřeb domu, ne podle univerzální šablony.",
+      detail:
+        "Tepelné čerpadlo má smysl tehdy, když odpovídá tepelným ztrátám domu, způsobu vytápění a očekáváním domácnosti. Pomůžeme posoudit vhodnost řešení, výkon, provozní náklady i návaznost na zateplení, fotovoltaiku nebo úpravy otopné soustavy.",
+      points: [
+        "vhodný výkon a typ tepelného čerpadla",
+        "stav otopné soustavy a přípravu teplé vody",
+        "provozní ekonomiku, dotace a dlouhodobý komfort",
+      ],
+    },
+    {
+      title: "Fotovoltaika",
+      short:
+        "Fotovoltaiku zapojujeme do širší energetiky domu, aby dávala praktický i ekonomický smysl.",
+      detail:
+        "Fotovoltaiku navrhujeme s ohledem na spotřebu domácnosti, technické možnosti domu a další plánovaná opatření. Nejde jen o počet panelů, ale o to, jak systém využijete v běžném provozu, zda dává smysl baterie a jak se řešení propojí s vytápěním nebo ohřevem vody.",
+      points: [
+        "spotřebu domu a vhodnou velikost systému",
+        "baterii, ohřev vody a řízení spotřeby",
+        "dotace, návratnost a návaznost na další technologie",
+      ],
+    },
+    {
+      title: "Foukaná a stříkaná izolace",
+      short:
+        "Řešení pro místa, kde je potřeba rychle a účinně doplnit tepelnou izolaci.",
+      detail:
+        "Foukaná a stříkaná izolace se hodí pro půdy, stropy, dutiny i hůře přístupná místa. Pomůžeme určit, kde má toto řešení smysl, jaký přinese efekt a jak jej správně zařadit do celkové renovace domu.",
+      points: [
+        "posouzení míst s největšími tepelnými úniky",
+        "vhodný typ izolace podle konstrukce",
+        "rychlou realizaci s ohledem na další práce v domě",
+      ],
+    },
+    {
+      title: "Sádrokartony",
+      short:
+        "Zajistíme sádrokartonové konstrukce jako součást rekonstrukcí, podkroví i technických úprav.",
+      detail:
+        "Sádrokartonové konstrukce často navazují na zateplení, rozvody, podkroví nebo změnu dispozic. Řešíme je tak, aby výsledné provedení bylo praktické, čisté a připravené pro další užívání domu.",
+      points: [
+        "podhledy, příčky a úpravy interiéru",
+        "návaznost na izolace, rozvody a technické prvky",
+        "přípravu prostoru pro dokončovací práce",
+      ],
+    },
+    {
+      title: "Rekuperace",
+      short:
+        "Pomůžeme nastavit řízené větrání tak, aby dům lépe dýchal a neztrácel zbytečně teplo.",
+      detail:
+        "Rekuperace pomáhá zajistit pravidelný přísun čerstvého vzduchu bez velkých tepelných ztrát. Dává smysl zejména u domů, kde se zlepšuje obálka budovy a přirozené netěsnosti mizí. Posoudíme vhodnost řešení, rozsah rozvodů i návaznost na ostatní opatření.",
+      points: [
+        "vhodný typ řízeného větrání pro konkrétní dům",
+        "trasy rozvodů a dopad na interiér",
+        "komfort, vlhkost a energetické souvislosti",
+      ],
+    },
   ];
+
+  const selectedService = services.find(
+    (service) => service.title === activeService
+  );
+
+  const renderServiceDetail = (service, className = "") => (
+    <div
+      className={`rounded-[2rem] border border-green-100 bg-green-50/60 p-6 shadow-sm md:p-8 ${className}`}
+    >
+      <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+        <div>
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+            Vybraná oblast
+          </div>
+          <h3 className="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">
+            {service.title}
+          </h3>
+          <p className="mt-4 text-lg leading-8 text-slate-700">
+            {service.detail}
+          </p>
+        </div>
+
+        <div className="border-l-4 border-green-500 pl-5">
+          <div className="font-semibold text-slate-900">
+            Co u toho typicky řešíme
+          </div>
+          <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+            {service.points.map((point) => (
+              <li key={point} className="flex gap-3">
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-green-600" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#kontakt"
+            className="mt-6 inline-flex items-center justify-center rounded-2xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
+          >
+            Chci řešit tuto oblast
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 
   const benefits = [
     {
@@ -194,15 +330,41 @@ export default function EnerixLandingPage() {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
-              <div
-                key={service}
-                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
-                <div className="font-semibold text-slate-900">{service}</div>
+              <div key={service.title}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveService(
+                      activeService === service.title ? null : service.title
+                    )
+                  }
+                  className={`w-full rounded-2xl border bg-white p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${
+                    activeService === service.title
+                      ? "border-green-500 shadow-lg shadow-green-100"
+                      : "border-slate-200"
+                  }`}
+                  aria-expanded={activeService === service.title}
+                >
+                  <div className="mb-3 h-10 w-10 rounded-xl bg-green-100" />
+                  <div className="font-semibold text-slate-900">
+                    {service.title}
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">
+                    {service.short}
+                  </p>
+                  <div className="mt-4 text-sm font-semibold text-green-700">
+                    Zjistit více →
+                  </div>
+                </button>
+
+                {activeService === service.title &&
+                  renderServiceDetail(service, "mt-4 lg:hidden")}
               </div>
             ))}
           </div>
+
+          {selectedService &&
+            renderServiceDetail(selectedService, "mt-8 hidden lg:block")}
         </section>
 
         <section className="bg-slate-950 py-20 text-white">
