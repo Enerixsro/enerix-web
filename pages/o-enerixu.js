@@ -47,6 +47,25 @@ const specialistAreas = [
   },
 ];
 
+const selectedExperience = [
+  {
+    title: "Energetika veřejných budov",
+    text: "Zkušenosti s energetickou agendou Jihočeského kraje a energetickým managementem portfolia přibližně 800 budov.",
+  },
+  {
+    title: "Energie ve větším měřítku",
+    text: "Práce s energetickým hospodářstvím v rozsahu přibližně 50 GWh elektřiny a 70 GWh plynu ročně, včetně nákupu energií v řádu stovek milionů korun za rok.",
+  },
+  {
+    title: "Dotace a modernizace",
+    text: "Příprava a řízení dotačních projektů, zkušenosti s obnovitelnými zdroji, akumulací, energetickými úsporami a modernizací budov.",
+  },
+  {
+    title: "Studie a inovativní projekty",
+    text: "Manažerská role u studií energeticky efektivních budov ve spolupráci s UCEEB ČVUT a zkušenost s inovativním projektem spotového dobíjení elektromobilů ve veřejné správě.",
+  },
+];
+
 export default function OEnerixu() {
   return (
     <>
@@ -272,6 +291,48 @@ export default function OEnerixu() {
                     </h3>
                     <p className="mt-3 text-sm leading-6 text-slate-600">
                       {area.text}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+              <div>
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                  Vybrané zkušenosti
+                </div>
+                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                  Praxe v energetice, dotacích a projektovém řízení
+                </h2>
+                <p className="mt-5 text-lg leading-8 text-slate-600">
+                  Před založením Enerixu získal Jiří Čečka zkušenosti v
+                  energetice veřejného sektoru, kde se podílel na práci s
+                  rozsáhlým portfoliem budov, přípravě energetických projektů a
+                  koordinaci odborných studií.
+                </p>
+                <p className="mt-5 leading-7 text-slate-600">
+                  Součástí této praxe byla také spolupráce na rozvoji energetiky
+                  v Jihočeském kraji. Enerix proto nevnímá renovaci domu jen jako
+                  jednotlivou stavební zakázku, ale jako součást širšího systému
+                  technických, ekonomických a dotačních rozhodnutí.
+                </p>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {selectedExperience.map((experience) => (
+                  <article
+                    key={experience.title}
+                    className="border border-slate-200 bg-slate-50 p-6"
+                  >
+                    <div className="h-1 w-12 bg-green-600" />
+                    <h3 className="mt-5 text-lg font-semibold text-slate-900">
+                      {experience.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      {experience.text}
                     </p>
                   </article>
                 ))}
