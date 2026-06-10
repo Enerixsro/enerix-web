@@ -140,12 +140,6 @@ export default function EnerixLandingPage() {
     (service) => service.title === activeService
   );
 
-  const realizationPlaceholders = [
-    "Fotografie před a po",
-    "Krátké video z průběhu",
-    "Popis rozsahu zakázky",
-  ];
-
   const renderServiceDetail = (service, className = "") => (
     <div
       className={`rounded-[2rem] border border-green-100 bg-green-50/60 p-6 shadow-sm md:p-8 ${className}`}
@@ -371,43 +365,6 @@ export default function EnerixLandingPage() {
 
           {selectedService &&
             renderServiceDetail(selectedService, "mt-8 hidden lg:block")}
-        </section>
-
-        <section className="bg-slate-50 px-6 py-20 md:px-10">
-          <div className="mx-auto max-w-7xl">
-            <div className="max-w-2xl">
-              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-                Ukázky realizací
-              </div>
-
-              <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-                Připravujeme konkrétní pohled na hotové práce
-              </h2>
-
-              <p className="mt-4 text-lg leading-8 text-slate-600">
-                Do této části postupně doplníme vybrané renovace, fotografie z
-                realizací a stručné popisy toho, co se na domech řešilo. Chceme
-                ukazovat praktický průběh zakázek srozumitelně a bez zbytečných
-                slibů.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {realizationPlaceholders.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-                >
-                  <div className="mb-5 h-36 rounded-xl bg-gradient-to-br from-slate-100 to-green-50" />
-                  <div className="font-semibold text-slate-900">{item}</div>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Prostor připravený pro doplnění konkrétních podkladů k
-                    realizacím.
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
         </section>
 
         <section className="bg-slate-950 py-20 text-white">
