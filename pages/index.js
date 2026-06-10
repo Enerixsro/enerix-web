@@ -349,6 +349,44 @@ export default function EnerixLandingPage() {
       </noscript>
 
       <div className="min-h-screen bg-white text-slate-900">
+        <header className="border-b border-slate-200 bg-white">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4 md:px-10">
+            <a href="/" className="flex items-center gap-3">
+              <img
+                src="/enerix-symbol.png"
+                alt=""
+                className="h-10 w-10"
+              />
+              <div>
+                <div className="font-bold tracking-wide text-slate-900">
+                  ENERIX
+                </div>
+                <div className="text-xs text-slate-500">
+                  Chytré renovace pro váš dům
+                </div>
+              </div>
+            </a>
+
+            <nav
+              aria-label="Hlavní navigace"
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-slate-700"
+            >
+              <a href="#sluzby" className="transition hover:text-green-700">
+                Služby
+              </a>
+              <a href="/o-enerixu" className="transition hover:text-green-700">
+                O Enerixu
+              </a>
+              <a href="/blog" className="transition hover:text-green-700">
+                Blog
+              </a>
+              <a href="#kontakt" className="transition hover:text-green-700">
+                Kontakt
+              </a>
+            </nav>
+          </div>
+        </header>
+
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-green-50">
           <div className="absolute inset-0 opacity-40">
             <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-green-200 blur-3xl" />
