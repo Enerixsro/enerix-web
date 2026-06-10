@@ -377,6 +377,9 @@ export default function EnerixLandingPage() {
               <a href="/o-enerixu" className="transition hover:text-green-700">
                 O Enerixu
               </a>
+              <a href="/spoluprace" className="transition hover:text-green-700">
+                Spolupráce
+              </a>
               <a href="/blog" className="transition hover:text-green-700">
                 Blog
               </a>

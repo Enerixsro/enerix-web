@@ -124,6 +124,9 @@ export default function OEnerixu() {
               <a href="/o-enerixu" className="text-green-700">
                 O Enerixu
               </a>
+              <a href="/spoluprace" className="transition hover:text-green-700">
+                Spolupráce
+              </a>
               <a href="/blog" className="transition hover:text-green-700">
                 Blog
               </a>
