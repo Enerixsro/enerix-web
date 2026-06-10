@@ -281,11 +281,44 @@ export default function EnerixLandingPage() {
     },
   ];
 
-  const steps = [
-    "Nezávazná konzultace a základní posouzení domu",
-    "Návrh vhodných opatření a ekonomiky projektu",
-    "Vyřízení dotací a příprava realizace",
-    "Koordinace a realizace na klíč",
+  const cooperationSteps = [
+    {
+      title: "Úvodní konzultace a základní posouzení domu – zdarma",
+      text: "Krátce projdeme stav domu, vaše cíle a možnosti dalšího postupu. Cílem je zjistit, zda a jak dává smysl renovaci řešit.",
+    },
+    {
+      title: "Návrh renovace, dotací a financování",
+      text: "Navrhneme vhodné pořadí opatření, prověříme možnosti dotací a případně i financování.",
+    },
+    {
+      title: "Podklady, renovační pas a projektová příprava",
+      text: "Připravíme nebo pomůžeme zajistit potřebné podklady, renovační pas, energetické posouzení a další dokumentaci.",
+    },
+    {
+      title: "Koordinace realizace",
+      text: "Pokud se rozhodnete pokračovat do realizace, pomůžeme sladit jednotlivé profese a návaznosti tak, aby renovace dávala smysl jako celek.",
+    },
+    {
+      title: "Předání a další doporučení",
+      text: "Po dokončení zhodnotíme výsledek, doporučíme další kroky a pomůžeme plánovat případné další etapy renovace.",
+    },
+  ];
+
+  const references = [];
+
+  const contentAreas = [
+    {
+      title: "Z praxe Enerixu",
+      text: "Praktické zkušenosti z renovací, dotací a jednání s klienty.",
+    },
+    {
+      title: "Enerix Expert",
+      text: "Odbornější pohledy na pořadí renovace, energetiku, dotace, financování a časté chyby.",
+    },
+    {
+      title: "Rady a novinky",
+      text: "Praktické články a novinky z oblasti renovací, dotací a energetiky.",
+    },
   ];
 
   return (
@@ -519,54 +552,192 @@ export default function EnerixLandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-2">
-          <div>
+        <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+          <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-              Jak spolupráce probíhá
+              Jak probíhá spolupráce s Enerixem
             </div>
 
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Jednoduchý a srozumitelný postup
+              Jasný postup od prvního rozhovoru po další etapy renovace
             </h2>
 
-            <div className="mt-8 space-y-4">
-              {steps.map((step, index) => (
-                <div
-                  key={step}
-                  className="flex items-start gap-4 rounded-2xl border border-slate-200 p-5 shadow-sm"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-600 font-bold text-white">
-                    {index + 1}
-                  </div>
-                  <div className="pt-1 text-slate-700">{step}</div>
-                </div>
-              ))}
-            </div>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              Každý dům i záměr jsou jiné. Proto nejdřív skládáme dohromady
+              technické možnosti, dotace, financování a správné pořadí kroků.
+            </p>
           </div>
 
-          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {cooperationSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                  {index + 1}
+                </div>
+                <h3 className="mt-5 font-semibold leading-6 text-slate-900">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  {step.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-slate-50 px-6 py-16 md:px-10">
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+            <div>
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                Kdo za Enerixem stojí
+              </div>
+              <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                Odpovědnost za celý kontext renovace
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+                Enerix vede Jiří Čečka. Při přípravě renovací propojuje zkušenosti
+                s energetikou, dotačními projekty a projektovým řízením tak, aby
+                klient dostal srozumitelný plán a jedno místo pro koordinaci dalších
+                kroků.
+              </p>
+              <a
+                href="/o-enerixu"
+                className="mt-6 inline-flex items-center font-semibold text-green-700 transition hover:text-green-800"
+              >
+                Více o Enerixu a jeho přístupu →
+              </a>
+            </div>
+
+            <div className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
+              <div className="flex items-center gap-5">
+                <img
+                  src="/enerix-symbol.png"
+                  alt=""
+                  className="h-16 w-16 rounded-2xl border border-green-100 bg-white p-2"
+                />
+                <div>
+                  <div className="text-xl font-bold text-slate-900">
+                    Enerix s.r.o.
+                  </div>
+                  <div className="mt-1 text-sm text-slate-500">
+                    Chytré renovace pro váš dům
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 border-l-4 border-green-500 pl-5 text-slate-600">
+                Renovaci posuzujeme jako celek: technicky, energeticky,
+                ekonomicky i z pohledu dostupné podpory.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {references.length > 0 && (
+          <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+              Reference
+            </div>
+            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+              Vybrané realizace
+            </h2>
+            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {references.map((reference) => (
+                <article
+                  key={reference.title}
+                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+                >
+                  <img
+                    src={reference.image}
+                    alt={reference.imageAlt}
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold">{reference.title}</h3>
+                    <p className="mt-3 leading-7 text-slate-600">
+                      {reference.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-2">
+          <div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
               Proč Enerix
             </div>
 
-            <h3 className="mt-3 text-3xl font-bold">
-              Nehledáme jen řešení, které jde udělat. Hledáme řešení, které dává
-              smysl.
-            </h3>
+            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+              Renovace musí fungovat jako jeden celek
+            </h2>
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              Naší výhodou není jen samotná realizace. Každý projekt posuzujeme i z
-              pohledu energetiky, návratnosti a dostupných dotací. Díky tomu klient
-              ví, co se vyplatí udělat hned, co později a kde naopak neutrácet
+              Naší výhodou není jen samotná realizace. Každý projekt posuzujeme
+              také z pohledu energetiky, návratnosti a dostupných dotací. Klient
+              tak ví, co se vyplatí udělat hned, co později a kde naopak neutrácet
               zbytečně.
             </p>
+          </div>
 
-            <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm">
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+            <h3 className="text-2xl font-bold">
+              Nejdřív souvislosti, potom jednotlivá opatření
+            </h3>
+
+            <div className="mt-6 rounded-2xl bg-white p-6 shadow-sm">
               <div className="font-semibold">Typický cíl klienta</div>
               <div className="mt-2 text-slate-600">
                 Snížit náklady na energie, zvýšit komfort bydlení a zhodnotit dům
                 bez zbytečných chyb v pořadí renovace.
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-slate-200 bg-white px-6 py-20 md:px-10">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                  Z praxe a poradny Enerixu
+                </div>
+                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                  Zkušenosti, souvislosti a praktické rady
+                </h2>
+                <p className="mt-4 text-lg leading-8 text-slate-600">
+                  Obsah rozdělujeme podle toho, zda vychází z praxe, jde více do
+                  odborné hloubky, nebo shrnuje aktuální změny a doporučení.
+                </p>
+              </div>
+              <a
+                href="/blog"
+                className="inline-flex items-center font-semibold text-green-700 transition hover:text-green-800"
+              >
+                Přejít na blog →
+              </a>
+            </div>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {contentAreas.map((area) => (
+                <a
+                  key={area.title}
+                  href="/blog"
+                  className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-green-300 hover:bg-green-50/50"
+                >
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    {area.title}
+                  </h3>
+                  <p className="mt-3 leading-7 text-slate-600">{area.text}</p>
+                  <div className="mt-5 text-sm font-semibold text-green-700">
+                    Číst články →
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </section>
