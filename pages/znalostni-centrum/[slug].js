@@ -274,6 +274,142 @@ function ResponsiveTables({ tables }) {
   });
 }
 
+function isListLead(text) {
+  return /:$/.test(text) && text.length < 150;
+}
+
+function isLikelyListItem(text, hasPreviousItems = false) {
+  const trimmed = text.trim();
+  if (!trimmed || isSectionHeading(trimmed) || trimmed.includes("\n")) {
+    return false;
+  }
+
+  const startsLikeItem =
+    /^[a-záčďéěíňóřšťúůýž0-9„]/.test(trimmed) ||
+    /^(NZÚ|Dílčí|Komplexní|Energetická|Ostatní|První|Druhý|Třetí)/.test(
+      trimmed
+    );
+  const itemPunctuation = /[,;]$/.test(trimmed) || !/[.!?]$/.test(trimmed);
+  const finalItem = hasPreviousItems && trimmed.length < 135 && /[.]$/.test(trimmed);
+
+  return trimmed.length < 150 && startsLikeItem && (itemPunctuation || finalItem);
+}
+
+function isMicroBlockLead(text) {
+  return /^(Typická situace|Příklad|Jednoduchý příklad|Laicky řečeno):?$/.test(
+    text
+  );
+}
+
+function buildArticleBlocks(paragraphs, insertionIndexes) {
+  const source = paragraphs.slice(1).map((text, index) => ({
+    text,
+    sourceIndex: index + 1,
+  }));
+  const blocks = [];
+
+  for (let index = 0; index < source.length; index += 1) {
+    const current = source[index];
+
+    if (isMicroBlockLead(current.text) && source[index + 1]) {
+      const next = source[index + 1];
+      blocks.push({
+        type: "micro",
+        title: current.text.replace(/:$/, ""),
+        text: next.text,
+        sourceIndex: next.sourceIndex,
+      });
+      index += 1;
+      continue;
+    }
+
+    if (isSectionHeading(current.text)) {
+      blocks.push({ type: "heading", ...current });
+      continue;
+    }
+
+    if (current.text.includes("\n")) {
+      blocks.push({
+        type: "list",
+        items: current.text.split("\n").filter(Boolean),
+        sourceIndex: current.sourceIndex,
+      });
+      continue;
+    }
+
+    if (isListLead(current.text)) {
+      const items = [];
+      let cursor = index + 1;
+      while (
+        cursor < source.length &&
+        !insertionIndexes.has(source[cursor - 1]?.sourceIndex) &&
+        isLikelyListItem(source[cursor].text, items.length > 0)
+      ) {
+        items.push(source[cursor]);
+        cursor += 1;
+      }
+
+      if (items.length >= 2) {
+        blocks.push({ type: "lead", ...current });
+        blocks.push({
+          type: "list",
+          items: items.map((item) => item.text),
+          sourceIndex: items[items.length - 1].sourceIndex,
+        });
+        index = cursor - 1;
+        continue;
+      }
+    }
+
+    const joined = [current.text];
+    let lastSourceIndex = current.sourceIndex;
+    let cursor = index + 1;
+    while (cursor < source.length && joined.length < 3) {
+      const next = source[cursor];
+      const wouldCrossInsertion = insertionIndexes.has(lastSourceIndex);
+      const canJoin =
+        !wouldCrossInsertion &&
+        !isSectionHeading(next.text) &&
+        !next.text.includes("\n") &&
+        !isListLead(next.text) &&
+        !isMicroBlockLead(next.text) &&
+        joined.join(" ").length + next.text.length < 430;
+
+      if (!canJoin) break;
+      joined.push(next.text);
+      lastSourceIndex = next.sourceIndex;
+      cursor += 1;
+    }
+
+    blocks.push({
+      type: "paragraph",
+      text: joined.join(" "),
+      sourceIndex: lastSourceIndex,
+    });
+    index = cursor - 1;
+  }
+
+  return blocks;
+}
+
+function CompactList({ items }) {
+  return (
+    <ul className="my-5 grid gap-x-6 gap-y-2 py-1 sm:grid-cols-2">
+      {items.map((line) => (
+        <li key={line} className="flex gap-3 text-sm leading-6 text-slate-700">
+          <span
+            aria-hidden="true"
+            className="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-700"
+          >
+            ✓
+          </span>
+          <span>{line.replace(/,$/, "")}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function SourceArticleBody({ article }) {
   const paragraphs = article.paragraphs || [];
   const config = editorialContent[article.slug];
@@ -324,6 +460,17 @@ function SourceArticleBody({ article }) {
 
     return null;
   };
+  const insertionIndexes = new Set(
+    article.slug ===
+      "nzu-2026-prakticky-light-750000-komplexni-renovace"
+      ? [6]
+      : article.slug === "co-kdyz-dotace-na-rekonstrukci-nestaci"
+        ? [10, 41, 144]
+        : article.slug === "renovacni-pas-2026"
+          ? [103]
+          : []
+  );
+  const blocks = buildArticleBlocks(paragraphs, insertionIndexes);
 
   return (
     <>
@@ -331,33 +478,50 @@ function SourceArticleBody({ article }) {
         <EditorialBlocks config={config} parts={topParts} />
       )}
       <ResponsiveTables tables={article.tables} />
-      <div className="mt-12">
-        {paragraphs.slice(1).map((paragraph, index) => {
-          const sourceIndex = index + 1;
-          const insertedContent = insertsAfterParagraph(sourceIndex);
+      <div className="mt-10">
+        {blocks.map((block, index) => {
+          const insertedContent = insertsAfterParagraph(block.sourceIndex);
 
-          if (isSectionHeading(paragraph)) {
+          if (block.type === "heading") {
             return (
               <div key={index}>
-                <h2 className="mb-4 mt-10 text-2xl font-bold leading-tight">
-                  {paragraph}
+                <h2 className="mb-4 mt-11 text-2xl font-bold leading-tight text-slate-900">
+                  {block.text}
                 </h2>
                 {insertedContent}
               </div>
             );
           }
 
-          if (paragraph.includes("\n")) {
+          if (block.type === "list") {
             return (
               <div key={index}>
-                <ul className="my-5 space-y-2">
-                  {paragraph.split("\n").map((line) => (
-                    <li key={line} className="flex gap-3 leading-7 text-slate-700">
-                      <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-green-600" />
-                      {line}
-                    </li>
-                  ))}
-                </ul>
+                <CompactList items={block.items} />
+                {insertedContent}
+              </div>
+            );
+          }
+
+          if (block.type === "micro") {
+            return (
+              <div key={index}>
+                <aside className="my-7 rounded-lg border-l-4 border-green-600 bg-green-50 px-5 py-4">
+                  <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
+                    {block.title}
+                  </div>
+                  <p className="mt-2 leading-7 text-slate-700">{block.text}</p>
+                </aside>
+                {insertedContent}
+              </div>
+            );
+          }
+
+          if (block.type === "lead") {
+            return (
+              <div key={index}>
+                <p className="mb-2 mt-5 font-semibold leading-7 text-slate-800">
+                  {block.text}
+                </p>
                 {insertedContent}
               </div>
             );
@@ -365,7 +529,7 @@ function SourceArticleBody({ article }) {
 
           return (
             <div key={index}>
-              <p className="my-3 leading-8 text-slate-600">{paragraph}</p>
+              <p className="my-4 leading-8 text-slate-600">{block.text}</p>
               {insertedContent}
             </div>
           );
@@ -443,6 +607,69 @@ function SeriesNavigation({ article, compact = false }) {
         )}
       </div>
     </nav>
+  );
+}
+
+function SeriesSidebar({ article }) {
+  if (!article.seriesId) return null;
+
+  return (
+    <aside className="hidden lg:block">
+      <div className="sticky top-6 space-y-5">
+        <div className="rounded-lg border border-green-200 bg-green-50 p-5">
+          <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
+            Téma série
+          </div>
+          <h2 className="mt-2 text-lg font-bold">Nová zelená úsporám 2026</h2>
+          <p className="mt-3 text-sm leading-6 text-slate-600">
+            Enerix není poskytovatelem podpory. Pomáháme klientům zorientovat
+            se v renovaci domu, podkladech, možnostech podpory, financování a
+            dalším postupu.
+          </p>
+        </div>
+
+        <nav
+          aria-label="Všechny články série"
+          className="rounded-lg border border-slate-200 bg-white p-5"
+        >
+          <div className="text-sm font-bold">{nzu2026Series.title}</div>
+          <div className="mt-4 space-y-1">
+            {nzu2026Series.articles.map((item, index) => {
+              const isActive = item.slug === article.slug;
+              return (
+                <a
+                  key={item.slug}
+                  href={`/znalostni-centrum/${item.slug}`}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`grid grid-cols-[30px_minmax(0,1fr)] gap-2 rounded-md px-2 py-2.5 text-sm leading-5 transition ${
+                    isActive
+                      ? "bg-green-50 font-bold text-green-800"
+                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  }`}
+                >
+                  <span className="font-bold text-green-700">{index + 1}/7</span>
+                  <span>{item.shortTitle}</span>
+                </a>
+              );
+            })}
+          </div>
+        </nav>
+
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+          <h2 className="font-bold">Nejste si jistí, kde začít?</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Pomůžeme vám určit rozumný první krok podle stavu domu a vašeho
+            záměru.
+          </p>
+          <a
+            href="/#kontakt"
+            className="mt-4 inline-flex text-sm font-bold text-green-700 hover:text-green-800"
+          >
+            Nezávazná konzultace →
+          </a>
+        </div>
+      </div>
+    </aside>
   );
 }
 
@@ -538,6 +765,11 @@ export default function KnowledgeCenterArticle({ article }) {
 
               {article.tags && (
                 <div className="mt-6 flex flex-wrap gap-2">
+                  {article.seriesId && (
+                    <span className="rounded-full border border-green-200 bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
+                      Téma série: Nová zelená úsporám 2026
+                    </span>
+                  )}
                   {article.tags.map((tag) => (
                     <span
                       key={tag}
@@ -560,101 +792,113 @@ export default function KnowledgeCenterArticle({ article }) {
               </div>
             </div>
 
-            <div className="mx-auto max-w-3xl px-6 py-12 md:px-10 md:py-16">
-              <p className="border-l-4 border-green-600 pl-6 text-lg leading-8 text-slate-700">
-                {article.intro || article.paragraphs?.[0]}
-              </p>
+            <div
+              className={`mx-auto grid gap-12 px-6 py-12 md:px-10 md:py-16 ${
+                article.seriesId
+                  ? "max-w-6xl lg:grid-cols-[minmax(0,1fr)_300px]"
+                  : "max-w-3xl"
+              }`}
+            >
+              <div className="min-w-0">
+                <p className="border-l-4 border-green-600 pl-6 text-lg leading-8 text-slate-700">
+                  {article.intro || article.paragraphs?.[0]}
+                </p>
 
-              <SeriesNavigation article={article} />
-
-              {article.paragraphs ? (
-                <SourceArticleBody article={article} />
-              ) : (
-                <div className="mt-12 space-y-11">
-                  {article.sections.map((section) => (
-                    <section key={section.title}>
-                      <h2 className="text-2xl font-bold">{section.title}</h2>
-                      <p className="mt-4 leading-8 text-slate-600">{section.text}</p>
-                      {section.bullets && (
-                        <ul className="mt-5 space-y-3">
-                          {section.bullets.map((bullet) => (
-                            <li key={bullet} className="flex gap-3 leading-7 text-slate-700">
-                              <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-green-600" />
-                              {bullet}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </section>
-                  ))}
+                <div className="lg:hidden">
+                  <SeriesNavigation article={article} />
                 </div>
-              )}
 
-              {article.paragraphs && (
-                <>
-                  <aside className="mt-12 rounded-lg border border-green-200 bg-green-50 p-6">
-                    <h2 className="text-xl font-bold">Řešíte podobnou situaci?</h2>
-                    <p className="mt-2 leading-7 text-slate-600">
-                      Řešíte starší dům a nejste si jistí, kde začít? Pomůžeme
-                      vám zorientovat se v možnostech renovace, podpory,
-                      financování a dalším postupu.
+                {article.paragraphs ? (
+                  <SourceArticleBody article={article} />
+                ) : (
+                  <div className="mt-12 space-y-11">
+                    {article.sections.map((section) => (
+                      <section key={section.title}>
+                        <h2 className="text-2xl font-bold">{section.title}</h2>
+                        <p className="mt-4 leading-8 text-slate-600">{section.text}</p>
+                        {section.bullets && (
+                          <ul className="mt-5 space-y-3">
+                            {section.bullets.map((bullet) => (
+                              <li key={bullet} className="flex gap-3 leading-7 text-slate-700">
+                                <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-green-600" />
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </section>
+                    ))}
+                  </div>
+                )}
+
+                {article.paragraphs && (
+                  <>
+                    <aside className="mt-12 rounded-lg border border-green-200 bg-green-50 p-6">
+                      <h2 className="text-xl font-bold">Řešíte podobnou situaci?</h2>
+                      <p className="mt-2 leading-7 text-slate-600">
+                        Řešíte starší dům a nejste si jistí, kde začít? Pomůžeme
+                        vám zorientovat se v možnostech renovace, podpory,
+                        financování a dalším postupu.
+                      </p>
+                      <a
+                        href="/#kontakt"
+                        className="mt-5 inline-flex rounded-md bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800"
+                      >
+                        Chci konzultaci renovace domu
+                      </a>
+                    </aside>
+
+                    {relatedArticles.length > 0 && (
+                      <section className="mt-12">
+                        <h2 className="text-xl font-bold">
+                          {article.seriesId
+                            ? nzu2026Series.title
+                            : "Pokračujte v sérii"}
+                        </h2>
+                        {article.seriesId && (
+                          <p className="mt-2 text-sm leading-6 text-slate-600">
+                            Navazující díly rozvíjejí jednotlivá rozhodnutí při
+                            přípravě renovace.
+                          </p>
+                        )}
+                        <div className="mt-4 grid gap-3">
+                          {relatedArticles.map((related) => (
+                            <a
+                              key={related.slug}
+                              href={`/znalostni-centrum/${related.slug}`}
+                              className="rounded-md border border-slate-200 p-4 font-semibold leading-6 text-slate-800 transition hover:border-green-400 hover:bg-green-50"
+                            >
+                              {related.seriesIndex && (
+                                <span className="mb-2 block text-xs font-bold uppercase tracking-[0.1em] text-green-700">
+                                  Část {related.seriesIndex}/{related.seriesTotal}
+                                </span>
+                              )}
+                              {related.title} <span aria-hidden="true">→</span>
+                            </a>
+                          ))}
+                        </div>
+                      </section>
+                    )}
+
+                    <aside className="mt-12 border-t border-slate-200 pt-6 text-xs leading-6 text-slate-500">
+                      {safetyNote}
+                    </aside>
+                  </>
+                )}
+
+                {!article.paragraphs && (
+                  <aside className="mt-14 rounded-lg border border-green-200 bg-green-50 p-6">
+                    <h2 className="text-lg font-bold">Poznámka k demu</h2>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">
+                      Tento článek ukazuje budoucí formát příběhu nebo odborného
+                      obsahu. Před případným zveřejněním bude text zkontrolován,
+                      doplněn o skutečná data a propojen s reálnými fotografiemi.
                     </p>
-                    <a
-                      href="/#kontakt"
-                      className="mt-5 inline-flex rounded-md bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800"
-                    >
-                      Chci konzultaci renovace domu
-                    </a>
                   </aside>
+                )}
+              </div>
 
-                  {relatedArticles.length > 0 && (
-                    <section className="mt-12">
-                      <h2 className="text-xl font-bold">
-                        {article.seriesId
-                          ? nzu2026Series.title
-                          : "Pokračujte v sérii"}
-                      </h2>
-                      {article.seriesId && (
-                        <p className="mt-2 text-sm leading-6 text-slate-600">
-                          Navazující díly rozvíjejí jednotlivá rozhodnutí při
-                          přípravě renovace.
-                        </p>
-                      )}
-                      <div className="mt-4 grid gap-3">
-                        {relatedArticles.map((related) => (
-                          <a
-                            key={related.slug}
-                            href={`/znalostni-centrum/${related.slug}`}
-                            className="rounded-md border border-slate-200 p-4 font-semibold leading-6 text-slate-800 transition hover:border-green-400 hover:bg-green-50"
-                          >
-                            {related.seriesIndex && (
-                              <span className="mb-2 block text-xs font-bold uppercase tracking-[0.1em] text-green-700">
-                                Část {related.seriesIndex}/{related.seriesTotal}
-                              </span>
-                            )}
-                            {related.title} <span aria-hidden="true">→</span>
-                          </a>
-                        ))}
-                      </div>
-                    </section>
-                  )}
-
-                  <aside className="mt-12 border-t border-slate-200 pt-6 text-xs leading-6 text-slate-500">
-                    {safetyNote}
-                  </aside>
-                </>
-              )}
-
-              {!article.paragraphs && (
-                <aside className="mt-14 rounded-lg border border-green-200 bg-green-50 p-6">
-                  <h2 className="text-lg font-bold">Poznámka k demu</h2>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">
-                    Tento článek ukazuje budoucí formát příběhu nebo odborného
-                    obsahu. Před případným zveřejněním bude text zkontrolován,
-                    doplněn o skutečná data a propojen s reálnými fotografiemi.
-                  </p>
-                </aside>
-              )}
+              <SeriesSidebar article={article} />
             </div>
           </article>
         </main>
