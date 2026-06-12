@@ -404,6 +404,9 @@ export default function EnerixLandingPage() {
       aria-label={reference.imageAlt}
       className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden ${reference.visualClass}`}
     >
+      <div className="absolute right-4 top-4 z-10 rounded-full border border-amber-200 bg-white/95 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">
+        Čeká na fotky
+      </div>
       <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:32px_32px]" />
       <svg
         viewBox="0 0 120 120"
@@ -527,6 +530,9 @@ export default function EnerixLandingPage() {
               <a href="#sluzby" className="transition hover:text-green-700">
                 Služby
               </a>
+              <a href="#realizace" className="transition hover:text-green-700">
+                Realizace
+              </a>
               <a href="/o-enerixu" className="transition hover:text-green-700">
                 O Enerixu
               </a>
@@ -534,7 +540,7 @@ export default function EnerixLandingPage() {
                 Spolupráce
               </a>
               <a href="/blog" className="transition hover:text-green-700">
-                Blog
+                Znalostní centrum
               </a>
               <a href="#kontakt" className="transition hover:text-green-700">
                 Kontakt
@@ -783,7 +789,10 @@ export default function EnerixLandingPage() {
         </section>
 
         {references.length > 0 && (
-          <section className="border-y border-slate-200 bg-slate-50 px-6 py-20 md:px-10">
+          <section
+            id="realizace"
+            className="scroll-mt-6 border-y border-slate-200 bg-slate-50 px-6 py-20 md:px-10"
+          >
             <div className="mx-auto max-w-7xl">
               <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-3xl">
@@ -801,7 +810,7 @@ export default function EnerixLandingPage() {
                 <div className="flex flex-wrap items-center gap-3">
                   {references.some((reference) => reference.preview) && (
                     <div className="w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
-                      Preview: ukázková data
+                      Čeká na reference
                     </div>
                   )}
 

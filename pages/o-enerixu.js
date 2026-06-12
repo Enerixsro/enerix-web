@@ -121,6 +121,9 @@ export default function OEnerixu() {
               <a href="/#sluzby" className="transition hover:text-green-700">
                 Služby
               </a>
+              <a href="/#realizace" className="transition hover:text-green-700">
+                Realizace
+              </a>
               <a href="/o-enerixu" className="text-green-700">
                 O Enerixu
               </a>
@@ -128,7 +131,7 @@ export default function OEnerixu() {
                 Spolupráce
               </a>
               <a href="/blog" className="transition hover:text-green-700">
-                Blog
+                Znalostní centrum
               </a>
               <a href="/#kontakt" className="transition hover:text-green-700">
                 Kontakt
@@ -330,6 +333,9 @@ export default function OEnerixu() {
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
                 Vybrané zkušenosti
               </div>
+              <div className="mt-4 w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
+                Čeká na potvrzení textu
+              </div>
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">
                 Praxe, na které Enerix staví
               </h2>
@@ -373,7 +379,10 @@ export default function OEnerixu() {
 
           <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-              <div className="flex min-h-80 items-center justify-center bg-slate-50 p-10">
+              <div className="relative flex min-h-80 items-center justify-center bg-slate-50 p-10">
+                <div className="absolute right-5 top-5 rounded-full border border-amber-200 bg-white px-4 py-2 text-sm font-semibold text-amber-800 shadow-sm">
+                  Čeká na fotky
+                </div>
                 <div className="text-center">
                   <img
                     src="/enerix-symbol.png"

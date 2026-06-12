@@ -87,6 +87,9 @@ export default function Spoluprace() {
               <a href="/#sluzby" className="transition hover:text-green-700">
                 Služby
               </a>
+              <a href="/#realizace" className="transition hover:text-green-700">
+                Realizace
+              </a>
               <a href="/o-enerixu" className="transition hover:text-green-700">
                 O Enerixu
               </a>
@@ -94,7 +97,7 @@ export default function Spoluprace() {
                 Spolupráce
               </a>
               <a href="/blog" className="transition hover:text-green-700">
-                Blog
+                Znalostní centrum
               </a>
               <a href="/#kontakt" className="transition hover:text-green-700">
                 Kontakt
@@ -244,6 +247,9 @@ export default function Spoluprace() {
                 <h3 className="text-xl font-bold text-slate-900">
                   Aktuálně rozšiřujeme síť
                 </h3>
+                <div className="mt-3 w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
+                  Čeká na potvrzení textu
+                </div>
                 <div className="mt-4 grid gap-3 sm:grid-cols-3">
                   {prioritySpecializations.map((specialization) => (
                     <div

@@ -34,6 +34,15 @@ export default function KnowledgeCenterArticle({ article }) {
               <a href="/#sluzby" className="hover:text-green-700">
                 Služby
               </a>
+              <a href="/#realizace" className="hover:text-green-700">
+                Realizace
+              </a>
+              <a href="/o-enerixu" className="hover:text-green-700">
+                O Enerixu
+              </a>
+              <a href="/spoluprace" className="hover:text-green-700">
+                Spolupráce
+              </a>
               <a href="/blog" className="text-green-700">
                 Znalostní centrum
               </a>
@@ -59,7 +68,7 @@ export default function KnowledgeCenterArticle({ article }) {
                   {article.label}
                 </span>
                 <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
-                  Modelový obsah pro předprodukční demo
+                  Čeká na kontrolu článku
                 </span>
               </div>
 

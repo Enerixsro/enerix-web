@@ -36,10 +36,13 @@ function Header() {
 
         <nav
           aria-label="Hlavní navigace"
-          className="grid w-full min-w-0 grid-cols-5 gap-1 text-center text-[11px] font-semibold text-slate-700 sm:flex sm:w-auto sm:items-center sm:gap-x-6 sm:text-left sm:text-sm"
+          className="grid w-full min-w-0 grid-cols-3 gap-2 text-center text-[11px] font-semibold text-slate-700 sm:flex sm:w-auto sm:items-center sm:gap-x-5 sm:text-left sm:text-sm"
         >
           <a href="/#sluzby" className="transition hover:text-green-700">
             Služby
+          </a>
+          <a href="/#realizace" className="transition hover:text-green-700">
+            Realizace
           </a>
           <a href="/o-enerixu" className="transition hover:text-green-700">
             O Enerixu
@@ -51,7 +54,7 @@ function Header() {
             href="/blog"
             className="border-b-2 border-green-600 py-2 text-green-700"
           >
-            Blog
+            Znalostní centrum
           </a>
           <a href="/#kontakt" className="transition hover:text-green-700">
             Kontakt
@@ -332,7 +335,7 @@ export default function BlogPage({ soroArticles = [] }) {
                   Znalostní centrum Enerixu
                 </span>
                 <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
-                  Předprodukční demo · modelový obsah
+                  Čeká na kontrolu článků
                 </span>
               </div>
               <h1 className="mt-3 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
