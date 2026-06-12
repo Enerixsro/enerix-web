@@ -65,7 +65,7 @@ const expertArticles = [
   },
 ];
 
-const newsArticles = [
+const fallbackNewsArticles = [
   {
     title: "Nová zelená úsporám: rekonstrukce domu chytře",
     slug: "nova-zelena-usporam-rekonstrukce-domu",
@@ -93,6 +93,9 @@ const newsArticles = [
 ];
 
 const articleHref = (slug) => `/blog?post=${slug}`;
+const curatedSlugs = new Set(
+  [...practiceArticles, ...expertArticles].map((article) => article.slug)
+);
 
 function ArticleMeta({ date, readingTime, light = false }) {
   const colorClass = light ? "text-slate-300" : "text-slate-500";
@@ -160,7 +163,7 @@ function SectionLink({ href, children }) {
   );
 }
 
-export default function BlogPage() {
+export default function BlogPage({ newsArticles = fallbackNewsArticles }) {
   const leadArticle = practiceArticles[0];
 
   return (
@@ -433,26 +436,6 @@ export default function BlogPage() {
             </div>
           </section>
 
-          <section className="px-6 py-10 md:px-10">
-            <div className="mx-auto grid max-w-7xl gap-6 rounded-lg border border-green-100 bg-green-50/70 p-7 md:grid-cols-[1fr_auto] md:items-center">
-              <div>
-                <h2 className="text-2xl font-bold">
-                  Nevíte, kde s renovací začít?
-                </h2>
-                <p className="mt-2 max-w-2xl leading-7 text-slate-600">
-                  Pomůžeme vám propojit technické možnosti domu, dotace,
-                  financování a správné pořadí realizace.
-                </p>
-              </div>
-              <a
-                href="/#kontakt"
-                className="inline-flex items-center justify-center rounded-lg bg-green-600 px-5 py-3 font-semibold text-white transition hover:bg-green-700"
-              >
-                Domluvit nezávaznou konzultaci
-              </a>
-            </div>
-          </section>
-
           <section
             id="clanky"
             className="scroll-mt-6 border-t border-slate-200 px-6 py-12 md:px-10"
@@ -473,6 +456,24 @@ export default function BlogPage() {
                 src="https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483"
                 strategy="afterInteractive"
               />
+
+              <div className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-7 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-lg font-bold">
+                    Nevíte, kde s renovací začít?
+                  </h2>
+                  <p className="mt-1 text-sm leading-6 text-slate-600">
+                    Pomůžeme vám zorientovat se v souvislostech a správném
+                    pořadí kroků.
+                  </p>
+                </div>
+                <a
+                  href="/#kontakt"
+                  className="inline-flex items-center justify-center rounded-lg border border-green-300 px-5 py-2.5 text-sm font-semibold text-green-800 transition hover:border-green-500 hover:bg-green-50"
+                >
+                  Domluvit nezávaznou konzultaci
+                </a>
+              </div>
             </div>
           </section>
         </main>
@@ -483,4 +484,56 @@ export default function BlogPage() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const response = await fetch(
+      "https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483"
+    );
+
+    if (!response.ok) {
+      throw new Error(`Soro feed returned ${response.status}`);
+    }
+
+    const script = await response.text();
+    const match = script.match(/var SORO_ARTICLES = (\[.*?\]);/s);
+
+    if (!match) {
+      throw new Error("Soro article data was not found");
+    }
+
+    const articles = JSON.parse(match[1]);
+    const newsArticles = articles
+      .filter(
+        (article) =>
+          article?.slug &&
+          article?.title &&
+          article?.image &&
+          !curatedSlugs.has(article.slug)
+      )
+      .slice(0, 3)
+      .map((article) => ({
+        title: article.title,
+        slug: article.slug,
+        date: article.date,
+        image: article.image,
+        readingTime: "4 min čtení",
+      }));
+
+    return {
+      props: {
+        newsArticles:
+          newsArticles.length === 3 ? newsArticles : fallbackNewsArticles,
+      },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    return {
+      props: {
+        newsArticles: fallbackNewsArticles,
+      },
+      revalidate: 300,
+    };
+  }
 }
