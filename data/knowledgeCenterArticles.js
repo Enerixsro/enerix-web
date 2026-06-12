@@ -1,4 +1,5 @@
 import expertSourceArticles from "./enerixExpertArticles.json";
+import { nzu2026SeriesBySlug } from "./knowledgeCenterSeries";
 
 const previewArticles = [
   {
@@ -300,14 +301,15 @@ const previewArticles = [
   },
 ];
 
-const retainedPreviewArticles = previewArticles.filter(
-  (article) => article.category !== "expert"
-);
+const seriesArticles = expertSourceArticles.map((article) => ({
+  ...article,
+  ...nzu2026SeriesBySlug[article.slug],
+}));
 
 export const demoArticles = [
-  ...retainedPreviewArticles.slice(0, 3),
-  ...expertSourceArticles,
-  ...retainedPreviewArticles.slice(3),
+  ...previewArticles.slice(0, 3),
+  ...seriesArticles,
+  ...previewArticles.slice(3),
 ];
 
 export const demoArticlesBySlug = Object.fromEntries(

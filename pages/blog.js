@@ -3,6 +3,10 @@ import Script from "next/script";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { demoArticles } from "../data/knowledgeCenterArticles";
+import {
+  nzu2026Series,
+  SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES,
+} from "../data/knowledgeCenterSeries";
 
 const SORO_EMBED_URL =
   "https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483";
@@ -12,8 +16,11 @@ const practiceArticles = demoArticles.filter(
   (article) => article.category === "practice"
 );
 const expertArticles = demoArticles.filter(
-  (article) => article.category === "expert"
+  (article) => article.category === "expert" && !article.seriesId
 );
+const seriesArticles = nzu2026Series.articles
+  .map((item) => demoArticles.find((article) => article.slug === item.slug))
+  .filter(Boolean);
 const newsArticles = demoArticles.filter(
   (article) => article.category === "news"
 );
@@ -91,6 +98,81 @@ function SectionLink({ href, children }) {
         →
       </span>
     </a>
+  );
+}
+
+function SeriesPartBadge({ article, compact = false }) {
+  if (!article.seriesIndex) return null;
+
+  return (
+    <span
+      className={`inline-flex items-center rounded-full bg-green-700 font-bold uppercase tracking-[0.1em] text-white ${
+        compact ? "px-2.5 py-1 text-[10px]" : "px-3 py-1.5 text-xs"
+      }`}
+    >
+      Část {article.seriesIndex}/{article.seriesTotal}
+    </span>
+  );
+}
+
+function NzuSeriesSection() {
+  return (
+    <section
+      id="pruvodce-nzu-2026"
+      className="scroll-mt-6 border-b border-green-100 bg-green-50/50 px-6 py-11 md:px-10 md:py-14"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-3xl">
+          <div className="text-sm font-bold uppercase tracking-[0.16em] text-green-700">
+            Doporučený průvodce
+          </div>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
+            {nzu2026Series.title}
+          </h2>
+          <p className="mt-4 leading-7 text-slate-600">
+            {nzu2026Series.description}
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {seriesArticles.map((article) => (
+            <a
+              key={article.slug}
+              href={demoHref(article.slug)}
+              className="group flex min-h-[240px] flex-col rounded-md border border-green-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <SeriesPartBadge article={article} />
+                <span className="text-xs font-semibold text-green-700">
+                  Průvodce NZÚ 2026
+                </span>
+              </div>
+              <h3 className="mt-5 text-xl font-bold leading-7">
+                {article.shortTitle}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {article.summary}
+              </p>
+              <div className="mt-auto pt-5">
+                <div className="flex flex-wrap gap-2">
+                  {article.tags?.slice(0, 2).map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-4 text-sm font-bold text-green-700">
+                  Číst článek <span aria-hidden="true">→</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -205,6 +287,11 @@ function Archive({ soroArticles }) {
                   />
                 </div>
                 <div className="min-w-0 py-0.5">
+                  {article.seriesIndex && (
+                    <div className="mb-2">
+                      <SeriesPartBadge article={article} compact />
+                    </div>
+                  )}
                   <h3 className="line-clamp-2 font-bold leading-6">
                     {article.title}
                   </h3>
@@ -334,9 +421,11 @@ export default function BlogPage({ soroArticles = [] }) {
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
                   Znalostní centrum Enerixu
                 </span>
-                <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
-                  Čeká na kontrolu článků
-                </span>
+                {SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES && (
+                  <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
+                    Čeká na kontrolu článků
+                  </span>
+                )}
               </div>
               <h1 className="mt-3 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
                 Zkušenosti, souvislosti a praktické rady
@@ -371,6 +460,8 @@ export default function BlogPage({ soroArticles = [] }) {
               </nav>
             </div>
           </section>
+
+          <NzuSeriesSection />
 
           <section id="praxe" className="scroll-mt-6 px-6 py-11 md:px-10">
             <div className="mx-auto max-w-7xl">

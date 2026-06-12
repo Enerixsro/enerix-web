@@ -1,5 +1,9 @@
 import Head from "next/head";
 import { demoArticles, demoArticlesBySlug } from "../../data/knowledgeCenterArticles";
+import {
+  nzu2026Series,
+  SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES,
+} from "../../data/knowledgeCenterSeries";
 
 const safetyNote =
   "Informace v článku jsou orientační a vycházejí z podmínek známých v době přípravy textu. Programy podpory se mohou měnit a konkrétní možnost podpory vždy závisí na aktuálních pravidlech, typu domu, vlastnictví, domácnosti, rozsahu opatření a schválení příslušnými institucemi.";
@@ -173,18 +177,21 @@ function InfoBox({ children, title, tone = "green" }) {
   );
 }
 
-function EditorialBlocks({ config }) {
+function EditorialBlocks({
+  config,
+  parts = ["notice", "cards", "comparison", "extra", "warning"],
+}) {
   if (!config) return null;
 
   return (
     <div className="mt-8 space-y-6">
-      {config.notice && (
+      {parts.includes("notice") && config.notice && (
         <InfoBox>
           <p className="leading-7 text-slate-700">{config.notice}</p>
         </InfoBox>
       )}
 
-      {(config.cardIntro || config.cards) && (
+      {parts.includes("cards") && (config.cardIntro || config.cards) && (
         <InfoBox title={config.cardTitle}>
           {config.cardIntro && (
             <p className="leading-7 text-slate-700">{config.cardIntro}</p>
@@ -207,7 +214,7 @@ function EditorialBlocks({ config }) {
         </InfoBox>
       )}
 
-      {config.comparison && (
+      {parts.includes("comparison") && config.comparison && (
         <div className="grid gap-4 md:grid-cols-2">
           {config.comparison.map((column) => (
             <InfoBox key={column.title} title={column.title}>
@@ -224,13 +231,13 @@ function EditorialBlocks({ config }) {
         </div>
       )}
 
-      {config.extra && (
+      {parts.includes("extra") && config.extra && (
         <InfoBox>
           <p className="leading-7 text-slate-700">{config.extra}</p>
         </InfoBox>
       )}
 
-      {config.warning && (
+      {parts.includes("warning") && config.warning && (
         <InfoBox title={config.warningTitle} tone="amber">
           <p className="leading-7 text-slate-700">{config.warning}</p>
         </InfoBox>
@@ -269,42 +276,173 @@ function ResponsiveTables({ tables }) {
 
 function SourceArticleBody({ article }) {
   const paragraphs = article.paragraphs || [];
+  const config = editorialContent[article.slug];
+  const delayedEditorialSlugs = [
+    "nzu-2026-prakticky-light-750000-komplexni-renovace",
+    "co-kdyz-dotace-na-rekonstrukci-nestaci",
+  ];
+  const topParts =
+    article.slug === "renovacni-pas-2026"
+      ? ["notice", "cards"]
+      : delayedEditorialSlugs.includes(article.slug)
+        ? []
+        : ["notice", "cards", "comparison", "extra", "warning"];
+
+  const insertsAfterParagraph = (sourceIndex) => {
+    if (
+      article.slug ===
+        "nzu-2026-prakticky-light-750000-komplexni-renovace" &&
+      sourceIndex === 6
+    ) {
+      return <EditorialBlocks config={config} parts={["cards"]} />;
+    }
+
+    if (
+      article.slug === "co-kdyz-dotace-na-rekonstrukci-nestaci" &&
+      sourceIndex === 10
+    ) {
+      return <EditorialBlocks config={config} parts={["notice", "cards"]} />;
+    }
+
+    if (
+      article.slug === "co-kdyz-dotace-na-rekonstrukci-nestaci" &&
+      sourceIndex === 41
+    ) {
+      return <EditorialBlocks config={config} parts={["comparison"]} />;
+    }
+
+    if (
+      article.slug === "co-kdyz-dotace-na-rekonstrukci-nestaci" &&
+      sourceIndex === 144
+    ) {
+      return <EditorialBlocks config={config} parts={["extra"]} />;
+    }
+
+    if (article.slug === "renovacni-pas-2026" && sourceIndex === 103) {
+      return <EditorialBlocks config={config} parts={["warning"]} />;
+    }
+
+    return null;
+  };
 
   return (
     <>
-      <EditorialBlocks config={editorialContent[article.slug]} />
+      {topParts.length > 0 && (
+        <EditorialBlocks config={config} parts={topParts} />
+      )}
       <ResponsiveTables tables={article.tables} />
       <div className="mt-12">
         {paragraphs.slice(1).map((paragraph, index) => {
+          const sourceIndex = index + 1;
+          const insertedContent = insertsAfterParagraph(sourceIndex);
+
           if (isSectionHeading(paragraph)) {
             return (
-              <h2 key={index} className="mb-4 mt-10 text-2xl font-bold leading-tight">
-                {paragraph}
-              </h2>
+              <div key={index}>
+                <h2 className="mb-4 mt-10 text-2xl font-bold leading-tight">
+                  {paragraph}
+                </h2>
+                {insertedContent}
+              </div>
             );
           }
 
           if (paragraph.includes("\n")) {
             return (
-              <ul key={index} className="my-5 space-y-2">
-                {paragraph.split("\n").map((line) => (
-                  <li key={line} className="flex gap-3 leading-7 text-slate-700">
-                    <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-green-600" />
-                    {line}
-                  </li>
-                ))}
-              </ul>
+              <div key={index}>
+                <ul className="my-5 space-y-2">
+                  {paragraph.split("\n").map((line) => (
+                    <li key={line} className="flex gap-3 leading-7 text-slate-700">
+                      <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-green-600" />
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+                {insertedContent}
+              </div>
             );
           }
 
           return (
-            <p key={index} className="my-3 leading-8 text-slate-600">
-              {paragraph}
-            </p>
+            <div key={index}>
+              <p className="my-3 leading-8 text-slate-600">{paragraph}</p>
+              {insertedContent}
+            </div>
           );
         })}
       </div>
     </>
+  );
+}
+
+function SeriesPartBadge({ article }) {
+  if (!article.seriesIndex) return null;
+
+  return (
+    <span className="rounded-full bg-green-700 px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-white">
+      Část {article.seriesIndex}/{article.seriesTotal}
+    </span>
+  );
+}
+
+function SeriesNavigation({ article, compact = false }) {
+  if (!article.seriesId) return null;
+
+  const previous = article.previousSlug
+    ? demoArticlesBySlug[article.previousSlug]
+    : null;
+  const next = article.nextSlug ? demoArticlesBySlug[article.nextSlug] : null;
+
+  return (
+    <nav
+      aria-label="Navigace série Průvodce NZÚ 2026"
+      className={`rounded-lg border border-green-200 bg-green-50 ${
+        compact ? "p-5" : "mt-8 p-5 md:p-6"
+      }`}
+    >
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-[0.14em] text-green-700">
+            {nzu2026Series.title}
+          </div>
+          <div className="mt-1 font-bold">
+            Část {article.seriesIndex}/{article.seriesTotal}
+          </div>
+        </div>
+        <a
+          href="/blog#pruvodce-nzu-2026"
+          className="text-sm font-semibold text-green-800 hover:text-green-900"
+        >
+          Přehled celé série →
+        </a>
+      </div>
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        {previous ? (
+          <a
+            href={`/znalostni-centrum/${previous.slug}`}
+            className="rounded-md border border-green-200 bg-white p-4 transition hover:border-green-500"
+          >
+            <div className="text-xs font-bold uppercase tracking-[0.1em] text-green-700">
+              ← Předchozí · Část {previous.seriesIndex}/{previous.seriesTotal}
+            </div>
+            <div className="mt-2 font-semibold leading-6">{previous.shortTitle}</div>
+          </a>
+        ) : (
+          <div className="hidden sm:block" />
+        )}
+        {next && (
+          <a
+            href={`/znalostni-centrum/${next.slug}`}
+            className="rounded-md border border-green-200 bg-white p-4 transition hover:border-green-500"
+          >
+            <div className="text-xs font-bold uppercase tracking-[0.1em] text-green-700">
+              Další · Část {next.seriesIndex}/{next.seriesTotal} →
+            </div>
+            <div className="mt-2 font-semibold leading-6">{next.shortTitle}</div>
+          </a>
+        )}
+      </div>
+    </nav>
   );
 }
 
@@ -373,12 +511,15 @@ export default function KnowledgeCenterArticle({ article }) {
                 <span className="rounded-full bg-green-700 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white">
                   {article.label}
                 </span>
-                <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
-                  Čeká na kontrolu článku
-                </span>
+                <SeriesPartBadge article={article} />
+                {SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES && (
+                  <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
+                    Čeká na kontrolu článku
+                  </span>
+                )}
               </div>
 
-              <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+              <h1 className="mt-5 text-[clamp(2rem,9vw,3rem)] font-bold leading-[1.08] tracking-tight md:text-5xl md:leading-tight">
                 {article.title}
               </h1>
               <p className="mt-5 text-lg leading-8 text-slate-600">
@@ -424,6 +565,8 @@ export default function KnowledgeCenterArticle({ article }) {
                 {article.intro || article.paragraphs?.[0]}
               </p>
 
+              <SeriesNavigation article={article} />
+
               {article.paragraphs ? (
                 <SourceArticleBody article={article} />
               ) : (
@@ -466,7 +609,17 @@ export default function KnowledgeCenterArticle({ article }) {
 
                   {relatedArticles.length > 0 && (
                     <section className="mt-12">
-                      <h2 className="text-xl font-bold">Pokračujte v sérii</h2>
+                      <h2 className="text-xl font-bold">
+                        {article.seriesId
+                          ? nzu2026Series.title
+                          : "Pokračujte v sérii"}
+                      </h2>
+                      {article.seriesId && (
+                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                          Navazující díly rozvíjejí jednotlivá rozhodnutí při
+                          přípravě renovace.
+                        </p>
+                      )}
                       <div className="mt-4 grid gap-3">
                         {relatedArticles.map((related) => (
                           <a
@@ -474,6 +627,11 @@ export default function KnowledgeCenterArticle({ article }) {
                             href={`/znalostni-centrum/${related.slug}`}
                             className="rounded-md border border-slate-200 p-4 font-semibold leading-6 text-slate-800 transition hover:border-green-400 hover:bg-green-50"
                           >
+                            {related.seriesIndex && (
+                              <span className="mb-2 block text-xs font-bold uppercase tracking-[0.1em] text-green-700">
+                                Část {related.seriesIndex}/{related.seriesTotal}
+                              </span>
+                            )}
                             {related.title} <span aria-hidden="true">→</span>
                           </a>
                         ))}
