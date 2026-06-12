@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function EnerixLandingPage() {
   const [activeService, setActiveService] = useState(null);
+  const [referencePage, setReferencePage] = useState(0);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -321,6 +322,7 @@ export default function EnerixLandingPage() {
       visual: "house",
       visualClass: "bg-emerald-950",
       preview: true,
+      href: null,
     },
     {
       title: "Plán postupné renovace domu",
@@ -338,6 +340,7 @@ export default function EnerixLandingPage() {
       visual: "plan",
       visualClass: "bg-slate-800",
       preview: true,
+      href: null,
     },
     {
       title: "Energetická studie veřejné budovy",
@@ -355,8 +358,30 @@ export default function EnerixLandingPage() {
       visual: "study",
       visualClass: "bg-stone-700",
       preview: true,
+      href: null,
     },
   ];
+
+  const referencesPerPage = 3;
+  const referencePageCount = Math.ceil(
+    references.length / referencesPerPage
+  );
+  const visibleReferences = references.slice(
+    referencePage * referencesPerPage,
+    (referencePage + 1) * referencesPerPage
+  );
+
+  const showPreviousReferences = () => {
+    setReferencePage((currentPage) =>
+      currentPage === 0 ? referencePageCount - 1 : currentPage - 1
+    );
+  };
+
+  const showNextReferences = () => {
+    setReferencePage((currentPage) =>
+      currentPage === referencePageCount - 1 ? 0 : currentPage + 1
+    );
+  };
 
   const contentAreas = [
     {
@@ -773,15 +798,72 @@ export default function EnerixLandingPage() {
                     koordinovat nebo realizovat.
                   </p>
                 </div>
-                {references.some((reference) => reference.preview) && (
-                  <div className="w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
-                    Preview: ukázková data
-                  </div>
-                )}
+                <div className="flex flex-wrap items-center gap-3">
+                  {references.some((reference) => reference.preview) && (
+                    <div className="w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
+                      Preview: ukázková data
+                    </div>
+                  )}
+
+                  {referencePageCount > 1 && (
+                    <div
+                      className="flex items-center gap-2"
+                      aria-label="Procházení referencí"
+                    >
+                      <button
+                        type="button"
+                        onClick={showPreviousReferences}
+                        aria-label="Předchozí reference"
+                        title="Předchozí reference"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                          className="h-5 w-5"
+                        >
+                          <path
+                            d="m15 18-6-6 6-6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                      <span className="min-w-12 text-center text-sm font-semibold text-slate-500">
+                        {referencePage + 1} / {referencePageCount}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={showNextReferences}
+                        aria-label="Další reference"
+                        title="Další reference"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                          className="h-5 w-5"
+                        >
+                          <path
+                            d="m9 18 6-6-6-6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="mt-10 grid gap-6 lg:grid-cols-3">
-                {references.map((reference) => (
+                {visibleReferences.map((reference) => (
                   <article
                     key={reference.title}
                     className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-200/70"
@@ -829,6 +911,15 @@ export default function EnerixLandingPage() {
                           ))}
                         </ul>
                       </div>
+
+                      {reference.href && (
+                        <a
+                          href={reference.href}
+                          className="mt-6 inline-flex items-center font-semibold text-green-700 transition hover:text-green-800"
+                        >
+                          Zobrazit detail projektu →
+                        </a>
+                      )}
                     </div>
                   </article>
                 ))}
