@@ -304,7 +304,59 @@ export default function EnerixLandingPage() {
     },
   ];
 
-  const references = [];
+  const references = [
+    {
+      title: "Zateplení rodinného domu",
+      location: "Tábor",
+      type: "Fasáda + dotační podpora",
+      description:
+        "Klient chtěl začít zateplením fasády. Enerix pomohl ověřit dotační možnosti, připravit rozsah prací a sladit realizaci s dalšími možnými kroky renovace.",
+      results: [
+        "zateplení fasády",
+        "dotační podpora",
+        "příprava na další etapy",
+      ],
+      image: null,
+      imageAlt: "Ukázkový vizuál zateplení rodinného domu",
+      visual: "house",
+      visualClass: "bg-emerald-950",
+      preview: true,
+    },
+    {
+      title: "Plán postupné renovace domu",
+      location: "Jihočeský kraj",
+      type: "Renovační pas",
+      description:
+        "Majitelé domu nevěděli, kde začít. Enerix pomohl pojmenovat priority, rozdělit renovaci do etap a posoudit, které kroky dávají technický i ekonomický smysl.",
+      results: [
+        "návrh etap renovace",
+        "orientační rozpočet",
+        "přehled dotačních možností",
+      ],
+      image: null,
+      imageAlt: "Ukázkový vizuál plánu postupné renovace domu",
+      visual: "plan",
+      visualClass: "bg-slate-800",
+      preview: true,
+    },
+    {
+      title: "Energetická studie veřejné budovy",
+      location: "Jihočeský kraj",
+      type: "Studie + návrh opatření",
+      description:
+        "Projekt zaměřený na posouzení provozu budovy, návrh úsporných opatření a přípravu dalšího postupu. Ukazuje zkušenost Enerixu s komplexnějšími projekty a souvislostmi.",
+      results: [
+        "návrh opatření",
+        "ekonomické vyhodnocení",
+        "podklad pro rozhodování",
+      ],
+      image: null,
+      imageAlt: "Ukázkový vizuál energetické studie veřejné budovy",
+      visual: "study",
+      visualClass: "bg-stone-700",
+      preview: true,
+    },
+  ];
 
   const contentAreas = [
     {
@@ -320,6 +372,82 @@ export default function EnerixLandingPage() {
       text: "Praktické články a novinky z oblasti renovací, dotací a energetiky.",
     },
   ];
+
+  const renderReferencePlaceholder = (reference) => (
+    <div
+      role="img"
+      aria-label={reference.imageAlt}
+      className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden ${reference.visualClass}`}
+    >
+      <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:32px_32px]" />
+      <svg
+        viewBox="0 0 120 120"
+        fill="none"
+        aria-hidden="true"
+        className="relative h-24 w-24 text-white/90"
+      >
+        {reference.visual === "house" && (
+          <>
+            <path
+              d="M20 57 60 24l40 33"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M30 52v44h60V52M50 96V70h20v26"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M90 36V23H78"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        )}
+        {reference.visual === "plan" && (
+          <>
+            <path
+              d="M29 20h48l14 14v66H29V20Z"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M76 20v16h15M43 51h34M43 65h34M43 79h23"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        )}
+        {reference.visual === "study" && (
+          <>
+            <path
+              d="M22 96h76M30 96V43h60v53M24 43l36-21 36 21"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M43 56h10v10H43zM67 56h10v10H67zM43 75h10v10H43zM67 75h10v10H67z"
+              fill="currentColor"
+            />
+          </>
+        )}
+      </svg>
+      <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+        Ukázkový vizuál
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -629,6 +757,86 @@ export default function EnerixLandingPage() {
           </div>
         </section>
 
+        {references.length > 0 && (
+          <section className="border-y border-slate-200 bg-slate-50 px-6 py-20 md:px-10">
+            <div className="mx-auto max-w-7xl">
+              <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+                <div className="max-w-3xl">
+                  <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                    Reference a projekty
+                  </div>
+                  <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                    Vybrané realizace a projekty
+                  </h2>
+                  <p className="mt-4 text-lg leading-8 text-slate-600">
+                    Ukázky typů projektů, které Enerix pomáhá připravovat,
+                    koordinovat nebo realizovat.
+                  </p>
+                </div>
+                {references.some((reference) => reference.preview) && (
+                  <div className="w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
+                    Preview: ukázková data
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-10 grid gap-6 lg:grid-cols-3">
+                {references.map((reference) => (
+                  <article
+                    key={reference.title}
+                    className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-200/70"
+                  >
+                    {reference.image ? (
+                      <img
+                        src={reference.image}
+                        alt={reference.imageAlt}
+                        className="aspect-[16/10] w-full object-cover"
+                      />
+                    ) : (
+                      renderReferencePlaceholder(reference)
+                    )}
+
+                    <div className="p-6">
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
+                        <span className="rounded-full bg-green-50 px-3 py-1 text-green-800">
+                          {reference.type}
+                        </span>
+                        <span className="text-slate-500">
+                          {reference.location}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-4 text-xl font-bold leading-7 text-slate-900">
+                        {reference.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-slate-600">
+                        {reference.description}
+                      </p>
+
+                      <div className="mt-6 border-t border-slate-100 pt-5">
+                        <div className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                          Rozsah a výstupy
+                        </div>
+                        <ul className="mt-3 space-y-2">
+                          {reference.results.map((result) => (
+                            <li
+                              key={result}
+                              className="flex items-center gap-3 text-sm font-medium text-slate-700"
+                            >
+                              <span className="h-2 w-2 shrink-0 rounded-full bg-green-600" />
+                              {result}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="bg-slate-50 px-6 py-16 md:px-10">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
             <div>
@@ -675,37 +883,6 @@ export default function EnerixLandingPage() {
             </div>
           </div>
         </section>
-
-        {references.length > 0 && (
-          <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-              Reference
-            </div>
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Vybrané realizace
-            </h2>
-            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {references.map((reference) => (
-                <article
-                  key={reference.title}
-                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
-                >
-                  <img
-                    src={reference.image}
-                    alt={reference.imageAlt}
-                    className="aspect-[4/3] w-full object-cover"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold">{reference.title}</h3>
-                    <p className="mt-3 leading-7 text-slate-600">
-                      {reference.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
 
         <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-2">
           <div>
