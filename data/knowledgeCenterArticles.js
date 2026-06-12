@@ -1,4 +1,6 @@
-export const demoArticles = [
+import expertSourceArticles from "./enerixExpertArticles.json";
+
+const previewArticles = [
   {
     slug: "jak-jsme-pripravili-renovaci-domu-po-etapach",
     category: "practice",
@@ -296,6 +298,16 @@ export const demoArticles = [
       },
     ],
   },
+];
+
+const retainedPreviewArticles = previewArticles.filter(
+  (article) => article.category !== "expert"
+);
+
+export const demoArticles = [
+  ...retainedPreviewArticles.slice(0, 3),
+  ...expertSourceArticles,
+  ...retainedPreviewArticles.slice(3),
 ];
 
 export const demoArticlesBySlug = Object.fromEntries(

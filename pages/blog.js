@@ -453,7 +453,7 @@ export default function BlogPage({ soroArticles = [] }) {
               </p>
 
               <div className="mt-6 grid gap-5 md:grid-cols-3">
-                {expertArticles.map((article) => (
+                {expertArticles.slice(0, 3).map((article) => (
                   <a
                     key={article.slug}
                     href={demoHref(article.slug)}
