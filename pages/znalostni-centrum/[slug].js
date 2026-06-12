@@ -4,6 +4,7 @@ import {
   nzu2026Series,
   SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES,
 } from "../../data/knowledgeCenterSeries";
+import NzuSeriesCover from "../../components/NzuSeriesCover";
 
 const safetyNote =
   "Informace v článku jsou orientační a vycházejí z podmínek známých v době přípravy textu. Programy podpory se mohou měnit a konkrétní možnost podpory vždy závisí na aktuálních pravidlech, typu domu, vlastnictví, domácnosti, rozsahu opatření a schválení příslušnými institucemi.";
@@ -329,9 +330,11 @@ function buildArticleBlocks(paragraphs, insertionIndexes) {
     }
 
     if (current.text.includes("\n")) {
+      const items = current.text.split("\n").filter(Boolean);
       blocks.push({
         type: "list",
-        items: current.text.split("\n").filter(Boolean),
+        items,
+        variant: getListVariant(items),
         sourceIndex: current.sourceIndex,
       });
       continue;
@@ -354,6 +357,7 @@ function buildArticleBlocks(paragraphs, insertionIndexes) {
         blocks.push({
           type: "list",
           items: items.map((item) => item.text),
+          variant: getListVariant(items.map((item) => item.text)),
           sourceIndex: items[items.length - 1].sourceIndex,
         });
         index = cursor - 1;
@@ -392,17 +396,52 @@ function buildArticleBlocks(paragraphs, insertionIndexes) {
   return blocks;
 }
 
-function CompactList({ items }) {
+function getListVariant(items) {
+  const normalized = items.map((item) => item.trim());
+  const containsSentenceLikeItem = normalized.some(
+    (item) =>
+      item.length > 74 ||
+      /^[„"“]/.test(item) ||
+      /[.!?]$/.test(item) ||
+      /[,;:].{18,}$/.test(item)
+  );
+
+  return containsSentenceLikeItem ? "bullets" : "checklist";
+}
+
+function ArticleList({ items, variant = "bullets" }) {
+  if (variant === "checklist") {
+    return (
+      <ul className="my-6 grid gap-x-7 gap-y-3 sm:grid-cols-2">
+        {items.map((line) => (
+          <li
+            key={line}
+            className="grid grid-cols-[22px_minmax(0,1fr)] items-start gap-3 text-sm leading-6 text-slate-700"
+          >
+            <span
+              aria-hidden="true"
+              className="mt-0.5 flex h-[22px] w-[22px] items-center justify-center rounded-full border border-green-200 bg-green-50 text-[11px] font-bold text-green-700"
+            >
+              ✓
+            </span>
+            <span>{line.replace(/,$/, "")}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   return (
-    <ul className="my-5 grid gap-x-6 gap-y-2 py-1 sm:grid-cols-2">
+    <ul className="my-6 space-y-3 border-l border-green-200 pl-5">
       {items.map((line) => (
-        <li key={line} className="flex gap-3 text-sm leading-6 text-slate-700">
+        <li
+          key={line}
+          className="grid grid-cols-[8px_minmax(0,1fr)] items-start gap-3 leading-7 text-slate-700"
+        >
           <span
             aria-hidden="true"
-            className="mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100 text-xs font-bold text-green-700"
-          >
-            ✓
-          </span>
+            className="mt-[11px] h-1.5 w-1.5 rounded-full bg-green-600"
+          />
           <span>{line.replace(/,$/, "")}</span>
         </li>
       ))}
@@ -496,7 +535,7 @@ function SourceArticleBody({ article }) {
           if (block.type === "list") {
             return (
               <div key={index}>
-                <CompactList items={block.items} />
+                <ArticleList items={block.items} variant={block.variant} />
                 {insertedContent}
               </div>
             );
@@ -784,11 +823,15 @@ export default function KnowledgeCenterArticle({ article }) {
 
             <div className="mx-auto max-w-6xl px-6 md:px-10">
               <div className="aspect-[16/8] overflow-hidden rounded-lg bg-slate-100">
-                <img
-                  src={article.image}
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
+                {article.seriesId ? (
+                  <NzuSeriesCover article={article} />
+                ) : (
+                  <img
+                    src={article.image}
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
+                )}
               </div>
             </div>
 

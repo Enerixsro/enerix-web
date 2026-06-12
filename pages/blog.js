@@ -7,6 +7,7 @@ import {
   nzu2026Series,
   SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES,
 } from "../data/knowledgeCenterSeries";
+import NzuSeriesCover from "../components/NzuSeriesCover";
 
 const SORO_EMBED_URL =
   "https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483";
@@ -139,33 +140,32 @@ function NzuSeriesSection() {
             <a
               key={article.slug}
               href={demoHref(article.slug)}
-              className="group flex min-h-[240px] flex-col rounded-md border border-green-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
+              className="group flex min-h-[300px] flex-col overflow-hidden rounded-md border border-green-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
             >
-              <div className="flex items-center justify-between gap-3">
-                <SeriesPartBadge article={article} />
-                <span className="text-xs font-semibold text-green-700">
-                  Průvodce NZÚ 2026
-                </span>
+              <div className="aspect-[16/7] overflow-hidden border-b border-green-100">
+                <NzuSeriesCover article={article} compact />
               </div>
-              <h3 className="mt-5 text-xl font-bold leading-7">
-                {article.shortTitle}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                {article.summary}
-              </p>
-              <div className="mt-auto pt-5">
-                <div className="flex flex-wrap gap-2">
-                  {article.tags?.slice(0, 2).map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 text-sm font-bold text-green-700">
-                  Číst článek <span aria-hidden="true">→</span>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-xl font-bold leading-7">
+                  {article.shortTitle}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  {article.summary}
+                </p>
+                <div className="mt-auto pt-5">
+                  <div className="flex flex-wrap gap-2">
+                    {article.tags?.slice(0, 2).map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-sm font-bold text-green-700">
+                    Číst článek <span aria-hidden="true">→</span>
+                  </div>
                 </div>
               </div>
             </a>
@@ -280,11 +280,15 @@ function Archive({ soroArticles }) {
                 className="group grid min-w-0 grid-cols-[96px_minmax(0,1fr)] gap-4 border-b border-slate-200 py-4 transition last:border-b-0 hover:bg-green-50/40 sm:grid-cols-[112px_minmax(0,1fr)] md:[&:nth-last-child(-n+2)]:border-b-0"
               >
                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-slate-100">
-                  <img
-                    src={article.image}
-                    alt=""
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                  />
+                  {article.seriesId ? (
+                    <NzuSeriesCover article={article} thumbnail />
+                  ) : (
+                    <img
+                      src={article.image}
+                      alt=""
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                    />
+                  )}
                 </div>
                 <div className="min-w-0 py-0.5">
                   {article.seriesIndex && (
