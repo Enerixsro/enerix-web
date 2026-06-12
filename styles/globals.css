@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
+  background-color: #ffffff;
 }
 
 body {
   margin: 0;
+  background-color: #ffffff;
 }

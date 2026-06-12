@@ -6,6 +6,8 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <meta name="color-scheme" content="light" />
+        <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="icon"
