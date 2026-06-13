@@ -3,10 +3,7 @@ import Script from "next/script";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { demoArticles } from "../data/knowledgeCenterArticles";
-import {
-  nzu2026Series,
-  SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES,
-} from "../data/knowledgeCenterSeries";
+import { nzu2026Series } from "../data/knowledgeCenterSeries";
 import NzuSeriesCover from "../components/NzuSeriesCover";
 
 const SORO_EMBED_URL =
@@ -31,9 +28,9 @@ const demoHref = (slug) => `/znalostni-centrum/${slug}`;
 const starterScenarios = [
   {
     title: "Slyšel/a jsem o NZÚ 2026",
-    situation: "Chci vědět, jestli se mě dotace týká a co má smysl řešit.",
+    situation: "Chci vědět, jestli se mě dotace týká.",
     firstStep:
-      "Začněte přehledem možností podpory, ale berte ji jako součást renovace, ne jako jediný cíl.",
+      "Začněte přehledem podpory, ale berte ji jako součást renovace.",
     href: demoHref("nova-zelena-usporam-2026-jednoduse"),
     linkLabel: "Začít přehledem NZÚ 2026",
   },
@@ -41,23 +38,23 @@ const starterScenarios = [
     title: "Mám starší dům a nevím, co první",
     situation: "Nechci udělat drahé rozhodnutí ve špatném pořadí.",
     firstStep:
-      "Nejdřív zmapujte stav domu, slabá místa a technické problémy, které mohou ovlivnit další kroky.",
+      "Nejdřív zmapujte stav domu, slabá místa a technické problémy.",
     href: demoHref("mokry-dum-spatna-strecha-stara-okna"),
     linkLabel: "Zjistit, kdy dotace není první krok",
   },
   {
     title: "Řeším zateplení, okna nebo vytápění",
-    situation: "Potřebuji vědět, co na sebe navazuje a co může počkat.",
+    situation: "Potřebuji vědět, co na sebe navazuje.",
     firstStep:
-      "Ověřte správné pořadí opatření, aby se investice nepřebíjely a dům směřoval k jednomu cílovému stavu.",
+      "Ověřte pořadí opatření, aby se investice nepřebíjely.",
     href: demoHref("poradi-renovacnich-opatreni-a-proc-na-nem-zalezi"),
     linkLabel: "Pochopit pořadí opatření",
   },
   {
     title: "Chci renovovat postupně",
-    situation: "Rozpočet nejde vyřešit najednou, ale nechci si zavřít budoucí možnosti.",
+    situation: "Rozpočet nejde vyřešit najednou.",
     firstStep:
-      "Uvažujte v etapách a hlídejte návaznosti, aby první krok dával smysl i po dokončení celé renovace.",
+      "Uvažujte v etapách a hlídejte návaznosti mezi kroky.",
     href: demoHref("jak-jsme-pripravili-renovaci-domu-po-etapach"),
     linkLabel: "Podívat se na etapový postup",
   },
@@ -65,7 +62,7 @@ const starterScenarios = [
     title: "Mám nabídky a nevím, čemu věřit",
     situation: "Porovnávám různé firmy, technologie a ceny.",
     firstStep:
-      "Srovnávejte nabídky podle cílového stavu domu, ne jen podle nejnižší ceny nebo jedné izolované technologie.",
+      "Srovnávejte nabídky podle cílového stavu domu, ne jen podle ceny.",
     href: demoHref("chci-rekonstruovat-dum-koho-oslovit"),
     linkLabel: "Ujasnit si první kontakt",
   },
@@ -163,10 +160,10 @@ function StarterGuide() {
   return (
     <section
       id="kde-zacit"
-      className="scroll-mt-6 border-b border-slate-200 bg-slate-50/70 px-6 py-10 md:px-10 md:py-12"
+      className="scroll-mt-6 border-b border-slate-200 bg-slate-50/70 px-6 py-8 md:px-10 md:py-10"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <div className="grid gap-6 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
           <div>
             <div className="text-sm font-bold uppercase tracking-[0.16em] text-green-700">
               Praktický rozcestník
@@ -174,34 +171,34 @@ function StarterGuide() {
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
               Co právě řešíte?
             </h2>
-            <p className="mt-4 leading-7 text-slate-600">
+            <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600 md:text-base md:leading-7">
               Vyberte situaci, která je vám nejbližší. Cílem není hned vybrat
               dotaci nebo technologii, ale najít první rozumný krok podle stavu
               domu, rozpočtu a návazností.
             </p>
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             {starterScenarios.map((item) => (
               <a
                 key={item.title}
                 href={item.href}
-                className="group rounded-md border border-slate-200 bg-white p-5 shadow-sm transition hover:border-green-300 hover:shadow-md"
+                className="group rounded-md border border-slate-200 bg-white px-4 py-3 shadow-sm transition hover:border-green-300 hover:shadow-md"
               >
-                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                <div className="grid gap-2 md:grid-cols-[1fr_1.28fr_auto] md:items-center md:gap-4">
                   <div className="min-w-0">
-                    <h3 className="text-lg font-bold text-slate-900">
+                    <h3 className="text-base font-bold leading-6 text-slate-900">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                    <p className="mt-1 text-sm leading-5 text-slate-600">
                       {item.situation}
                     </p>
-                    <p className="mt-3 border-l-2 border-green-600 pl-4 text-sm leading-6 text-slate-700">
-                      <span className="font-semibold">První krok: </span>
-                      {item.firstStep}
-                    </p>
                   </div>
-                  <div className="shrink-0 text-sm font-bold text-green-700 md:pt-1">
+                  <p className="border-l-2 border-green-600 pl-3 text-sm leading-5 text-slate-700">
+                    <span className="font-semibold">První krok: </span>
+                    {item.firstStep}
+                  </p>
+                  <div className="shrink-0 text-sm font-bold leading-5 text-green-700 md:text-right">
                     {item.linkLabel} <span aria-hidden="true">→</span>
                   </div>
                 </div>
@@ -526,17 +523,12 @@ export default function BlogPage({ soroArticles = [] }) {
         <Header />
 
         <main>
-          <section className="border-b border-slate-200 bg-white px-6 pb-0 pt-10 md:px-10 md:pt-12">
+          <section className="border-b border-slate-200 bg-white px-6 pb-6 pt-10 md:px-10 md:pb-0 md:pt-12">
             <div className="mx-auto max-w-7xl">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
                   Znalostní centrum Enerixu
                 </span>
-                {SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES && (
-                  <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
-                    Čeká na kontrolu článků
-                  </span>
-                )}
               </div>
               <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
                 Nevíte, kde začít s renovací domu?
@@ -563,22 +555,25 @@ export default function BlogPage({ soroArticles = [] }) {
                 </a>
               </div>
 
-              <div className="mt-8 grid gap-3 border-t border-slate-200 pt-6 text-sm text-slate-700 md:grid-cols-3">
+              <div className="mt-6 grid gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700 md:mt-8 md:grid-cols-3 md:gap-3 md:pt-6">
                 {[
                   ["Nejdřív stav domu", "Slabá místa a návaznosti určují, co řešit jako první."],
                   ["Dotace v kontextu", "NZÚ 2026 může pomoct, ale nemá řídit celé rozhodnutí."],
                   ["Praxe před teorií", "Ukazujeme postupy na domech, etapách a reálných otázkách klientů."],
                 ].map(([title, text]) => (
-                  <div key={title} className="rounded-md border border-slate-200 bg-slate-50 p-4">
+                  <div
+                    key={title}
+                    className="rounded-md border border-slate-200 bg-slate-50 px-3 py-2.5 md:p-4"
+                  >
                     <div className="font-bold text-slate-900">{title}</div>
-                    <p className="mt-1 leading-6">{text}</p>
+                    <p className="mt-1 text-sm leading-5 md:leading-6">{text}</p>
                   </div>
                 ))}
               </div>
 
               <nav
                 aria-label="Kategorie znalostního centra"
-                className="mt-7 flex gap-7 overflow-x-auto text-sm font-semibold"
+                className="mt-7 hidden gap-7 text-sm font-semibold md:flex"
               >
                 <a
                   href="#kde-zacit"
