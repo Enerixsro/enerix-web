@@ -117,12 +117,10 @@ function SeriesPartBadge({ article, compact = false }) {
 }
 
 function NzuSeriesSection() {
-  const [leadArticle, ...followUpArticles] = seriesArticles;
-
   return (
     <section
       id="pruvodce-nzu-2026"
-      className="scroll-mt-6 border-b border-green-200 bg-green-50/70 px-6 py-11 md:px-10 md:py-14"
+      className="scroll-mt-6 border-b border-green-100 bg-green-50/50 px-6 py-10 md:px-10 md:py-12"
     >
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
@@ -137,72 +135,44 @@ function NzuSeriesSection() {
           </p>
         </div>
 
-        {leadArticle && (
-          <a
-            href={demoHref(leadArticle.slug)}
-            className="group mt-8 grid overflow-hidden rounded-md border border-green-500 bg-white shadow-md transition hover:-translate-y-0.5 hover:border-green-700 hover:shadow-lg lg:grid-cols-[1.35fr_0.85fr]"
-          >
-            <div className="aspect-[16/9] overflow-hidden border-b border-green-200 lg:aspect-auto lg:min-h-[360px] lg:border-b-0 lg:border-r">
-              <NzuSeriesCover article={leadArticle} />
-            </div>
-            <div className="flex flex-col justify-center p-6 md:p-8">
-              <div className="flex flex-wrap items-center gap-3">
-                <SeriesPartBadge article={leadArticle} />
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-green-800">
-                  Doporučený začátek
-                </span>
-              </div>
-              <h3 className="mt-5 text-2xl font-bold leading-tight md:text-3xl">
-                {leadArticle.shortTitle}
-              </h3>
-              <p className="mt-4 leading-7 text-slate-600">
-                {leadArticle.summary}
-              </p>
-              <div className="mt-7 inline-flex w-full items-center justify-center rounded-md bg-green-700 px-5 py-3 text-sm font-bold text-white transition group-hover:bg-green-800 sm:w-fit">
-                Začít průvodcem <span aria-hidden="true" className="ml-2">→</span>
-              </div>
-            </div>
-          </a>
-        )}
-
-        <div className="mt-9 flex items-end justify-between gap-4">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-[0.14em] text-green-700">
-              Pokračování série
-            </div>
-            <h3 className="mt-1 text-xl font-bold">Navazující díly</h3>
-          </div>
-          <div className="hidden text-sm text-slate-500 sm:block">
-            Části 2/7 až 7/7
-          </div>
-        </div>
-
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {followUpArticles.map((article) => (
+        <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {seriesArticles.map((article) => (
             <a
               key={article.slug}
               href={demoHref(article.slug)}
-              className="group grid min-w-0 grid-cols-[96px_minmax(0,1fr)] overflow-hidden rounded-md border border-green-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md sm:flex sm:min-h-[260px] sm:flex-col"
+              className="group flex min-h-[270px] flex-col overflow-hidden rounded-md border border-green-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
             >
-              <div className="overflow-hidden border-r border-green-100 sm:hidden">
-                <NzuSeriesCover article={article} thumbnail />
-              </div>
-              <div className="hidden overflow-hidden border-b border-green-100 sm:block sm:aspect-[16/6]">
+              <div className="aspect-[16/6] overflow-hidden border-b border-green-100">
                 <NzuSeriesCover article={article} compact />
               </div>
-              <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
-                <div className="text-[10px] font-bold uppercase tracking-[0.12em] text-green-700">
-                  Navazující díl {article.seriesIndex}/{article.seriesTotal}
+              <div className="flex flex-1 flex-col p-5">
+                <div className="flex items-center justify-between gap-3">
+                  <SeriesPartBadge article={article} compact />
+                  {article.seriesIndex === 1 && (
+                    <span className="text-xs font-semibold text-green-700">
+                      Začněte zde
+                    </span>
+                  )}
                 </div>
-                <h3 className="mt-2 text-base font-bold leading-6 sm:text-lg">
+                <h3 className="mt-4 text-xl font-bold leading-7">
                   {article.shortTitle}
                 </h3>
-                <p className="mt-2 hidden text-sm leading-6 text-slate-600 sm:block">
+                <p className="mt-3 text-sm leading-6 text-slate-600">
                   {article.summary}
                 </p>
                 <div className="mt-auto pt-5">
-                  <div className="text-sm font-bold text-green-700">
-                    Pokračovat <span aria-hidden="true">→</span>
+                  <div className="flex flex-wrap gap-2">
+                    {article.tags?.slice(0, 2).map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-sm font-bold text-green-700">
+                    Číst článek <span aria-hidden="true">→</span>
                   </div>
                 </div>
               </div>
