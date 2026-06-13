@@ -28,6 +28,49 @@ const newsArticles = demoArticles.filter(
 
 const demoHref = (slug) => `/znalostni-centrum/${slug}`;
 
+const starterScenarios = [
+  {
+    title: "Slyšel/a jsem o NZÚ 2026",
+    situation: "Chci vědět, jestli se mě dotace týká a co má smysl řešit.",
+    firstStep:
+      "Začněte přehledem možností podpory, ale berte ji jako součást renovace, ne jako jediný cíl.",
+    href: demoHref("nova-zelena-usporam-2026-jednoduse"),
+    linkLabel: "Začít přehledem NZÚ 2026",
+  },
+  {
+    title: "Mám starší dům a nevím, co první",
+    situation: "Nechci udělat drahé rozhodnutí ve špatném pořadí.",
+    firstStep:
+      "Nejdřív zmapujte stav domu, slabá místa a technické problémy, které mohou ovlivnit další kroky.",
+    href: demoHref("mokry-dum-spatna-strecha-stara-okna"),
+    linkLabel: "Zjistit, kdy dotace není první krok",
+  },
+  {
+    title: "Řeším zateplení, okna nebo vytápění",
+    situation: "Potřebuji vědět, co na sebe navazuje a co může počkat.",
+    firstStep:
+      "Ověřte správné pořadí opatření, aby se investice nepřebíjely a dům směřoval k jednomu cílovému stavu.",
+    href: demoHref("poradi-renovacnich-opatreni-a-proc-na-nem-zalezi"),
+    linkLabel: "Pochopit pořadí opatření",
+  },
+  {
+    title: "Chci renovovat postupně",
+    situation: "Rozpočet nejde vyřešit najednou, ale nechci si zavřít budoucí možnosti.",
+    firstStep:
+      "Uvažujte v etapách a hlídejte návaznosti, aby první krok dával smysl i po dokončení celé renovace.",
+    href: demoHref("jak-jsme-pripravili-renovaci-domu-po-etapach"),
+    linkLabel: "Podívat se na etapový postup",
+  },
+  {
+    title: "Mám nabídky a nevím, čemu věřit",
+    situation: "Porovnávám různé firmy, technologie a ceny.",
+    firstStep:
+      "Srovnávejte nabídky podle cílového stavu domu, ne jen podle nejnižší ceny nebo jedné izolované technologie.",
+    href: demoHref("chci-rekonstruovat-dum-koho-oslovit"),
+    linkLabel: "Ujasnit si první kontakt",
+  },
+];
+
 function Header() {
   return (
     <header className="border-b border-slate-200 bg-white">
@@ -116,68 +159,124 @@ function SeriesPartBadge({ article, compact = false }) {
   );
 }
 
+function StarterGuide() {
+  return (
+    <section
+      id="kde-zacit"
+      className="scroll-mt-6 border-b border-slate-200 bg-slate-50/70 px-6 py-10 md:px-10 md:py-12"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+          <div>
+            <div className="text-sm font-bold uppercase tracking-[0.16em] text-green-700">
+              Praktický rozcestník
+            </div>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+              Co právě řešíte?
+            </h2>
+            <p className="mt-4 leading-7 text-slate-600">
+              Vyberte situaci, která je vám nejbližší. Cílem není hned vybrat
+              dotaci nebo technologii, ale najít první rozumný krok podle stavu
+              domu, rozpočtu a návazností.
+            </p>
+          </div>
+
+          <div className="grid gap-3">
+            {starterScenarios.map((item) => (
+              <a
+                key={item.title}
+                href={item.href}
+                className="group rounded-md border border-slate-200 bg-white p-5 shadow-sm transition hover:border-green-300 hover:shadow-md"
+              >
+                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-bold text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {item.situation}
+                    </p>
+                    <p className="mt-3 border-l-2 border-green-600 pl-4 text-sm leading-6 text-slate-700">
+                      <span className="font-semibold">První krok: </span>
+                      {item.firstStep}
+                    </p>
+                  </div>
+                  <div className="shrink-0 text-sm font-bold text-green-700 md:pt-1">
+                    {item.linkLabel} <span aria-hidden="true">→</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function NzuSeriesSection() {
+  const firstArticle = seriesArticles[0];
+
   return (
     <section
       id="pruvodce-nzu-2026"
-      className="scroll-mt-6 border-b border-green-100 bg-green-50/50 px-6 py-10 md:px-10 md:py-12"
+      className="scroll-mt-6 border-y border-green-100 bg-green-50/45 px-6 py-10 md:px-10 md:py-12"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="max-w-3xl">
-          <div className="text-sm font-bold uppercase tracking-[0.16em] text-green-700">
-            Doporučený průvodce
-          </div>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
-            {nzu2026Series.title}
-          </h2>
-          <p className="mt-4 leading-7 text-slate-600">
-            {nzu2026Series.description}
-          </p>
-        </div>
+        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <div>
+            <div className="text-sm font-bold uppercase tracking-[0.16em] text-green-700">
+              NZÚ 2026 v kontextu renovace
+            </div>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+              Řešíte Novou zelenou úsporám 2026? Začněte tady.
+            </h2>
+            <p className="mt-4 leading-7 text-slate-600">
+              Dotace může renovaci významně pomoct, ale správný postup nezačíná
+              formulářem. Nejdřív je potřeba pochopit stav domu, slabá místa,
+              návaznosti opatření a až potom ověřit, jaká podpora dává smysl.
+            </p>
 
-        <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {seriesArticles.map((article) => (
-            <a
-              key={article.slug}
-              href={demoHref(article.slug)}
-              className="group flex min-h-[270px] flex-col overflow-hidden rounded-md border border-green-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
-            >
-              <div className="aspect-[16/6] overflow-hidden border-b border-green-100">
-                <NzuSeriesCover article={article} compact />
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <div className="flex items-center justify-between gap-3">
-                  <SeriesPartBadge article={article} compact />
-                  {article.seriesIndex === 1 && (
-                    <span className="text-xs font-semibold text-green-700">
-                      Začněte zde
+            {firstArticle && (
+              <a
+                href={demoHref(firstArticle.slug)}
+                className="mt-6 inline-flex items-center justify-center rounded-md bg-green-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-800"
+              >
+                Začít prvním dílem průvodce
+                <span aria-hidden="true" className="ml-2">
+                  →
+                </span>
+              </a>
+            )}
+          </div>
+
+          <div className="rounded-md border border-green-200 bg-white p-5 shadow-sm md:p-6">
+            <h3 className="text-lg font-bold text-slate-900">
+              {nzu2026Series.title}
+            </h3>
+            <ol className="mt-5 grid gap-3">
+              {seriesArticles.map((article) => (
+                <li key={article.slug}>
+                  <a
+                    href={demoHref(article.slug)}
+                    className="group grid grid-cols-[2.25rem_minmax(0,1fr)] gap-3 rounded-md p-2 transition hover:bg-green-50"
+                  >
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-green-200 bg-green-50 text-sm font-bold text-green-800">
+                      {article.seriesIndex}
                     </span>
-                  )}
-                </div>
-                <h3 className="mt-4 text-xl font-bold leading-7">
-                  {article.shortTitle}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
-                  {article.summary}
-                </p>
-                <div className="mt-auto pt-5">
-                  <div className="flex flex-wrap gap-2">
-                    {article.tags?.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold text-slate-600"
-                      >
-                        {tag}
+                    <span className="min-w-0">
+                      <span className="block font-semibold leading-6 text-slate-900">
+                        {article.shortTitle}
                       </span>
-                    ))}
-                  </div>
-                  <div className="mt-4 text-sm font-bold text-green-700">
-                    Číst článek <span aria-hidden="true">→</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          ))}
+                      <span className="mt-1 block text-sm leading-6 text-slate-600">
+                        {article.summary}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -427,7 +526,7 @@ export default function BlogPage({ soroArticles = [] }) {
         <Header />
 
         <main>
-          <section className="border-b border-slate-200 px-6 pb-0 pt-10 md:px-10 md:pt-12">
+          <section className="border-b border-slate-200 bg-white px-6 pb-0 pt-10 md:px-10 md:pt-12">
             <div className="mx-auto max-w-7xl">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
@@ -439,23 +538,65 @@ export default function BlogPage({ soroArticles = [] }) {
                   </span>
                 )}
               </div>
-              <h1 className="mt-3 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
-                Zkušenosti, souvislosti a praktické rady
+              <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+                Nevíte, kde začít s renovací domu?
               </h1>
-              <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 md:text-lg">
-                Blog jsme rozdělili podle účelu, abyste snadno našli to, co
-                právě řešíte – z praxe, odborné postupy i aktuální informace.
+              <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 md:text-lg">
+                Enerix pomáhá majitelům domů pochopit stav budovy, správné
+                pořadí kroků, možnosti dotací, financování a realizace.
+                Renovace nezačíná dotací, ale tím, že víte, co váš dům opravdu
+                potřebuje.
               </p>
+
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="/#kontakt"
+                  className="inline-flex items-center justify-center rounded-md bg-green-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-800"
+                >
+                  Chci nezávazně probrat svůj dům
+                </a>
+                <a
+                  href="#kde-zacit"
+                  className="inline-flex items-center justify-center rounded-md border border-green-300 bg-white px-5 py-3 text-sm font-semibold text-green-800 transition hover:border-green-500 hover:bg-green-50"
+                >
+                  Najít, kde začít
+                </a>
+              </div>
+
+              <div className="mt-8 grid gap-3 border-t border-slate-200 pt-6 text-sm text-slate-700 md:grid-cols-3">
+                {[
+                  ["Nejdřív stav domu", "Slabá místa a návaznosti určují, co řešit jako první."],
+                  ["Dotace v kontextu", "NZÚ 2026 může pomoct, ale nemá řídit celé rozhodnutí."],
+                  ["Praxe před teorií", "Ukazujeme postupy na domech, etapách a reálných otázkách klientů."],
+                ].map(([title, text]) => (
+                  <div key={title} className="rounded-md border border-slate-200 bg-slate-50 p-4">
+                    <div className="font-bold text-slate-900">{title}</div>
+                    <p className="mt-1 leading-6">{text}</p>
+                  </div>
+                ))}
+              </div>
 
               <nav
                 aria-label="Kategorie znalostního centra"
                 className="mt-7 flex gap-7 overflow-x-auto text-sm font-semibold"
               >
                 <a
-                  href="#praxe"
+                  href="#kde-zacit"
                   className="whitespace-nowrap border-b-2 border-green-600 pb-4 text-green-700"
                 >
+                  Kde začít
+                </a>
+                <a
+                  href="#praxe"
+                  className="whitespace-nowrap border-b-2 border-transparent pb-4 text-slate-700 hover:border-green-300 hover:text-green-700"
+                >
                   Z praxe Enerixu
+                </a>
+                <a
+                  href="#pruvodce-nzu-2026"
+                  className="whitespace-nowrap border-b-2 border-transparent pb-4 text-slate-700 hover:border-green-300 hover:text-green-700"
+                >
+                  NZÚ 2026
                 </a>
                 <a
                   href="#expert"
@@ -473,7 +614,7 @@ export default function BlogPage({ soroArticles = [] }) {
             </div>
           </section>
 
-          <NzuSeriesSection />
+          <StarterGuide />
 
           <section id="praxe" className="scroll-mt-6 px-6 py-11 md:px-10">
             <div className="mx-auto max-w-7xl">
@@ -544,6 +685,8 @@ export default function BlogPage({ soroArticles = [] }) {
               </div>
             </div>
           </section>
+
+          <NzuSeriesSection />
 
           <section
             id="expert"
