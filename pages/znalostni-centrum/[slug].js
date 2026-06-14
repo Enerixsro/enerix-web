@@ -10,6 +10,21 @@ const safetyNote =
   "Informace v článku jsou orientační a vycházejí z podmínek známých v době přípravy textu. Programy podpory se mohou měnit a konkrétní možnost podpory vždy závisí na aktuálních pravidlech, typu domu, vlastnictví, domácnosti, rozsahu opatření a schválení příslušnými institucemi.";
 
 const editorialContent = {
+  "kdy-se-vyplati-fotovoltaika": {
+    related: ["strecha-pri-renovaci-domu", "tepelne-cerpadlo-v-rodinnem-dome"],
+  },
+  "zatepleni-domu-neni-jen-cena-za-metr": {
+    related: ["okna-a-dvere-pri-renovaci-domu", "strecha-pri-renovaci-domu"],
+  },
+  "okna-a-dvere-pri-renovaci-domu": {
+    related: ["zatepleni-domu-neni-jen-cena-za-metr", "strecha-pri-renovaci-domu"],
+  },
+  "strecha-pri-renovaci-domu": {
+    related: ["kdy-se-vyplati-fotovoltaika", "zatepleni-domu-neni-jen-cena-za-metr", "okna-a-dvere-pri-renovaci-domu"],
+  },
+  "tepelne-cerpadlo-v-rodinnem-dome": {
+    related: ["kdy-se-vyplati-fotovoltaika", "zatepleni-domu-neni-jen-cena-za-metr", "okna-a-dvere-pri-renovaci-domu"],
+  },
   "nova-zelena-usporam-2026-jednoduse": {
     notice:
       "Konkrétní forma podpory se liší podle zvolené cesty. U některých opatření může jít o přímou podporu, u jiných o zvýhodněné financování nebo kompenzaci úroků. Proto je vždy potřeba ověřit nejen to, zda je opatření podporované, ale také jakou formou se podpora poskytuje.",
