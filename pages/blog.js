@@ -984,42 +984,48 @@ export default function BlogPage({ soroArticles = [] }) {
 
           <section
             id="pruvodce"
-            className="scroll-mt-6 border-b border-slate-200 bg-white px-6 py-11 md:px-10"
+            className="scroll-mt-6 border-b border-slate-200 bg-slate-50/70 px-6 py-9 md:px-10"
           >
             <div className="mx-auto max-w-7xl">
-              <h2 className="text-3xl font-bold">Průvodce pojmy</h2>
-              <p className="mt-2 text-sm text-slate-600">
-                Srozumitelně vysvětlené dokumenty, technické parametry a
-                podklady, které se při renovaci často pletou.
-              </p>
+              <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <h2 className="text-3xl font-bold">Průvodce pojmy</h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                    Rychlé vysvětlivky dokumentů, technických parametrů a
+                    podkladů, které se při renovaci často pletou.
+                  </p>
+                </div>
+                <SectionLink href="#clanky">
+                  Zobrazit všechny pojmy
+                </SectionLink>
+              </div>
 
-              <div className="mt-6 grid gap-5 md:grid-cols-3">
+              <div className="mt-6 grid gap-3 md:grid-cols-3">
                 {guideArticles.slice(0, 6).map((article, index) => (
                   <a
                     key={article.slug}
                     href={demoHref(article.slug)}
-                    className="group grid grid-cols-[112px_minmax(0,1fr)] overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md md:block"
+                    className="group flex min-h-[132px] gap-4 rounded-md border border-slate-200 bg-white p-4 transition hover:border-green-300 hover:bg-green-50/40"
                   >
-                    <ConceptGuideVisual index={index} />
-                    <div className="p-4 md:p-5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-green-100 bg-green-50 text-sm font-bold text-green-800">
+                      {index + 1}
+                    </div>
+                    <div className="min-w-0">
                       <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
-                        Pojem
+                        Vysvětlení
                       </div>
-                      <h3 className="mt-2 text-base font-bold leading-6 md:mt-3 md:text-lg md:leading-7">
+                      <h3 className="mt-1 text-base font-bold leading-6 text-slate-950">
                         {article.title}
                       </h3>
-                      <div className="mt-3 md:mt-4">
-                        <ArticleMeta article={article} compact />
+                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+                        {article.excerpt}
+                      </p>
+                      <div className="mt-3 text-sm font-semibold text-green-700">
+                        Vysvětlit pojem <span aria-hidden="true">→</span>
                       </div>
                     </div>
                   </a>
                 ))}
-              </div>
-
-              <div className="mt-7 text-center">
-                <SectionLink href="#clanky">
-                  Zobrazit všechny průvodce
-                </SectionLink>
               </div>
             </div>
           </section>
