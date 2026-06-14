@@ -165,99 +165,99 @@ function ExpertTechnicalVisual({ article }) {
   const slug = article.slug || "";
 
   if (slug.includes("fotovoltaika")) {
-    const production = ["h-5", "h-8", "h-12", "h-16", "h-20", "h-24", "h-24", "h-20", "h-14", "h-10", "h-6", "h-4"];
-    const consumption = ["h-12", "h-11", "h-10", "h-9", "h-8", "h-8", "h-8", "h-8", "h-9", "h-10", "h-12", "h-14"];
-
     return (
-      <div className="aspect-[16/9] bg-slate-50 p-5">
-        <div className="flex h-full flex-col rounded-md border border-slate-200 bg-white p-4">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="text-xs font-bold uppercase tracking-[0.14em] text-green-700">
-                FVE a spotřeba
-              </div>
-              <div className="mt-1 text-sm font-semibold text-slate-900">
-                měsíční profil domu
-              </div>
-            </div>
-            <div className="text-right text-[11px] leading-5 text-slate-500">
-              výroba<br />spotřeba
-            </div>
-          </div>
-          <div className="mt-auto grid h-28 grid-cols-12 items-end gap-1 border-b border-l border-slate-200 pl-2">
-            {production.map((height, barIndex) => (
-              <div key={`${article.slug}-pv-${barIndex}`} className="flex items-end justify-center gap-0.5">
-                <div className={`w-2 rounded-t bg-green-600 ${height}`} />
-                <div className={`w-2 rounded-t bg-slate-300 ${consumption[barIndex]}`} />
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="aspect-[16/9] bg-[#eef6f2] p-4">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Schéma výroby a spotřeby fotovoltaiky" className="h-full w-full">
+          <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
+          <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">FVE: výroba vs. spotřeba</text>
+          <text x="44" y="84" fill="#64748b" fontSize="14">roční profil rodinného domu</text>
+          <line x1="60" y1="286" x2="560" y2="286" stroke="#cbd5e1" strokeWidth="2" />
+          <line x1="60" y1="120" x2="60" y2="286" stroke="#cbd5e1" strokeWidth="2" />
+          <polyline points="70,260 110,238 150,190 190,150 230,125 270,112 310,116 350,132 390,166 430,205 470,238 520,262" fill="none" stroke="#15803d" strokeWidth="5" strokeLinecap="round" />
+          <polyline points="70,208 110,214 150,220 190,225 230,230 270,232 310,232 350,228 390,220 430,212 470,206 520,202" fill="none" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
+          <rect x="420" y="55" width="122" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+          <circle cx="440" cy="75" r="5" fill="#15803d" />
+          <text x="454" y="79" fill="#334155" fontSize="13">výroba</text>
+          <circle cx="440" cy="94" r="5" fill="#334155" />
+          <text x="454" y="98" fill="#334155" fontSize="13">spotřeba</text>
+          <text x="66" y="314" fill="#64748b" fontSize="12">zima</text>
+          <text x="286" y="314" fill="#64748b" fontSize="12">léto</text>
+          <text x="492" y="314" fill="#64748b" fontSize="12">zima</text>
+        </svg>
       </div>
     );
   }
 
   if (slug.includes("zatepleni") || slug.includes("fasada")) {
     return (
-      <div className="aspect-[16/9] bg-stone-50 p-5">
-        <div className="grid h-full grid-cols-[1fr_1.1fr] overflow-hidden rounded-md border border-slate-200 bg-white">
-          <div className="flex flex-col">
-            <div className="h-1/5 bg-stone-200" />
-            <div className="h-2/5 bg-emerald-100" />
-            <div className="h-2/5 bg-slate-300" />
-          </div>
-          <div className="flex flex-col justify-center gap-3 p-5 text-sm">
-            <div>
-              <div className="text-xs font-bold uppercase tracking-[0.14em] text-green-700">
-                Řez fasádou
-              </div>
-              <div className="mt-1 font-semibold text-slate-900">
-                vrstvy a návaznosti
-              </div>
-            </div>
-            <div className="space-y-2 text-xs text-slate-600">
-              <div className="flex items-center gap-2"><span className="h-2 w-5 rounded bg-stone-200" /> omítka</div>
-              <div className="flex items-center gap-2"><span className="h-2 w-5 rounded bg-emerald-100" /> izolace</div>
-              <div className="flex items-center gap-2"><span className="h-2 w-5 rounded bg-slate-300" /> zdivo</div>
-            </div>
-          </div>
-        </div>
+      <div className="aspect-[16/9] bg-[#f4f1eb] p-4">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Řez skladbou zateplené fasády" className="h-full w-full">
+          <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
+          <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">Řez fasádou</text>
+          <text x="44" y="84" fill="#64748b" fontSize="14">skladba vrstev a tepelný most</text>
+          <rect x="86" y="118" width="48" height="150" fill="#d6d3d1" stroke="#a8a29e" />
+          <rect x="134" y="118" width="90" height="150" fill="#bbf7d0" stroke="#86efac" />
+          <rect x="224" y="118" width="34" height="150" fill="#f5f5f4" stroke="#d6d3d1" />
+          <rect x="258" y="118" width="18" height="150" fill="#94a3b8" />
+          <path d="M86 118 h190 v150 h-190 z" fill="none" stroke="#334155" strokeWidth="2" />
+          <path d="M150 106 c18 32 18 72 0 104 c-15 28 -13 50 6 76" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" />
+          <line x1="276" y1="140" x2="462" y2="112" stroke="#94a3b8" />
+          <line x1="224" y1="192" x2="462" y2="190" stroke="#94a3b8" />
+          <line x1="134" y1="246" x2="462" y2="260" stroke="#94a3b8" />
+          <text x="476" y="116" fill="#334155" fontSize="14" fontWeight="700">vnější omítka</text>
+          <text x="476" y="195" fill="#334155" fontSize="14" fontWeight="700">izolace</text>
+          <text x="476" y="264" fill="#334155" fontSize="14" fontWeight="700">nosná stěna</text>
+          <text x="94" y="300" fill="#ef4444" fontSize="13" fontWeight="700">detail ostění / tepelný most</text>
+        </svg>
       </div>
     );
   }
 
   if (slug.includes("okna")) {
     return (
-      <div className="aspect-[16/9] bg-sky-50 p-5">
-        <div className="relative h-full rounded-md border border-slate-200 bg-white p-5">
-          <div className="absolute left-6 top-5 text-xs font-bold uppercase tracking-[0.14em] text-green-700">
-            Připojovací spára
-          </div>
-          <div className="absolute bottom-5 right-5 rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-900">
-            Uw jako výsledek celku
-          </div>
-          <div className="mx-auto mt-7 grid h-32 w-44 grid-cols-[1fr_2fr_1fr] overflow-hidden rounded border border-slate-300">
-            <div className="bg-slate-200" />
-            <div className="border-x border-slate-300 bg-sky-100" />
-            <div className="bg-slate-200" />
-          </div>
-          <div className="mx-auto mt-2 h-3 w-52 rounded-full bg-green-200" />
-        </div>
+      <div className="aspect-[16/9] bg-[#eef6f8] p-4">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Detail připojení okna ve zdivu" className="h-full w-full">
+          <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
+          <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">Detail okna</text>
+          <text x="44" y="84" fill="#64748b" fontSize="14">profil, spára a montážní rovina</text>
+          <rect x="145" y="110" width="170" height="142" rx="8" fill="#e0f2fe" stroke="#94a3b8" strokeWidth="5" />
+          <rect x="178" y="138" width="104" height="86" rx="4" fill="#f8fafc" stroke="#64748b" strokeWidth="4" />
+          <rect x="110" y="96" width="36" height="170" fill="#cbd5e1" />
+          <rect x="314" y="96" width="36" height="170" fill="#cbd5e1" />
+          <rect x="145" y="252" width="170" height="28" fill="#bbf7d0" />
+          <line x1="315" y1="130" x2="466" y2="102" stroke="#94a3b8" />
+          <line x1="315" y1="196" x2="466" y2="184" stroke="#94a3b8" />
+          <line x1="232" y1="252" x2="466" y2="266" stroke="#94a3b8" />
+          <text x="480" y="106" fill="#334155" fontSize="14" fontWeight="700">rám / profil</text>
+          <text x="480" y="188" fill="#334155" fontSize="14" fontWeight="700">připojovací spára</text>
+          <text x="480" y="270" fill="#334155" fontSize="14" fontWeight="700">těsnicí rovina</text>
+          <rect x="60" y="286" width="118" height="32" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+          <text x="76" y="307" fill="#334155" fontSize="14" fontWeight="700">Uw není jen sklo</text>
+        </svg>
       </div>
     );
   }
 
   return (
-    <div className="aspect-[16/9] bg-slate-50 p-5">
-      <div className="flex h-full items-center justify-center rounded-md border border-slate-200 bg-white p-5">
-        <div className="grid w-full max-w-sm grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-3 text-center text-sm font-semibold text-slate-700">
-          <div className="rounded-md border border-slate-200 bg-slate-50 px-3 py-4">stav domu</div>
-          <div className="text-green-700">→</div>
-          <div className="rounded-md border border-green-200 bg-green-50 px-3 py-4">návrh</div>
-          <div className="text-green-700">→</div>
-          <div className="rounded-md border border-slate-200 bg-slate-50 px-3 py-4">realizace</div>
-        </div>
-      </div>
+    <div className="aspect-[16/9] bg-[#f1f5f9] p-4">
+      <svg viewBox="0 0 640 360" role="img" aria-label="Rozhodovací mapa technického opatření" className="h-full w-full">
+        <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">Rozhodovací mapa</text>
+        <text x="44" y="84" fill="#64748b" fontSize="14">stav domu, návaznosti a vhodné pořadí</text>
+        <rect x="64" y="144" width="120" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" />
+        <rect x="260" y="118" width="120" height="56" rx="10" fill="#ecfdf5" stroke="#86efac" />
+        <rect x="260" y="218" width="120" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" />
+        <rect x="456" y="168" width="120" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" />
+        <path d="M184 172 H242" stroke="#15803d" strokeWidth="3" />
+        <path d="M242 172 L260 146" stroke="#15803d" strokeWidth="3" />
+        <path d="M242 172 L260 246" stroke="#15803d" strokeWidth="3" />
+        <path d="M380 146 L456 196" stroke="#15803d" strokeWidth="3" />
+        <path d="M380 246 L456 196" stroke="#15803d" strokeWidth="3" />
+        <text x="91" y="178" fill="#334155" fontSize="15" fontWeight="700">stav domu</text>
+        <text x="290" y="152" fill="#334155" fontSize="15" fontWeight="700">opatření</text>
+        <text x="291" y="252" fill="#334155" fontSize="15" fontWeight="700">dotace</text>
+        <text x="482" y="202" fill="#334155" fontSize="15" fontWeight="700">pořadí</text>
+      </svg>
     </div>
   );
 }
