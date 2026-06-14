@@ -539,7 +539,10 @@ function Archive({ soroArticles }) {
     const normalizedQuery = query.trim().toLocaleLowerCase("cs");
     return archiveArticles.filter((article) => {
       const matchesFilter =
-        filter === "all" || article.category === filter;
+        filter === "all" ||
+        (filter === "expert"
+          ? article.category === "expert" && !article.seriesId && !article.seriesIndex
+          : article.category === filter);
       const matchesQuery =
         !normalizedQuery ||
         `${article.title} ${article.excerpt || ""}`
