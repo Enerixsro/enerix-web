@@ -166,23 +166,42 @@ function ExpertTechnicalVisual({ article }) {
 
   if (slug.includes("fotovoltaika")) {
     return (
-      <div className="aspect-[16/9] bg-[#eef6f2] p-4">
-        <svg viewBox="0 0 640 360" role="img" aria-label="Schéma výroby a spotřeby fotovoltaiky" className="h-full w-full">
-          <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
-          <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">FVE: výroba vs. spotřeba</text>
-          <text x="44" y="84" fill="#64748b" fontSize="14">roční profil rodinného domu</text>
-          <line x1="60" y1="286" x2="560" y2="286" stroke="#cbd5e1" strokeWidth="2" />
-          <line x1="60" y1="120" x2="60" y2="286" stroke="#cbd5e1" strokeWidth="2" />
-          <polyline points="70,260 110,238 150,190 190,150 230,125 270,112 310,116 350,132 390,166 430,205 470,238 520,262" fill="none" stroke="#15803d" strokeWidth="5" strokeLinecap="round" />
-          <polyline points="70,208 110,214 150,220 190,225 230,230 270,232 310,232 350,228 390,220 430,212 470,206 520,202" fill="none" stroke="#334155" strokeWidth="4" strokeLinecap="round" />
-          <rect x="420" y="55" width="122" height="54" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
-          <circle cx="440" cy="75" r="5" fill="#15803d" />
-          <text x="454" y="79" fill="#334155" fontSize="13">výroba</text>
-          <circle cx="440" cy="94" r="5" fill="#334155" />
-          <text x="454" y="98" fill="#334155" fontSize="13">spotřeba</text>
-          <text x="66" y="314" fill="#64748b" fontSize="12">zima</text>
-          <text x="286" y="314" fill="#64748b" fontSize="12">léto</text>
-          <text x="492" y="314" fill="#64748b" fontSize="12">zima</text>
+      <div className="aspect-[16/9] bg-[#edf4ef] p-3">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Technický graf výroby a spotřeby fotovoltaiky" className="h-full w-full">
+          <defs>
+            <linearGradient id="expertPvArea" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#86efac" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#86efac" stopOpacity="0.05" />
+            </linearGradient>
+          </defs>
+          <rect x="18" y="18" width="604" height="324" rx="10" fill="#fbfdfc" stroke="#cbd5e1" />
+          <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">FVE - roční bilance domu</text>
+          <text x="42" y="78" fill="#64748b" fontSize="13">model výroby a vlastní spotřeby po měsících</text>
+          <g stroke="#e2e8f0" strokeWidth="1">
+            <line x1="68" y1="120" x2="540" y2="120" />
+            <line x1="68" y1="168" x2="540" y2="168" />
+            <line x1="68" y1="216" x2="540" y2="216" />
+            <line x1="68" y1="264" x2="540" y2="264" />
+          </g>
+          <line x1="68" y1="264" x2="540" y2="264" stroke="#94a3b8" strokeWidth="2" />
+          <line x1="68" y1="104" x2="68" y2="264" stroke="#94a3b8" strokeWidth="2" />
+          <path d="M78 252 C122 238 142 170 182 140 C222 108 262 102 304 110 C350 118 376 140 416 178 C454 214 488 242 532 254 L532 264 L78 264 Z" fill="url(#expertPvArea)" />
+          <path d="M78 252 C122 238 142 170 182 140 C222 108 262 102 304 110 C350 118 376 140 416 178 C454 214 488 242 532 254" fill="none" stroke="#15803d" strokeWidth="4" strokeLinecap="round" />
+          <path d="M78 206 C128 210 176 218 224 224 C284 230 334 230 388 218 C440 206 486 196 532 194" fill="none" stroke="#334155" strokeWidth="3" strokeLinecap="round" />
+          <g fill="#64748b" fontSize="11">
+            <text x="78" y="290">I</text>
+            <text x="176" y="290">III</text>
+            <text x="286" y="290">VI</text>
+            <text x="392" y="290">IX</text>
+            <text x="510" y="290">XII</text>
+          </g>
+          <g>
+            <rect x="426" y="54" width="126" height="54" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+            <line x1="442" y1="74" x2="464" y2="74" stroke="#15803d" strokeWidth="4" />
+            <text x="474" y="78" fill="#334155" fontSize="12">výroba FVE</text>
+            <line x1="442" y1="94" x2="464" y2="94" stroke="#334155" strokeWidth="3" />
+            <text x="474" y="98" fill="#334155" fontSize="12">spotřeba</text>
+          </g>
         </svg>
       </div>
     );
@@ -190,24 +209,41 @@ function ExpertTechnicalVisual({ article }) {
 
   if (slug.includes("zatepleni") || slug.includes("fasada")) {
     return (
-      <div className="aspect-[16/9] bg-[#f4f1eb] p-4">
-        <svg viewBox="0 0 640 360" role="img" aria-label="Řez skladbou zateplené fasády" className="h-full w-full">
-          <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
-          <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">Řez fasádou</text>
-          <text x="44" y="84" fill="#64748b" fontSize="14">skladba vrstev a tepelný most</text>
-          <rect x="86" y="118" width="48" height="150" fill="#d6d3d1" stroke="#a8a29e" />
-          <rect x="134" y="118" width="90" height="150" fill="#bbf7d0" stroke="#86efac" />
-          <rect x="224" y="118" width="34" height="150" fill="#f5f5f4" stroke="#d6d3d1" />
-          <rect x="258" y="118" width="18" height="150" fill="#94a3b8" />
-          <path d="M86 118 h190 v150 h-190 z" fill="none" stroke="#334155" strokeWidth="2" />
-          <path d="M150 106 c18 32 18 72 0 104 c-15 28 -13 50 6 76" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" />
-          <line x1="276" y1="140" x2="462" y2="112" stroke="#94a3b8" />
-          <line x1="224" y1="192" x2="462" y2="190" stroke="#94a3b8" />
-          <line x1="134" y1="246" x2="462" y2="260" stroke="#94a3b8" />
-          <text x="476" y="116" fill="#334155" fontSize="14" fontWeight="700">vnější omítka</text>
-          <text x="476" y="195" fill="#334155" fontSize="14" fontWeight="700">izolace</text>
-          <text x="476" y="264" fill="#334155" fontSize="14" fontWeight="700">nosná stěna</text>
-          <text x="94" y="300" fill="#ef4444" fontSize="13" fontWeight="700">detail ostění / tepelný most</text>
+      <div className="aspect-[16/9] bg-[#f3f1ec] p-3">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Realistický řez skladbou zateplené fasády" className="h-full w-full">
+          <defs>
+            <pattern id="expertMasonry" width="18" height="18" patternUnits="userSpaceOnUse">
+              <rect width="18" height="18" fill="#d6d3d1" />
+              <path d="M0 9 H18 M9 0 V9 M0 18 V9 M18 18 V9" stroke="#a8a29e" strokeWidth="0.8" />
+            </pattern>
+            <pattern id="expertMineral" width="8" height="8" patternUnits="userSpaceOnUse">
+              <rect width="8" height="8" fill="#d9f99d" />
+              <path d="M0 8 L8 0 M-2 2 L2 -2 M6 10 L10 6" stroke="#84cc16" strokeWidth="0.7" opacity="0.55" />
+            </pattern>
+          </defs>
+          <rect x="18" y="18" width="604" height="324" rx="10" fill="#fffdf8" stroke="#cbd5e1" />
+          <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Fasáda - řez skladbou</text>
+          <text x="42" y="78" fill="#64748b" fontSize="13">zdivo, izolace, omítka a detail ostění</text>
+          <g transform="translate(82 112)">
+            <rect x="0" y="0" width="88" height="158" fill="url(#expertMasonry)" stroke="#78716c" />
+            <rect x="88" y="0" width="112" height="158" fill="url(#expertMineral)" stroke="#84cc16" />
+            <rect x="200" y="0" width="18" height="158" fill="#f5f5f4" stroke="#d6d3d1" />
+            <rect x="218" y="0" width="8" height="158" fill="#a8a29e" />
+            <rect x="112" y="46" width="86" height="56" fill="#e5e7eb" stroke="#64748b" />
+            <rect x="136" y="59" width="42" height="30" fill="#bae6fd" stroke="#64748b" />
+            <path d="M106 -12 C132 30 128 72 106 116 C96 138 102 160 120 174" fill="none" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" opacity="0.9" />
+          </g>
+          <g stroke="#94a3b8" strokeWidth="1.2">
+            <line x1="308" y1="136" x2="462" y2="112" />
+            <line x1="282" y1="180" x2="462" y2="178" />
+            <line x1="170" y1="232" x2="462" y2="244" />
+          </g>
+          <g fill="#334155" fontSize="13" fontWeight="700">
+            <text x="476" y="116">tenkovrstvá omítka</text>
+            <text x="476" y="182">tepelná izolace</text>
+            <text x="476" y="248">nosná stěna</text>
+          </g>
+          <text x="88" y="306" fill="#b91c1c" fontSize="12" fontWeight="700">červeně: rizikový tepelný tok u ostění</text>
         </svg>
       </div>
     );
@@ -215,48 +251,125 @@ function ExpertTechnicalVisual({ article }) {
 
   if (slug.includes("okna")) {
     return (
-      <div className="aspect-[16/9] bg-[#eef6f8] p-4">
-        <svg viewBox="0 0 640 360" role="img" aria-label="Detail připojení okna ve zdivu" className="h-full w-full">
-          <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
-          <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">Detail okna</text>
-          <text x="44" y="84" fill="#64748b" fontSize="14">profil, spára a montážní rovina</text>
-          <rect x="145" y="110" width="170" height="142" rx="8" fill="#e0f2fe" stroke="#94a3b8" strokeWidth="5" />
-          <rect x="178" y="138" width="104" height="86" rx="4" fill="#f8fafc" stroke="#64748b" strokeWidth="4" />
-          <rect x="110" y="96" width="36" height="170" fill="#cbd5e1" />
-          <rect x="314" y="96" width="36" height="170" fill="#cbd5e1" />
-          <rect x="145" y="252" width="170" height="28" fill="#bbf7d0" />
-          <line x1="315" y1="130" x2="466" y2="102" stroke="#94a3b8" />
-          <line x1="315" y1="196" x2="466" y2="184" stroke="#94a3b8" />
-          <line x1="232" y1="252" x2="466" y2="266" stroke="#94a3b8" />
-          <text x="480" y="106" fill="#334155" fontSize="14" fontWeight="700">rám / profil</text>
-          <text x="480" y="188" fill="#334155" fontSize="14" fontWeight="700">připojovací spára</text>
-          <text x="480" y="270" fill="#334155" fontSize="14" fontWeight="700">těsnicí rovina</text>
-          <rect x="60" y="286" width="118" height="32" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
-          <text x="76" y="307" fill="#334155" fontSize="14" fontWeight="700">Uw není jen sklo</text>
+      <div className="aspect-[16/9] bg-[#edf6f8] p-3">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Realistický řez profilem okna a připojovací spárou" className="h-full w-full">
+          <defs>
+            <linearGradient id="expertGlass" x1="0" x2="1">
+              <stop offset="0%" stopColor="#dbeafe" />
+              <stop offset="100%" stopColor="#f8fafc" />
+            </linearGradient>
+          </defs>
+          <rect x="18" y="18" width="604" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" />
+          <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Okno - detail napojení</text>
+          <text x="42" y="78" fill="#64748b" fontSize="13">profil, izolační sklo, pásky a montážní rovina</text>
+          <g transform="translate(98 102)">
+            <rect x="0" y="28" width="46" height="160" fill="#cbd5e1" stroke="#94a3b8" />
+            <rect x="246" y="28" width="46" height="160" fill="#cbd5e1" stroke="#94a3b8" />
+            <path d="M54 20 h78 v42 h-28 v96 h-50 z" fill="#f8fafc" stroke="#64748b" strokeWidth="3" />
+            <path d="M160 20 h78 v138 h-50 v-96 h-28 z" fill="#f8fafc" stroke="#64748b" strokeWidth="3" />
+            <rect x="118" y="50" width="56" height="106" fill="url(#expertGlass)" stroke="#475569" strokeWidth="3" />
+            <line x1="134" y1="56" x2="134" y2="150" stroke="#94a3b8" strokeWidth="2" />
+            <line x1="158" y1="56" x2="158" y2="150" stroke="#94a3b8" strokeWidth="2" />
+            <rect x="54" y="160" width="184" height="18" fill="#bbf7d0" stroke="#86efac" />
+            <rect x="62" y="68" width="26" height="14" fill="#fecaca" stroke="#ef4444" />
+            <rect x="204" y="68" width="26" height="14" fill="#fecaca" stroke="#ef4444" />
+          </g>
+          <g stroke="#94a3b8" strokeWidth="1.2">
+            <line x1="332" y1="128" x2="464" y2="112" />
+            <line x1="270" y1="182" x2="464" y2="184" />
+            <line x1="214" y1="262" x2="464" y2="268" />
+          </g>
+          <g fill="#334155" fontSize="13" fontWeight="700">
+            <text x="478" y="116">izolační sklo</text>
+            <text x="478" y="188">rámový profil</text>
+            <text x="478" y="272">připojovací páska</text>
+          </g>
+          <rect x="50" y="292" width="150" height="30" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+          <text x="66" y="312" fill="#334155" fontSize="13" fontWeight="700">Uw = sklo + rám + montáž</text>
+        </svg>
+      </div>
+    );
+  }
+
+  if (slug.includes("strecha")) {
+    return (
+      <div className="aspect-[16/9] bg-[#f1f5f9] p-3">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Realistický řez skladbou střechy" className="h-full w-full">
+          <rect x="18" y="18" width="604" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" />
+          <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Střecha - skladba</text>
+          <text x="42" y="78" fill="#64748b" fontSize="13">krytina, pojistná hydroizolace, izolace a větrání</text>
+          <g transform="translate(82 128) rotate(-16 210 70)">
+            <rect x="0" y="0" width="420" height="20" fill="#475569" />
+            <rect x="0" y="20" width="420" height="16" fill="#94a3b8" />
+            <rect x="0" y="36" width="420" height="62" fill="#d9f99d" stroke="#84cc16" />
+            <rect x="0" y="98" width="420" height="18" fill="#c4b5fd" />
+            <rect x="0" y="116" width="420" height="22" fill="#e2e8f0" />
+            <g stroke="#334155" strokeWidth="2">
+              <line x1="40" y1="0" x2="40" y2="138" />
+              <line x1="180" y1="0" x2="180" y2="138" />
+              <line x1="320" y1="0" x2="320" y2="138" />
+            </g>
+          </g>
+          <g stroke="#94a3b8" strokeWidth="1.2">
+            <line x1="456" y1="112" x2="540" y2="94" />
+            <line x1="430" y1="166" x2="540" y2="160" />
+            <line x1="396" y1="224" x2="540" y2="232" />
+          </g>
+          <g fill="#334155" fontSize="13" fontWeight="700">
+            <text x="552" y="98">krytina</text>
+            <text x="552" y="164">izolace</text>
+            <text x="552" y="236">parozábrana</text>
+          </g>
+        </svg>
+      </div>
+    );
+  }
+
+  if (slug.includes("tepelne-cerpadlo")) {
+    return (
+      <div className="aspect-[16/9] bg-[#eef6f2] p-3">
+        <svg viewBox="0 0 640 360" role="img" aria-label="Technické schéma zapojení tepelného čerpadla" className="h-full w-full">
+          <rect x="18" y="18" width="604" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" />
+          <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Tepelné čerpadlo - systém</text>
+          <text x="42" y="78" fill="#64748b" fontSize="13">zdroj, akumulace, otopná voda a tepelná ztráta</text>
+          <rect x="70" y="136" width="108" height="92" rx="8" fill="#f8fafc" stroke="#94a3b8" />
+          <circle cx="124" cy="174" r="24" fill="#dbeafe" stroke="#64748b" />
+          <path d="M112 174 h24 M124 162 v24" stroke="#64748b" strokeWidth="3" />
+          <rect x="276" y="126" width="88" height="112" rx="44" fill="#ecfdf5" stroke="#86efac" strokeWidth="3" />
+          <rect x="468" y="126" width="88" height="112" rx="8" fill="#f8fafc" stroke="#94a3b8" />
+          <path d="M178 160 H276" stroke="#15803d" strokeWidth="4" />
+          <path d="M364 160 H468" stroke="#15803d" strokeWidth="4" />
+          <path d="M468 204 H364" stroke="#0284c7" strokeWidth="4" />
+          <path d="M276 204 H178" stroke="#0284c7" strokeWidth="4" />
+          <text x="78" y="254" fill="#334155" fontSize="13" fontWeight="700">venkovní jednotka</text>
+          <text x="282" y="254" fill="#334155" fontSize="13" fontWeight="700">akumulace</text>
+          <text x="468" y="254" fill="#334155" fontSize="13" fontWeight="700">otopná soustava</text>
+          <rect x="232" y="286" width="176" height="28" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+          <text x="250" y="305" fill="#334155" fontSize="13" fontWeight="700">návrh podle tepelné ztráty</text>
         </svg>
       </div>
     );
   }
 
   return (
-    <div className="aspect-[16/9] bg-[#f1f5f9] p-4">
-      <svg viewBox="0 0 640 360" role="img" aria-label="Rozhodovací mapa technického opatření" className="h-full w-full">
-        <rect x="18" y="18" width="604" height="324" rx="14" fill="#ffffff" stroke="#cbd5e1" />
-        <text x="44" y="58" fill="#166534" fontSize="20" fontWeight="700">Rozhodovací mapa</text>
-        <text x="44" y="84" fill="#64748b" fontSize="14">stav domu, návaznosti a vhodné pořadí</text>
-        <rect x="64" y="144" width="120" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" />
-        <rect x="260" y="118" width="120" height="56" rx="10" fill="#ecfdf5" stroke="#86efac" />
-        <rect x="260" y="218" width="120" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" />
-        <rect x="456" y="168" width="120" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" />
-        <path d="M184 172 H242" stroke="#15803d" strokeWidth="3" />
-        <path d="M242 172 L260 146" stroke="#15803d" strokeWidth="3" />
-        <path d="M242 172 L260 246" stroke="#15803d" strokeWidth="3" />
-        <path d="M380 146 L456 196" stroke="#15803d" strokeWidth="3" />
-        <path d="M380 246 L456 196" stroke="#15803d" strokeWidth="3" />
-        <text x="91" y="178" fill="#334155" fontSize="15" fontWeight="700">stav domu</text>
-        <text x="290" y="152" fill="#334155" fontSize="15" fontWeight="700">opatření</text>
-        <text x="291" y="252" fill="#334155" fontSize="15" fontWeight="700">dotace</text>
-        <text x="482" y="202" fill="#334155" fontSize="15" fontWeight="700">pořadí</text>
+    <div className="aspect-[16/9] bg-[#f1f5f9] p-3">
+      <svg viewBox="0 0 640 360" role="img" aria-label="Technický výřez rozhodování o opatření" className="h-full w-full">
+        <rect x="18" y="18" width="604" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Technický výřez</text>
+        <text x="42" y="78" fill="#64748b" fontSize="13">varianty, parametry a návaznosti opatření</text>
+        <rect x="70" y="116" width="190" height="132" fill="#f8fafc" stroke="#94a3b8" />
+        <rect x="88" y="136" width="154" height="20" fill="#e2e8f0" />
+        <rect x="88" y="172" width="116" height="16" fill="#bbf7d0" />
+        <rect x="88" y="204" width="132" height="16" fill="#dbeafe" />
+        <g stroke="#94a3b8">
+          <line x1="300" y1="128" x2="520" y2="128" />
+          <line x1="300" y1="168" x2="520" y2="168" />
+          <line x1="300" y1="208" x2="520" y2="208" />
+          <line x1="300" y1="248" x2="520" y2="248" />
+        </g>
+        <path d="M300 246 C356 212 400 190 520 132" fill="none" stroke="#15803d" strokeWidth="4" />
+        <text x="318" y="118" fill="#334155" fontSize="12" fontWeight="700">varianta A / B / C</text>
+        <text x="86" y="276" fill="#334155" fontSize="12" fontWeight="700">podklad pro rozhodnutí</text>
       </svg>
     </div>
   );
