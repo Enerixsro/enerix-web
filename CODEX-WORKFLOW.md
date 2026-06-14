@@ -4,6 +4,9 @@ Tento soubor drzi prakticka pravidla pro praci Codexu na preview verzi webu.
 Cil je zkratit cas prace, omezit obchazeni nefunkcnich nastroju a predejit
 zamenam vetvi nebo pracovnich slozek.
 
+Aktivni pravidla pro Codex jsou v `AGENTS.md`. Tento soubor je lidska
+dokumentace a kontrolni checklist.
+
 ## Pracovni slozky
 
 - Live / hlavni lokalni repo orientace:
@@ -56,8 +59,55 @@ V Gitu nemaji byt sledovane:
 - `*.log`
 - `preview-screenshots/`
 
-`package-lock.json` zatim zustava viditelny. U npm projektu dava smysl ho
-commitnout, pokud odpovida `package.json` a chceme opakovatelne instalace.
+`package-lock.json` je soucast preview vetve, protoze odpovida `package.json`
+a pomaha opakovatelne instalaci.
+
+Pred upravou `.gitignore` overit, ze neignoruje zdrojove slozky jako `pages/`,
+`components/`, `data/`, `public/`, `styles/` nebo dokumentaci.
+
+## Bezpecnostni guardraily
+
+- Necist a neukladat `.env`, tokeny, SSH klice, credential soubory, cookies
+  ani jine pristupove udaje.
+- Vercel share link neukladat do repozitare, PR popisu, screenshotu ani
+  workflow dokumentace.
+- Nepouzivat `danger-full-access` pro beznou praci.
+- Sitove akce pouzivat jen ucelove a po schvaleni, pokud opousteji bezny
+  read-only kontext.
+- Nikdy nemenit PowerShell execution policy kvuli npm; pouzivat `npm.cmd`.
+- Neprovadet `git reset --hard`, `git clean -fdx`, mazani vetvi, force push,
+  merge do `main` ani zmeny produkcniho Vercelu bez explicitniho schvaleni.
+
+## Souhlasy pro citlivejsi kroky
+
+Commit, push, install, deploy nebo merge vyzaduji konkretni souhlas. Obecne
+"ok" nestaci, pokud neni z bezprostredniho kontextu jednoznacne, co presne se
+ma stat.
+
+Bezpecny tvar souhlasu:
+
+- "Commitni pouze soubory X, Y do vetve Z."
+- "Pushni commit ABC do origin/vetev, nic jineho."
+- "Nainstaluj Git a Node pres winget, nemen PowerShell execution policy."
+
+## npm a build pravidla
+
+Pred `npm install`, `npm ci`, `npm run ...` nebo `npm.cmd run ...` zkontrolovat
+`package.json`, hlavne:
+
+- `scripts`
+- `dependencies`
+- `devDependencies`
+
+Preferovat:
+
+```powershell
+npm.cmd ci --ignore-scripts
+npm.cmd run build
+```
+
+`npm.cmd install` nebo instalace balicku ze site je povolena jen po jasnem
+souhlasu.
 
 ## Pravidlo pri selhani nastroje
 
@@ -65,8 +115,12 @@ Kdyz prikaz selze:
 
 1. Jednou overit chybu.
 2. Pojmenovat pricinu: chybejici nastroj, opravneni, sit, nebo chyba projektu.
-3. Nepokracovat pres tri ruzne okliky bez vysvetleni.
-4. Pokud je potreba instalace nebo opravneni, rict uzivateli presne co chybi.
+3. U male veci smi byt maximalne jedna kratka nahradni cesta.
+4. U vetsi veci hned zastavit, hlasit co se deje a rict, jestli muze uzivatel
+   pomoci instalaci, opravnenim, prihlasenim nebo rozhodnutim.
+5. Nepokracovat pres pomale nebo mene spolehlive nahrady, pokud hlavni problem
+   muze jit vyresit primo.
+6. Pokud je potreba instalace nebo opravneni, rict uzivateli presne co chybi.
 
 ## Overovani
 
@@ -79,15 +133,22 @@ Kdyz prikaz selze:
 
 Doporucene systemove kroky:
 
-- nainstalovat Node.js LTS vcetne `npm`,
-- nainstalovat Git for Windows nebo opravit PATH tak, aby fungovalo `git`,
+- Node.js LTS vcetne `npm` je nainstalovany,
+- Git for Windows je nainstalovany,
 - volitelne nainstalovat GitHub CLI `gh` a prihlasit ho.
+
+Poznamka: Codex sandbox nemusi automaticky videt systemovou PATH. Pokud prikaz
+nevidi Git nebo Node, pouzit jen pro dany prikaz:
+
+```powershell
+$env:Path='C:\Program Files\Git\cmd;C:\Program Files\nodejs;'+$env:Path
+```
 
 Kontrolni prikazy v PowerShellu:
 
 ```powershell
 git --version
 node --version
-npm --version
+npm.cmd --version
 gh --version
 ```
