@@ -906,19 +906,38 @@ export default function KnowledgeCenterArticle({ article }) {
 
                 {article.paragraphs && (
                   <>
-                    <aside className="mt-12 rounded-lg border border-green-200 bg-green-50 p-6">
-                      <h2 className="text-xl font-bold">Řešíte podobnou situaci?</h2>
-                      <p className="mt-2 leading-7 text-slate-600">
-                        Řešíte starší dům a nejste si jistí, kde začít? Pomůžeme
-                        vám zorientovat se v možnostech renovace, podpory,
-                        financování a dalším postupu.
-                      </p>
-                      <a
-                        href="/#kontakt"
-                        className="mt-5 inline-flex rounded-md bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800"
-                      >
-                        Chci konzultaci renovace domu
-                      </a>
+                    <aside id="orientace" className="mt-12 rounded-lg border border-green-200 bg-green-50 p-6 md:p-7">
+                      <div className="max-w-2xl">
+                        <h2 className="text-2xl font-bold tracking-tight text-slate-950">
+                          Nejste si jistí, co z toho platí pro váš dům?
+                        </h2>
+                        <p className="mt-3 leading-7 text-slate-700">
+                          U renovace domu často nejde o jedno opatření, ale o správné
+                          pořadí kroků. První kontakt může sloužit jen k základní
+                          orientaci — nemusíte hned vědět, jestli potřebujete dotaci,
+                          projekt, renovační pas nebo konkrétní nabídku.
+                        </p>
+                      </div>
+                      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                        <a
+                          href="/blog#kde-zacit"
+                          className="inline-flex justify-center rounded-md border border-green-300 bg-white px-5 py-3 text-sm font-bold text-green-800 transition hover:border-green-500 hover:bg-green-100"
+                        >
+                          Chci se nejdřív zorientovat
+                        </a>
+                        <a
+                          href="/#kontakt"
+                          className="inline-flex justify-center rounded-md bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800"
+                        >
+                          Domluvit konzultaci
+                        </a>
+                        <a
+                          href="/blog"
+                          className="inline-flex justify-center rounded-md px-5 py-3 text-sm font-bold text-slate-700 transition hover:bg-white"
+                        >
+                          Zpět do Znalostního centra
+                        </a>
+                      </div>
                     </aside>
 
                     {relatedArticles.length > 0 && (

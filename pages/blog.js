@@ -34,44 +34,32 @@ const demoHref = (slug) => `/znalostni-centrum/${slug}`;
 
 const starterScenarios = [
   {
-    title: "Slyšel/a jsem o NZÚ 2026",
-    situation: "Chci vědět, jestli se mě dotace týká.",
-    firstStep:
-      "Začněte přehledem podpory, ale berte ji jako součást renovace.",
-    href: demoHref("nova-zelena-usporam-2026-jednoduse"),
-    linkLabel: "Začít přehledem NZÚ 2026",
+    title: "Nevím, kde začít",
+    situation:
+      "Potřebujete nejdřív pochopit stav domu, pořadí opatření a co má smysl řešit jako první.",
+    href: "#pruvodce-nzu-2026",
+    linkLabel: "Přejít na průvodce",
   },
   {
-    title: "Mám starší dům a nevím, co první",
-    situation: "Nechci udělat drahé rozhodnutí ve špatném pořadí.",
-    firstStep:
-      "Nejdřív zmapujte stav domu, slabá místa a technické problémy.",
-    href: demoHref("mokry-dum-spatna-strecha-stara-okna"),
-    linkLabel: "Zjistit, kdy dotace není první krok",
+    title: "Řeším dotace / NZÚ 2026",
+    situation:
+      "Chcete se zorientovat v podpoře, rozdílu mezi Light, dílčí a komplexní renovací nebo v roli renovačního pasu.",
+    href: "#pruvodce-nzu-2026",
+    linkLabel: "Projít dotační kontext",
   },
   {
-    title: "Řeším zateplení, okna nebo vytápění",
-    situation: "Potřebuji vědět, co na sebe navazuje.",
-    firstStep:
-      "Ověřte pořadí opatření, aby se investice nepřebíjely.",
-    href: demoHref("poradi-renovacnich-opatreni-a-proc-na-nem-zalezi"),
-    linkLabel: "Pochopit pořadí opatření",
+    title: "Zvažuji konkrétní opatření",
+    situation:
+      "Zateplení, okna, fotovoltaika, tepelné čerpadlo, střecha nebo větrání - tady se hodí odborný pohled v souvislostech.",
+    href: "#expert",
+    linkLabel: "Otevřít Enerix Expert",
   },
   {
-    title: "Chci renovovat postupně",
-    situation: "Rozpočet nejde vyřešit najednou.",
-    firstStep:
-      "Uvažujte v etapách a hlídejte návaznosti mezi kroky.",
-    href: demoHref("jak-jsme-pripravili-renovaci-domu-po-etapach"),
-    linkLabel: "Podívat se na etapový postup",
-  },
-  {
-    title: "Mám nabídky a nevím, čemu věřit",
-    situation: "Porovnávám různé firmy, technologie a ceny.",
-    firstStep:
-      "Srovnávejte nabídky podle cílového stavu domu, ne jen podle ceny.",
-    href: demoHref("chci-rekonstruovat-dum-koho-oslovit"),
-    linkLabel: "Ujasnit si první kontakt",
+    title: "Potřebuji pochopit pojmy a podklady",
+    situation:
+      "PENB, renovační pas, projektová dokumentace, pasport, výkaz výměr nebo technické parametry oken.",
+    href: "#pruvodce",
+    linkLabel: "Zobrazit pojmy",
   },
 ];
 
@@ -173,61 +161,142 @@ function PreviewSourceBadge({ article }) {
   );
 }
 
+function ExpertTechnicalVisual({ article, index }) {
+  const visuals = [
+    {
+      tone: "from-emerald-950 via-slate-900 to-cyan-900",
+      metric: "FVE",
+      detail: "výroba / spotřeba",
+      bars: ["h-8", "h-14", "h-20", "h-12", "h-6"],
+    },
+    {
+      tone: "from-slate-900 via-stone-800 to-emerald-900",
+      metric: "U",
+      detail: "skladba konstrukce",
+      bars: ["h-20", "h-20", "h-20", "h-20", "h-20"],
+    },
+    {
+      tone: "from-blue-950 via-slate-900 to-emerald-900",
+      metric: "Uw",
+      detail: "detail připojení",
+      bars: ["h-10", "h-16", "h-12", "h-18", "h-8"],
+    },
+  ];
+  const visual = visuals[index % visuals.length];
+
+  return (
+    <div className={`relative aspect-[16/9] overflow-hidden bg-gradient-to-br ${visual.tone}`}>
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.24) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.24) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      <div className="absolute left-5 top-5 rounded-md border border-white/20 bg-white/10 px-3 py-2 text-white backdrop-blur">
+        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-100">
+          Model
+        </div>
+        <div className="mt-1 text-2xl font-bold">{visual.metric}</div>
+      </div>
+      <div className="absolute bottom-5 left-5 right-5">
+        <div className="mb-4 flex items-end gap-2">
+          {visual.bars.map((height, barIndex) => (
+            <div
+              key={`${article.slug}-${barIndex}`}
+              className={`w-full rounded-t-sm bg-emerald-300/85 ${height}`}
+            />
+          ))}
+        </div>
+        <div className="rounded-md border border-white/15 bg-white/10 p-3 text-white backdrop-blur">
+          <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-100">
+            {visual.detail}
+          </div>
+          <div className="mt-2 h-1.5 rounded-full bg-white/20">
+            <div className="h-1.5 w-2/3 rounded-full bg-emerald-300" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ConceptGuideVisual({ index }) {
+  const palettes = [
+    "from-rose-500 to-rose-200",
+    "from-violet-600 to-violet-200",
+    "from-emerald-700 to-emerald-200",
+    "from-indigo-600 to-indigo-200",
+    "from-teal-700 to-teal-200",
+    "from-amber-700 to-amber-200",
+  ];
+  const palette = palettes[index % palettes.length];
+
+  return (
+    <div className={`relative aspect-[16/9] overflow-hidden bg-gradient-to-br ${palette}`}>
+      <div className="absolute -left-8 -top-8 h-32 w-32 rounded-full bg-white/12" />
+      <div className="absolute -bottom-10 -right-8 h-32 w-32 rounded-full bg-white/18" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative h-28 w-28 rounded-lg bg-white/95 shadow-sm">
+          <div className="absolute left-6 right-6 top-8 h-1 rounded-full bg-green-800" />
+          <div className="absolute left-6 right-6 top-14 h-1 rounded-full bg-green-800" />
+          <div className="absolute left-6 right-12 top-20 h-1 rounded-full bg-green-800" />
+          <div className="absolute bottom-4 left-1/2 h-7 w-7 -translate-x-1/2 rounded-full bg-green-500" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function StarterGuide() {
   return (
     <section
       id="kde-zacit"
-      className="scroll-mt-6 border-b border-slate-200 bg-slate-50/70 px-6 py-8 md:px-10 md:py-10"
+      className="scroll-mt-6 border-b border-slate-200 bg-slate-50/80 px-6 py-8 md:px-10 md:py-10"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-6 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="text-sm font-bold uppercase tracking-[0.16em] text-green-700">
               Praktický rozcestník
             </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-              Co právě řešíte?
+              Co teď řešíte?
             </h2>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600 md:text-base md:leading-7">
-              Vyberte situaci, která je vám nejbližší. Cílem není hned vybrat
-              dotaci nebo technologii, ale najít první rozumný krok podle stavu
-              domu, rozpočtu a návazností.
-            </p>
           </div>
+          <p className="max-w-2xl text-sm leading-6 text-slate-600 md:text-base md:leading-7">
+            Vyberte si cestu podle toho, v jaké fázi renovace právě jste.
+            Nemusíte hned znát správné technické řešení ani dotační program.
+          </p>
+        </div>
 
-          <div className="grid gap-2">
-            {starterScenarios.map((item) => (
-              <a
-                key={item.title}
-                href={item.href}
-                className="group rounded-md border border-slate-200 bg-white px-4 py-3 shadow-sm transition hover:border-green-300 hover:shadow-md"
-              >
-                <div className="grid gap-2 md:grid-cols-[1fr_1.28fr_auto] md:items-center md:gap-4">
-                  <div className="min-w-0">
-                    <h3 className="text-base font-bold leading-6 text-slate-900">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-sm leading-5 text-slate-600">
-                      {item.situation}
-                    </p>
-                  </div>
-                  <p className="border-l-2 border-green-600 pl-3 text-sm leading-5 text-slate-700">
-                    <span className="font-semibold">První krok: </span>
-                    {item.firstStep}
-                  </p>
-                  <div className="shrink-0 text-sm font-bold leading-5 text-green-700 md:text-right">
-                    {item.linkLabel} <span aria-hidden="true">→</span>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {starterScenarios.map((item) => (
+            <a
+              key={item.title}
+              href={item.href}
+              className="group flex min-h-[170px] flex-col justify-between rounded-md border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-green-300 hover:shadow-md md:p-5"
+            >
+              <div>
+                <div className="mb-3 h-1.5 w-10 rounded-full bg-green-600" />
+                <h3 className="text-base font-bold leading-6 text-slate-950 md:text-lg md:leading-7">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  {item.situation}
+                </p>
+              </div>
+              <div className="mt-5 text-sm font-bold text-green-700">
+                {item.linkLabel} <span aria-hidden="true">→</span>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-
 function NzuSeriesSection() {
   const firstArticle = seriesArticles[0];
 
@@ -584,25 +653,9 @@ export default function BlogPage({ soroArticles = [] }) {
                 </a>
               </div>
 
-              <div className="mt-6 grid gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700 md:mt-8 md:grid-cols-3 md:gap-3 md:pt-6">
-                {[
-                  ["Nejdřív stav domu", "Slabá místa a návaznosti určují, co řešit jako první."],
-                  ["Dotace v kontextu", "NZÚ 2026 může pomoct, ale nemá řídit celé rozhodnutí."],
-                  ["Praxe před teorií", "Ukazujeme postupy na domech, etapách a reálných otázkách klientů."],
-                ].map(([title, text]) => (
-                  <div
-                    key={title}
-                    className="rounded-md border border-slate-200 bg-slate-50 px-3 py-2.5 md:p-4"
-                  >
-                    <div className="font-bold text-slate-900">{title}</div>
-                    <p className="mt-1 text-sm leading-5 md:leading-6">{text}</p>
-                  </div>
-                ))}
-              </div>
-
               <nav
                 aria-label="Kategorie znalostního centra"
-                className="mt-7 hidden gap-7 text-sm font-semibold md:flex"
+                className="mt-8 hidden gap-7 border-t border-slate-200 pt-5 text-sm font-semibold md:flex"
               >
                 <a
                   href="#kde-zacit"
@@ -646,7 +699,7 @@ export default function BlogPage({ soroArticles = [] }) {
 
           <StarterGuide />
 
-          <section id="praxe" className="scroll-mt-6 px-6 py-11 md:px-10">
+          <section id="praxe" className="scroll-mt-6 border-b border-slate-200 px-6 py-11 md:px-10">
             <div className="mx-auto max-w-7xl">
               <h2 className="text-3xl font-bold">Z praxe Enerixu</h2>
               <p className="mt-2 text-sm text-slate-600">
@@ -720,33 +773,36 @@ export default function BlogPage({ soroArticles = [] }) {
 
           <section
             id="expert"
-            className="scroll-mt-6 border-y border-green-100 bg-green-50/60 px-6 py-11 md:px-10"
+            className="scroll-mt-6 border-y border-slate-200 bg-slate-950 px-6 py-11 text-white md:px-10"
           >
             <div className="mx-auto max-w-7xl">
-              <h2 className="text-3xl font-bold">Enerix Expert</h2>
-              <p className="mt-2 text-sm text-slate-600">
-                Odborné know-how pro správná rozhodnutí při renovaci.
-              </p>
+              <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="text-sm font-bold uppercase tracking-[0.16em] text-emerald-300">
+                    Technické souvislosti
+                  </div>
+                  <h2 className="mt-2 text-3xl font-bold">Enerix Expert</h2>
+                </div>
+                <p className="max-w-2xl text-sm leading-6 text-slate-300">
+                  Analytické články pro rozhodování: grafy, skladby konstrukcí,
+                  technické detaily a návaznosti opatření místo další inspirace
+                  fotkami domů.
+                </p>
+              </div>
 
               <div className="mt-6 grid gap-5 md:grid-cols-3">
-                {expertArticles.slice(0, 3).map((article) => (
+                {expertArticles.slice(0, 3).map((article, index) => (
                   <a
                     key={article.slug}
                     href={demoHref(article.slug)}
-                    className="group overflow-hidden rounded-md border border-green-100 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md"
+                    className="group overflow-hidden rounded-md border border-white/10 bg-white/[0.04] shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.07]"
                   >
-                    <div className="aspect-[16/9] overflow-hidden bg-slate-100">
-                      <img
-                        src={article.image}
-                        alt={article.coverAlt || ""}
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                      />
-                    </div>
+                    <ExpertTechnicalVisual article={article} index={index} />
                     <div className="p-5">
-                      <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
+                      <div className="text-xs font-bold uppercase tracking-[0.12em] text-emerald-300">
                         {article.label}
                       </div>
-                      <h3 className="mt-3 text-lg font-bold leading-7">
+                      <h3 className="mt-3 text-lg font-bold leading-7 text-white">
                         {article.title}
                       </h3>
                       <div className="mt-4">
@@ -768,7 +824,7 @@ export default function BlogPage({ soroArticles = [] }) {
 
           <section
             id="pruvodce"
-            className="scroll-mt-6 border-b border-slate-200 px-6 py-11 md:px-10"
+            className="scroll-mt-6 border-b border-slate-200 bg-white px-6 py-11 md:px-10"
           >
             <div className="mx-auto max-w-7xl">
               <h2 className="text-3xl font-bold">Průvodce pojmy</h2>
@@ -778,22 +834,16 @@ export default function BlogPage({ soroArticles = [] }) {
               </p>
 
               <div className="mt-6 grid gap-5 md:grid-cols-3">
-                {guideArticles.slice(0, 6).map((article) => (
+                {guideArticles.slice(0, 6).map((article, index) => (
                   <a
                     key={article.slug}
                     href={demoHref(article.slug)}
                     className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md"
                   >
-                    <div className="aspect-[16/9] overflow-hidden bg-slate-100">
-                      <img
-                        src={article.image}
-                        alt={article.coverAlt || ""}
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                      />
-                    </div>
+                    <ConceptGuideVisual index={index} />
                     <div className="p-5">
                       <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
-                        {article.label}
+                        Průvodce
                       </div>
                       <h3 className="mt-3 text-lg font-bold leading-7">
                         {article.title}
@@ -829,18 +879,19 @@ export default function BlogPage({ soroArticles = [] }) {
                   <a
                     key={article.slug}
                     href={demoHref(article.slug)}
-                    className="group grid min-w-0 grid-cols-[96px_minmax(0,1fr)] gap-4 border-b border-slate-200 pb-5 transition hover:border-green-400 sm:grid-cols-[140px_minmax(0,1fr)] md:grid-cols-1 md:border-b-0 md:pb-0 lg:grid-cols-[120px_minmax(0,1fr)]"
+                    className="group rounded-md border border-slate-200 bg-slate-50/70 p-5 transition hover:border-green-300 hover:bg-green-50/50"
                   >
-                    <div className="aspect-[4/3] overflow-hidden rounded-md bg-slate-100">
-                      <img
-                        src={article.image}
-                        alt={article.coverAlt || ""}
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                      />
-                    </div>
                     <div className="min-w-0">
-                      <h3 className="font-bold leading-6">{article.title}</h3>
-                      <div className="mt-3">
+                      <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
+                        {article.label}
+                      </div>
+                      <h3 className="mt-2 font-bold leading-6">
+                        {article.title}
+                      </h3>
+                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+                        {article.excerpt}
+                      </p>
+                      <div className="mt-4">
                         <ArticleMeta article={article} compact />
                       </div>
                     </div>
