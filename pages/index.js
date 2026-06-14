@@ -1,5 +1,7 @@
+import Head from "next/head";
 import Script from "next/script";
 import { useState } from "react";
+import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
 
 export default function EnerixLandingPage() {
   const [activeService, setActiveService] = useState(null);
@@ -479,6 +481,15 @@ export default function EnerixLandingPage() {
 
   return (
     <>
+      <Head>
+        <title>Enerix | Chytrá renovace domu</title>
+        <meta
+          name="description"
+          content="Enerix pomáhá s renovací domu, energetickým poradenstvím, dotacemi a realizací opatření od zateplení po fotovoltaiku."
+        />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={absoluteUrl("/")} />
+      </Head>
       <Script id="meta-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s)

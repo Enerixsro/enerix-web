@@ -4,6 +4,7 @@ import {
   nzu2026Series,
   SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES,
 } from "../../data/knowledgeCenterSeries";
+import { absoluteUrl } from "../../data/knowledgeCenterArticleMeta";
 import NzuSeriesCover from "../../components/NzuSeriesCover";
 
 const safetyNote =
@@ -729,9 +730,15 @@ function SeriesSidebar({ article }) {
 
 export default function KnowledgeCenterArticle({ article }) {
   const editorial = editorialContent[article.slug];
-  const relatedArticles = (editorial?.related || [])
+  const relatedSlugs = editorial?.related || article.relatedArticles || [];
+  const relatedArticles = relatedSlugs
     .map((slug) => demoArticlesBySlug[slug])
     .filter(Boolean);
+  const isPublished = article.status === "published";
+  const canonicalUrl = absoluteUrl(`/znalostni-centrum/${article.slug}`);
+  const coverImageUrl = article.coverImage?.startsWith("http")
+    ? article.coverImage
+    : absoluteUrl(article.coverImage || "/favicon-32x32.png");
 
   return (
     <>
@@ -843,7 +850,7 @@ export default function KnowledgeCenterArticle({ article }) {
                 ) : (
                   <img
                     src={article.image}
-                    alt=""
+                    alt={article.coverAlt || ""}
                     className="h-full w-full object-cover"
                   />
                 )}

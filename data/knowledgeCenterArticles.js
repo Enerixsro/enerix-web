@@ -610,6 +610,584 @@ const previewArticles = [
     "tables": []
   },
   {
+    "slug": "foukana-a-strikana-izolace",
+    "category": "expert",
+    "categoryLabel": "Enerix Expert",
+    "label": "Enerix Expert",
+    "title": "Foukaná a stříkaná izolace: kdy dává smysl a na co si dát pozor",
+    "excerpt": "Foukaná a stříkaná izolace umí rychle pomoci na půdě, ve stropech i v dutinách. Rozhoduje ale stav konstrukce, vlhkost a správně zvolený materiál.",
+    "image": "/knowledge-center/covers/foukana-strikana-izolace.png",
+    "coverImage": "/knowledge-center/covers/foukana-strikana-izolace.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "7 min čtení",
+    "tags": [
+      "izolace",
+      "strop pod půdou",
+      "zateplení"
+    ],
+    "relatedArticles": [
+      "strecha-pri-renovaci-domu",
+      "co-je-tepelna-ztrata-domu",
+      "vykaz-vymer-a-polozkovy-rozpocet"
+    ],
+    "seoTitle": "Foukaná a stříkaná izolace: kdy dává smysl a na co si dát pozor | Enerix",
+    "seoDescription": "Foukaná a stříkaná izolace umí rychle pomoci na půdě, ve stropech i v dutinách. Rozhoduje ale stav konstrukce, vlhkost a správně zvolený materiál.",
+    "intro": "Foukaná a stříkaná izolace může být velmi praktické řešení tam, kde se klasické desky špatně ukládají nebo kde je potřeba rychle doplnit izolační vrstvu. Nehodí se ale všude a sama o sobě nevyřeší špatnou skladbu, vlhkost ani netěsnosti konstrukce.",
+    "paragraphs": [
+      "Foukaná a stříkaná izolace může být velmi praktické řešení tam, kde se klasické desky špatně ukládají nebo kde je potřeba rychle doplnit izolační vrstvu. Nehodí se ale všude a sama o sobě nevyřeší špatnou skladbu, vlhkost ani netěsnosti konstrukce.",
+      "Rychlé shrnutí",
+      "Dobře dává smysl, když:",
+      "chcete zateplit strop pod nevytápěnou půdou,\nje potřeba vyplnit dutiny nebo členitý prostor,\npůda není určená k běžnému chození bez další úpravy,\nhledáte rychlou realizaci s menším bouráním,\nje konstrukce suchá a technicky v pořádku,\nznáte požadovanou tloušťku a výsledný efekt.",
+      "Opatrnost je na místě, když:",
+      "není jasný stav konstrukce,\nv prostoru je vlhkost nebo zatékání,\nchybí návrh skladby,\nizolace se má jen \"někam nafoukat\" bez detailu,\nnení jasné, zda půda zůstane nevytápěná,\nnabídka nepopisuje materiál, objem, tloušťku a přípravu.",
+      "Co je foukaná a stříkaná izolace",
+      "Foukaná izolace se aplikuje pomocí stroje, který materiál dopraví hadicí do připraveného prostoru. Často se používá na stropy pod půdou, do dutin nebo do míst, kam by se desková izolace ukládala složitě.",
+      "Stříkaná izolace se nanáší přímo na konstrukci. Podle typu materiálu může vytvořit souvislou vrstvu i na členitém podkladu. U některých řešení je důležité velmi pečlivě řešit vlhkost, větrání a požární souvislosti.",
+      "Obě technologie mají společnou výhodu: umí se dostat tam, kde by klasická montáž byla pracná. Zároveň ale vyžadují dobré zadání.",
+      "Kde se používá nejčastěji",
+      "U rodinných domů se často řeší hlavně strop pod nevytápěnou půdou. Pokud půda nemá být obytným podkrovím, bývá zateplení stropu jednoduché a účinné opatření. Více k rozhodování mezi střechou a stropem popisuje článek Střecha při renovaci domu.",
+      "Další možností jsou dutiny ve stropních konstrukcích, hůře dostupná zákoutí nebo doplnění izolace v místech, kde klasická deska nevytvoří spojitou vrstvu.",
+      "Nejde ale o univerzální odpověď na každý tepelný únik. Pokud je problém v oknech, fasádě, vlhkosti nebo špatném větrání, izolace v půdě vyřeší jen část příběhu.",
+      "Na co se v praxi zapomíná",
+      "Nejdřív je potřeba vědět, co izolujeme. Strop pod půdou, šikmou střechu, dutinu, nebo technický detail? Každá situace má jinou skladbu a jiné riziko.",
+      "Důležitá je také pochůznost. Když se na půdu nafouká izolace a nikdo neřeší lávky, úložné plochy nebo přístup ke komínu, může být výsledek nepraktický hned první zimu.",
+      "Další téma je vítr a proudění vzduchu. Izolační vrstva má fungovat jako souvislá vrstva, ne jako materiál, kterým nekontrolovaně profukuje. U některých půd se proto řeší zakrytí, větrotěsnost a ochrana před rozfoukáním.",
+      "Souvislost s dotací",
+      "U dotačních programů se obvykle neposuzuje jen to, že se použije určitý typ izolace. Důležitý je rozsah opatření, konstrukce, technické parametry a doložení provedení podle aktuálních podmínek konkrétní žádosti.",
+      "Pokud má být izolace součástí dotovaného zateplení, je potřeba předem vědět, jaká plocha se řeší, jaká tloušťka se navrhuje a jak se výsledek promítne do energetického hodnocení nebo dalších podkladů.",
+      "Jak poznat rozumnou nabídku",
+      "Dobrá nabídka by měla popsat:",
+      "jaký materiál se použije,\nkam přesně se izolace aplikuje,\njaká bude návrhová tloušťka,\njak se připraví podklad,\nzda se řeší pochůzné lávky nebo úložné části,\njak se ochrání prostupy a technické prvky,\nco je v ceně a co už ne,\njak se doloží skutečně provedený rozsah.",
+      "Kdy dává smysl vzít si odbornou pomoc",
+      "Odborná pomoc se vyplatí hlavně tehdy, když není jasné, zda řešit strop, střechu nebo širší zateplení domu. Enerix může pomoci se zadáním, porovnáním nabídek a návazností na tepelnou ztrátu domu, fasádu nebo dotační podklady.",
+      "Shrnutí",
+      "Foukaná a stříkaná izolace může být rychlé a účinné opatření. Funguje ale nejlépe tehdy, když má jasné zadání, suchou konstrukci, správnou skladbu a promyšlené detaily. Není to jen materiál v hadici. Je to součást celkové energetiky domu."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "rekuperace-a-rizene-vetrani",
+    "category": "expert",
+    "categoryLabel": "Enerix Expert",
+    "label": "Enerix Expert",
+    "title": "Rekuperace a řízené větrání: kdy pomáhá a co od ní čekat",
+    "excerpt": "Rekuperace není klimatizace ani zázračný úsporný stroj. Je to řízené větrání, které může výrazně zlepšit vzduch, vlhkost a komfort v těsnějším domě.",
+    "image": "/knowledge-center/covers/rekuperace-rizene-vetrani.png",
+    "coverImage": "/knowledge-center/covers/rekuperace-rizene-vetrani.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "7 min čtení",
+    "tags": [
+      "rekuperace",
+      "řízené větrání",
+      "vlhkost"
+    ],
+    "relatedArticles": [
+      "okna-a-dvere-pri-renovaci-domu",
+      "zatepleni-domu-neni-jen-cena-za-metr",
+      "projektova-dokumentace-druhy"
+    ],
+    "seoTitle": "Rekuperace a řízené větrání: kdy pomáhá a co od ní čekat | Enerix",
+    "seoDescription": "Rekuperace není klimatizace ani zázračný úsporný stroj. Je to řízené větrání, které může výrazně zlepšit vzduch, vlhkost a komfort v těsnějším domě.",
+    "intro": "Čím lépe dům utěsníme a zateplíme, tím důležitější je vědomě řešit větrání. Rekuperace pomáhá pravidelně měnit vzduch a část tepla z odváděného vzduchu vracet zpět. Není to ale klimatizace ani náhrada dobrého návrhu domu.",
+    "paragraphs": [
+      "Čím lépe dům utěsníme a zateplíme, tím důležitější je vědomě řešit větrání. Rekuperace pomáhá pravidelně měnit vzduch a část tepla z odváděného vzduchu vracet zpět. Není to ale klimatizace ani náhrada dobrého návrhu domu.",
+      "Rychlé shrnutí",
+      "Rekuperace často dává smysl, když:",
+      "měníte okna za výrazně těsnější,\nzateplujete obálku domu,\nřešíte vlhkost, vydýchaný vzduch nebo plísně,\nnechcete větrat jen nárazově okny,\nplánujete větší rekonstrukci interiéru,\nje možné rozumně vést rozvody.",
+      "Opatrnost je na místě, když:",
+      "není jasné, kudy povedou rozvody,\nsystém se navrhuje bez ohledu na dispozici,\nočekáváte chlazení jako od klimatizace,\nnení vyřešen servis a filtry,\njednotka nemá vhodné místo,\nřeší se jen cena zařízení, ne provoz a montáž.",
+      "Co rekuperace vlastně dělá",
+      "Rekuperace je řízené větrání se zpětným získáváním tepla. Systém odvádí vzduch z místností, kde vzniká vlhkost a pachy, a přivádí čerstvý vzduch do obytných místností.",
+      "Ve výměníku se část tepla z odváděného vzduchu předá vzduchu přiváděnému. Dům tedy větrá pravidelněji a s menší tepelnou ztrátou než při běžném otevření oken.",
+      "Neznamená to, že okna už nesmíte otevřít. Znamená to, že základní výměna vzduchu nestojí jen na tom, zda si na větrání někdo vzpomene.",
+      "Proč téma roste po výměně oken",
+      "Starší okna často netěsní. Energeticky je to nevýhodné, ale částečně tím probíhá přirozená výměna vzduchu. Po výměně za nová těsná okna se dům chová jinak.",
+      "Může se objevit vyšší vlhkost, rosení skel, zatuchlý vzduch nebo plísně v chladných místech. Více k tomu navazuje článek Okna a dveře při renovaci domu.",
+      "Rekuperace není jediná možnost, ale u větších renovací často stojí za zvážení.",
+      "Centrální a lokální řešení",
+      "Centrální systém má jednu jednotku a rozvody do více místností. Je vhodný hlavně při větší rekonstrukci, kdy lze rozvody schovat do podhledů, půdy, technických tras nebo nových konstrukcí.",
+      "Lokální jednotky větrají jednotlivé místnosti. Mohou být jednodušší na instalaci, ale nejsou stejným řešením jako promyšlený centrální systém. Hodí se spíš tam, kde je zásah do domu omezený.",
+      "Správná volba závisí na dispozici, rozsahu rekonstrukce a očekáváních.",
+      "Praktické detaily",
+      "U rekuperace se neřeší jen jednotka. Rozhodují také trasy rozvodů, akustika, přístup k filtrům, odvod kondenzátu, umístění sání a výfuku, požární a hygienické souvislosti i regulace.",
+      "Systém má být tichý, servisovatelný a srozumitelný pro běžný provoz. Pokud je uživatel nucen systém vypínat, protože hučí nebo obtěžuje, návrh neplní svůj účel.",
+      "Souvislost s dotací",
+      "Podpora řízeného větrání se vždy posuzuje podle aktuálních podmínek programu a typu žádosti. Důležité bývá, zda jde o uznatelný systém, jaké parametry splňuje, jak je doložený návrh a jak souvisí s ostatními opatřeními v domě.",
+      "Není rozumné brát dotaci jako jediný důvod. Rekuperace má hlavně pomáhat domu a lidem v něm.",
+      "Jak poznat rozumnou nabídku",
+      "Dobrá nabídka by měla vysvětlit:",
+      "zda jde o centrální nebo lokální systém,\nkudy povedou rozvody,\nkde bude jednotka,\njak se bude řešit hluk,\njak se budou měnit filtry,\njaký bude rozsah stavebních prací,\njak systém navazuje na okna, zateplení a dispozici domu.",
+      "Shrnutí",
+      "Rekuperace dává největší smysl v domě, který se stává těsnějším a úspornějším. Pomáhá s pravidelným větráním, vlhkostí a komfortem. Neřeší ale všechno sama. Potřebuje dobrý návrh, rozumné trasy a praktický provoz."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "sadrokartony-pri-rekonstrukci-domu",
+    "category": "expert",
+    "categoryLabel": "Enerix Expert",
+    "label": "Enerix Expert",
+    "title": "Sádrokartony při rekonstrukci domu: nejde jen o příčky a podhledy",
+    "excerpt": "Sádrokarton často rozhoduje o tom, jak se do domu schovají izolace, rozvody, rekuperace nebo nové dispozice. Důležitá je skladba, vlhkost, požár i akustika.",
+    "image": "/knowledge-center/covers/sadrokartony-rekonstrukce.png",
+    "coverImage": "/knowledge-center/covers/sadrokartony-rekonstrukce.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "6 min čtení",
+    "tags": [
+      "sádrokarton",
+      "rekonstrukce",
+      "interiér"
+    ],
+    "relatedArticles": [
+      "rekuperace-a-rizene-vetrani",
+      "strecha-pri-renovaci-domu",
+      "projektova-dokumentace-druhy"
+    ],
+    "seoTitle": "Sádrokartony při rekonstrukci domu: nejde jen o příčky a podhledy | Enerix",
+    "seoDescription": "Sádrokarton často rozhoduje o tom, jak se do domu schovají izolace, rozvody, rekuperace nebo nové dispozice. Důležitá je skladba, vlhkost, požár i akustika.",
+    "intro": "Sádrokartonové konstrukce se při rekonstrukci často berou jako dokončovací práce. Ve skutečnosti ale ovlivňují vedení rozvodů, zateplení, akustiku, požární bezpečnost, vlhkost a výsledný komfort místností.",
+    "paragraphs": [
+      "Sádrokartonové konstrukce se při rekonstrukci často berou jako dokončovací práce. Ve skutečnosti ale ovlivňují vedení rozvodů, zateplení, akustiku, požární bezpečnost, vlhkost a výsledný komfort místností.",
+      "Rychlé shrnutí",
+      "Sádrokarton často dává smysl, když:",
+      "měníte dispozici domu,\nupravujete podkroví,\npotřebujete schovat rozvody,\nřešíte podhledy, předstěny nebo instalační šachty,\nnavazujete na zateplení střechy,\npřipravujete trasy pro rekuperaci nebo elektroinstalaci.",
+      "Opatrnost je na místě, když:",
+      "není jasná skladba konstrukce,\npoužívá se nevhodná deska do vlhkého prostoru,\nneřeší se parozábrana ve střeše,\nnabídka popisuje jen metry čtvereční bez detailů,\nkonstrukce má nést těžké prvky bez výztuh,\nnení jasné, kde povedou rozvody.",
+      "Sádrokarton jako součást systému",
+      "Sádrokarton není jen deska přišroubovaná na profil. Je to systém z profilů, desek, výztuh, izolace, pásek, tmelů, spojů a detailů.",
+      "V běžné rekonstrukci se používá pro příčky, podhledy, obklady šikmin, předstěny, instalační prostory nebo zakrytí technologií. Každé použití má jinou skladbu.",
+      "U podkroví může sádrokarton navazovat na zateplení střechy a parozábranu. U koupelny se řeší vlhkost. U technické místnosti požár a servisní přístup. U ložnic akustika.",
+      "Podkroví a šikminy",
+      "V podkroví nejde jen o pěkně rovnou plochu. Důležité je, co je za ní. Zateplení, parozábrana, prostupy, napojení na stěny, střešní okna a rozvody.",
+      "Pokud se parozábrana poškodí nebo špatně napojí, může se vlhkost dostávat do konstrukce střechy. To není detail pro estetiku, ale pro životnost. Více k tomu navazuje článek Střecha při renovaci domu.",
+      "Rozvody, rekuperace a servis",
+      "Podhledy a předstěny často slouží jako prostor pro elektroinstalaci, vodu, odpady, vzduchotechniku nebo rozvody rekuperace. To může být velmi praktické, pokud se s tím počítá dopředu.",
+      "Problém vzniká, když se sádrokarton udělá dřív, než jsou jasné trasy. Pak se znovu řeže, opravuje a improvizuje.",
+      "U technologií je důležitý servisní přístup. Revizní dvířka nejsou estetický nedostatek. Často rozhodují o tom, zda půjde systém v budoucnu normálně udržovat.",
+      "Vlhkost, požár a akustika",
+      "Do koupelen a vlhkých prostor patří vhodné desky a správná skladba. Kolem krbů, technických místností nebo instalačních šachet mohou vstupovat do hry požární požadavky. U příček mezi místnostmi zase akustika.",
+      "Proto není dobré porovnávat nabídky jen podle ceny za metr. Dvě konstrukce mohou na pohled vypadat stejně, ale technicky plnit úplně jinou funkci.",
+      "Jak poznat rozumnou nabídku",
+      "Nabídka by měla popsat:",
+      "typ konstrukce,\ntyp desek,\nskladbu a tloušťku,\nzda je součástí izolace,\npožární nebo akustické požadavky,\nvýztuhy pro zavěšené prvky,\nrevizní otvory,\nkvalitu finálního tmelení,\nnávaznost na rozvody a další profese.",
+      "Shrnutí",
+      "Sádrokarton při rekonstrukci není jen rychlý způsob, jak udělat příčku. Je to vrstva, která propojuje techniku domu s výsledným interiérem. Když se navrhne správně, pomůže schovat rozvody, zlepšit komfort a připravit prostor pro další opatření. Když se řeší pozdě, umí zkomplikovat celý postup."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "co-je-tepelna-ztrata-domu",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Co je tepelná ztráta domu a proč rozhoduje o vytápění",
+    "excerpt": "Tepelná ztráta říká, jaký výkon musí zdroj tepla dodat, aby dům v zimních návrhových podmínkách udržel požadovanou teplotu.",
+    "image": "/knowledge-center/covers/tepelna-ztrata-domu.png",
+    "coverImage": "/knowledge-center/covers/tepelna-ztrata-domu.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "5 min čtení",
+    "tags": [
+      "tepelná ztráta",
+      "vytápění",
+      "energetika domu"
+    ],
+    "relatedArticles": [
+      "tepelne-cerpadlo-v-rodinnem-dome",
+      "zatepleni-domu-neni-jen-cena-za-metr",
+      "strecha-pri-renovaci-domu"
+    ],
+    "seoTitle": "Co je tepelná ztráta domu a proč rozhoduje o vytápění | Enerix",
+    "seoDescription": "Tepelná ztráta říká, jaký výkon musí zdroj tepla dodat, aby dům v zimních návrhových podmínkách udržel požadovanou teplotu.",
+    "intro": "Tepelná ztráta je jeden z nejdůležitějších údajů při návrhu vytápění. Říká, kolik tepla dům ztrácí v návrhových zimních podmínkách a jak silný zdroj tepla potřebuje.",
+    "paragraphs": [
+      "Tepelná ztráta je jeden z nejdůležitějších údajů při návrhu vytápění. Říká, kolik tepla dům ztrácí v návrhových zimních podmínkách a jak silný zdroj tepla potřebuje.",
+      "Jednoduché vysvětlení",
+      "Dům v zimě ztrácí teplo přes stěny, střechu, okna, podlahu, větrání a netěsnosti. Tepelná ztráta popisuje okamžitý výkon, který je potřeba dodat, aby uvnitř zůstala požadovaná teplota.",
+      "Udává se v kilowattech, tedy kW. Tady je důležité neplést výkon a energii. kW říká, jak silný zdroj potřebujete v daný okamžik. kWh říká, kolik energie se spotřebuje za určitou dobu.",
+      "Proč je důležitá u tepelného čerpadla",
+      "Tepelné čerpadlo se nemá navrhovat podle dojmu ani podle výkonu starého kotle. Starý kotel mohl být výrazně předimenzovaný. Pokud se podle něj vybere nové zařízení, může být zbytečně velké, drahé a provozně méně vhodné.",
+      "Proto článek Tepelné čerpadlo v rodinném domě staví návrh právě na tepelné ztrátě a otopné soustavě.",
+      "Co tepelnou ztrátu ovlivňuje",
+      "Největší vliv má obálka domu:",
+      "fasáda a obvodové stěny,\nstřecha nebo strop pod půdou,\nokna a dveře,\npodlaha nad terénem nebo nevytápěným prostorem,\nvětrání a netěsnosti,\nvelikost a tvar domu.",
+      "Proto se tepelná ztráta mění, když dům zateplíte, vyměníte okna nebo upravíte střechu.",
+      "Odhad není totéž co výpočet",
+      "Pro první orientaci někdy stačí kvalifikovaný odhad. Pro návrh zdroje, porovnání nabídek nebo dotační podklady ale bývá potřeba přesnější výpočet podle konkrétního domu.",
+      "Rozumný postup je ptát se, z čeho návrh vychází. Pokud nabídka na zdroj tepla nepracuje s tepelnou ztrátou ani s popisem domu, je to slabé místo.",
+      "Souvislost s renovací",
+      "Tepelná ztráta pomáhá rozhodnout pořadí opatření. Někdy je lepší nejdřív snížit ztráty domu a teprve potom řešit nový zdroj. Jindy je starý zdroj na konci životnosti a výměnu nelze odkládat.",
+      "Neexistuje jediný správný scénář. Důležité je vědět, jak se jednotlivá rozhodnutí ovlivňují.",
+      "Shrnutí",
+      "Tepelná ztráta je základní číslo pro návrh vytápění. Pomáhá určit výkon zdroje, posoudit vhodnost tepelného čerpadla a pochopit efekt zateplení, oken nebo střechy. Bez ní se snadno porovnávají nabídky, které ve skutečnosti nevycházejí ze stejného zadání."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "co-je-penb",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Co je PENB a kdy ho budete potřebovat",
+    "excerpt": "PENB je průkaz energetické náročnosti budovy. Neříká jen jednu známku, ale popisuje energetické vlastnosti domu podle stanovené metodiky.",
+    "image": "/knowledge-center/covers/penb-prukaz.png",
+    "coverImage": "/knowledge-center/covers/penb-prukaz.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "5 min čtení",
+    "tags": [
+      "PENB",
+      "energetická náročnost",
+      "dokumentace"
+    ],
+    "relatedArticles": [
+      "renovacni-pas",
+      "odborny-posudek-pro-dotaci",
+      "co-je-tepelna-ztrata-domu"
+    ],
+    "seoTitle": "Co je PENB a kdy ho budete potřebovat | Enerix",
+    "seoDescription": "PENB je průkaz energetické náročnosti budovy. Neříká jen jednu známku, ale popisuje energetické vlastnosti domu podle stanovené metodiky.",
+    "intro": "PENB znamená průkaz energetické náročnosti budovy. U rodinných domů se s ním můžete setkat při prodeji, pronájmu, větších úpravách, novostavbě nebo v některých dotačních a energetických souvislostech.",
+    "paragraphs": [
+      "PENB znamená průkaz energetické náročnosti budovy. U rodinných domů se s ním můžete setkat při prodeji, pronájmu, větších úpravách, novostavbě nebo v některých dotačních a energetických souvislostech.",
+      "Co PENB popisuje",
+      "PENB hodnotí energetickou náročnost budovy podle stanovené metodiky. Nejde jen o spotřebu, kterou vidíte na faktuře. Do hodnocení vstupují konstrukce domu, technické systémy, vytápění, ohřev vody, větrání a další parametry.",
+      "Výsledkem je průkaz s grafickou částí a podrobnějšími údaji. Veřejnost si často pamatuje hlavně písmeno energetické třídy, ale pro technické rozhodování jsou důležité i podklady a výpočtová část.",
+      "Kdy se s ním setkáte",
+      "PENB můžete potřebovat například při prodeji nebo pronájmu nemovitosti, u novostavby, při významnější změně dokončené budovy nebo v návaznosti na dotační a projektové podklady. Konkrétní povinnosti se vždy posuzují podle aktuálních předpisů a situace domu.",
+      "U renovací může být PENB jedním z podkladů, který pomáhá popsat současný nebo navrhovaný stav domu. Není ale totéž co projektová dokumentace ani rozpočet.",
+      "PENB a dotace",
+      "V některých případech může být energetické hodnocení nebo průkaz součástí dotační přípravy. Záleží na typu žádosti, rozsahu opatření a aktuálních pravidlech programu.",
+      "Není rozumné slibovat, že samotný PENB automaticky znamená získání podpory. Je to podklad, ne garance výsledku.",
+      "Kdo PENB zpracovává",
+      "PENB zpracovává oprávněná osoba podle příslušných pravidel. Pro majitele domu je praktické dodat co nejlepší podklady: výkresy, skladby konstrukcí, informace o zdroji tepla, oknech, zateplení a skutečném stavu domu.",
+      "Když podklady chybí, musí se více věcí zjišťovat nebo odhadovat. To může práci prodloužit a zhoršit přesnost.",
+      "Jak souvisí s dalšími dokumenty",
+      "PENB se často plete s renovačním pasem, odborným posudkem nebo projektovou dokumentací. Každý dokument má jinou roli.",
+      "Renovační pas popisuje plán renovace. Projektová dokumentace říká, jak se má stavba provést nebo povolit. Odborný posudek pro dotaci dokládá požadované skutečnosti pro konkrétní žádost.",
+      "Shrnutí",
+      "PENB je energetický průkaz domu. Pomáhá popsat energetickou náročnost budovy, ale nenahrazuje projekt, rozpočet ani samotnou dotační žádost. Při renovaci je užitečný hlavně tehdy, když zapadá do širší přípravy a stojí na dobrých podkladech."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "renovacni-pas",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Renovační pas: plán renovace, ne projektová dokumentace",
+    "excerpt": "Renovační pas pomáhá naplánovat postup renovace domu v etapách. Není to prováděcí projekt ani detailní položkový rozpočet.",
+    "image": "/knowledge-center/covers/renovacni-pas.png",
+    "coverImage": "/knowledge-center/covers/renovacni-pas.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "5 min čtení",
+    "tags": [
+      "renovační pas",
+      "plán renovace",
+      "dotace"
+    ],
+    "relatedArticles": [
+      "co-je-penb",
+      "projektova-dokumentace-druhy",
+      "odborny-posudek-pro-dotaci"
+    ],
+    "seoTitle": "Renovační pas: plán renovace, ne projektová dokumentace | Enerix",
+    "seoDescription": "Renovační pas pomáhá naplánovat postup renovace domu v etapách. Není to prováděcí projekt ani detailní položkový rozpočet.",
+    "intro": "Renovační pas je dokument, který pomáhá popsat stav domu a navrhnout smysluplný postup renovace. Jeho smyslem není nahradit projektanta ani stavební firmu, ale dát majiteli domu plán, v jakém pořadí a proč opatření řešit.",
+    "paragraphs": [
+      "Renovační pas je dokument, který pomáhá popsat stav domu a navrhnout smysluplný postup renovace. Jeho smyslem není nahradit projektanta ani stavební firmu, ale dát majiteli domu plán, v jakém pořadí a proč opatření řešit.",
+      "K čemu slouží",
+      "U staršího domu bývá těžké rozhodnout, čím začít. Fasáda, okna, střecha, zdroj tepla, fotovoltaika, větrání nebo rozvody spolu souvisí.",
+      "Renovační pas pomáhá pojmenovat současný stav a navrhnout kroky tak, aby se opatření navzájem nekazila. Například aby se okna neosadila způsobem, který zkomplikuje budoucí zateplení, nebo aby se zdroj tepla nenavrhl bez ohledu na plánované snížení tepelné ztráty.",
+      "Co obvykle obsahuje",
+      "Konkrétní obsah záleží na metodice a účelu. Typicky se ale pracuje s popisem domu, energetickými souvislostmi, návrhem opatření, etapizací a doporučením dalšího postupu.",
+      "U dotačních souvislostí je potřeba řídit se aktuálními pravidly programu a požadavky na zpracování.",
+      "Co renovační pas není",
+      "Renovační pas není prováděcí projekt. Neříká do posledního detailu, jak má být provedeno kotvení fasády, kudy přesně povede elektroinstalace nebo jak bude vypadat každý detail střechy.",
+      "Není to ani položkový rozpočet. Může pomoci rozhodnout směr, ale pro porovnání nabídek je potřeba přesnější zadání a často také výkaz výměr.",
+      "Proč je užitečný",
+      "Největší hodnota renovačního pasu je v návaznostech. Majiteli domu pomáhá udělat si pořádek v tom, co má řešit hned, co později a co je lepší nechat být.",
+      "U komplexnější renovace může být rozdíl mezi dobrým a špatným pořadím velmi drahý. Některé chyby se projeví až ve chvíli, kdy je hotovo.",
+      "Souvislost s dotací",
+      "V některých případech může renovační pas souviset s dotačním poradenstvím nebo konkrétní žádostí. Záleží na aktuálních podmínkách programu, typu podpory a rozsahu opatření.",
+      "Je důležité nepůsobit dojmem, že renovační pas sám o sobě zaručuje podporu. Je to podklad pro rozhodování a případně pro další kroky.",
+      "Shrnutí",
+      "Renovační pas je plán renovace. Pomáhá pochopit stav domu, navrhnout kroky a vyhnout se špatnému pořadí opatření. Projektovou dokumentaci ani detailní rozpočet ale nenahrazuje."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "projektova-dokumentace-druhy",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Projektová dokumentace: jaké existují druhy a k čemu slouží",
+    "excerpt": "Projektová dokumentace není jeden univerzální dokument. Jiný účel má studie, dokumentace pro povolení, prováděcí projekt i dokumentace skutečného stavu.",
+    "image": "/knowledge-center/covers/projektova-dokumentace.png",
+    "coverImage": "/knowledge-center/covers/projektova-dokumentace.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "5 min čtení",
+    "tags": [
+      "projektová dokumentace",
+      "povolení",
+      "rekonstrukce"
+    ],
+    "relatedArticles": [
+      "pasport-stavby",
+      "renovacni-pas",
+      "vykaz-vymer-a-polozkovy-rozpocet"
+    ],
+    "seoTitle": "Projektová dokumentace: jaké existují druhy a k čemu slouží | Enerix",
+    "seoDescription": "Projektová dokumentace není jeden univerzální dokument. Jiný účel má studie, dokumentace pro povolení, prováděcí projekt i dokumentace skutečného stavu.",
+    "intro": "Když se řekne projekt, může to znamenat několik různých věcí. Někdy jde o první návrh, jindy o dokumentaci pro povolení, prováděcí podklady pro firmu nebo popis skutečného stavu.",
+    "paragraphs": [
+      "Když se řekne projekt, může to znamenat několik různých věcí. Někdy jde o první návrh, jindy o dokumentaci pro povolení, prováděcí podklady pro firmu nebo popis skutečného stavu.",
+      "Proč na tom záleží",
+      "Majitel domu často řekne: potřebuju projekt. Jenže není jedno, k čemu má sloužit. Jiný dokument potřebujete pro základní rozhodnutí, jiný pro úřad a jiný pro přesnou realizaci.",
+      "Když se účel nepojmenuje, snadno vznikne nedorozumění. Jeden člověk čeká podklad pro stavební firmu, druhý dodá jednodušší dokument pro povolení a třetí se podle toho snaží nacenit práci.",
+      "Studie nebo koncepční návrh",
+      "Studie pomáhá rozhodnout směr. Řeší dispoziční, technické nebo energetické varianty, ale obvykle nejde do prováděcích detailů.",
+      "Je užitečná ve chvíli, kdy ještě nevíte, co přesně chcete realizovat.",
+      "Dokumentace pro povolení",
+      "Tento typ dokumentace slouží pro jednání s úřadem podle aktuálních stavebních předpisů a konkrétní situace stavby. Rozsah se může lišit podle typu záměru.",
+      "Není dobré předpokládat, že dokumentace pro povolení automaticky stačí stavební firmě pro přesné provedení každého detailu.",
+      "Prováděcí dokumentace",
+      "Prováděcí dokumentace jde více do detailu. Pomáhá definovat skladby, návaznosti, technická řešení a podklady pro realizaci.",
+      "U složitější rekonstrukce může výrazně snížit prostor pro improvizaci. Zvlášť když se řeší fasáda, střecha, okna, technologie a interiér současně.",
+      "Dokumentace skutečného stavu a pasport",
+      "U starších domů často chybí původní výkresy nebo neodpovídají realitě. Pak může být potřeba nejdřív popsat skutečný stav. Tomu se věnuje článek Pasport stavby.",
+      "Bez znalosti skutečného stavu se špatně navrhuje i nacení.",
+      "Souvislost s dotací",
+      "U dotací může být potřeba doložit různé technické podklady podle typu žádosti a opatření. Někdy stačí jednodušší rozsah, jindy je potřeba podrobnější dokumentace nebo odborný posudek.",
+      "Konkrétní požadavky je vždy potřeba ověřit podle aktuálních podmínek programu.",
+      "Shrnutí",
+      "Projektová dokumentace není jedna věc. Před objednáním je dobré vědět, zda potřebujete studii, dokumentaci pro povolení, prováděcí projekt, pasport nebo podklad pro rozpočet. Správný typ dokumentace šetří čas, peníze i nedorozumění."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "pasport-stavby",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Pasport stavby: když potřebujete popsat skutečný stav",
+    "excerpt": "Pasport stavby zachycuje skutečný stav domu. Hodí se hlavně tehdy, když chybí původní výkresy nebo neodpovídají realitě.",
+    "image": "/knowledge-center/covers/pasport-stavby.png",
+    "coverImage": "/knowledge-center/covers/pasport-stavby.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "4 min čtení",
+    "tags": [
+      "pasport stavby",
+      "skutečný stav",
+      "dokumentace"
+    ],
+    "relatedArticles": [
+      "projektova-dokumentace-druhy",
+      "renovacni-pas",
+      "co-je-penb"
+    ],
+    "seoTitle": "Pasport stavby: když potřebujete popsat skutečný stav | Enerix",
+    "seoDescription": "Pasport stavby zachycuje skutečný stav domu. Hodí se hlavně tehdy, když chybí původní výkresy nebo neodpovídají realitě.",
+    "intro": "U starších domů často chybí původní dokumentace nebo se dům během let změnil. Pasport stavby pomáhá popsat, jak dům skutečně vypadá dnes.",
+    "paragraphs": [
+      "U starších domů často chybí původní dokumentace nebo se dům během let změnil. Pasport stavby pomáhá popsat, jak dům skutečně vypadá dnes.",
+      "K čemu slouží",
+      "Pasport je zjednodušená dokumentace skutečného stavu stavby. Může obsahovat výkresy, základní technický popis a další údaje podle účelu zpracování.",
+      "Je užitečný ve chvíli, kdy se potřebujete opřít o reálný stav domu. Například před rekonstrukcí, při jednání s úřady nebo jako podklad pro další projektování.",
+      "Proč nestačí staré výkresy",
+      "Mnoho domů prošlo úpravami, které nejsou dobře zdokumentované. Přístavby, změny otvorů, nové rozvody, úpravy střechy nebo dispozice se často dělaly postupně.",
+      "Starý výkres proto může být dobrý orientační podklad, ale nemusí odpovídat realitě. Pokud se podle něj nacení nebo navrhne rekonstrukce, může se během realizace objevit řada překvapení.",
+      "Pasport a projekt",
+      "Pasport popisuje stav. Projekt navrhuje změnu. To je jednoduchý, ale důležitý rozdíl.",
+      "U rekonstrukce může být pasport první krok. Teprve když víte, co skutečně stojí, má smysl navrhovat, co se bude měnit.",
+      "Souvislost s dotací a renovací",
+      "U dotačních nebo energetických podkladů může být znalost skutečného stavu zásadní. Plochy konstrukcí, typy oken, skladby a technické systémy se nedají dlouhodobě stavět jen na odhadu.",
+      "Konkrétní požadavky na doložení se vždy řídí aktuálními pravidly daného programu a účelem žádosti.",
+      "Jak poznat rozumný pasport",
+      "Dobrý pasport má být srozumitelný a použitelný. Měl by jasně popsat, co bylo zjištěno, z čeho se vycházelo a kde jsou případné nejistoty.",
+      "U starších domů je fér přiznat, že některé skladby konstrukcí nemusí být bez sondy přesně známé. Pasport není kouzelný rentgen domu.",
+      "Shrnutí",
+      "Pasport stavby pomáhá uvést věci do reality. Je praktický hlavně tam, kde chybí dokumentace nebo neodpovídá skutečnému stavu. Pro dobrou renovaci je často lepší nejdřív vědět, co máte, a teprve potom řešit, co chcete změnit."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "vykaz-vymer-a-polozkovy-rozpocet",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Výkaz výměr a položkový rozpočet: proč rozhodují o porovnání nabídek",
+    "excerpt": "Bez výkazu výměr se nabídky špatně porovnávají. Každá firma může počítat jiný rozsah a výsledná cena pak neříká totéž.",
+    "image": "/knowledge-center/covers/vykaz-vymer-rozpocet.png",
+    "coverImage": "/knowledge-center/covers/vykaz-vymer-rozpocet.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "5 min čtení",
+    "tags": [
+      "výkaz výměr",
+      "rozpočet",
+      "nabídky"
+    ],
+    "relatedArticles": [
+      "zatepleni-domu-neni-jen-cena-za-metr",
+      "projektova-dokumentace-druhy",
+      "strecha-pri-renovaci-domu"
+    ],
+    "seoTitle": "Výkaz výměr a položkový rozpočet: proč rozhodují o porovnání nabídek | Enerix",
+    "seoDescription": "Bez výkazu výměr se nabídky špatně porovnávají. Každá firma může počítat jiný rozsah a výsledná cena pak neříká totéž.",
+    "intro": "Cena renovace není jen jedno číslo na konci nabídky. Důležité je vědět, co přesně je v ceně zahrnuto. K tomu slouží výkaz výměr a položkový rozpočet.",
+    "paragraphs": [
+      "Cena renovace není jen jedno číslo na konci nabídky. Důležité je vědět, co přesně je v ceně zahrnuto. K tomu slouží výkaz výměr a položkový rozpočet.",
+      "Co je výkaz výměr",
+      "Výkaz výměr je přehled množství prací a materiálů. Například kolik metrů čtverečních fasády se zatepluje, kolik metrů parapetů se mění, kolik je oken, jaká plocha střechy se řeší nebo kolik metrů rozvodů se předpokládá.",
+      "Bez výměr se nabídka opírá o hrubý odhad. To může stačit pro první orientaci, ale ne pro férové porovnání.",
+      "Co je položkový rozpočet",
+      "Položkový rozpočet rozepisuje práce, materiály a jednotkové ceny. Díky tomu je vidět, z čeho se výsledná cena skládá.",
+      "U rekonstrukcí je to důležité, protože dvě nabídky se stejnou výslednou cenou mohou obsahovat úplně jiný rozsah. Jedna počítá lešení, parapety a likvidaci odpadu, druhá ne.",
+      "Proč nestačí cena za metr",
+      "U fasády, střechy nebo sádrokartonu se často porovnává cena za metr čtvereční. Jenže metr čtvereční není všechno.",
+      "Rozhoduje příprava, detaily, materiál, doplňky, klempířina, prostupy, začištění, přesuny hmot, odpad i návaznosti na další práce.",
+      "Proto článek Zateplení domu není jen cena za metr zdůrazňuje rozsah nabídky, ne jen jednotkovou cenu.",
+      "Jak pomáhá při porovnání firem",
+      "Když mají všechny firmy stejné zadání a stejné výměry, porovnáváte podobnější věci. Pořád mohou existovat rozdíly v kvalitě, termínech a technologii, ale základ je férovější.",
+      "Když každá firma měří a předpokládá něco jiného, výsledné nabídky se tváří jako srovnatelné, ale nejsou.",
+      "Souvislost s dotací",
+      "U dotačních projektů může být potřeba doložit rozsah prací, faktury, technické parametry nebo další podklady podle aktuálních pravidel. Výkaz výměr a rozpočet mohou pomoci udržet pořádek v tom, co se skutečně realizuje.",
+      "Neznamená to ale, že samotný rozpočet nahrazuje odborný posudek nebo jiné požadované dokumenty.",
+      "Shrnutí",
+      "Výkaz výměr říká kolik. Položkový rozpočet říká za co. Společně pomáhají porovnat nabídky a snížit riziko, že levnější nabídka je levnější jen proto, že v ní něco chybí."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "odborny-posudek-pro-dotaci",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Odborný posudek pro dotaci: co obsahuje a kdo ho zpracovává",
+    "excerpt": "Odborný posudek je dotační podklad, který dokládá technické řešení podle podmínek programu. Jeho rozsah závisí na typu žádosti a opatření.",
+    "image": "/knowledge-center/covers/odborny-posudek-dotace.png",
+    "coverImage": "/knowledge-center/covers/odborny-posudek-dotace.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "5 min čtení",
+    "tags": [
+      "odborný posudek",
+      "dotace",
+      "podklady"
+    ],
+    "relatedArticles": [
+      "co-je-penb",
+      "renovacni-pas",
+      "projektova-dokumentace-druhy"
+    ],
+    "seoTitle": "Odborný posudek pro dotaci: co obsahuje a kdo ho zpracovává | Enerix",
+    "seoDescription": "Odborný posudek je dotační podklad, který dokládá technické řešení podle podmínek programu. Jeho rozsah závisí na typu žádosti a opatření.",
+    "intro": "Odborný posudek je jeden z dokumentů, se kterými se můžete setkat při žádosti o dotaci na renovaci domu. Neslouží jako marketingový popis projektu, ale jako technický podklad pro ověření splnění podmínek.",
+    "paragraphs": [
+      "Odborný posudek je jeden z dokumentů, se kterými se můžete setkat při žádosti o dotaci na renovaci domu. Neslouží jako marketingový popis projektu, ale jako technický podklad pro ověření splnění podmínek.",
+      "K čemu slouží",
+      "Odborný posudek popisuje navrhovaná opatření a jejich technické parametry v návaznosti na konkrétní dotační program. Může se týkat zateplení, zdroje tepla, obnovitelných zdrojů, větrání nebo kombinace více opatření.",
+      "Konkrétní obsah se liší podle typu žádosti a aktuálních podmínek. Proto je důležité pracovat s platnými pravidly, ne se starými zvyklostmi.",
+      "Co může obsahovat",
+      "Podle povahy projektu může odborný posudek pracovat například s:",
+      "popisem současného stavu,\nnavrženými opatřeními,\ntechnickými parametry konstrukcí a zařízení,\nvýpočty nebo energetickým hodnocením,\nvýkresovými podklady,\nfotodokumentací,\nnávazností na další dokumenty.",
+      "Ne každý projekt potřebuje stejný rozsah. Jednodušší opatření může mít jednodušší podklady, komplexní renovace vyžaduje pečlivější přípravu.",
+      "Kdo ho zpracovává",
+      "Odborný posudek zpracovává osoba nebo tým s odpovídající odborností podle požadavků programu. Pro majitele domu je důležité dodat pravdivé a co nejúplnější podklady.",
+      "Když chybí výkresy, informace o skladbách nebo technických systémech, může být potřeba doplnit pasport, zaměření nebo další průzkum.",
+      "Odborný posudek není garance dotace",
+      "Ani dobře připravený odborný posudek není automatická garance schválení podpory. Žádost se posuzuje podle pravidel programu, doložených podkladů, termínů a dalších podmínek.",
+      "Správný posudek ale snižuje riziko chyb a pomáhá postavit žádost na srozumitelných technických základech.",
+      "Jak souvisí s ostatními dokumenty",
+      "Odborný posudek může navazovat na PENB, renovační pas, projektovou dokumentaci, pasport stavby nebo rozpočet. Každý dokument má jinou roli a dohromady tvoří podklady pro rozhodování i administraci.",
+      "Shrnutí",
+      "Odborný posudek pro dotaci je technický dokument k žádosti. Jeho kvalita závisí na odbornosti zpracování, správných podkladech a aktuálních pravidlech programu. Nemá slibovat výsledek, má věcně doložit navržené řešení."
+    ],
+    "tables": []
+  },
+  {
+    "slug": "uw-ug-ud-technicke-parametry-oken",
+    "category": "guide",
+    "categoryLabel": "Průvodce pojmy",
+    "label": "Průvodce",
+    "title": "Co znamenají Uw, Ug, UD a další technické parametry oken",
+    "excerpt": "U oken je důležité rozlišit parametr celého okna, skla, rámu a dveří. Nejčastější chyba je porovnávat Ug skla, když potřebujete znát Uw celého okna.",
+    "image": "/knowledge-center/covers/uw-ug-ud-okna.png",
+    "coverImage": "/knowledge-center/covers/uw-ug-ud-okna.png",
+    "coverAlt": "",
+    "date": "Čeká na odbornou kontrolu",
+    "updatedAt": "2026-06-14",
+    "status": "draft",
+    "readingTime": "5 min čtení",
+    "tags": [
+      "Uw",
+      "Ug",
+      "UD",
+      "okna"
+    ],
+    "relatedArticles": [
+      "okna-a-dvere-pri-renovaci-domu",
+      "zatepleni-domu-neni-jen-cena-za-metr"
+    ],
+    "seoTitle": "Co znamenají Uw, Ug, UD a další technické parametry oken | Enerix",
+    "seoDescription": "U oken je důležité rozlišit parametr celého okna, skla, rámu a dveří. Nejčastější chyba je porovnávat Ug skla, když potřebujete znát Uw celého okna.",
+    "intro": "Technické parametry oken nejsou jen písmenka v nabídce. Pomáhají poznat, co vlastně kupujete a jestli porovnáváte stejné věci. Nejdůležitější je neplést parametr skla s parametrem celého okna.",
+    "paragraphs": [
+      "Technické parametry oken nejsou jen písmenka v nabídce. Pomáhají poznat, co vlastně kupujete a jestli porovnáváte stejné věci. Nejdůležitější je neplést parametr skla s parametrem celého okna.",
+      "Co znamená U",
+      "Písmeno U označuje součinitel prostupu tepla. Zjednodušeně říká, kolik tepla konstrukcí uniká. Čím nižší hodnota U, tím lepší tepelněizolační vlastnost.",
+      "Jednotka se zapisuje jako W/m²K. Pro běžné rozhodování ale stačí vědět, že nižší číslo je lepší.",
+      "Uw, Ug, Uf a UD",
+      "Nejčastější značky jsou:",
+      "Uw - celé okno,\nUg - zasklení,\nUf - rám,\nUD - dveře.",
+      "Uw je pro porovnání oken zásadní, protože zahrnuje celé okno jako výrobek. Ug může vypadat velmi dobře, ale popisuje jen sklo. Okno má také rám, distanční rámeček, těsnění a konkrétní konstrukci.",
+      "U dveří se sleduje UD. Logika je stejná: nižší hodnota znamená lepší tepelněizolační vlastnosti.",
+      "Proč nabídky matou",
+      "Nabídka může výrazně ukazovat hodnotu Ug, protože sklo má často lepší číslo než celé okno. Pokud ale porovnáváte dvě okna, potřebujete znát Uw.",
+      "Podobně nestačí vědět, že jde o trojsklo. Trojsklo je důležitý údaj, ale samo o sobě neříká všechno o celém okně.",
+      "Montáž je druhá polovina výsledku",
+      "Ani dobré Uw nezachrání špatnou montáž. Okno musí být správně osazené, ukotvené a napojené na konstrukci domu. Důležitá je připojovací spára, vnitřní a vnější těsnění, parapety, ostění a návaznost na zateplení.",
+      "Proto hlavní článek Okna a dveře při renovaci domu řeší nejen parametry, ale i provedení.",
+      "Souvislost s dotací",
+      "U dotačně podporované výměny oken a dveří se obvykle sledují konkrétní technické parametry výrobků a způsob zabudování podle aktuálních podmínek programu. Přesné hodnoty a požadavky je nutné ověřit v platných podkladech pro danou žádost.",
+      "Do preview textu proto patří opatrnost: samotné tvrzení \"máme trojsklo\" nemusí stačit.",
+      "Co chtít v nabídce",
+      "U oken se ptejte hlavně na:",
+      "Uw celého okna,\ntyp zasklení a Ug,\nmateriál a profil rámu,\ndistanční rámeček,\ntyp montáže,\nřešení připojovací spáry,\nparapety a začištění,\nnávaznost na zateplení.",
+      "U dveří chtějte také hodnotu UD, řešení prahu, bezpečnost a napojení na podlahu.",
+      "Shrnutí",
+      "Uw je celé okno. Ug je sklo. Uf je rám. UD jsou dveře. Kdo tyto hodnoty rozlišuje, lépe porovná nabídky a snáz pozná, jestli se řeší skutečná kvalita, nebo jen hezky vypadající číslo."
+    ],
+    "tables": []
+  },
+  {
     slug: "poradi-renovacnich-opatreni-a-proc-na-nem-zalezi",
     category: "expert",
     categoryLabel: "Enerix Expert",
@@ -807,12 +1385,241 @@ const seriesArticles = expertSourceArticles.map((article) => ({
   ...article,
   ...nzu2026SeriesBySlug[article.slug],
 }));
+const articleMetaBySlug = {
+  "jak-jsme-pripravili-renovaci-domu-po-etapach": {
+    "coverImage": "/knowledge-center/covers/renovace-etapy.png",
+    "relatedArticles": []
+  },
+  "tepelne-cerpadlo-a-fotovoltaika-v-rodinnem-dome": {
+    "coverImage": "/knowledge-center/covers/tc-fve-projekt.png",
+    "relatedArticles": []
+  },
+  "zatepleni-domu-a-vymena-oken-s-dotacni-podporou": {
+    "coverImage": "/knowledge-center/covers/fasada-okna-dotace.png",
+    "relatedArticles": []
+  },
+  "nova-zelena-usporam-2026-jednoduse": {
+    "coverImage": "/knowledge-center/covers/nzu-2026-prehled.png",
+    "relatedArticles": []
+  },
+  "nzu-2026-prakticky-light-750000-komplexni-renovace": {
+    "coverImage": "/knowledge-center/covers/nzu-2026-cesty.png",
+    "relatedArticles": []
+  },
+  "co-kdyz-dotace-na-rekonstrukci-nestaci": {
+    "coverImage": "/knowledge-center/covers/dotace-financovani.png",
+    "relatedArticles": []
+  },
+  "renovacni-pas-2026": {
+    "coverImage": "/knowledge-center/covers/renovacni-pas-nzu.png",
+    "relatedArticles": []
+  },
+  "dilci-nebo-komplexni-renovace": {
+    "coverImage": "/knowledge-center/covers/dilci-komplexni.png",
+    "relatedArticles": []
+  },
+  "chci-rekonstruovat-dum-koho-oslovit": {
+    "coverImage": "/knowledge-center/covers/prvni-kontakt.png",
+    "relatedArticles": []
+  },
+  "mokry-dum-spatna-strecha-stara-okna": {
+    "coverImage": "/knowledge-center/covers/technicky-problem.png",
+    "relatedArticles": []
+  },
+  "kdy-se-vyplati-fotovoltaika": {
+    "coverImage": "/knowledge-center/covers/fve-strecha-elektrina.png",
+    "relatedArticles": [
+      "strecha-pri-renovaci-domu",
+      "tepelne-cerpadlo-v-rodinnem-dome"
+    ]
+  },
+  "zatepleni-domu-neni-jen-cena-za-metr": {
+    "coverImage": "/knowledge-center/covers/fasada-zatepleni.png",
+    "relatedArticles": [
+      "okna-a-dvere-pri-renovaci-domu",
+      "strecha-pri-renovaci-domu",
+      "vykaz-vymer-a-polozkovy-rozpocet"
+    ]
+  },
+  "okna-a-dvere-pri-renovaci-domu": {
+    "coverImage": "/knowledge-center/covers/okna-dvere-montaz.png",
+    "relatedArticles": [
+      "zatepleni-domu-neni-jen-cena-za-metr",
+      "uw-ug-ud-technicke-parametry-oken",
+      "rekuperace-a-rizene-vetrani"
+    ]
+  },
+  "strecha-pri-renovaci-domu": {
+    "coverImage": "/knowledge-center/covers/strecha-renovace.png",
+    "relatedArticles": [
+      "kdy-se-vyplati-fotovoltaika",
+      "foukana-a-strikana-izolace",
+      "zatepleni-domu-neni-jen-cena-za-metr"
+    ]
+  },
+  "tepelne-cerpadlo-v-rodinnem-dome": {
+    "coverImage": "/knowledge-center/covers/tepelne-cerpadlo-vytapeni.png",
+    "relatedArticles": [
+      "co-je-tepelna-ztrata-domu",
+      "kdy-se-vyplati-fotovoltaika",
+      "zatepleni-domu-neni-jen-cena-za-metr"
+    ]
+  },
+  "foukana-a-strikana-izolace": {
+    "coverImage": "/knowledge-center/covers/foukana-strikana-izolace.png",
+    "relatedArticles": [
+      "strecha-pri-renovaci-domu",
+      "co-je-tepelna-ztrata-domu",
+      "vykaz-vymer-a-polozkovy-rozpocet"
+    ]
+  },
+  "rekuperace-a-rizene-vetrani": {
+    "coverImage": "/knowledge-center/covers/rekuperace-rizene-vetrani.png",
+    "relatedArticles": [
+      "okna-a-dvere-pri-renovaci-domu",
+      "zatepleni-domu-neni-jen-cena-za-metr",
+      "projektova-dokumentace-druhy"
+    ]
+  },
+  "sadrokartony-pri-rekonstrukci-domu": {
+    "coverImage": "/knowledge-center/covers/sadrokartony-rekonstrukce.png",
+    "relatedArticles": [
+      "rekuperace-a-rizene-vetrani",
+      "strecha-pri-renovaci-domu",
+      "projektova-dokumentace-druhy"
+    ]
+  },
+  "co-je-tepelna-ztrata-domu": {
+    "coverImage": "/knowledge-center/covers/tepelna-ztrata-domu.png",
+    "relatedArticles": [
+      "tepelne-cerpadlo-v-rodinnem-dome",
+      "zatepleni-domu-neni-jen-cena-za-metr",
+      "strecha-pri-renovaci-domu"
+    ]
+  },
+  "co-je-penb": {
+    "coverImage": "/knowledge-center/covers/penb-prukaz.png",
+    "relatedArticles": [
+      "renovacni-pas",
+      "odborny-posudek-pro-dotaci",
+      "co-je-tepelna-ztrata-domu"
+    ]
+  },
+  "renovacni-pas": {
+    "coverImage": "/knowledge-center/covers/renovacni-pas.png",
+    "relatedArticles": [
+      "co-je-penb",
+      "projektova-dokumentace-druhy",
+      "odborny-posudek-pro-dotaci"
+    ]
+  },
+  "projektova-dokumentace-druhy": {
+    "coverImage": "/knowledge-center/covers/projektova-dokumentace.png",
+    "relatedArticles": [
+      "pasport-stavby",
+      "renovacni-pas",
+      "vykaz-vymer-a-polozkovy-rozpocet"
+    ]
+  },
+  "pasport-stavby": {
+    "coverImage": "/knowledge-center/covers/pasport-stavby.png",
+    "relatedArticles": [
+      "projektova-dokumentace-druhy",
+      "renovacni-pas",
+      "co-je-penb"
+    ]
+  },
+  "vykaz-vymer-a-polozkovy-rozpocet": {
+    "coverImage": "/knowledge-center/covers/vykaz-vymer-rozpocet.png",
+    "relatedArticles": [
+      "zatepleni-domu-neni-jen-cena-za-metr",
+      "projektova-dokumentace-druhy",
+      "strecha-pri-renovaci-domu"
+    ]
+  },
+  "odborny-posudek-pro-dotaci": {
+    "coverImage": "/knowledge-center/covers/odborny-posudek-dotace.png",
+    "relatedArticles": [
+      "co-je-penb",
+      "renovacni-pas",
+      "projektova-dokumentace-druhy"
+    ]
+  },
+  "uw-ug-ud-technicke-parametry-oken": {
+    "coverImage": "/knowledge-center/covers/uw-ug-ud-okna.png",
+    "relatedArticles": [
+      "okna-a-dvere-pri-renovaci-domu",
+      "zatepleni-domu-neni-jen-cena-za-metr"
+    ]
+  },
+  "poradi-renovacnich-opatreni-a-proc-na-nem-zalezi": {
+    "coverImage": "/knowledge-center/covers/poradi-opatreni.png",
+    "relatedArticles": []
+  },
+  "jak-se-rozhodnout-mezi-zdroji-tepla": {
+    "coverImage": "/knowledge-center/covers/zdroje-tepla.png",
+    "relatedArticles": []
+  },
+  "jak-funguji-dotace-na-renovace-v-roce-2026": {
+    "coverImage": "/knowledge-center/covers/dotace-renovace-2026.png",
+    "relatedArticles": []
+  },
+  "nova-zelena-usporam-co-je-noveho-v-roce-2026": {
+    "coverImage": "/knowledge-center/covers/nzu-novinky.png",
+    "relatedArticles": []
+  },
+  "priprava-domu-na-zimu": {
+    "coverImage": "/knowledge-center/covers/priprava-zima.png",
+    "relatedArticles": []
+  },
+  "pet-chyb-ktere-snizuji-ucinnost-renovace": {
+    "coverImage": "/knowledge-center/covers/chyby-renovace.png",
+    "relatedArticles": []
+  }
+};
 
-export const demoArticles = [
+const defaultArticleStatus = "draft";
+
+function normalizeArticle(article) {
+  const meta = articleMetaBySlug[article.slug] || {};
+  const coverImage = meta.coverImage || article.coverImage || article.image;
+  const status = article.status || defaultArticleStatus;
+
+  return {
+    ...article,
+    status,
+    type: article.type || article.category,
+    subtitle: article.subtitle || article.excerpt,
+    content: article.content || article.paragraphs || article.sections || [],
+    coverImage,
+    image: coverImage,
+    coverAlt: meta.coverAlt || article.coverAlt || `Ilustra\u010Dn\u00ED vizu\u00E1l k \u010Dl\u00E1nku: ${article.title}`,
+    seoTitle: meta.seoTitle || article.seoTitle || `${article.title} | Enerix`,
+    seoDescription: meta.seoDescription || article.seoDescription || article.excerpt || article.intro || article.title,
+    date: status === "draft" ? "Čeká na odbornou kontrolu" : article.date || article.updatedAt,
+    updatedAt: article.updatedAt || "2026-06-14",
+    readingTime: article.readingTime?.replace("?ten?", "\u010Dten\u00ED") || "5 min \u010Dten\u00ED",
+    tags: (article.tags || []).map((tag) => tag.replace("st?echa", "st\u0159echa")),
+    relatedArticles: meta.relatedArticles?.length ? meta.relatedArticles : article.relatedArticles || [],
+  };
+}
+
+
+const rawDemoArticles = [
   ...previewArticles.slice(0, 3),
   ...seriesArticles,
   ...previewArticles.slice(3),
 ];
+
+export const demoArticles = rawDemoArticles.map(normalizeArticle);
+
+export const publishedDemoArticles = demoArticles.filter(
+  (article) => article.status === "published"
+);
+
+export const draftDemoArticles = demoArticles.filter(
+  (article) => article.status !== "published"
+);
 
 export const demoArticlesBySlug = Object.fromEntries(
   demoArticles.map((article) => [article.slug, article])

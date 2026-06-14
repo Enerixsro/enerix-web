@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { demoArticles } from "../data/knowledgeCenterArticles";
 import { nzu2026Series } from "../data/knowledgeCenterSeries";
+import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
 import NzuSeriesCover from "../components/NzuSeriesCover";
 
 const SORO_EMBED_URL =
@@ -15,6 +16,9 @@ const practiceArticles = demoArticles.filter(
 );
 const expertArticles = demoArticles.filter(
   (article) => article.category === "expert" && !article.seriesId
+);
+const guideArticles = demoArticles.filter(
+  (article) => article.category === "guide"
 );
 const seriesArticles = nzu2026Series.articles
   .map((item) => demoArticles.find((article) => article.slug === item.slug))
@@ -358,6 +362,7 @@ function Archive({ soroArticles }) {
             ["all", "Vše"],
             ["practice", "Z praxe"],
             ["expert", "Expert"],
+            ["guide", "Průvodce"],
             ["news", "Rady a novinky"],
           ].map(([value, label]) => (
             <button
@@ -389,7 +394,7 @@ function Archive({ soroArticles }) {
                   ) : (
                     <img
                       src={article.image}
-                      alt=""
+                      alt={article.coverAlt || ""}
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
                     />
                   )}
@@ -486,6 +491,10 @@ function Archive({ soroArticles }) {
 function SoroArticleView() {
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex,follow" />
+        <link rel="canonical" href={absoluteUrl("/blog")} />
+      </Head>
       <Header />
       <main className="mx-auto min-h-[70vh] max-w-7xl px-6 py-10 md:px-10">
         <div id="soro-blog"></div>
@@ -517,6 +526,8 @@ export default function BlogPage({ soroArticles = [] }) {
           name="description"
           content="Zkušenosti, odborné souvislosti a praktické rady k renovaci domu, správnému pořadí opatření, dotacím a přípravě realizace."
         />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={absoluteUrl("/blog")} />
       </Head>
 
       <div className="min-h-screen bg-white text-slate-900">
@@ -600,6 +611,12 @@ export default function BlogPage({ soroArticles = [] }) {
                   Enerix Expert
                 </a>
                 <a
+                  href="#pruvodce"
+                  className="whitespace-nowrap border-b-2 border-transparent pb-4 text-slate-700 hover:border-green-300 hover:text-green-700"
+                >
+                  Průvodce pojmy
+                </a>
+                <a
                   href="#novinky"
                   className="whitespace-nowrap border-b-2 border-transparent pb-4 text-slate-700 hover:border-green-300 hover:text-green-700"
                 >
@@ -626,7 +643,7 @@ export default function BlogPage({ soroArticles = [] }) {
                   <div className="relative aspect-[16/8] overflow-hidden bg-slate-100">
                     <img
                       src={leadArticle.image}
-                      alt=""
+                      alt={leadArticle.coverAlt || ""}
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                     />
                     <div className="absolute left-4 top-4 rounded-full bg-green-700 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white">
@@ -656,7 +673,7 @@ export default function BlogPage({ soroArticles = [] }) {
                       <div className="aspect-[16/7] overflow-hidden bg-slate-100">
                         <img
                           src={article.image}
-                          alt=""
+                          alt={article.coverAlt || ""}
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                         />
                       </div>
@@ -703,7 +720,7 @@ export default function BlogPage({ soroArticles = [] }) {
                     <div className="aspect-[16/9] overflow-hidden bg-slate-100">
                       <img
                         src={article.image}
-                        alt=""
+                        alt={article.coverAlt || ""}
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                       />
                     </div>
@@ -730,6 +747,55 @@ export default function BlogPage({ soroArticles = [] }) {
             </div>
           </section>
 
+
+          <section
+            id="pruvodce"
+            className="scroll-mt-6 border-b border-slate-200 px-6 py-11 md:px-10"
+          >
+            <div className="mx-auto max-w-7xl">
+              <h2 className="text-3xl font-bold">Průvodce pojmy</h2>
+              <p className="mt-2 text-sm text-slate-600">
+                Srozumitelně vysvětlené dokumenty, technické parametry a
+                podklady, které se při renovaci často pletou.
+              </p>
+
+              <div className="mt-6 grid gap-5 md:grid-cols-3">
+                {guideArticles.slice(0, 6).map((article) => (
+                  <a
+                    key={article.slug}
+                    href={demoHref(article.slug)}
+                    className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md"
+                  >
+                    <div className="aspect-[16/9] overflow-hidden bg-slate-100">
+                      <img
+                        src={article.image}
+                        alt={article.coverAlt || ""}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                    <div className="p-5">
+                      <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
+                        {article.label}
+                      </div>
+                      <h3 className="mt-3 text-lg font-bold leading-7">
+                        {article.title}
+                      </h3>
+                      <div className="mt-4">
+                        <ArticleMeta article={article} compact />
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <div className="mt-7 text-center">
+                <SectionLink href="#clanky">
+                  Zobrazit všechny průvodce
+                </SectionLink>
+              </div>
+            </div>
+          </section>
+
           <section
             id="novinky"
             className="scroll-mt-6 border-b border-slate-200 px-6 py-11 md:px-10"
@@ -751,7 +817,7 @@ export default function BlogPage({ soroArticles = [] }) {
                     <div className="aspect-[4/3] overflow-hidden rounded-md bg-slate-100">
                       <img
                         src={article.image}
-                        alt=""
+                        alt={article.coverAlt || ""}
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
                       />
                     </div>
