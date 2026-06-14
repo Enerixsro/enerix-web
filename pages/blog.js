@@ -161,61 +161,101 @@ function PreviewSourceBadge({ article }) {
   );
 }
 
-function ExpertTechnicalVisual({ article, index }) {
-  const visuals = [
-    {
-      tone: "from-emerald-950 via-slate-900 to-cyan-900",
-      metric: "FVE",
-      detail: "výroba / spotřeba",
-      bars: ["h-8", "h-14", "h-20", "h-12", "h-6"],
-    },
-    {
-      tone: "from-slate-900 via-stone-800 to-emerald-900",
-      metric: "U",
-      detail: "skladba konstrukce",
-      bars: ["h-20", "h-20", "h-20", "h-20", "h-20"],
-    },
-    {
-      tone: "from-blue-950 via-slate-900 to-emerald-900",
-      metric: "Uw",
-      detail: "detail připojení",
-      bars: ["h-10", "h-16", "h-12", "h-18", "h-8"],
-    },
-  ];
-  const visual = visuals[index % visuals.length];
+function ExpertTechnicalVisual({ article }) {
+  const slug = article.slug || "";
+
+  if (slug.includes("fotovoltaika")) {
+    const production = ["h-5", "h-8", "h-12", "h-16", "h-20", "h-24", "h-24", "h-20", "h-14", "h-10", "h-6", "h-4"];
+    const consumption = ["h-12", "h-11", "h-10", "h-9", "h-8", "h-8", "h-8", "h-8", "h-9", "h-10", "h-12", "h-14"];
+
+    return (
+      <div className="aspect-[16/9] bg-slate-50 p-5">
+        <div className="flex h-full flex-col rounded-md border border-slate-200 bg-white p-4">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.14em] text-green-700">
+                FVE a spotřeba
+              </div>
+              <div className="mt-1 text-sm font-semibold text-slate-900">
+                měsíční profil domu
+              </div>
+            </div>
+            <div className="text-right text-[11px] leading-5 text-slate-500">
+              výroba<br />spotřeba
+            </div>
+          </div>
+          <div className="mt-auto grid h-28 grid-cols-12 items-end gap-1 border-b border-l border-slate-200 pl-2">
+            {production.map((height, barIndex) => (
+              <div key={`${article.slug}-pv-${barIndex}`} className="flex items-end justify-center gap-0.5">
+                <div className={`w-2 rounded-t bg-green-600 ${height}`} />
+                <div className={`w-2 rounded-t bg-slate-300 ${consumption[barIndex]}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (slug.includes("zatepleni") || slug.includes("fasada")) {
+    return (
+      <div className="aspect-[16/9] bg-stone-50 p-5">
+        <div className="grid h-full grid-cols-[1fr_1.1fr] overflow-hidden rounded-md border border-slate-200 bg-white">
+          <div className="flex flex-col">
+            <div className="h-1/5 bg-stone-200" />
+            <div className="h-2/5 bg-emerald-100" />
+            <div className="h-2/5 bg-slate-300" />
+          </div>
+          <div className="flex flex-col justify-center gap-3 p-5 text-sm">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.14em] text-green-700">
+                Řez fasádou
+              </div>
+              <div className="mt-1 font-semibold text-slate-900">
+                vrstvy a návaznosti
+              </div>
+            </div>
+            <div className="space-y-2 text-xs text-slate-600">
+              <div className="flex items-center gap-2"><span className="h-2 w-5 rounded bg-stone-200" /> omítka</div>
+              <div className="flex items-center gap-2"><span className="h-2 w-5 rounded bg-emerald-100" /> izolace</div>
+              <div className="flex items-center gap-2"><span className="h-2 w-5 rounded bg-slate-300" /> zdivo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (slug.includes("okna")) {
+    return (
+      <div className="aspect-[16/9] bg-sky-50 p-5">
+        <div className="relative h-full rounded-md border border-slate-200 bg-white p-5">
+          <div className="absolute left-6 top-5 text-xs font-bold uppercase tracking-[0.14em] text-green-700">
+            Připojovací spára
+          </div>
+          <div className="absolute bottom-5 right-5 rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-900">
+            Uw jako výsledek celku
+          </div>
+          <div className="mx-auto mt-7 grid h-32 w-44 grid-cols-[1fr_2fr_1fr] overflow-hidden rounded border border-slate-300">
+            <div className="bg-slate-200" />
+            <div className="border-x border-slate-300 bg-sky-100" />
+            <div className="bg-slate-200" />
+          </div>
+          <div className="mx-auto mt-2 h-3 w-52 rounded-full bg-green-200" />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className={`relative aspect-[16/9] overflow-hidden bg-gradient-to-br ${visual.tone}`}>
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.24) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.24) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      <div className="absolute left-5 top-5 rounded-md border border-white/20 bg-white/10 px-3 py-2 text-white backdrop-blur">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-100">
-          Model
-        </div>
-        <div className="mt-1 text-2xl font-bold">{visual.metric}</div>
-      </div>
-      <div className="absolute bottom-5 left-5 right-5">
-        <div className="mb-4 flex items-end gap-2">
-          {visual.bars.map((height, barIndex) => (
-            <div
-              key={`${article.slug}-${barIndex}`}
-              className={`w-full rounded-t-sm bg-emerald-300/85 ${height}`}
-            />
-          ))}
-        </div>
-        <div className="rounded-md border border-white/15 bg-white/10 p-3 text-white backdrop-blur">
-          <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-100">
-            {visual.detail}
-          </div>
-          <div className="mt-2 h-1.5 rounded-full bg-white/20">
-            <div className="h-1.5 w-2/3 rounded-full bg-emerald-300" />
-          </div>
+    <div className="aspect-[16/9] bg-slate-50 p-5">
+      <div className="flex h-full items-center justify-center rounded-md border border-slate-200 bg-white p-5">
+        <div className="grid w-full max-w-sm grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-3 text-center text-sm font-semibold text-slate-700">
+          <div className="rounded-md border border-slate-200 bg-slate-50 px-3 py-4">stav domu</div>
+          <div className="text-green-700">→</div>
+          <div className="rounded-md border border-green-200 bg-green-50 px-3 py-4">návrh</div>
+          <div className="text-green-700">→</div>
+          <div className="rounded-md border border-slate-200 bg-slate-50 px-3 py-4">realizace</div>
         </div>
       </div>
     </div>
@@ -234,15 +274,15 @@ function ConceptGuideVisual({ index }) {
   const palette = palettes[index % palettes.length];
 
   return (
-    <div className={`relative aspect-[16/9] overflow-hidden bg-gradient-to-br ${palette}`}>
-      <div className="absolute -left-8 -top-8 h-32 w-32 rounded-full bg-white/12" />
-      <div className="absolute -bottom-10 -right-8 h-32 w-32 rounded-full bg-white/18" />
+    <div className={`relative h-full min-h-[126px] overflow-hidden bg-gradient-to-br ${palette} md:aspect-[16/9] md:min-h-0`}>
+      <div className="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-white/12 md:h-32 md:w-32" />
+      <div className="absolute -bottom-10 -right-8 h-24 w-24 rounded-full bg-white/18 md:h-32 md:w-32" />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative h-28 w-28 rounded-lg bg-white/95 shadow-sm">
-          <div className="absolute left-6 right-6 top-8 h-1 rounded-full bg-green-800" />
-          <div className="absolute left-6 right-6 top-14 h-1 rounded-full bg-green-800" />
-          <div className="absolute left-6 right-12 top-20 h-1 rounded-full bg-green-800" />
-          <div className="absolute bottom-4 left-1/2 h-7 w-7 -translate-x-1/2 rounded-full bg-green-500" />
+        <div className="relative h-20 w-20 rounded-lg bg-white/95 shadow-sm md:h-28 md:w-28">
+          <div className="absolute left-4 right-4 top-6 h-1 rounded-full bg-green-800 md:left-6 md:right-6 md:top-8" />
+          <div className="absolute left-4 right-4 top-10 h-1 rounded-full bg-green-800 md:left-6 md:right-6 md:top-14" />
+          <div className="absolute left-4 right-8 top-14 h-1 rounded-full bg-green-800 md:left-6 md:right-12 md:top-20" />
+          <div className="absolute bottom-3 left-1/2 h-5 w-5 -translate-x-1/2 rounded-full bg-green-500 md:bottom-4 md:h-7 md:w-7" />
         </div>
       </div>
     </div>
@@ -773,17 +813,17 @@ export default function BlogPage({ soroArticles = [] }) {
 
           <section
             id="expert"
-            className="scroll-mt-6 border-y border-slate-200 bg-slate-950 px-6 py-11 text-white md:px-10"
+            className="scroll-mt-6 border-y border-slate-200 bg-slate-100/70 px-6 py-11 md:px-10"
           >
             <div className="mx-auto max-w-7xl">
               <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                 <div>
-                  <div className="text-sm font-bold uppercase tracking-[0.16em] text-emerald-300">
+                  <div className="text-sm font-bold uppercase tracking-[0.16em] text-green-700">
                     Technické souvislosti
                   </div>
                   <h2 className="mt-2 text-3xl font-bold">Enerix Expert</h2>
                 </div>
-                <p className="max-w-2xl text-sm leading-6 text-slate-300">
+                <p className="max-w-2xl text-sm leading-6 text-slate-600">
                   Analytické články pro rozhodování: grafy, skladby konstrukcí,
                   technické detaily a návaznosti opatření místo další inspirace
                   fotkami domů.
@@ -791,18 +831,18 @@ export default function BlogPage({ soroArticles = [] }) {
               </div>
 
               <div className="mt-6 grid gap-5 md:grid-cols-3">
-                {expertArticles.slice(0, 3).map((article, index) => (
+                {expertArticles.slice(0, 3).map((article) => (
                   <a
                     key={article.slug}
                     href={demoHref(article.slug)}
-                    className="group overflow-hidden rounded-md border border-white/10 bg-white/[0.04] shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.07]"
+                    className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-green-300 hover:shadow-md"
                   >
-                    <ExpertTechnicalVisual article={article} index={index} />
+                    <ExpertTechnicalVisual article={article} />
                     <div className="p-5">
-                      <div className="text-xs font-bold uppercase tracking-[0.12em] text-emerald-300">
+                      <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
                         {article.label}
                       </div>
-                      <h3 className="mt-3 text-lg font-bold leading-7 text-white">
+                      <h3 className="mt-3 text-lg font-bold leading-7 text-slate-950">
                         {article.title}
                       </h3>
                       <div className="mt-4">
@@ -838,17 +878,17 @@ export default function BlogPage({ soroArticles = [] }) {
                   <a
                     key={article.slug}
                     href={demoHref(article.slug)}
-                    className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md"
+                    className="group grid grid-cols-[112px_minmax(0,1fr)] overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md md:block"
                   >
                     <ConceptGuideVisual index={index} />
-                    <div className="p-5">
+                    <div className="p-4 md:p-5">
                       <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
-                        Průvodce
+                        Pojem
                       </div>
-                      <h3 className="mt-3 text-lg font-bold leading-7">
+                      <h3 className="mt-2 text-base font-bold leading-6 md:mt-3 md:text-lg md:leading-7">
                         {article.title}
                       </h3>
-                      <div className="mt-4">
+                      <div className="mt-3 md:mt-4">
                         <ArticleMeta article={article} compact />
                       </div>
                     </div>
