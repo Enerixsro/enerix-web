@@ -115,11 +115,11 @@ const previewArticles = [
     "title": "Kdy se vyplatí fotovoltaika — a kdy dává smysl i z jiných důvodů",
     "excerpt": "FVE není jen návratnost. Někdo chce snížit účty, někdo využít dotaci, někdo má radost z vlastní technologie a někdo chce větší pocit soběstačnosti.",
     "image": "/knowledge-center/tepelne-cerpadlo-fotovoltaika.webp",
-    "date": "?ek? na odbornou kontrolu",
-    "readingTime": "16 min ?ten?",
+    "date": "Čeká na odbornou kontrolu",
+    "readingTime": "16 min čtení",
     "tags": [
       "fotovoltaika",
-      "st?echa",
+      "střecha",
       "energie domu"
     ],
     "intro": "FVE není jen návratnost. Někdo chce snížit účty, někdo využít dotaci, někdo má radost z vlastní technologie a někdo chce větší pocit soběstačnosti. Důležité je vědět, co vám fotovoltaika skutečně přinese — a co od ní nečekat.",
@@ -279,12 +279,12 @@ const previewArticles = [
     "title": "Zateplení domu není jen cena za metr. Co rozhoduje o dobré fasádě",
     "excerpt": "Fasáda není jen nová omítka. O výsledku rozhodují hlavně podklad, sokl, ostění, parapety, návaznosti a skutečný rozsah nabídky.",
     "image": "/knowledge-center/zatepleni-okna.webp",
-    "date": "?ek? na odbornou kontrolu",
-    "readingTime": "8 min ?ten?",
+    "date": "Čeká na odbornou kontrolu",
+    "readingTime": "8 min čtení",
     "tags": [
-      "zateplen? fas?dy",
-      "ob?lka domu",
-      "nab?dky"
+      "zateplení fasády",
+      "obálka domu",
+      "nabídky"
     ],
     "intro": "Fasáda je jedna z nejviditelnějších částí renovace domu. Na první pohled se často řeší hlavně cena za metr čtvereční, tloušťka izolantu a barva omítky. O výsledku ale rozhodují hlavně detaily: stav podkladu, sokl, ostění, parapety, návaznosti na střechu, kvalita provedení a rozsah prací, který je v nabídce skutečně zahrnutý.",
     "paragraphs": [
@@ -347,11 +347,11 @@ const previewArticles = [
     "title": "Okna a dveře při renovaci domu: nejde jen o lepší sklo",
     "excerpt": "U oken a dveří rozhoduje nejen výrobek, ale i montáž, připojovací spára, pásky, Uw/UD, parapety, ostění a návaznost na fasádu.",
     "image": "/knowledge-center/zatepleni-okna.webp",
-    "date": "?ek? na odbornou kontrolu",
-    "readingTime": "11 min ?ten?",
+    "date": "Čeká na odbornou kontrolu",
+    "readingTime": "11 min čtení",
     "tags": [
-      "okna a dve?e",
-      "mont??",
+      "okna a dveře",
+      "montáž",
       "parametry"
     ],
     "intro": "Výměna oken a dveří patří mezi nejčastější kroky při renovaci rodinného domu. Na první pohled se řeší hlavně plast, hliník, trojsklo, dvojsklo, cena a vzhled. O výsledku ale rozhoduje i montáž, napojení na zdivo, větrání, vlhkost, ostění, parapety, připojovací spára a návaznost na případné zateplení fasády.",
@@ -449,11 +449,11 @@ const previewArticles = [
     "title": "Střecha při renovaci domu: krytina je jen začátek",
     "excerpt": "Střecha není jen krytina. Rozhoduje krov, skladba, zateplení, vlhkost, parozábrana, odvětrání, klempířina, FVE a návaznost na fasádu.",
     "image": "/knowledge-center/renovace-po-etapach.webp",
-    "date": "?ek? na odbornou kontrolu",
-    "readingTime": "9 min ?ten?",
+    "date": "Čeká na odbornou kontrolu",
+    "readingTime": "9 min čtení",
     "tags": [
-      "st?echa",
-      "zateplen?",
+      "střecha",
+      "zateplení",
       "fotovoltaika"
     ],
     "intro": "Střecha není jen taška, plech nebo šindel, který je vidět z ulice. Je to jedna z nejdůležitějších částí domu. Chrání konstrukci před vodou, ovlivňuje tepelné ztráty, rozhoduje o využití půdy nebo podkroví a často určuje, jestli dává smysl fotovoltaika, zateplení nebo další úpravy.",
@@ -515,12 +515,12 @@ const previewArticles = [
     "title": "Tepelné čerpadlo v rodinném domě: kdy dává smysl a co ověřit předem",
     "excerpt": "Tepelné čerpadlo není jen výměna starého kotle. Rozhoduje tepelná ztráta, otopná soustava, teplota vody, hluk, umístění a regulace.",
     "image": "/knowledge-center/tepelne-cerpadlo-fotovoltaika.webp",
-    "date": "?ek? na odbornou kontrolu",
-    "readingTime": "10 min ?ten?",
+    "date": "Čeká na odbornou kontrolu",
+    "readingTime": "10 min čtení",
     "tags": [
-      "tepeln? ?erpadlo",
-      "vyt?p?n?",
-      "tepeln? ztr?ta"
+      "tepelné čerpadlo",
+      "vytápění",
+      "tepelná ztráta"
     ],
     "intro": "Tepelné čerpadlo může být velmi dobrý zdroj vytápění pro rodinný dům. Nejde ale jen o výměnu starého kotle za nové zařízení. O výsledku rozhoduje tepelná ztráta domu, otopná soustava, požadovaná teplota topné vody, hlučnost, umístění venkovní jednotky, ohřev vody, regulace, sazba elektřiny a návaznost na další úpravy domu.",
     "paragraphs": [
@@ -616,8 +616,8 @@ const previewArticles = [
     "label": "Enerix Expert",
     "title": "Foukaná a stříkaná izolace: kdy dává smysl a na co si dát pozor",
     "excerpt": "Foukaná a stříkaná izolace umí rychle pomoci na půdě, ve stropech i v dutinách. Rozhoduje ale stav konstrukce, vlhkost a správně zvolený materiál.",
-    "image": "/knowledge-center/covers/foukana-strikana-izolace.png",
-    "coverImage": "/knowledge-center/covers/foukana-strikana-izolace.png",
+    "image": "/knowledge-center/covers/foukana-strikana-izolace.jpg",
+    "coverImage": "/knowledge-center/covers/foukana-strikana-izolace.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -675,8 +675,8 @@ const previewArticles = [
     "label": "Enerix Expert",
     "title": "Rekuperace a řízené větrání: kdy pomáhá a co od ní čekat",
     "excerpt": "Rekuperace není klimatizace ani zázračný úsporný stroj. Je to řízené větrání, které může výrazně zlepšit vzduch, vlhkost a komfort v těsnějším domě.",
-    "image": "/knowledge-center/covers/rekuperace-rizene-vetrani.png",
-    "coverImage": "/knowledge-center/covers/rekuperace-rizene-vetrani.png",
+    "image": "/knowledge-center/covers/rekuperace-rizene-vetrani.jpg",
+    "coverImage": "/knowledge-center/covers/rekuperace-rizene-vetrani.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -735,8 +735,8 @@ const previewArticles = [
     "label": "Enerix Expert",
     "title": "Sádrokartony při rekonstrukci domu: nejde jen o příčky a podhledy",
     "excerpt": "Sádrokarton často rozhoduje o tom, jak se do domu schovají izolace, rozvody, rekuperace nebo nové dispozice. Důležitá je skladba, vlhkost, požár i akustika.",
-    "image": "/knowledge-center/covers/sadrokartony-rekonstrukce.png",
-    "coverImage": "/knowledge-center/covers/sadrokartony-rekonstrukce.png",
+    "image": "/knowledge-center/covers/sadrokartony-rekonstrukce.jpg",
+    "coverImage": "/knowledge-center/covers/sadrokartony-rekonstrukce.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -786,13 +786,14 @@ const previewArticles = [
   },
   {
     "slug": "co-je-tepelna-ztrata-domu",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Co je tepelná ztráta domu a proč rozhoduje o vytápění",
     "excerpt": "Tepelná ztráta říká, jaký výkon musí zdroj tepla dodat, aby dům v zimních návrhových podmínkách udržel požadovanou teplotu.",
-    "image": "/knowledge-center/covers/tepelna-ztrata-domu.png",
-    "coverImage": "/knowledge-center/covers/tepelna-ztrata-domu.png",
+    "image": "/knowledge-center/covers/tepelna-ztrata-domu.jpg",
+    "coverImage": "/knowledge-center/covers/tepelna-ztrata-domu.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -836,13 +837,14 @@ const previewArticles = [
   },
   {
     "slug": "co-je-penb",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Co je PENB a kdy ho budete potřebovat",
     "excerpt": "PENB je průkaz energetické náročnosti budovy. Neříká jen jednu známku, ale popisuje energetické vlastnosti domu podle stanovené metodiky.",
-    "image": "/knowledge-center/covers/penb-prukaz.png",
-    "coverImage": "/knowledge-center/covers/penb-prukaz.png",
+    "image": "/knowledge-center/covers/penb-prukaz.jpg",
+    "coverImage": "/knowledge-center/covers/penb-prukaz.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -885,13 +887,14 @@ const previewArticles = [
   },
   {
     "slug": "renovacni-pas",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Renovační pas: plán renovace, ne projektová dokumentace",
     "excerpt": "Renovační pas pomáhá naplánovat postup renovace domu v etapách. Není to prováděcí projekt ani detailní položkový rozpočet.",
-    "image": "/knowledge-center/covers/renovacni-pas.png",
-    "coverImage": "/knowledge-center/covers/renovacni-pas.png",
+    "image": "/knowledge-center/covers/renovacni-pas.jpg",
+    "coverImage": "/knowledge-center/covers/renovacni-pas.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -934,13 +937,14 @@ const previewArticles = [
   },
   {
     "slug": "projektova-dokumentace-druhy",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Projektová dokumentace: jaké existují druhy a k čemu slouží",
     "excerpt": "Projektová dokumentace není jeden univerzální dokument. Jiný účel má studie, dokumentace pro povolení, prováděcí projekt i dokumentace skutečného stavu.",
-    "image": "/knowledge-center/covers/projektova-dokumentace.png",
-    "coverImage": "/knowledge-center/covers/projektova-dokumentace.png",
+    "image": "/knowledge-center/covers/projektova-dokumentace.jpg",
+    "coverImage": "/knowledge-center/covers/projektova-dokumentace.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -986,13 +990,14 @@ const previewArticles = [
   },
   {
     "slug": "pasport-stavby",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Pasport stavby: když potřebujete popsat skutečný stav",
     "excerpt": "Pasport stavby zachycuje skutečný stav domu. Hodí se hlavně tehdy, když chybí původní výkresy nebo neodpovídají realitě.",
-    "image": "/knowledge-center/covers/pasport-stavby.png",
-    "coverImage": "/knowledge-center/covers/pasport-stavby.png",
+    "image": "/knowledge-center/covers/pasport-stavby.jpg",
+    "coverImage": "/knowledge-center/covers/pasport-stavby.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -1035,13 +1040,14 @@ const previewArticles = [
   },
   {
     "slug": "vykaz-vymer-a-polozkovy-rozpocet",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Výkaz výměr a položkový rozpočet: proč rozhodují o porovnání nabídek",
     "excerpt": "Bez výkazu výměr se nabídky špatně porovnávají. Každá firma může počítat jiný rozsah a výsledná cena pak neříká totéž.",
-    "image": "/knowledge-center/covers/vykaz-vymer-rozpocet.png",
-    "coverImage": "/knowledge-center/covers/vykaz-vymer-rozpocet.png",
+    "image": "/knowledge-center/covers/vykaz-vymer-rozpocet.jpg",
+    "coverImage": "/knowledge-center/covers/vykaz-vymer-rozpocet.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -1085,13 +1091,14 @@ const previewArticles = [
   },
   {
     "slug": "odborny-posudek-pro-dotaci",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Odborný posudek pro dotaci: co obsahuje a kdo ho zpracovává",
     "excerpt": "Odborný posudek je dotační podklad, který dokládá technické řešení podle podmínek programu. Jeho rozsah závisí na typu žádosti a opatření.",
-    "image": "/knowledge-center/covers/odborny-posudek-dotace.png",
-    "coverImage": "/knowledge-center/covers/odborny-posudek-dotace.png",
+    "image": "/knowledge-center/covers/odborny-posudek-dotace.jpg",
+    "coverImage": "/knowledge-center/covers/odborny-posudek-dotace.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -1134,13 +1141,14 @@ const previewArticles = [
   },
   {
     "slug": "uw-ug-ud-technicke-parametry-oken",
-    "category": "guide",
-    "categoryLabel": "Průvodce pojmy",
-    "label": "Průvodce",
+    "category": "renovation-guide",
+    "categoryLabel": "Průvodce renovací",
+    "label": "Průvodce renovací",
+    "topicLabel": "Průvodce pojmy",
     "title": "Co znamenají Uw, Ug, UD a další technické parametry oken",
     "excerpt": "U oken je důležité rozlišit parametr celého okna, skla, rámu a dveří. Nejčastější chyba je porovnávat Ug skla, když potřebujete znát Uw celého okna.",
-    "image": "/knowledge-center/covers/uw-ug-ud-okna.png",
-    "coverImage": "/knowledge-center/covers/uw-ug-ud-okna.png",
+    "image": "/knowledge-center/covers/uw-ug-ud-okna.jpg",
+    "coverImage": "/knowledge-center/covers/uw-ug-ud-okna.jpg",
     "coverAlt": "",
     "date": "Čeká na odbornou kontrolu",
     "updatedAt": "2026-06-14",
@@ -1387,54 +1395,54 @@ const seriesArticles = expertSourceArticles.map((article) => ({
 }));
 const articleMetaBySlug = {
   "jak-jsme-pripravili-renovaci-domu-po-etapach": {
-    "coverImage": "/knowledge-center/covers/renovace-etapy.png",
+    "coverImage": "/knowledge-center/covers/renovace-etapy.jpg",
     "relatedArticles": []
   },
   "tepelne-cerpadlo-a-fotovoltaika-v-rodinnem-dome": {
-    "coverImage": "/knowledge-center/covers/tc-fve-projekt.png",
+    "coverImage": "/knowledge-center/covers/tc-fve-projekt.jpg",
     "relatedArticles": []
   },
   "zatepleni-domu-a-vymena-oken-s-dotacni-podporou": {
-    "coverImage": "/knowledge-center/covers/fasada-okna-dotace.png",
+    "coverImage": "/knowledge-center/covers/fasada-okna-dotace.jpg",
     "relatedArticles": []
   },
   "nova-zelena-usporam-2026-jednoduse": {
-    "coverImage": "/knowledge-center/covers/nzu-2026-prehled.png",
+    "coverImage": "/knowledge-center/covers/nzu-2026-prehled.jpg",
     "relatedArticles": []
   },
   "nzu-2026-prakticky-light-750000-komplexni-renovace": {
-    "coverImage": "/knowledge-center/covers/nzu-2026-cesty.png",
+    "coverImage": "/knowledge-center/covers/nzu-2026-cesty.jpg",
     "relatedArticles": []
   },
   "co-kdyz-dotace-na-rekonstrukci-nestaci": {
-    "coverImage": "/knowledge-center/covers/dotace-financovani.png",
+    "coverImage": "/knowledge-center/covers/dotace-financovani.jpg",
     "relatedArticles": []
   },
   "renovacni-pas-2026": {
-    "coverImage": "/knowledge-center/covers/renovacni-pas-nzu.png",
+    "coverImage": "/knowledge-center/covers/renovacni-pas-nzu.jpg",
     "relatedArticles": []
   },
   "dilci-nebo-komplexni-renovace": {
-    "coverImage": "/knowledge-center/covers/dilci-komplexni.png",
+    "coverImage": "/knowledge-center/covers/dilci-komplexni.jpg",
     "relatedArticles": []
   },
   "chci-rekonstruovat-dum-koho-oslovit": {
-    "coverImage": "/knowledge-center/covers/prvni-kontakt.png",
+    "coverImage": "/knowledge-center/covers/prvni-kontakt.jpg",
     "relatedArticles": []
   },
   "mokry-dum-spatna-strecha-stara-okna": {
-    "coverImage": "/knowledge-center/covers/technicky-problem.png",
+    "coverImage": "/knowledge-center/covers/technicky-problem.jpg",
     "relatedArticles": []
   },
   "kdy-se-vyplati-fotovoltaika": {
-    "coverImage": "/knowledge-center/covers/fve-strecha-elektrina.png",
+    "coverImage": "/knowledge-center/covers/fve-strecha-elektrina.jpg",
     "relatedArticles": [
       "strecha-pri-renovaci-domu",
       "tepelne-cerpadlo-v-rodinnem-dome"
     ]
   },
   "zatepleni-domu-neni-jen-cena-za-metr": {
-    "coverImage": "/knowledge-center/covers/fasada-zatepleni.png",
+    "coverImage": "/knowledge-center/covers/fasada-zatepleni.jpg",
     "relatedArticles": [
       "okna-a-dvere-pri-renovaci-domu",
       "strecha-pri-renovaci-domu",
@@ -1442,7 +1450,7 @@ const articleMetaBySlug = {
     ]
   },
   "okna-a-dvere-pri-renovaci-domu": {
-    "coverImage": "/knowledge-center/covers/okna-dvere-montaz.png",
+    "coverImage": "/knowledge-center/covers/okna-dvere-montaz.jpg",
     "relatedArticles": [
       "zatepleni-domu-neni-jen-cena-za-metr",
       "uw-ug-ud-technicke-parametry-oken",
@@ -1450,7 +1458,7 @@ const articleMetaBySlug = {
     ]
   },
   "strecha-pri-renovaci-domu": {
-    "coverImage": "/knowledge-center/covers/strecha-renovace.png",
+    "coverImage": "/knowledge-center/covers/strecha-renovace.jpg",
     "relatedArticles": [
       "kdy-se-vyplati-fotovoltaika",
       "foukana-a-strikana-izolace",
@@ -1458,7 +1466,7 @@ const articleMetaBySlug = {
     ]
   },
   "tepelne-cerpadlo-v-rodinnem-dome": {
-    "coverImage": "/knowledge-center/covers/tepelne-cerpadlo-vytapeni.png",
+    "coverImage": "/knowledge-center/covers/tepelne-cerpadlo-vytapeni.jpg",
     "relatedArticles": [
       "co-je-tepelna-ztrata-domu",
       "kdy-se-vyplati-fotovoltaika",
@@ -1466,7 +1474,7 @@ const articleMetaBySlug = {
     ]
   },
   "foukana-a-strikana-izolace": {
-    "coverImage": "/knowledge-center/covers/foukana-strikana-izolace.png",
+    "coverImage": "/knowledge-center/covers/foukana-strikana-izolace.jpg",
     "relatedArticles": [
       "strecha-pri-renovaci-domu",
       "co-je-tepelna-ztrata-domu",
@@ -1474,7 +1482,7 @@ const articleMetaBySlug = {
     ]
   },
   "rekuperace-a-rizene-vetrani": {
-    "coverImage": "/knowledge-center/covers/rekuperace-rizene-vetrani.png",
+    "coverImage": "/knowledge-center/covers/rekuperace-rizene-vetrani.jpg",
     "relatedArticles": [
       "okna-a-dvere-pri-renovaci-domu",
       "zatepleni-domu-neni-jen-cena-za-metr",
@@ -1482,7 +1490,7 @@ const articleMetaBySlug = {
     ]
   },
   "sadrokartony-pri-rekonstrukci-domu": {
-    "coverImage": "/knowledge-center/covers/sadrokartony-rekonstrukce.png",
+    "coverImage": "/knowledge-center/covers/sadrokartony-rekonstrukce.jpg",
     "relatedArticles": [
       "rekuperace-a-rizene-vetrani",
       "strecha-pri-renovaci-domu",
@@ -1490,7 +1498,7 @@ const articleMetaBySlug = {
     ]
   },
   "co-je-tepelna-ztrata-domu": {
-    "coverImage": "/knowledge-center/covers/tepelna-ztrata-domu.png",
+    "coverImage": "/knowledge-center/covers/tepelna-ztrata-domu.jpg",
     "relatedArticles": [
       "tepelne-cerpadlo-v-rodinnem-dome",
       "zatepleni-domu-neni-jen-cena-za-metr",
@@ -1498,7 +1506,7 @@ const articleMetaBySlug = {
     ]
   },
   "co-je-penb": {
-    "coverImage": "/knowledge-center/covers/penb-prukaz.png",
+    "coverImage": "/knowledge-center/covers/penb-prukaz.jpg",
     "relatedArticles": [
       "renovacni-pas",
       "odborny-posudek-pro-dotaci",
@@ -1506,7 +1514,7 @@ const articleMetaBySlug = {
     ]
   },
   "renovacni-pas": {
-    "coverImage": "/knowledge-center/covers/renovacni-pas.png",
+    "coverImage": "/knowledge-center/covers/renovacni-pas.jpg",
     "relatedArticles": [
       "co-je-penb",
       "projektova-dokumentace-druhy",
@@ -1514,7 +1522,7 @@ const articleMetaBySlug = {
     ]
   },
   "projektova-dokumentace-druhy": {
-    "coverImage": "/knowledge-center/covers/projektova-dokumentace.png",
+    "coverImage": "/knowledge-center/covers/projektova-dokumentace.jpg",
     "relatedArticles": [
       "pasport-stavby",
       "renovacni-pas",
@@ -1522,7 +1530,7 @@ const articleMetaBySlug = {
     ]
   },
   "pasport-stavby": {
-    "coverImage": "/knowledge-center/covers/pasport-stavby.png",
+    "coverImage": "/knowledge-center/covers/pasport-stavby.jpg",
     "relatedArticles": [
       "projektova-dokumentace-druhy",
       "renovacni-pas",
@@ -1530,7 +1538,7 @@ const articleMetaBySlug = {
     ]
   },
   "vykaz-vymer-a-polozkovy-rozpocet": {
-    "coverImage": "/knowledge-center/covers/vykaz-vymer-rozpocet.png",
+    "coverImage": "/knowledge-center/covers/vykaz-vymer-rozpocet.jpg",
     "relatedArticles": [
       "zatepleni-domu-neni-jen-cena-za-metr",
       "projektova-dokumentace-druhy",
@@ -1538,7 +1546,7 @@ const articleMetaBySlug = {
     ]
   },
   "odborny-posudek-pro-dotaci": {
-    "coverImage": "/knowledge-center/covers/odborny-posudek-dotace.png",
+    "coverImage": "/knowledge-center/covers/odborny-posudek-dotace.jpg",
     "relatedArticles": [
       "co-je-penb",
       "renovacni-pas",
@@ -1546,34 +1554,34 @@ const articleMetaBySlug = {
     ]
   },
   "uw-ug-ud-technicke-parametry-oken": {
-    "coverImage": "/knowledge-center/covers/uw-ug-ud-okna.png",
+    "coverImage": "/knowledge-center/covers/uw-ug-ud-okna.jpg",
     "relatedArticles": [
       "okna-a-dvere-pri-renovaci-domu",
       "zatepleni-domu-neni-jen-cena-za-metr"
     ]
   },
   "poradi-renovacnich-opatreni-a-proc-na-nem-zalezi": {
-    "coverImage": "/knowledge-center/covers/poradi-opatreni.png",
+    "coverImage": "/knowledge-center/covers/poradi-opatreni.jpg",
     "relatedArticles": []
   },
   "jak-se-rozhodnout-mezi-zdroji-tepla": {
-    "coverImage": "/knowledge-center/covers/zdroje-tepla.png",
+    "coverImage": "/knowledge-center/covers/zdroje-tepla.jpg",
     "relatedArticles": []
   },
   "jak-funguji-dotace-na-renovace-v-roce-2026": {
-    "coverImage": "/knowledge-center/covers/dotace-renovace-2026.png",
+    "coverImage": "/knowledge-center/covers/dotace-renovace-2026.jpg",
     "relatedArticles": []
   },
   "nova-zelena-usporam-co-je-noveho-v-roce-2026": {
-    "coverImage": "/knowledge-center/covers/nzu-novinky.png",
+    "coverImage": "/knowledge-center/covers/nzu-novinky.jpg",
     "relatedArticles": []
   },
   "priprava-domu-na-zimu": {
-    "coverImage": "/knowledge-center/covers/priprava-zima.png",
+    "coverImage": "/knowledge-center/covers/priprava-zima.jpg",
     "relatedArticles": []
   },
   "pet-chyb-ktere-snizuji-ucinnost-renovace": {
-    "coverImage": "/knowledge-center/covers/chyby-renovace.png",
+    "coverImage": "/knowledge-center/covers/chyby-renovace.jpg",
     "relatedArticles": []
   }
 };
@@ -1598,8 +1606,8 @@ function normalizeArticle(article) {
     seoDescription: meta.seoDescription || article.seoDescription || article.excerpt || article.intro || article.title,
     date: status === "draft" ? "Čeká na odbornou kontrolu" : article.date || article.updatedAt,
     updatedAt: article.updatedAt || "2026-06-14",
-    readingTime: article.readingTime?.replace("?ten?", "\u010Dten\u00ED") || "5 min \u010Dten\u00ED",
-    tags: (article.tags || []).map((tag) => tag.replace("st?echa", "st\u0159echa")),
+    readingTime: article.readingTime?.replace("čtení", "\u010Dten\u00ED") || "5 min \u010Dten\u00ED",
+    tags: (article.tags || []).map((tag) => tag.replace("střecha", "st\u0159echa")),
     relatedArticles: meta.relatedArticles?.length ? meta.relatedArticles : article.relatedArticles || [],
   };
 }

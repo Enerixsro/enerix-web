@@ -743,8 +743,16 @@ export default function KnowledgeCenterArticle({ article }) {
   return (
     <>
       <Head>
-        <title>{article.title} | Znalostní centrum Enerixu</title>
-        <meta name="description" content={article.excerpt} />
+        <title>{article.seoTitle}</title>
+        <meta name="description" content={article.seoDescription} />
+        <meta
+          name="robots"
+          content={isPublished ? "index,follow" : "noindex,follow"}
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={article.seoTitle} />
+        <meta property="og:description" content={article.seoDescription} />
+        <meta property="og:image" content={coverImageUrl} />
       </Head>
 
       <div className="min-h-screen bg-white text-slate-900">

@@ -10,6 +10,7 @@ import NzuSeriesCover from "../components/NzuSeriesCover";
 const SORO_EMBED_URL =
   "https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483";
 const PAGE_SIZE = 6;
+const SHOW_PREVIEW_SOURCE_BADGES = true;
 
 const practiceArticles = demoArticles.filter(
   (article) => article.category === "practice"
@@ -18,7 +19,9 @@ const expertArticles = demoArticles.filter(
   (article) => article.category === "expert" && !article.seriesId
 );
 const guideArticles = demoArticles.filter(
-  (article) => article.category === "guide"
+  (article) =>
+    article.category === "renovation-guide" &&
+    article.topicLabel === "Průvodce pojmy"
 );
 const seriesArticles = nzu2026Series.articles
   .map((item) => demoArticles.find((article) => article.slug === item.slug))
@@ -156,6 +159,16 @@ function SeriesPartBadge({ article, compact = false }) {
       }`}
     >
       Část {article.seriesIndex}/{article.seriesTotal}
+    </span>
+  );
+}
+
+function PreviewSourceBadge({ article }) {
+  if (!SHOW_PREVIEW_SOURCE_BADGES || article.source !== "soro") return null;
+
+  return (
+    <span className="inline-flex w-fit items-center rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-amber-800">
+      Interní zdroj: Soro
     </span>
   );
 }
@@ -334,7 +347,7 @@ function Archive({ soroArticles }) {
           <div>
             <h2 className="text-3xl font-bold">Všechny články</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-              Kompletní archiv včetně automaticky publikovaného obsahu ze Soro.
+              Kompletní archiv včetně pracovních návrhů obsahu pro redakční kontrolu.
             </p>
           </div>
           <label className="relative block w-full lg:max-w-sm">
@@ -362,7 +375,7 @@ function Archive({ soroArticles }) {
             ["all", "Vše"],
             ["practice", "Z praxe"],
             ["expert", "Expert"],
-            ["guide", "Průvodce"],
+            ["renovation-guide", "Průvodce renovací"],
             ["news", "Rady a novinky"],
           ].map(([value, label]) => (
             <button
@@ -403,6 +416,11 @@ function Archive({ soroArticles }) {
                   {article.seriesIndex && (
                     <div className="mb-2">
                       <SeriesPartBadge article={article} compact />
+                    </div>
+                  )}
+                  {article.source === "soro" && (
+                    <div className="mb-2">
+                      <PreviewSourceBadge article={article} />
                     </div>
                   )}
                   <h3 className="line-clamp-2 font-bold leading-6">
@@ -614,7 +632,7 @@ export default function BlogPage({ soroArticles = [] }) {
                   href="#pruvodce"
                   className="whitespace-nowrap border-b-2 border-transparent pb-4 text-slate-700 hover:border-green-300 hover:text-green-700"
                 >
-                  Průvodce pojmy
+                  Průvodce renovací
                 </a>
                 <a
                   href="#novinky"
@@ -803,8 +821,7 @@ export default function BlogPage({ soroArticles = [] }) {
             <div className="mx-auto max-w-7xl">
               <h2 className="text-3xl font-bold">Rady a novinky</h2>
               <p className="mt-2 text-sm text-slate-600">
-                Aktuální změny, kratší vysvětlení a hlavní prostor pro
-                automaticky publikovaný obsah ze Soro.
+                Aktuální změny, kratší vysvětlení a pracovní návrhy obsahu pro redakční kontrolu.
               </p>
 
               <div className="mt-6 grid gap-6 md:grid-cols-3">
@@ -875,10 +892,11 @@ export async function getStaticProps() {
         title: article.title,
         excerpt: article.excerpt || "",
         image: article.image,
-        date: article.date || "Soro",
+        date: article.date || "Pracovní návrh",
         readingTime: "4 min čtení",
         href: `/blog?post=${article.slug}`,
         source: "soro",
+        internalSource: "soro",
       }));
 
     return {
