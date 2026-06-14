@@ -161,12 +161,14 @@ function PreviewSourceBadge({ article }) {
   );
 }
 
-function ExpertTechnicalVisual({ article }) {
+function ExpertTechnicalVisual({ article, compact = false }) {
   const slug = article.slug || "";
+  const frameClass = compact ? "h-full min-h-full" : "aspect-[16/9]";
+  const paddingClass = compact ? "p-1.5" : "p-3";
 
   if (slug.includes("fotovoltaika")) {
     return (
-      <div className="aspect-[16/9] bg-[#edf4ef] p-3">
+      <div className={`${frameClass} bg-[#edf4ef] ${paddingClass}`}>
         <svg viewBox="0 0 640 360" role="img" aria-label="Technický graf výroby a spotřeby fotovoltaiky" className="h-full w-full">
           <defs>
             <linearGradient id="expertPvArea" x1="0" x2="0" y1="0" y2="1">
@@ -209,7 +211,7 @@ function ExpertTechnicalVisual({ article }) {
 
   if (slug.includes("zatepleni") || slug.includes("fasada")) {
     return (
-      <div className="aspect-[16/9] bg-[#f3f1ec] p-3">
+      <div className={`${frameClass} bg-[#f3f1ec] ${paddingClass}`}>
         <svg viewBox="0 0 640 360" role="img" aria-label="Realistický řez skladbou zateplené fasády" className="h-full w-full">
           <defs>
             <pattern id="expertMasonry" width="18" height="18" patternUnits="userSpaceOnUse">
@@ -251,7 +253,7 @@ function ExpertTechnicalVisual({ article }) {
 
   if (slug.includes("okna")) {
     return (
-      <div className="aspect-[16/9] bg-[#edf6f8] p-3">
+      <div className={`${frameClass} bg-[#edf6f8] ${paddingClass}`}>
         <svg viewBox="0 0 640 360" role="img" aria-label="Realistický řez profilem okna a připojovací spárou" className="h-full w-full">
           <defs>
             <linearGradient id="expertGlass" x1="0" x2="1">
@@ -293,7 +295,7 @@ function ExpertTechnicalVisual({ article }) {
 
   if (slug.includes("strecha")) {
     return (
-      <div className="aspect-[16/9] bg-[#f1f5f9] p-3">
+      <div className={`${frameClass} bg-[#f1f5f9] ${paddingClass}`}>
         <svg viewBox="0 0 640 360" role="img" aria-label="Realistický řez skladbou střechy" className="h-full w-full">
           <rect x="18" y="18" width="604" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" />
           <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Střecha - skladba</text>
@@ -327,7 +329,7 @@ function ExpertTechnicalVisual({ article }) {
 
   if (slug.includes("tepelne-cerpadlo")) {
     return (
-      <div className="aspect-[16/9] bg-[#eef6f2] p-3">
+      <div className={`${frameClass} bg-[#eef6f2] ${paddingClass}`}>
         <svg viewBox="0 0 640 360" role="img" aria-label="Technické schéma zapojení tepelného čerpadla" className="h-full w-full">
           <rect x="18" y="18" width="604" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" />
           <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Tepelné čerpadlo - systém</text>
@@ -352,7 +354,7 @@ function ExpertTechnicalVisual({ article }) {
   }
 
   return (
-    <div className="aspect-[16/9] bg-[#f1f5f9] p-3">
+    <div className={`${frameClass} bg-[#f1f5f9] ${paddingClass}`}>
       <svg viewBox="0 0 640 360" role="img" aria-label="Technický výřez rozhodování o opatření" className="h-full w-full">
         <rect x="18" y="18" width="604" height="324" rx="10" fill="#ffffff" stroke="#cbd5e1" />
         <text x="42" y="54" fill="#14532d" fontSize="18" fontWeight="700">Technický výřez</text>
@@ -626,6 +628,8 @@ function Archive({ soroArticles }) {
                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-slate-100">
                   {article.seriesId ? (
                     <NzuSeriesCover article={article} thumbnail />
+                  ) : article.category === "expert" ? (
+                    <ExpertTechnicalVisual article={article} compact />
                   ) : (
                     <img
                       src={article.image}
