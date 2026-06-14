@@ -135,7 +135,8 @@ Doporucene systemove kroky:
 
 - Node.js LTS vcetne `npm` je nainstalovany,
 - Git for Windows je nainstalovany,
-- volitelne nainstalovat GitHub CLI `gh` a prihlasit ho.
+- GitHub CLI `gh` je nainstalovane, ale neni nutne ho prihlasovat, dokud
+  neni potreba pracovat s PR/CI pres CLI.
 
 Poznamka: Codex sandbox nemusi automaticky videt systemovou PATH. Pokud prikaz
 nevidi Git nebo Node, pouzit jen pro dany prikaz:
