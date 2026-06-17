@@ -908,7 +908,7 @@ export default function BlogPage({ soroArticles = [] }) {
               <div className="mt-6 grid gap-5 lg:grid-cols-[1.65fr_0.85fr]">
                 <a
                   href={demoHref(leadArticle.slug)}
-                  className="group overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md"
+                  className="group self-start overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:border-green-300 hover:shadow-md"
                 >
                   <div className="relative aspect-[16/8] overflow-hidden bg-slate-100">
                     <img

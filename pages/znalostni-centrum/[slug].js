@@ -838,7 +838,7 @@ export default function KnowledgeCenterArticle({ article }) {
                   {article.label}
                 </span>
                 <SeriesPartBadge article={article} />
-                {SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES && (
+                {SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES && !isPublished && (
                   <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
                     Čeká na kontrolu článku
                   </span>
