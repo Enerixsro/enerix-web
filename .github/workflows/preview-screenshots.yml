@@ -1,0 +1,70 @@
+name: Preview screenshots
+
+on:
+  push:
+    branches:
+      - "codex/**"
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: "Optional Vercel preview URL to capture"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  screenshots:
+    name: Capture desktop and mobile screenshots
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate preview URL
+        id: target
+        shell: bash
+        env:
+          PREVIEW_URL: ${{ inputs.preview_url }}
+        run: |
+          if [ -z "$PREVIEW_URL" ]; then
+            BRANCH_NAME="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+            BRANCH_SLUG="$(printf '%s' "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' | sed 's#[^a-z0-9]#-#g')"
+            PREVIEW_URL="https://enerix-web-git-${BRANCH_SLUG}-enerix.vercel.app"
+          fi
+
+          case "$PREVIEW_URL" in
+            https://*.vercel.app|https://*.vercel.app/*|https://enerix.cz|https://enerix.cz/*|https://www.enerix.cz|https://www.enerix.cz/*)
+              ;;
+            *)
+              echo "Only https://*.vercel.app or Enerix production URLs are allowed."
+              exit 1
+              ;;
+          esac
+
+          echo "preview_url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Install Chromium for Playwright
+        run: npx -y playwright@latest install --with-deps chromium
+
+      - name: Capture screenshots
+        shell: bash
+        env:
+          PREVIEW_URL: ${{ steps.target.outputs.preview_url }}
+        run: |
+          mkdir -p screenshots
+          printf "Captured URL: %s\n" "$PREVIEW_URL" > screenshots/source-url.txt
+          for attempt in {1..24}; do
+            if curl --fail --silent --head --max-time 10 "$PREVIEW_URL" > /dev/null; then
+              break
+            fi
+            echo "Waiting for preview to become available: attempt $attempt/24"
+            sleep 10
+          done
+          npx -y playwright@latest screenshot --browser=chromium --viewport-size=1440,1100 --full-page "$PREVIEW_URL" screenshots/desktop-home.png
+          npx -y playwright@latest screenshot --browser=chromium --viewport-size=390,844 --full-page "$PREVIEW_URL" screenshots/mobile-home.png
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-screenshots
+          path: screenshots/

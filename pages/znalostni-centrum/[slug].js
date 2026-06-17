@@ -604,6 +604,36 @@ function SeriesPartBadge({ article }) {
   );
 }
 
+function ArticleGallery({ images }) {
+  if (!images?.length) return null;
+
+  return (
+    <section className="mt-12 border-t border-slate-200 pt-8">
+      <h2 className="text-2xl font-bold">Fotky z přípravy podkladů</h2>
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        {images.map((image) => (
+          <figure
+            key={image.src}
+            className="overflow-hidden rounded-lg border border-slate-200 bg-white"
+          >
+            <img
+              src={image.src}
+              alt={image.alt || ""}
+              loading="lazy"
+              className="aspect-[16/10] h-full w-full object-cover"
+            />
+            {image.caption && (
+              <figcaption className="px-4 py-3 text-sm leading-6 text-slate-600">
+                {image.caption}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function SeriesNavigation({ article, compact = false }) {
   if (!article.seriesId) return null;
 
@@ -903,6 +933,8 @@ export default function KnowledgeCenterArticle({ article }) {
                     ))}
                   </div>
                 )}
+
+                <ArticleGallery images={article.gallery} />
 
                 {article.paragraphs && (
                   <>

@@ -3,6 +3,113 @@ import { nzu2026SeriesBySlug } from "./knowledgeCenterSeries";
 
 const previewArticles = [
   {
+    slug: "proc-zacit-pasportem-starsi-rekreacni-chalupy",
+    category: "practice",
+    categoryLabel: "Z praxe Enerixu",
+    label: "Z praxe",
+    title:
+      "Přistavovalo se, upravovalo se... a dnes chybí výkresy. Proč jsme začali pasportem",
+    excerpt:
+      "U starší rekreační chalupy v lipenské lokalitě bylo potřeba nejdřív popsat skutečný stav domu. Teprve potom dává smysl řešit úřad, výměry, nacenění oprav nebo další energetická opatření.",
+    image:
+      "/knowledge-center/lipenska-chalupa-pasport/pasport-chalupy-hero.webp",
+    location: "Lipenská lokalita",
+    propertyType: "Rekreační objekt",
+    date: "Příběh z praxe",
+    readingTime: "8 min čtení",
+    status: "published",
+    tags: ["pasport stavby", "rekreační objekt", "příprava renovace"],
+    relatedArticles: [
+      "pasport-stavby",
+      "renovacni-pas",
+      "vykaz-vymer-a-polozkovy-rozpocet",
+    ],
+    coverAlt:
+      "Rekreační chalupa v lipenské lokalitě a pracovní podklady pro zaměření stavby",
+    intro:
+      "U starších domů a rekreačních objektů se často stává, že dům prakticky funguje, ale jeho aktuální stav není nikde pořádně zakreslený. Když se pak má řešit úřad, oprava, výkaz výměr nebo další energetická opatření, je potřeba začít od základní mapy domu.",
+    gallery: [
+      {
+        src: "/knowledge-center/lipenska-chalupa-pasport/stav-rekreacni-chalupy.webp",
+        alt: "Starší rekreační chalupa při zaměření skutečného stavu",
+        caption:
+          "U staršího objektu nemusí být na první pohled jasné, které části jsou původní a které vznikly později.",
+      },
+      {
+        src: "/knowledge-center/lipenska-chalupa-pasport/zamereni-v-terenu.webp",
+        alt: "Pracovní náčrty a zaměření objektu v terénu",
+        caption:
+          "Pasport začíná v terénu: zaměřením, náčrty a ověřením toho, co na místě skutečně stojí.",
+      },
+      {
+        src: "/knowledge-center/lipenska-chalupa-pasport/technicky-nacrt.webp",
+        alt: "Technický náčrt při zaměření rekreačního objektu",
+        caption:
+          "Z praktických poznámek a rozměrů vzniká podklad, na který lze navázat při dalších rozhodnutích.",
+      },
+    ],
+    paragraphs: [
+      "U starších domů a rekreačních objektů se často opakuje podobný příběh. Něco se postavilo původně. Potom se něco přistavělo. Později se vyměnila okna, upravila střecha, přidal sklad, dřevník, veranda nebo další část objektu.",
+      "Dům se během let přizpůsoboval životu svých majitelů. Někdo v něm bydlel desítky let, někdo tam jezdil jako dítě za rodiči nebo prarodiči a dnes se k objektu vrací. Jiný člověk si takový dům koupí už v hotovém stavu, se všemi úpravami, přístavbami i nejasnostmi, které vznikaly dávno před ním.",
+      "Prakticky to často funguje. Dům stojí, používá se, má svou historii a lidé většinou vědí, kudy se chodí, kde je kuchyně, kde sklad a co se kdy přibližně opravovalo.",
+      "Jenže ve chvíli, kdy se má objekt řešit úředně, technicky nebo stavebně, začne vadit jedna věc: aktuální stav domu není nikde pořádně zakreslený.",
+      "A v tu chvíli se začnou objevovat otázky:",
+      "Je něco potřeba doložit stavebnímu úřadu?\nOdpovídá skutečný stav tomu, co je v evidenci?\nDá se na objektu něco dál plánovat?\nKolik má fasáda metrů čtverečních?\nJak velká jsou okna?\nJak velká je střecha?\nDá se vůbec rozumně nacenit oprava, když nikdo nemá skutečné rozměry?",
+      "Právě v takové situaci dává smysl začít pasportem stavby.",
+      "Když dům stojí, ale papíry mu neodpovídají",
+      "U rekreačního objektu v lipenské lokalitě jsme s projektantem řešili zpracování pasportu stavby pro samotnou chalupu a navazující hospodářskou část.",
+      "Na první pohled by se mohlo zdát, že pasport je jen dokument pro stavební úřad. Něco, co se musí dodat, aby byl objekt administrativně v pořádku. V praxi je to ale často mnohem důležitější krok.",
+      "Pasport pomáhá popsat skutečný stav objektu. Ne představu, ne původní výkres z minulosti, ne odhad podle fotek, ale reálný stav toho, co na místě skutečně stojí.",
+      "U starších objektů to bývá zásadní. Část domu může být původní. Část mohla vzniknout později. Některé úpravy byly třeba provedeny dobře, ale nejsou zakreslené. Jiné části mohly vzniknout postupně podle aktuální potřeby majitelů.",
+      "Dokud se skutečný stav nezaměří a nezpracuje, další rozhodování stojí na nejistotě.",
+      "Pasport není jen formalita pro úřad",
+      "Pasport stavby má samozřejmě úřední význam. Pomáhá doložit skutečný stav objektu tam, kde aktuální dokumentace chybí nebo neodpovídá realitě. Tím ale jeho hodnota nekončí.",
+      "Při zaměření se sbírají údaje důležité i pro další práci s domem. Vznikají náčrty, rozměry, členění objektu, informace o oknech, dveřích, fasádách, střeše, navazujících částech a dalších konstrukcích.",
+      "Zjednodušeně řečeno: pasport pomáhá převést stav 'nějak to tu stojí' do stavu 'víme, co tu stojí, a máme k tomu použitelné podklady'.",
+      "To je rozdíl, který začne být velmi praktický ve chvíli, kdy majitel nechce řešit jen úřad, ale i další kroky.",
+      "Bez rozměrů se špatně naceňuje",
+      "Jedna z největších praktických hodnot pasportu je jednoduchá: začnou být k dispozici rozměry.",
+      "To zní banálně, ale při přípravě oprav a rekonstrukcí je to zásadní. Když klient řekne, že chce opravit fasádu, první otázka není barva omítky. První otázka je, kolik metrů čtverečních fasády se vlastně řeší.",
+      "Bez výměr dodavatel často nemůže připravit férovou nabídku. Buď nenacení nic, nebo nacení hrubý odhad. A hrubý odhad se později může výrazně změnit.",
+      "To samé platí u dalších částí objektu:",
+      "Když máme rozměry oken, lze začít konkrétně poptávat jejich výměnu.\nKdyž máme plochy fasády, lze začít řešit opravu omítek nebo zateplení.\nKdyž máme rozměry střechy, lze se bavit o její opravě nebo prvním posouzení možností fotovoltaiky.\nKdyž máme základní dokumentaci objektu, lze lépe komunikovat s projektantem, dodavateli i úřadem.",
+      "Pasport tedy není jen papír. Může být prvním krokem k výkazu výměr a k tomu, aby se další práce daly nacenit konkrétněji.",
+      "Okna, fasáda, střecha, fotovoltaika",
+      "U této chalupy nešlo jen o to zakreslit stavbu. Důležité bylo také vytvořit podklad pro další rozhodování.",
+      "Bez podkladů se dodavateli řekne: máme starší rekreační objekt a asi bychom chtěli řešit fasádu. S podklady už se dá říct: tady jsou rozměry, členění objektu, okna, navazující části a základní výkresy. Pojďme se bavit konkrétněji.",
+      "U oken lze díky zaměření připravovat konkrétnější poptávku. Nejen nějaká okna, ale počet, rozměry, umístění a návaznosti.",
+      "U fasády lze začít řešit plochy. Bez nich není možné rozumně porovnávat nabídky, protože každá firma může vycházet z jiného odhadu.",
+      "U střechy mohou rozměry pomoct při prvním posouzení dalších možností, třeba i fotovoltaiky. U starší střechy ale není správná otázka jen 'vejde se tam FVE?'. Nejdřív je potřeba řešit technický stav střechy, její životnost, krytinu, konstrukci a to, jestli nebude v dohledné době nutná oprava.",
+      "Fotovoltaika na střechu, která bude za pár let potřebovat zásadní renovaci, nemusí dávat smysl. Proto je lepší nejdřív rozumět domu a teprve potom rozhodovat o konkrétních opatřeních.",
+      "Podklad pro renovační pas a další přípravu",
+      "Pasport stavby není totéž co renovační pas. Pasport stavby popisuje skutečný stavební stav objektu. Renovační pas řeší širší plán energetické renovace, návaznost opatření, jejich pořadí a možné etapy.",
+      "Přesto spolu tyto věci souvisí. Renovační pas nebo energetické posouzení nejde poctivě připravit bez základní znalosti domu.",
+      "Je potřeba vědět, jaké má objekt konstrukce, jaké jsou jejich plochy, kde jsou okna, jak je řešená střecha, jaká je obálka budovy, jaké jsou zdroje tepla a jaké technické nebo prostorové limity objekt má.",
+      "Pokud u staršího objektu chybí aktuální dokumentace, pasport může vytvořit základní mapu domu. Teprve na ni se dá smysluplně navazovat dál: renovace, zateplení, výměna oken, oprava střechy, zdroje energie, dotace nebo financování.",
+      "Není to ještě projekt renovace. Není to položkový rozpočet. Není to energetické hodnocení. Je to ale jeden z podkladů, bez kterého se další příprava často opírá jen o odhady.",
+      "Je chybějící dokumentace problém?",
+      "To záleží na konkrétní situaci. Ne každý starší dům bez aktuálních výkresů automaticky znamená velký problém. Mnoho objektů se běžně užívá dlouhé roky a prakticky fungují.",
+      "Problém ale může nastat ve chvíli, kdy se má s objektem něco dělat:",
+      "Když se má jednat se stavebním úřadem.\nKdyž se má objekt prodávat nebo kupovat.\nKdyž se mají plánovat opravy.\nKdyž se má poptat fasáda, okna, střecha nebo jiná práce.\nKdyž se má připravit renovační pas nebo energetické posouzení.\nKdyž se má rozhodnout, co má smysl udělat jako první.",
+      "V tu chvíli nestačí říct, že to nějak stojí. Je potřeba vědět, co přesně se řeší.",
+      "Co klient získá",
+      "Výstupem pasportu není jen složka s výkresy. Klient získá především lepší orientaci ve vlastním objektu.",
+      "Konkrétně může získat:",
+      "dokumentaci skutečného stavu,\npodklad pro stavební úřad,\npůdorysy, řezy a pohledy,\nsituační výkres,\ntechnickou a průvodní část,\nvýchozí rozměry pro další poptávky,\nzáklad pro výkaz výměr,\nmožnost lépe poptat fasádu, okna, střechu nebo další práce,\npodklad pro navazující energetické a renovační posouzení,\nlepší kontrolu nad tím, co se bude na objektu dál plánovat.",
+      "Bez podkladů se často jen odhaduje. S podklady se dá začít rozhodovat.",
+      "Role Enerixu",
+      "U této zakázky jsme nezačínali tím, že bychom klientovi hned nabízeli konkrétní technologii nebo stavební opatření. Nezačali jsme fotovoltaikou, fasádou ani okny.",
+      "Začali jsme tím, že bylo potřeba udělat pořádek v podkladech a popsat skutečný stav objektu.",
+      "To je přesně typ práce, kde dává smysl role Enerixu jako průvodce. Nejde jen o jeden výkres nebo jednu profesi. Jde o návaznost: klient, projektant, geodet, stavební úřad, budoucí dodavatelé a další rozhodování o objektu.",
+      "Naším úkolem je pomoct převést nejasný stav domu do použitelných kroků. Nejdřív zjistit, co přesně máme. Teprve potom rozhodovat, co s tím dál.",
+      "Kam může pasport navazovat dál",
+      "Pasport stavby nemusí být konec přípravy. U starších objektů často vytvoří základ pro další konkrétní kroky:",
+      "výkaz výměr - kolik m2 má fasáda, střecha nebo další části objektu,\npoptávku oken - pokud jsou známé rozměry a členění výplní,\npoptávku fasády nebo zateplení - pokud jsou známé plochy a návaznosti,\nprvní posouzení střechy nebo fotovoltaiky - vždy s ohledem na technický stav střechy,\nrenovační pas nebo energetické posouzení - pokud se má řešit širší plán renovace, dotace nebo pořadí opatření.",
+      "Pasport stavby nenahrazuje projekt renovace ani renovační pas. Pomáhá ale vytvořit základní mapu domu, bez které se další rozhodování často opírá jen o odhady.",
+      "U starších objektů je to často nejrozumnější začátek. Ne proto, že by výkres sám o sobě dům opravil, ale proto, že bez něj se špatně plánuje, špatně naceňuje a špatně rozhoduje.",
+    ],
+  },
+  {
     slug: "jak-jsme-pripravili-renovaci-domu-po-etapach",
     category: "practice",
     categoryLabel: "Z praxe Enerixu",
@@ -1614,9 +1721,9 @@ function normalizeArticle(article) {
 
 
 const rawDemoArticles = [
-  ...previewArticles.slice(0, 3),
+  ...previewArticles.slice(0, 4),
   ...seriesArticles,
-  ...previewArticles.slice(3),
+  ...previewArticles.slice(4),
 ];
 
 export const demoArticles = rawDemoArticles.map(normalizeArticle);

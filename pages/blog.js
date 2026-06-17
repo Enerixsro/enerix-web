@@ -16,7 +16,7 @@ const practiceArticles = demoArticles.filter(
   (article) => article.category === "practice"
 );
 const expertArticles = demoArticles.filter(
-  (article) => article.category === "expert" && !article.seriesId
+  (article) => article.category === "expert"
 );
 const guideArticles = demoArticles.filter(
   (article) =>
@@ -161,10 +161,51 @@ function PreviewSourceBadge({ article }) {
   );
 }
 
+const expertThumbnailBySlug = {
+  "kdy-se-vyplati-fotovoltaika":
+    "/knowledge-center/expert-thumbnails/kdy-se-vyplati-fotovoltaika.png",
+  "zatepleni-domu-neni-jen-cena-za-metr":
+    "/knowledge-center/expert-thumbnails/zatepleni-domu-neni-jen-cena-za-metr.png",
+  "okna-a-dvere-pri-renovaci-domu":
+    "/knowledge-center/expert-thumbnails/okna-a-dvere-pri-renovaci-domu.png",
+  "strecha-pri-renovaci-domu":
+    "/knowledge-center/expert-thumbnails/strecha-pri-renovaci-domu.png",
+  "tepelne-cerpadlo-v-rodinnem-dome":
+    "/knowledge-center/expert-thumbnails/tepelne-cerpadlo-v-rodinnem-dome.png",
+  "foukana-a-strikana-izolace":
+    "/knowledge-center/expert-thumbnails/foukana-a-strikana-izolace.png",
+  "rekuperace-a-rizene-vetrani":
+    "/knowledge-center/expert-thumbnails/rekuperace-a-rizene-vetrani.png",
+  "sadrokartony-pri-rekonstrukci-domu":
+    "/knowledge-center/expert-thumbnails/sadrokartony-pri-rekonstrukci-domu.png",
+  "poradi-renovacnich-opatreni-a-proc-na-nem-zalezi":
+    "/knowledge-center/expert-thumbnails/poradi-renovacnich-opatreni-a-proc-na-nem-zalezi.png",
+  "jak-se-rozhodnout-mezi-zdroji-tepla":
+    "/knowledge-center/expert-thumbnails/jak-se-rozhodnout-mezi-zdroji-tepla.png",
+  "jak-funguji-dotace-na-renovace-v-roce-2026":
+    "/knowledge-center/expert-thumbnails/jak-funguji-dotace-na-renovace-v-roce-2026.png",
+};
+
 function ExpertTechnicalVisual({ article, compact = false }) {
   const slug = article.slug || "";
   const frameClass = compact ? "h-full min-h-full" : "aspect-[16/9]";
   const paddingClass = compact ? "p-1.5" : "p-3";
+  const thumbnailSrc = expertThumbnailBySlug[slug];
+
+  if (thumbnailSrc) {
+    return (
+      <div className={`${frameClass} overflow-hidden bg-slate-100`}>
+        <img
+          src={thumbnailSrc}
+          alt=""
+          loading="lazy"
+          className={`h-full w-full transition duration-500 group-hover:scale-[1.02] ${
+            compact ? "object-contain" : "object-cover"
+          }`}
+        />
+      </div>
+    );
+  }
 
   if (slug.includes("fotovoltaika")) {
     return (
@@ -540,9 +581,7 @@ function Archive({ soroArticles }) {
     return archiveArticles.filter((article) => {
       const matchesFilter =
         filter === "all" ||
-        (filter === "expert"
-          ? article.category === "expert" && !article.seriesId && !article.seriesIndex
-          : article.category === filter);
+        article.category === filter;
       const matchesQuery =
         !normalizedQuery ||
         `${article.title} ${article.excerpt || ""}`
