@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Script from "next/script";
 import { useState } from "react";
+import CookieSettingsLink from "../components/CookieSettingsLink";
 import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
+import { slugify } from "../lib/tracking";
 
 export default function EnerixLandingPage() {
   const [activeService, setActiveService] = useState(null);
@@ -23,10 +24,6 @@ export default function EnerixLandingPage() {
       });
 
       if (response.ok) {
-        if (typeof window !== "undefined" && typeof window.fbq === "function") {
-          window.fbq("track", "Lead");
-        }
-
         window.location.href = "/dekujeme";
       } else {
         alert(
@@ -490,30 +487,6 @@ export default function EnerixLandingPage() {
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={absoluteUrl("/")} />
       </Head>
-      <Script id="meta-pixel" strategy="afterInteractive">
-        {`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;
-          n.version='2.0';n.queue=[];t=b.createElement(e);
-          t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1547450486949189');
-          fbq('track', 'PageView');
-        `}
-      </Script>
-
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=1547450486949189&ev=PageView&noscript=1"
-          alt=""
-        />
-      </noscript>
 
       <div className="min-h-screen bg-white text-slate-900">
         <header className="border-b border-slate-200 bg-white">
@@ -711,6 +684,8 @@ export default function EnerixLandingPage() {
               <div key={service.title}>
                 <button
                   type="button"
+                  data-service-slug={slugify(service.title)}
+                  data-cta-location="services_grid"
                   onClick={() =>
                     setActiveService(
                       activeService === service.title ? null : service.title
@@ -1108,16 +1083,24 @@ export default function EnerixLandingPage() {
                 <div className="mt-10 grid gap-4 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
                     <div className="text-sm text-slate-300">Telefon</div>
-                    <div className="mt-1 text-xl font-semibold">
+                    <a
+                      href="tel:+420720480861"
+                      data-cta-location="contact_panel"
+                      className="mt-1 block text-xl font-semibold transition hover:text-green-200"
+                    >
                       720 480 861
-                    </div>
+                    </a>
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
                     <div className="text-sm text-slate-300">E-mail</div>
-                    <div className="mt-1 break-all text-xl font-semibold">
+                    <a
+                      href="mailto:jiri.cecka@enerix.cz"
+                      data-cta-location="contact_panel"
+                      className="mt-1 block break-all text-xl font-semibold transition hover:text-green-200"
+                    >
                       jiri.cecka@enerix.cz
-                    </div>
+                    </a>
                   </div>
                 </div>
 
@@ -1134,6 +1117,7 @@ export default function EnerixLandingPage() {
             </div>
 
             <form
+              id="contact_form"
               onSubmit={handleSubmit}
               className="rounded-[2rem] border border-slate-200 bg-white p-6 text-slate-900 shadow-xl md:p-8"
             >
@@ -1319,6 +1303,7 @@ export default function EnerixLandingPage() {
                 >
                   Ochrana osobních údajů
                 </a>
+                <CookieSettingsLink className="w-fit text-left transition hover:text-white" />
               </div>
             </div>
           </div>

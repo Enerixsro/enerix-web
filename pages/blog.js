@@ -6,6 +6,7 @@ import { demoArticles } from "../data/knowledgeCenterArticles";
 import { nzu2026Series } from "../data/knowledgeCenterSeries";
 import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
 import NzuSeriesCover from "../components/NzuSeriesCover";
+import CookieSettingsLink from "../components/CookieSettingsLink";
 
 const SORO_EMBED_URL =
   "https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483";
@@ -1115,7 +1116,10 @@ export default function BlogPage({ soroArticles = [] }) {
         </main>
 
         <footer className="bg-slate-950 px-6 py-8 text-center text-sm text-slate-400">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 sm:flex-row">
           © 2026 Enerix s.r.o. · Průvodce renovací vašeho domu
+            <CookieSettingsLink className="text-slate-400 underline-offset-4 hover:text-white hover:underline" />
+          </div>
         </footer>
 
         <div id="soro-blog" className="hidden" aria-hidden="true"></div>

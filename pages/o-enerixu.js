@@ -1,4 +1,5 @@
 import Head from "next/head";
+import CookieSettingsLink from "../components/CookieSettingsLink";
 
 const principles = [
   {
@@ -443,7 +444,10 @@ export default function OEnerixu() {
         </main>
 
         <footer className="bg-[#0b1120] px-6 py-8 text-center text-sm text-gray-400">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 sm:flex-row">
           © 2026 Enerix s.r.o. Všechna práva vyhrazena.
+            <CookieSettingsLink className="text-gray-400 underline-offset-4 hover:text-white hover:underline" />
+          </div>
         </footer>
       </div>
     </>

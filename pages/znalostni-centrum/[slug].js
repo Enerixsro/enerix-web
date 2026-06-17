@@ -6,6 +6,7 @@ import {
 } from "../../data/knowledgeCenterSeries";
 import { absoluteUrl } from "../../data/knowledgeCenterArticleMeta";
 import NzuSeriesCover from "../../components/NzuSeriesCover";
+import CookieSettingsLink from "../../components/CookieSettingsLink";
 
 const safetyNote =
   "Informace v článku jsou orientační a vycházejí z podmínek známých v době přípravy textu. Programy podpory se mohou měnit a konkrétní možnost podpory vždy závisí na aktuálních pravidlech, typu domu, vlastnictví, domácnosti, rozsahu opatření a schválení příslušnými institucemi.";
@@ -1028,7 +1029,10 @@ export default function KnowledgeCenterArticle({ article }) {
         </main>
 
         <footer className="bg-slate-950 px-6 py-8 text-center text-sm text-slate-400">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 sm:flex-row">
           © 2026 Enerix s.r.o. · Průvodce renovací vašeho domu
+            <CookieSettingsLink className="text-slate-400 underline-offset-4 hover:text-white hover:underline" />
+          </div>
         </footer>
       </div>
     </>

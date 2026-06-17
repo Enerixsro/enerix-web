@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 
 export default function Dekujeme() {
   return (
@@ -11,41 +10,6 @@ export default function Dekujeme() {
           content="Děkujeme za odeslání poptávky. Ozveme se vám co nejdříve."
         />
       </Head>
-
-      <Script
-        id="sklik-conversion"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function fireSklikConversion() {
-              function run() {
-                if (
-                  window.sznIVA &&
-                  window.sznIVA.IS &&
-                  window.rc &&
-                  window.rc.conversionHit
-                ) {
-                  window.sznIVA.IS.updateIdentities({
-                    eid: null
-                  });
-
-                  var conversionConf = {
-                    id: 100275958,
-                    value: 1000,
-                    consent: 0
-                  };
-
-                  window.rc.conversionHit(conversionConf);
-                } else {
-                  setTimeout(run, 300);
-                }
-              }
-
-              run();
-            })();
-          `,
-        }}
-      />
 
       <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center px-6">
         <section className="max-w-2xl text-center">
