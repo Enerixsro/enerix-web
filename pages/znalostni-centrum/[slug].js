@@ -175,7 +175,7 @@ function isSectionHeading(text) {
     return false;
   }
 
-  return /^(?:\d+\.|A co|Co |Dílčí |Dotace |Dvě |Energetická |Jak |Jednoduch|Jednoduše|Kde |Kdy |Když |Komplexní |Lepší |Mokrý |Nejdřív|Nejčastější|NZÚ |Pozor|Pro koho|Proč |Příklad|První dům|Renovační|Rychlé|Rychlý|Stará |Špatná |Typick|Závěr)/.test(
+  return /^(?:\d+\.|A co|Bez |Co |Dílčí |Dotace |Dvě |Energetická |Jak |Jednoduch|Jednoduše|Je chybějící|Kam |Kde |Kdy |Když |Komplexní |Lepší |Mokrý |Nejdřív|Nejčastější|NZÚ |Okna|Pasport |Podklad |Pozor|Pro koho|Proč |Příklad|První dům|Renovační|Role |Rychlé|Rychlý|Stará |Špatná |Typick|Závěr)/.test(
     text
   );
 }
