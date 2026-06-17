@@ -1318,7 +1318,7 @@ const previewArticles = [
       "Proto hlavní článek Okna a dveře při renovaci domu řeší nejen parametry, ale i provedení.",
       "Souvislost s dotací",
       "U dotačně podporované výměny oken a dveří se obvykle sledují konkrétní technické parametry výrobků a způsob zabudování podle aktuálních podmínek programu. Přesné hodnoty a požadavky je nutné ověřit v platných podkladech pro danou žádost.",
-      "Do preview textu proto patří opatrnost: samotné tvrzení \"máme trojsklo\" nemusí stačit.",
+      "Při posuzování nabídky je proto na místě opatrnost: samotné tvrzení \"máme trojsklo\" nemusí stačit.",
       "Co chtít v nabídce",
       "U oken se ptejte hlavně na:",
       "Uw celého okna,\ntyp zasklení a Ug,\nmateriál a profil rámu,\ndistanční rámeček,\ntyp montáže,\nřešení připojovací spáry,\nparapety a začištění,\nnávaznost na zateplení.",
@@ -1338,7 +1338,7 @@ const previewArticles = [
       "Nesprávné pořadí může vést k předělávkám, zbytečně vysokým nákladům nebo špatně navrženým technologiím.",
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/90a34141-3586-46bf-bad2-16db22fe4090.webp",
-    date: "Návrhový článek",
+    date: "Enerix Expert",
     readingTime: "8 min čtení",
     intro:
       "Pořadí renovace není univerzální, ale některé závislosti se opakují téměř u každého domu. Tento základ článku je připravený k odborné kontrole a doplnění.",
@@ -1372,7 +1372,7 @@ const previewArticles = [
       "Rozhodnutí nevychází jen z ceny zařízení. Důležitý je stav domu, otopná soustava, provoz a plánované úpravy.",
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/d554b212-4530-4d44-96fa-3d986fce28f0.webp",
-    date: "Návrhový článek",
+    date: "Enerix Expert",
     readingTime: "9 min čtení",
     intro:
       "Zdroj tepla je součást energetiky celého domu. Článek nabízí praktickou osnovu rozhodování, kterou je před publikací potřeba doplnit o konkrétní výpočty a odborné příklady.",
@@ -1406,10 +1406,10 @@ const previewArticles = [
       "Dotace mohou pomoci správně připravené renovaci, ale neměly by být jediným důvodem pro technické rozhodnutí.",
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/ac08c4a9-b793-47ff-a162-74cbfd372b3e.webp",
-    date: "Návrhový článek",
+    date: "Enerix Expert",
     readingTime: "6 min čtení",
     intro:
-      "Tento demonstrační text záměrně neuvádí konkrétní částky ani závazné podmínky. Před publikací musí být aktualizován podle platných pravidel programu.",
+      "Konkrétní částky a závazné podmínky je vždy potřeba ověřit podle aktuálně platných pravidel programu.",
     sections: [
       {
         title: "Dotace jako součást přípravy",
@@ -1440,10 +1440,10 @@ const previewArticles = [
       "Stručný přehled témat, která je potřeba sledovat při přípravě renovace a dotačních podkladů.",
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/4809855d-24ef-4e8d-b698-cee1de2cb0ad.webp",
-    date: "Návrhový článek",
+    date: "NZÚ 2026",
     readingTime: "4 min čtení",
     intro:
-      "Jde o demonstrační osnovu aktuality. Konkrétní pravidla, termíny a parametry musí být před zveřejněním ověřeny podle aktuálních zdrojů.",
+      "Konkrétní pravidla, termíny a parametry je vždy potřeba ověřit podle aktuálních zdrojů.",
     sections: [
       {
         title: "Co sledovat",
@@ -1469,10 +1469,10 @@ const previewArticles = [
       "Krátká kontrola vytápění, obálky domu a větrání může včas odhalit problémy, které se v zimě prodraží.",
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/153bf26d-1cff-4d7e-836b-e704e7f8e784.webp",
-    date: "Návrhový článek",
+    date: "Praktický přehled",
     readingTime: "3 min čtení",
     intro:
-      "Praktický demonstrační článek ukazuje formát kratších sezonních rad, které lze později doplnit z odborných podkladů nebo publikovat přes Soro.",
+      "Krátké sezonní rady pomáhají včas zachytit problémy, které se v zimě mohou prodražit.",
     sections: [
       {
         title: "Zkontrolujte zdroj tepla",
@@ -1498,7 +1498,7 @@ const previewArticles = [
       "Dílčí rozhodnutí bez společného plánu mohou snížit přínos investice nebo vytvořit další náklady.",
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/18f790d5-5683-4ccc-a083-7bf5fe39952b.webp",
-    date: "Návrhový článek",
+    date: "Praktický přehled",
     readingTime: "4 min čtení",
     intro:
       "Tento stručný článek je připravený jako ukázka formátu pro sociální sítě a Soro. Před publikací jej lze doplnit konkrétními zkušenostmi Enerixu.",
@@ -1737,7 +1737,7 @@ function normalizeArticle(article) {
     coverAlt: meta.coverAlt || article.coverAlt || `Ilustra\u010Dn\u00ED vizu\u00E1l k \u010Dl\u00E1nku: ${article.title}`,
     seoTitle: meta.seoTitle || article.seoTitle || `${article.title} | Enerix`,
     seoDescription: meta.seoDescription || article.seoDescription || article.excerpt || article.intro || article.title,
-    date: status === "draft" ? "Čeká na odbornou kontrolu" : article.date || article.updatedAt,
+    date: status === "draft" ? null : article.date || article.updatedAt,
     updatedAt: article.updatedAt || "2026-06-14",
     readingTime: article.readingTime?.replace("čtení", "\u010Dten\u00ED") || "5 min \u010Dten\u00ED",
     tags: (article.tags || []).map((tag) => tag.replace("střecha", "st\u0159echa")),

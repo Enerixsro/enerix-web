@@ -622,7 +622,7 @@ function Archive({ soroArticles }) {
           <div>
             <h2 className="text-3xl font-bold">Všechny články</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-              Vybrané články a série, které teď dávají smysl ukazovat v preview.
+              Vybrané články a série pro lepší orientaci v renovaci domu.
             </p>
           </div>
           <label className="relative block w-full lg:max-w-sm">
@@ -1075,7 +1075,7 @@ export default function BlogPage({ soroArticles = [] }) {
             <div className="mx-auto max-w-7xl">
               <h2 className="text-3xl font-bold">Rady a novinky</h2>
               <p className="mt-2 text-sm text-slate-600">
-                Aktuální změny, kratší vysvětlení a pracovní návrhy obsahu pro redakční kontrolu.
+                Praktické rady a novinky z oblasti renovací, dotací a energetiky.
               </p>
 
               <div className="mt-6 grid gap-6 md:grid-cols-3">
@@ -1151,7 +1151,7 @@ export async function getStaticProps() {
         title: article.title,
         excerpt: article.excerpt || "",
         image: article.image,
-        date: article.date || "Pracovní návrh",
+        date: article.date || "Aktualita",
         readingTime: "4 min čtení",
         href: `/blog?post=${article.slug}`,
         source: "soro",

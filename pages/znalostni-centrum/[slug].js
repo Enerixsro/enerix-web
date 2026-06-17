@@ -839,11 +839,6 @@ export default function KnowledgeCenterArticle({ article }) {
                   {article.label}
                 </span>
                 <SeriesPartBadge article={article} />
-                {SHOW_KNOWLEDGE_CENTER_REVIEW_BADGES && !isPublished && (
-                  <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
-                    Čeká na kontrolu článku
-                  </span>
-                )}
               </div>
 
               <h1 className="mt-5 text-[clamp(2rem,9vw,3rem)] font-bold leading-[1.08] tracking-tight md:text-5xl md:leading-tight">
@@ -1011,16 +1006,6 @@ export default function KnowledgeCenterArticle({ article }) {
                   </>
                 )}
 
-                {!article.paragraphs && !isPublished && (
-                  <aside className="mt-14 rounded-lg border border-green-200 bg-green-50 p-6">
-                    <h2 className="text-lg font-bold">Poznámka k demu</h2>
-                    <p className="mt-2 text-sm leading-7 text-slate-600">
-                      Tento článek ukazuje budoucí formát příběhu nebo odborného
-                      obsahu. Před případným zveřejněním bude text zkontrolován,
-                      doplněn o skutečná data a propojen s reálnými fotografiemi.
-                    </p>
-                  </aside>
-                )}
               </div>
 
               <SeriesSidebar article={article} />

@@ -794,12 +794,6 @@ export default function EnerixLandingPage() {
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
-                  {references.some((reference) => reference.preview) && (
-                    <div className="w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
-                      Čeká na reference
-                    </div>
-                  )}
-
                   {referencePageCount > 1 && (
                     <div
                       className="flex items-center gap-2"
