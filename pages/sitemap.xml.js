@@ -1,5 +1,8 @@
 import { publishedDemoArticles } from "../data/knowledgeCenterArticles";
-import { absoluteUrl, staticIndexablePages } from "../data/knowledgeCenterArticleMeta";
+import {
+  absoluteUrl,
+  staticIndexablePages,
+} from "../data/knowledgeCenterArticleMeta";
 
 function escapeXml(value) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -8,12 +11,14 @@ function escapeXml(value) {
 function buildSitemap() {
   const staticUrls = staticIndexablePages.map((page) => ({
     loc: absoluteUrl(page.path),
+    changefreq: page.changefreq,
     priority: page.priority,
   }));
 
   const articleUrls = publishedDemoArticles.map((article) => ({
     loc: absoluteUrl(`/znalostni-centrum/${article.slug}`),
     lastmod: article.updatedAt,
+    changefreq: "monthly",
     priority: "0.6",
   }));
 
@@ -25,6 +30,9 @@ ${[...staticUrls, ...articleUrls]
     <loc>${escapeXml(url.loc)}</loc>${
       url.lastmod ? `
     <lastmod>${url.lastmod}</lastmod>` : ""
+    }${
+      url.changefreq ? `
+    <changefreq>${url.changefreq}</changefreq>` : ""
     }
     <priority>${url.priority}</priority>
   </url>`
@@ -35,6 +43,7 @@ ${[...staticUrls, ...articleUrls]
 
 export function getServerSideProps({ res }) {
   res.setHeader("Content-Type", "application/xml");
+  res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate=86400");
   res.write(buildSitemap());
   res.end();
 

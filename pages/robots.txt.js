@@ -1,4 +1,4 @@
-import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
+import { siteUrl } from "../data/knowledgeCenterArticleMeta";
 
 export function getServerSideProps({ res }) {
   const body = [
@@ -6,10 +6,11 @@ export function getServerSideProps({ res }) {
     "Allow: /",
     "Disallow: /dekujeme",
     "",
-    `Sitemap: ${absoluteUrl("/sitemap.xml")}`,
+    `Sitemap: ${siteUrl}/sitemap.xml`,
   ].join("\n");
 
   res.setHeader("Content-Type", "text/plain");
+  res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate=86400");
   res.write(body);
   res.end();
 
