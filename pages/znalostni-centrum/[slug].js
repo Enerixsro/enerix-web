@@ -1010,7 +1010,7 @@ export default function KnowledgeCenterArticle({ article }) {
                   </>
                 )}
 
-                {!article.paragraphs && (
+                {!article.paragraphs && !isPublished && (
                   <aside className="mt-14 rounded-lg border border-green-200 bg-green-50 p-6">
                     <h2 className="text-lg font-bold">Poznámka k demu</h2>
                     <p className="mt-2 text-sm leading-7 text-slate-600">

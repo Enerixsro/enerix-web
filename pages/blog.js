@@ -11,23 +11,30 @@ const SORO_EMBED_URL =
   "https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483";
 const PAGE_SIZE = 6;
 const SHOW_PREVIEW_SOURCE_BADGES = true;
+const visiblePracticeArticleSlugs = [
+  "proc-zacit-pasportem-starsi-rekreacni-chalupy",
+  "jak-jsme-pripravili-renovaci-domu-po-etapach",
+  "tepelne-cerpadlo-a-fotovoltaika-v-rodinnem-dome",
+];
 
 const practiceArticles = demoArticles.filter(
-  (article) => article.category === "practice"
+  (article) =>
+    article.category === "practice" &&
+    visiblePracticeArticleSlugs.includes(article.slug)
 );
 const expertArticles = demoArticles.filter(
   (article) => article.category === "expert"
 );
-const guideArticles = demoArticles.filter(
-  (article) =>
-    article.category === "renovation-guide" &&
-    article.topicLabel === "Průvodce pojmy"
-);
+const guideArticles = [];
 const seriesArticles = nzu2026Series.articles
   .map((item) => demoArticles.find((article) => article.slug === item.slug))
   .filter(Boolean);
-const newsArticles = demoArticles.filter(
-  (article) => article.category === "news"
+const newsArticles = [];
+const archiveDemoArticles = demoArticles.filter(
+  (article) =>
+    visiblePracticeArticleSlugs.includes(article.slug) ||
+    article.category === "expert" ||
+    article.seriesId
 );
 
 const demoHref = (slug) => `/znalostni-centrum/${slug}`;
@@ -61,7 +68,7 @@ const starterScenarios = [
     href: "#pruvodce",
     linkLabel: "Zobrazit pojmy",
   },
-];
+].filter((scenario) => scenario.href !== "#pruvodce");
 
 function Header() {
   return (
@@ -568,19 +575,20 @@ function Archive({ soroArticles }) {
   const [page, setPage] = useState(1);
 
   const archiveArticles = useMemo(() => {
-    const modelArticles = demoArticles.map((article) => ({
+    const modelArticles = archiveDemoArticles.map((article) => ({
       ...article,
       href: demoHref(article.slug),
       source: "demo",
     }));
-    return [...modelArticles, ...soroArticles];
-  }, [soroArticles]);
+    return modelArticles;
+  }, []);
 
   const filteredArticles = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase("cs");
     return archiveArticles.filter((article) => {
       const matchesFilter =
         filter === "all" ||
+        (filter === "nzu-2026" && article.seriesId === "nzu-2026") ||
         article.category === filter;
       const matchesQuery =
         !normalizedQuery ||
@@ -613,7 +621,7 @@ function Archive({ soroArticles }) {
           <div>
             <h2 className="text-3xl font-bold">Všechny články</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-              Kompletní archiv včetně pracovních návrhů obsahu pro redakční kontrolu.
+              Vybrané články a série, které teď dávají smysl ukazovat v preview.
             </p>
           </div>
           <label className="relative block w-full lg:max-w-sm">
@@ -641,8 +649,7 @@ function Archive({ soroArticles }) {
             ["all", "Vše"],
             ["practice", "Z praxe"],
             ["expert", "Expert"],
-            ["renovation-guide", "Průvodce renovací"],
-            ["news", "Rady a novinky"],
+            ["nzu-2026", "NZÚ 2026"],
           ].map(([value, label]) => (
             <button
               key={value}
@@ -880,18 +887,6 @@ export default function BlogPage({ soroArticles = [] }) {
                 >
                   Enerix Expert
                 </a>
-                <a
-                  href="#pruvodce"
-                  className="whitespace-nowrap border-b-2 border-transparent pb-4 text-slate-700 hover:border-green-300 hover:text-green-700"
-                >
-                  Průvodce renovací
-                </a>
-                <a
-                  href="#novinky"
-                  className="whitespace-nowrap border-b-2 border-transparent pb-4 text-slate-700 hover:border-green-300 hover:text-green-700"
-                >
-                  Rady a novinky
-                </a>
               </nav>
             </div>
           </section>
@@ -1021,54 +1016,57 @@ export default function BlogPage({ soroArticles = [] }) {
           </section>
 
 
-          <section
-            id="pruvodce"
-            className="scroll-mt-6 border-b border-slate-200 bg-slate-50/70 px-6 py-9 md:px-10"
-          >
-            <div className="mx-auto max-w-7xl">
-              <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <h2 className="text-3xl font-bold">Průvodce pojmy</h2>
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-                    Rychlé vysvětlivky dokumentů, technických parametrů a
-                    podkladů, které se při renovaci často pletou.
-                  </p>
+          {guideArticles.length > 0 && (
+            <section
+              id="pruvodce"
+              className="scroll-mt-6 border-b border-slate-200 bg-slate-50/70 px-6 py-9 md:px-10"
+            >
+              <div className="mx-auto max-w-7xl">
+                <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <h2 className="text-3xl font-bold">Průvodce pojmy</h2>
+                    <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                      Rychlé vysvětlivky dokumentů, technických parametrů a
+                      podkladů, které se při renovaci často pletou.
+                    </p>
+                  </div>
+                  <SectionLink href="#clanky">
+                    Zobrazit všechny pojmy
+                  </SectionLink>
                 </div>
-                <SectionLink href="#clanky">
-                  Zobrazit všechny pojmy
-                </SectionLink>
-              </div>
 
-              <div className="mt-6 grid gap-3 md:grid-cols-3">
-                {guideArticles.slice(0, 6).map((article, index) => (
-                  <a
-                    key={article.slug}
-                    href={demoHref(article.slug)}
-                    className="group flex min-h-[132px] gap-4 rounded-md border border-slate-200 bg-white p-4 transition hover:border-green-300 hover:bg-green-50/40"
-                  >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-green-100 bg-green-50 text-sm font-bold text-green-800">
-                      {index + 1}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
-                        Vysvětlení
+                <div className="mt-6 grid gap-3 md:grid-cols-3">
+                  {guideArticles.slice(0, 6).map((article, index) => (
+                    <a
+                      key={article.slug}
+                      href={demoHref(article.slug)}
+                      className="group flex min-h-[132px] gap-4 rounded-md border border-slate-200 bg-white p-4 transition hover:border-green-300 hover:bg-green-50/40"
+                    >
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-green-100 bg-green-50 text-sm font-bold text-green-800">
+                        {index + 1}
                       </div>
-                      <h3 className="mt-1 text-base font-bold leading-6 text-slate-950">
-                        {article.title}
-                      </h3>
-                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
-                        {article.excerpt}
-                      </p>
-                      <div className="mt-3 text-sm font-semibold text-green-700">
-                        Vysvětlit pojem <span aria-hidden="true">→</span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold uppercase tracking-[0.12em] text-green-700">
+                          Vysvětlení
+                        </div>
+                        <h3 className="mt-1 text-base font-bold leading-6 text-slate-950">
+                          {article.title}
+                        </h3>
+                        <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+                          {article.excerpt}
+                        </p>
+                        <div className="mt-3 text-sm font-semibold text-green-700">
+                          Vysvětlit pojem <span aria-hidden="true">→</span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                ))}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
+          {newsArticles.length > 0 && (
           <section
             id="novinky"
             className="scroll-mt-6 border-b border-slate-200 px-6 py-11 md:px-10"
@@ -1111,6 +1109,7 @@ export default function BlogPage({ soroArticles = [] }) {
               </div>
             </div>
           </section>
+          )}
 
           <Archive soroArticles={soroArticles} />
         </main>
