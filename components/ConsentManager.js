@@ -1,13 +1,16 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CONSENT_CHANGED_EVENT,
   getStoredConsent,
   hasAnalyticsConsent,
   hasMarketingConsent,
+  hasRecentLeadSubmission,
+  markLeadConversionTracked,
   pagePath,
   saveConsent,
   trackEvent,
+  wasLeadConversionTracked,
 } from "../lib/tracking";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
@@ -16,6 +19,7 @@ const SKLIK_RETARGETING_ID = process.env.NEXT_PUBLIC_SKLIK_RETARGETING_ID;
 const SKLIK_CONVERSION_ID = process.env.NEXT_PUBLIC_SKLIK_CONVERSION_ID;
 const SKLIK_CONVERSION_VALUE =
   process.env.NEXT_PUBLIC_SKLIK_CONVERSION_VALUE || "1000";
+const SKLIK_MAX_ATTEMPTS = 20;
 
 function loadScript(id, src, onLoad) {
   if (typeof document === "undefined") return;
@@ -78,7 +82,8 @@ function loadMetaPixel() {
 function fireSklikRetargeting() {
   if (!SKLIK_RETARGETING_ID || !hasMarketingConsent()) return;
 
-  const run = () => {
+  const run = (attempt = 0) => {
+    if (!hasMarketingConsent() || attempt >= SKLIK_MAX_ATTEMPTS) return;
     if (window.sznIVA?.IS && window.rc?.retargetingHit) {
       window.sznIVA.IS.updateIdentities({ eid: null });
       window.rc.retargetingHit({
@@ -88,7 +93,7 @@ function fireSklikRetargeting() {
       return;
     }
 
-    window.setTimeout(run, 300);
+    window.setTimeout(() => run(attempt + 1), 300);
   };
 
   loadScript("enerix-sklik-rc", "https://c.seznam.cz/js/rc.js", run);
@@ -97,7 +102,8 @@ function fireSklikRetargeting() {
 function fireSklikConversion() {
   if (!SKLIK_CONVERSION_ID || !hasMarketingConsent()) return;
 
-  const run = () => {
+  const run = (attempt = 0) => {
+    if (!hasMarketingConsent() || attempt >= SKLIK_MAX_ATTEMPTS) return;
     if (window.sznIVA?.IS && window.rc?.conversionHit) {
       window.sznIVA.IS.updateIdentities({ eid: null });
       window.rc.conversionHit({
@@ -108,7 +114,7 @@ function fireSklikConversion() {
       return;
     }
 
-    window.setTimeout(run, 300);
+    window.setTimeout(() => run(attempt + 1), 300);
   };
 
   loadScript("enerix-sklik-rc", "https://c.seznam.cz/js/rc.js", run);
@@ -117,6 +123,17 @@ function fireSklikConversion() {
 function activateConsentedTools() {
   loadGa4();
   loadMetaPixel();
+}
+
+function updateConsentMode(nextConsent) {
+  if (typeof window.gtag !== "function") return;
+
+  window.gtag("consent", "update", {
+    analytics_storage: nextConsent.analytics ? "granted" : "denied",
+    ad_storage: nextConsent.marketing ? "granted" : "denied",
+    ad_user_data: nextConsent.marketing ? "granted" : "denied",
+    ad_personalization: nextConsent.marketing ? "granted" : "denied",
+  });
 }
 
 function trackPageView(path) {
@@ -143,11 +160,16 @@ function trackBusinessPageEvents(path) {
     trackEvent("partner_page_view");
   }
 
-  if (path.startsWith("/dekujeme")) {
+  if (
+    path.startsWith("/dekujeme") &&
+    hasRecentLeadSubmission() &&
+    !wasLeadConversionTracked()
+  ) {
     trackEvent("lead_form_submit", {
       cta_location: "thank_you_page",
     });
     fireSklikConversion();
+    markLeadConversionTracked();
   }
 }
 
@@ -156,6 +178,8 @@ export default function ConsentManager() {
   const [consent, setConsent] = useState(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [draft, setDraft] = useState({ analytics: false, marketing: false });
+  const dialogRef = useRef(null);
+  const previousFocusRef = useRef(null);
 
   useEffect(() => {
     const storedConsent = getStoredConsent();
@@ -187,6 +211,41 @@ export default function ConsentManager() {
       window.removeEventListener(CONSENT_CHANGED_EVENT, handleConsentChanged);
     };
   }, []);
+
+  useEffect(() => {
+    if (!settingsOpen) return;
+
+    previousFocusRef.current = document.activeElement;
+    const dialog = dialogRef.current;
+    const focusable = dialog?.querySelectorAll(
+      'button, input, a[href], [tabindex]:not([tabindex="-1"])'
+    );
+    focusable?.[0]?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSettingsOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !focusable?.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      previousFocusRef.current?.focus?.();
+    };
+  }, [settingsOpen]);
 
   useEffect(() => {
     if (!consent) return;
@@ -262,7 +321,9 @@ export default function ConsentManager() {
   }, []);
 
   const applyConsent = (nextConsent) => {
+    updateConsentMode(nextConsent);
     saveConsent(nextConsent);
+    activateConsentedTools();
     setSettingsOpen(false);
   };
 
@@ -326,11 +387,18 @@ export default function ConsentManager() {
 
       {settingsOpen && (
         <div className="fixed inset-0 z-50 flex items-end bg-slate-950/40 px-4 py-5 sm:items-center sm:justify-center">
-          <div className="w-full max-w-lg rounded-lg bg-white p-5 shadow-2xl">
-            <div className="text-lg font-bold text-slate-900">
+          <div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cookie-settings-title"
+            aria-describedby="cookie-settings-description"
+            className="w-full max-w-lg rounded-lg bg-white p-5 shadow-2xl"
+          >
+            <div id="cookie-settings-title" className="text-lg font-bold text-slate-900">
               Nastavení cookies
             </div>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
+            <p id="cookie-settings-description" className="mt-2 text-sm leading-6 text-slate-600">
               Souhlas můžete kdykoliv změnit přes odkaz v patičce.
             </p>
 

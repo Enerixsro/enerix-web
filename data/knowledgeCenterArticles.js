@@ -332,7 +332,7 @@ const previewArticles = [
       "Pokrýt večerní provoz?",
       "Sloužit jako záloha?",
       "Zlepšit komfort?",
-      "Doplnit dotační a ekonomický model?",
+      "Odpovídá dotační a ekonomický model potřebám domu?",
       "Stejná baterie může být v jednom domě výborné řešení a v jiném drahý doplněk.",
       "Přebytek elektřiny není chyba",
       "FVE někdy vyrobí víc elektřiny, než dům v danou chvíli spotřebuje. To je běžná vlastnost systému.",
@@ -1339,9 +1339,10 @@ const previewArticles = [
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/90a34141-3586-46bf-bad2-16db22fe4090.webp",
     date: "Enerix Expert",
+    status: "published",
     readingTime: "8 min čtení",
     intro:
-      "Pořadí renovace není univerzální, ale některé závislosti se opakují téměř u každého domu. Tento základ článku je připravený k odborné kontrole a doplnění.",
+      "Pořadí renovace není univerzální, ale některé závislosti se opakují téměř u každého domu. Důležité je posuzovat jednotlivé kroky v návaznosti na stav domu a plánovaný cíl renovace.",
     sections: [
       {
         title: "Začněte cílovým stavem",
@@ -1373,9 +1374,10 @@ const previewArticles = [
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/d554b212-4530-4d44-96fa-3d986fce28f0.webp",
     date: "Enerix Expert",
+    status: "published",
     readingTime: "9 min čtení",
     intro:
-      "Zdroj tepla je součást energetiky celého domu. Článek nabízí praktickou osnovu rozhodování, kterou je před publikací potřeba doplnit o konkrétní výpočty a odborné příklady.",
+      "Zdroj tepla je součást energetiky celého domu. Při rozhodování je potřeba vycházet ze stavu domu, otopné soustavy, provozu a plánovaných úprav.",
     sections: [
       {
         title: "Co ovlivňuje výběr",
@@ -1407,6 +1409,7 @@ const previewArticles = [
     image:
       "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/e6e6ca57-5699-472c-90bb-06b4a70b4be5/ac08c4a9-b793-47ff-a162-74cbfd372b3e.webp",
     date: "Enerix Expert",
+    status: "published",
     readingTime: "6 min čtení",
     intro:
       "Konkrétní částky a závazné podmínky je vždy potřeba ověřit podle aktuálně platných pravidel programu.",
@@ -1525,6 +1528,7 @@ const previewArticles = [
 const seriesArticles = expertSourceArticles.map((article) => ({
   ...article,
   ...nzu2026SeriesBySlug[article.slug],
+  status: nzu2026SeriesBySlug[article.slug] ? "published" : article.status,
 }));
 const articleMetaBySlug = {
   "jak-jsme-pripravili-renovaci-domu-po-etapach": {
@@ -1720,11 +1724,27 @@ const articleMetaBySlug = {
 };
 
 const defaultArticleStatus = "draft";
+const publishedExpertArticleSlugs = new Set([
+  "kdy-se-vyplati-fotovoltaika",
+  "zatepleni-domu-neni-jen-cena-za-metr",
+  "okna-a-dvere-pri-renovaci-domu",
+  "strecha-pri-renovaci-domu",
+  "tepelne-cerpadlo-v-rodinnem-dome",
+  "foukana-a-strikana-izolace",
+  "rekuperace-a-rizene-vetrani",
+  "sadrokartony-pri-rekonstrukci-domu",
+]);
 
 function normalizeArticle(article) {
   const meta = articleMetaBySlug[article.slug] || {};
   const coverImage = meta.coverImage || article.coverImage || article.image;
-  const status = article.status || defaultArticleStatus;
+  const status = publishedExpertArticleSlugs.has(article.slug)
+    ? "published"
+    : article.status || defaultArticleStatus;
+  const displayDate =
+    article.date === "Čeká na odbornou kontrolu"
+      ? "Enerix Expert"
+      : article.date;
 
   return {
     ...article,
@@ -1737,7 +1757,7 @@ function normalizeArticle(article) {
     coverAlt: meta.coverAlt || article.coverAlt || `Ilustra\u010Dn\u00ED vizu\u00E1l k \u010Dl\u00E1nku: ${article.title}`,
     seoTitle: meta.seoTitle || article.seoTitle || `${article.title} | Enerix`,
     seoDescription: meta.seoDescription || article.seoDescription || article.excerpt || article.intro || article.title,
-    date: status === "draft" ? null : article.date || article.updatedAt,
+    date: status === "draft" ? null : displayDate || article.updatedAt,
     updatedAt: article.updatedAt || "2026-06-14",
     readingTime: article.readingTime?.replace("čtení", "\u010Dten\u00ED") || "5 min \u010Dten\u00ED",
     tags: (article.tags || []).map((tag) => tag.replace("střecha", "st\u0159echa")),

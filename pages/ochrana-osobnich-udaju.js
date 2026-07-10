@@ -1,7 +1,18 @@
+import Head from "next/head";
+import CookieSettingsLink from "../components/CookieSettingsLink";
+import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
+
 export default function OchranaOsobnichUdaju() {
   return (
+    <>
+      <Head>
+        <title>Ochrana osobních údajů | Enerix</title>
+        <meta name="description" content="Informace o zpracování osobních údajů společností Enerix s.r.o." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={absoluteUrl("/ochrana-osobnich-udaju")} />
+      </Head>
     <div className="min-h-screen bg-white text-slate-900">
-      <main className="mx-auto max-w-4xl px-6 py-16 md:px-10">
+      <main id="main-content" className="mx-auto max-w-4xl px-6 py-16 md:px-10">
         <a
           href="/"
           className="text-sm font-semibold text-green-700 underline"
@@ -126,6 +137,10 @@ export default function OchranaOsobnichUdaju() {
           </div>
         </section>
       </main>
+      <footer className="border-t border-slate-200 px-6 py-8 text-center text-sm text-slate-500">
+        <CookieSettingsLink className="underline-offset-4 hover:text-slate-900 hover:underline" />
+      </footer>
     </div>
+    </>
   );
 }

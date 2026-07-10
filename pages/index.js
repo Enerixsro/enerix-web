@@ -1,21 +1,48 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 import CookieSettingsLink from "../components/CookieSettingsLink";
 import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
-import { slugify } from "../lib/tracking";
+import { markLeadSubmission, slugify } from "../lib/tracking";
+
+const FORM_ENDPOINT =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ||
+  "https://formspree.io/f/xrejyodb";
+const SHOW_PREVIEW_BADGES =
+  process.env.NEXT_PUBLIC_SHOW_PREVIEW_BADGES === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const SHOW_REFERENCE_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_REFERENCE_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
 
 export default function EnerixLandingPage() {
   const [activeService, setActiveService] = useState(null);
   const [referencePage, setReferencePage] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
 
+    if (isSubmitting) return;
+
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const searchParams = new URLSearchParams(window.location.search);
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    formData.set("landing_page", window.location.href);
+    formData.set("referrer", document.referrer || "direct");
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(
+      (key) => {
+        const value = searchParams.get(key);
+        if (value) formData.set(key, value);
+      }
+    );
 
     try {
-      const response = await fetch("https://formspree.io/f/xrejyodb", {
+      const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         body: formData,
         headers: {
@@ -24,16 +51,19 @@ export default function EnerixLandingPage() {
       });
 
       if (response.ok) {
+        markLeadSubmission();
         window.location.href = "/dekujeme";
       } else {
-        alert(
+        setSubmitError(
           "Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nás kontaktujte e-mailem."
         );
+        setIsSubmitting(false);
       }
-    } catch (error) {
-      alert(
+    } catch {
+      setSubmitError(
         "Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nás kontaktujte e-mailem."
       );
+      setIsSubmitting(false);
     }
   }
 
@@ -403,9 +433,11 @@ export default function EnerixLandingPage() {
       aria-label={reference.imageAlt}
       className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden ${reference.visualClass}`}
     >
-      <div className="absolute right-4 top-4 z-10 rounded-full border border-amber-200 bg-white/95 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">
-        Čeká na fotky
-      </div>
+      {SHOW_PREVIEW_BADGES && (
+        <div className="absolute right-4 top-4 z-10 rounded-full border border-amber-200 bg-white/95 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">
+          Čeká na fotky
+        </div>
+      )}
       <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:32px_32px]" />
       <svg
         viewBox="0 0 120 120"
@@ -470,9 +502,11 @@ export default function EnerixLandingPage() {
           </>
         )}
       </svg>
-      <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
-        Ukázkový vizuál
-      </div>
+      {SHOW_PREVIEW_BADGES && (
+        <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+          Ukázkový vizuál
+        </div>
+      )}
     </div>
   );
 
@@ -486,6 +520,35 @@ export default function EnerixLandingPage() {
         />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={absoluteUrl("/")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:title" content="Enerix | Chytrá renovace domu" />
+        <meta property="og:description" content="Renovace domu, energetické poradenství, dotace a realizace opatření od zateplení po fotovoltaiku." />
+        <meta property="og:url" content={absoluteUrl("/")} />
+        <meta property="og:image" content={absoluteUrl("/FrontPageImg.png")} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Enerix s.r.o.",
+              url: absoluteUrl("/"),
+              image: absoluteUrl("/FrontPageImg.png"),
+              telephone: "+420720480861",
+              email: "jiri.cecka@enerix.cz",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Nádražní 641",
+                postalCode: "379 01",
+                addressLocality: "Třeboň",
+                addressCountry: "CZ",
+              },
+              areaServed: "Jihočeský kraj",
+            }),
+          }}
+        />
       </Head>
 
       <div className="min-h-screen bg-white text-slate-900">
@@ -509,14 +572,16 @@ export default function EnerixLandingPage() {
 
             <nav
               aria-label="Hlavní navigace"
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-slate-700"
+              className="grid w-full grid-cols-3 gap-1 text-center text-xs font-semibold text-slate-700 sm:flex sm:w-auto sm:items-center sm:gap-x-5 sm:text-left sm:text-sm"
             >
               <a href="#sluzby" className="transition hover:text-green-700">
                 Služby
               </a>
-              <a href="#realizace" className="transition hover:text-green-700">
-                Realizace
-              </a>
+              {SHOW_REFERENCE_CONTENT && (
+                <a href="#realizace" className="transition hover:text-green-700">
+                  Realizace
+                </a>
+              )}
               <a href="/o-enerixu" className="transition hover:text-green-700">
                 O Enerixu
               </a>
@@ -533,6 +598,7 @@ export default function EnerixLandingPage() {
           </div>
         </header>
 
+        <main id="main-content">
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-green-50">
           <div className="absolute inset-0 opacity-40">
             <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-green-200 blur-3xl" />
@@ -591,9 +657,13 @@ export default function EnerixLandingPage() {
 
             <div className="relative">
               <div className="rounded-[2rem] border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-200">
-                <img
+                <Image
                   src="/FrontPageImg.png"
                   alt="Moderní rodinný dům po renovaci"
+                  width={1536}
+                  height={1024}
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="h-[520px] w-full rounded-[1.5rem] object-cover"
                 />
               </div>
@@ -774,7 +844,7 @@ export default function EnerixLandingPage() {
           </div>
         </section>
 
-        {references.length > 0 && (
+        {SHOW_REFERENCE_CONTENT && references.length > 0 && (
           <section
             id="realizace"
             className="scroll-mt-6 border-y border-slate-200 bg-slate-50 px-6 py-20 md:px-10"
@@ -804,7 +874,7 @@ export default function EnerixLandingPage() {
                         onClick={showPreviousReferences}
                         aria-label="Předchozí reference"
                         title="Předchozí reference"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
                       >
                         <svg
                           viewBox="0 0 24 24"
@@ -829,7 +899,7 @@ export default function EnerixLandingPage() {
                         onClick={showNextReferences}
                         aria-label="Další reference"
                         title="Další reference"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
                       >
                         <svg
                           viewBox="0 0 24 24"
@@ -1091,7 +1161,7 @@ export default function EnerixLandingPage() {
                     <a
                       href="mailto:jiri.cecka@enerix.cz"
                       data-cta-location="contact_panel"
-                      className="mt-1 block break-all text-xl font-semibold transition hover:text-green-200"
+                      className="mt-1 block break-all text-base font-semibold transition hover:text-green-200 xl:text-lg"
                     >
                       jiri.cecka@enerix.cz
                     </a>
@@ -1112,6 +1182,8 @@ export default function EnerixLandingPage() {
 
             <form
               id="contact_form"
+              action={FORM_ENDPOINT}
+              method="POST"
               onSubmit={handleSubmit}
               className="rounded-[2rem] border border-slate-200 bg-white p-6 text-slate-900 shadow-xl md:p-8"
             >
@@ -1130,47 +1202,77 @@ export default function EnerixLandingPage() {
               </div>
 
               <div className="space-y-4">
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="contact-company">Firma (nevyplňujte)</label>
+                  <input
+                    id="contact-company"
+                    type="text"
+                    name="_gotcha"
+                    tabIndex="-1"
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <input
-                    type="text"
-                    name="jmeno"
-                    placeholder="Jméno"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-first-name">
+                    Jméno
+                    <input
+                      id="contact-first-name"
+                      type="text"
+                      name="jmeno"
+                      autoComplete="given-name"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
 
-                  <input
-                    type="text"
-                    name="prijmeni"
-                    placeholder="Příjmení"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-last-name">
+                    Příjmení
+                    <input
+                      id="contact-last-name"
+                      type="text"
+                      name="prijmeni"
+                      autoComplete="family-name"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
-                  <input
-                    type="tel"
-                    name="telefon"
-                    placeholder="Telefon"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-phone">
+                    Telefon
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      name="telefon"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
 
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-email">
+                    E-mail
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
                 </div>
 
-                <select
-                  name="okres"
-                  required
-                  className="w-full rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                >
+                <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-district">
+                  Okres
+                  <select
+                    id="contact-district"
+                    name="okres"
+                    required
+                    className="w-full rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                  >
                   <option value="">Vyberte okres</option>
                   <option>České Budějovice</option>
                   <option>Český Krumlov</option>
@@ -1180,12 +1282,13 @@ export default function EnerixLandingPage() {
                   <option>Strakonice</option>
                   <option>Tábor</option>
                   <option>Jiný okres</option>
-                </select>
+                  </select>
+                </label>
 
-                <div className="rounded-xl border border-slate-300 p-4 text-left">
-                  <div className="mb-3 text-sm font-semibold text-slate-700">
+                <fieldset className="rounded-xl border border-slate-300 p-4 text-left">
+                  <legend className="px-1 text-sm font-semibold text-slate-700">
                     O jaké služby máte zájem?
-                  </div>
+                  </legend>
 
                   <div className="grid gap-3 md:grid-cols-2">
                     {[
@@ -1214,14 +1317,18 @@ export default function EnerixLandingPage() {
                       </label>
                     ))}
                   </div>
-                </div>
+                </fieldset>
 
-                <textarea
-                  name="zprava"
-                  placeholder="Popište váš projekt. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
-                  rows="5"
-                  className="w-full rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                />
+                <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-message">
+                  Popis projektu
+                  <textarea
+                    id="contact-message"
+                    name="zprava"
+                    placeholder="Fotografie, projektovou dokumentaci nebo jiné podklady nám můžete následně zaslat e-mailem."
+                    rows="5"
+                    className="w-full rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                  />
+                </label>
 
                 <label className="flex items-start gap-3 text-left text-sm text-slate-600">
                   <input
@@ -1244,16 +1351,25 @@ export default function EnerixLandingPage() {
                   </span>
                 </label>
 
+                {submitError && (
+                  <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm font-semibold text-red-800">
+                    {submitError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full rounded-2xl bg-green-600 px-6 py-4 text-lg font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
+                  disabled={isSubmitting}
+                  className="w-full rounded-2xl bg-green-700 px-6 py-4 text-lg font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-800 disabled:cursor-wait disabled:opacity-70"
                 >
-                  Odeslat nezávaznou poptávku
+                  {isSubmitting ? "Odesíláme…" : "Odeslat nezávaznou poptávku"}
                 </button>
               </div>
             </form>
           </div>
         </section>
+
+        </main>
 
         <footer className="bg-[#0b1120] px-6 py-14 text-gray-300">
           <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">

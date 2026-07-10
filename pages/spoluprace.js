@@ -1,5 +1,13 @@
 import Head from "next/head";
 import CookieSettingsLink from "../components/CookieSettingsLink";
+import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
+
+const SHOW_PREVIEW_BADGES =
+  process.env.NEXT_PUBLIC_SHOW_PREVIEW_BADGES === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const SHOW_REFERENCE_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_REFERENCE_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
 
 const cooperationSteps = [
   "Klient se obrátí na Enerix",
@@ -66,6 +74,13 @@ export default function Spoluprace() {
           name="description"
           content="Enerix buduje dlouhodobou síť spolehlivých partnerů pro realizaci renovací rodinných domů."
         />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={absoluteUrl("/spoluprace")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:title" content="Spolupráce s Enerixem" />
+        <meta property="og:description" content="Enerix buduje dlouhodobou síť spolehlivých partnerů pro realizaci renovací rodinných domů." />
+        <meta property="og:url" content={absoluteUrl("/spoluprace")} />
       </Head>
 
       <div className="min-h-screen bg-white text-slate-900">
@@ -83,18 +98,20 @@ export default function Spoluprace() {
 
             <nav
               aria-label="Hlavní navigace"
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-slate-700"
+              className="grid w-full grid-cols-3 gap-1 text-center text-xs font-semibold text-slate-700 sm:flex sm:w-auto sm:items-center sm:gap-x-5 sm:text-left sm:text-sm"
             >
               <a href="/#sluzby" className="transition hover:text-green-700">
                 Služby
               </a>
-              <a href="/#realizace" className="transition hover:text-green-700">
-                Realizace
-              </a>
+              {SHOW_REFERENCE_CONTENT && (
+                <a href="/#realizace" className="transition hover:text-green-700">
+                  Realizace
+                </a>
+              )}
               <a href="/o-enerixu" className="transition hover:text-green-700">
                 O Enerixu
               </a>
-              <a href="/spoluprace" className="text-green-700">
+              <a href="/spoluprace" aria-current="page" className="text-green-700">
                 Spolupráce
               </a>
               <a href="/blog" className="transition hover:text-green-700">
@@ -107,7 +124,7 @@ export default function Spoluprace() {
           </div>
         </header>
 
-        <main>
+        <main id="main-content">
           <section className="bg-gradient-to-br from-slate-50 via-white to-green-50 px-6 py-16 md:px-10 md:py-24">
             <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
               <div>
@@ -248,9 +265,11 @@ export default function Spoluprace() {
                 <h3 className="text-xl font-bold text-slate-900">
                   Aktuálně rozšiřujeme síť
                 </h3>
-                <div className="mt-3 w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
-                  Čeká na potvrzení textu
-                </div>
+                {SHOW_PREVIEW_BADGES && (
+                  <div className="mt-3 w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
+                    Čeká na potvrzení textu
+                  </div>
+                )}
                 <div className="mt-4 grid gap-3 sm:grid-cols-3">
                   {prioritySpecializations.map((specialization) => (
                     <div

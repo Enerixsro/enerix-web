@@ -11,27 +11,47 @@ import CookieSettingsLink from "../components/CookieSettingsLink";
 const SORO_EMBED_URL =
   "https://app.trysoro.com/api/embed/03aa2964-6d5b-4a94-8c67-2d7d9439c483";
 const PAGE_SIZE = 6;
-const SHOW_PREVIEW_SOURCE_BADGES = true;
+const SHOW_PREVIEW_SOURCE_BADGES =
+  process.env.NEXT_PUBLIC_SHOW_PREVIEW_BADGES === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const SHOW_DRAFT_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_DRAFT_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const SHOW_SORO_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_SORO_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const SHOW_REFERENCE_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_REFERENCE_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const PUBLISHED_NZU_SERIES_SLUGS = new Set(
+  nzu2026Series.articles.map((article) => article.slug)
+);
+const visibleDemoArticles = demoArticles.filter(
+  (article) =>
+    SHOW_DRAFT_CONTENT ||
+    article.status === "published" ||
+    PUBLISHED_NZU_SERIES_SLUGS.has(article.slug)
+);
 const visiblePracticeArticleSlugs = [
   "proc-zacit-pasportem-starsi-rekreacni-chalupy",
   "jak-jsme-pripravili-renovaci-domu-po-etapach",
   "tepelne-cerpadlo-a-fotovoltaika-v-rodinnem-dome",
 ];
 
-const practiceArticles = demoArticles.filter(
+const practiceArticles = visibleDemoArticles.filter(
   (article) =>
     article.category === "practice" &&
     visiblePracticeArticleSlugs.includes(article.slug)
 );
-const expertArticles = demoArticles.filter(
+const expertArticles = visibleDemoArticles.filter(
   (article) => article.category === "expert"
 );
 const guideArticles = [];
 const seriesArticles = nzu2026Series.articles
-  .map((item) => demoArticles.find((article) => article.slug === item.slug))
+  .map((item) => visibleDemoArticles.find((article) => article.slug === item.slug))
   .filter(Boolean);
 const newsArticles = [];
-const archiveDemoArticles = demoArticles.filter(
+const archiveDemoArticles = visibleDemoArticles.filter(
   (article) =>
     visiblePracticeArticleSlugs.includes(article.slug) ||
     article.category === "expert" ||
@@ -92,9 +112,11 @@ function Header() {
           <a href="/#sluzby" className="transition hover:text-green-700">
             Služby
           </a>
-          <a href="/#realizace" className="transition hover:text-green-700">
-            Realizace
-          </a>
+          {SHOW_REFERENCE_CONTENT && (
+            <a href="/#realizace" className="transition hover:text-green-700">
+              Realizace
+            </a>
+          )}
           <a href="/o-enerixu" className="transition hover:text-green-700">
             O Enerixu
           </a>
@@ -103,6 +125,7 @@ function Header() {
           </a>
           <a
             href="/blog"
+            aria-current="page"
             className="border-b-2 border-green-600 py-2 text-green-700"
           >
             Znalostní centrum
@@ -727,7 +750,7 @@ function Archive({ soroArticles }) {
               type="button"
               disabled={currentPage === 1}
               onClick={() => setPage((value) => Math.max(1, value - 1))}
-              className="h-9 w-9 rounded-md border border-slate-300 text-sm disabled:opacity-35"
+              className="h-11 w-11 rounded-md border border-slate-300 text-sm disabled:opacity-35"
               aria-label="Předchozí stránka"
             >
               ‹
@@ -738,7 +761,7 @@ function Archive({ soroArticles }) {
                   key={pageNumber}
                   type="button"
                   onClick={() => setPage(pageNumber)}
-                  className={`h-9 min-w-9 rounded-md px-2 text-sm font-semibold ${
+                  className={`h-11 min-w-11 rounded-md px-2 text-sm font-semibold ${
                     currentPage === pageNumber
                       ? "bg-green-700 text-white"
                       : "border border-slate-300 text-slate-700"
@@ -754,7 +777,7 @@ function Archive({ soroArticles }) {
               onClick={() =>
                 setPage((value) => Math.min(pageCount, value + 1))
               }
-              className="h-9 w-9 rounded-md border border-slate-300 text-sm disabled:opacity-35"
+              className="h-11 w-11 rounded-md border border-slate-300 text-sm disabled:opacity-35"
               aria-label="Další stránka"
             >
               ›
@@ -790,7 +813,7 @@ function SoroArticleView() {
         <link rel="canonical" href={absoluteUrl("/blog")} />
       </Head>
       <Header />
-      <main className="mx-auto min-h-[70vh] max-w-7xl px-6 py-10 md:px-10">
+      <main id="main-content" className="mx-auto min-h-[70vh] max-w-7xl px-6 py-10 md:px-10">
         <div id="soro-blog"></div>
       </main>
       <Script src={SORO_EMBED_URL} strategy="afterInteractive" />
@@ -802,7 +825,7 @@ export default function BlogPage({ soroArticles = [] }) {
   const router = useRouter();
   const leadArticle = practiceArticles[0];
 
-  if (router.isReady && router.query.post) {
+  if (router.isReady && router.query.post && SHOW_SORO_CONTENT) {
     return (
       <div className="min-h-screen overflow-x-hidden bg-white text-slate-900">
         <SoroArticleView />
@@ -822,12 +845,17 @@ export default function BlogPage({ soroArticles = [] }) {
         />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={absoluteUrl("/blog")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:title" content="Znalostní centrum Enerixu" />
+        <meta property="og:description" content="Praktické rady k renovaci domu, dotacím a přípravě realizace." />
+        <meta property="og:url" content={absoluteUrl("/blog")} />
       </Head>
 
       <div className="min-h-screen bg-white text-slate-900">
         <Header />
 
-        <main>
+        <main id="main-content">
           <section className="border-b border-slate-200 bg-white px-6 pb-6 pt-10 md:px-10 md:pb-0 md:pt-12">
             <div className="mx-auto max-w-7xl">
               <div className="flex flex-wrap items-center gap-3">
@@ -1112,7 +1140,7 @@ export default function BlogPage({ soroArticles = [] }) {
           </section>
           )}
 
-          <Archive soroArticles={soroArticles} />
+          <Archive soroArticles={SHOW_SORO_CONTENT ? soroArticles : []} />
         </main>
 
         <footer className="bg-slate-950 px-6 py-8 text-center text-sm text-slate-400">
@@ -1123,13 +1151,22 @@ export default function BlogPage({ soroArticles = [] }) {
         </footer>
 
         <div id="soro-blog" className="hidden" aria-hidden="true"></div>
-        <Script src={SORO_EMBED_URL} strategy="afterInteractive" />
       </div>
     </>
   );
 }
 
 export async function getStaticProps() {
+  if (
+    process.env.VERCEL_ENV === "production" &&
+    process.env.NEXT_PUBLIC_SHOW_SORO_CONTENT !== "true"
+  ) {
+    return {
+      props: { soroArticles: [] },
+      revalidate: 3600,
+    };
+  }
+
   try {
     const response = await fetch(SORO_EMBED_URL);
     if (!response.ok) {

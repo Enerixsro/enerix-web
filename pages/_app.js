@@ -17,6 +17,9 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
 
+      <a className="skip-link" href="#main-content">
+        Přeskočit na hlavní obsah
+      </a>
       <Component {...pageProps} />
       <ConsentManager />
     </>

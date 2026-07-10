@@ -9,14 +9,12 @@ dokumentace a kontrolni checklist.
 
 ## Pracovni slozky
 
-- Live / hlavni lokalni repo orientace:
-  `C:\Users\HP755G5\Documents\GitHub\enerix-web`
-- Preview worktree pro rozpracovany web:
-  `C:\Users\HP755G5\Documents\GitHub\enerix-web-preview`
+- Hlavni lokalni repo a preview worktree:
+  `C:\Users\cecka\Documents\Codex\Repos\enerix-web`
 
 Nepouzivat uz jako hlavni pracovni misto:
 
-- `C:\Users\HP755G5\AppData\Local\Temp\enerix-2-unified`
+- stare docasne nebo drive pouzivane worktree mimo aktualni slozku
 
 ## Vetve
 
@@ -30,11 +28,7 @@ Pred kazdou upravou overit:
 git status --short --branch
 ```
 
-Pokud `git` neni v PATH, pouzit Git z GitHub Desktopu:
-
-```powershell
-& 'C:\Users\HP755G5\AppData\Local\GitHubDesktop\app-3.5.8\resources\app\git\cmd\git.exe' status --short --branch
-```
+Pokud `git` neni v PATH, pouzit uzky PATH prefix uvedeny nize.
 
 ## Preview
 
@@ -44,7 +38,7 @@ poskytnuty uzivatelem v konverzaci. Share link neukladat do repozitare.
 Lokalni preview spoustet z:
 
 ```text
-C:\Users\HP755G5\Documents\GitHub\enerix-web-preview
+C:\Users\cecka\Documents\Codex\Repos\enerix-web
 ```
 
 Pokud neni dostupne `npm`, nespoustet opakovane nahodne okliky. Nejprve rict,

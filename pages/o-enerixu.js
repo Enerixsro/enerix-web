@@ -1,5 +1,13 @@
 import Head from "next/head";
 import CookieSettingsLink from "../components/CookieSettingsLink";
+import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
+
+const SHOW_PREVIEW_BADGES =
+  process.env.NEXT_PUBLIC_SHOW_PREVIEW_BADGES === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const SHOW_REFERENCE_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_REFERENCE_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
 
 const principles = [
   {
@@ -100,6 +108,13 @@ export default function OEnerixu() {
           name="description"
           content="Poznejte přístup Enerixu k renovacím domů, energetice, dotacím a koordinaci realizací."
         />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={absoluteUrl("/o-enerixu")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:title" content="O Enerixu | Chytré renovace domů" />
+        <meta property="og:description" content="Poznejte přístup Enerixu k renovacím domů, energetice, dotacím a koordinaci realizací." />
+        <meta property="og:url" content={absoluteUrl("/o-enerixu")} />
       </Head>
 
       <div className="min-h-screen bg-white text-slate-900">
@@ -117,15 +132,17 @@ export default function OEnerixu() {
 
             <nav
               aria-label="Hlavní navigace"
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-slate-700"
+              className="grid w-full grid-cols-3 gap-1 text-center text-xs font-semibold text-slate-700 sm:flex sm:w-auto sm:items-center sm:gap-x-5 sm:text-left sm:text-sm"
             >
               <a href="/#sluzby" className="transition hover:text-green-700">
                 Služby
               </a>
-              <a href="/#realizace" className="transition hover:text-green-700">
-                Realizace
-              </a>
-              <a href="/o-enerixu" className="text-green-700">
+              {SHOW_REFERENCE_CONTENT && (
+                <a href="/#realizace" className="transition hover:text-green-700">
+                  Realizace
+                </a>
+              )}
+              <a href="/o-enerixu" aria-current="page" className="text-green-700">
                 O Enerixu
               </a>
               <a href="/spoluprace" className="transition hover:text-green-700">
@@ -141,7 +158,7 @@ export default function OEnerixu() {
           </div>
         </header>
 
-        <main>
+        <main id="main-content">
           <section className="overflow-hidden bg-gradient-to-br from-slate-50 via-white to-green-50 px-6 py-16 md:px-10 md:py-24">
             <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div>
@@ -334,9 +351,11 @@ export default function OEnerixu() {
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
                 Vybrané zkušenosti
               </div>
-              <div className="mt-4 w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
-                Čeká na potvrzení textu
-              </div>
+              {SHOW_PREVIEW_BADGES && (
+                <div className="mt-4 w-fit rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
+                  Čeká na potvrzení textu
+                </div>
+              )}
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">
                 Praxe, na které Enerix staví
               </h2>
@@ -381,9 +400,11 @@ export default function OEnerixu() {
           <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
               <div className="relative flex min-h-80 items-center justify-center bg-slate-50 p-10">
-                <div className="absolute right-5 top-5 rounded-full border border-amber-200 bg-white px-4 py-2 text-sm font-semibold text-amber-800 shadow-sm">
-                  Čeká na fotky
-                </div>
+                {SHOW_PREVIEW_BADGES && (
+                  <div className="absolute right-5 top-5 rounded-full border border-amber-200 bg-white px-4 py-2 text-sm font-semibold text-amber-800 shadow-sm">
+                    Čeká na fotky
+                  </div>
+                )}
                 <div className="text-center">
                   <img
                     src="/enerix-symbol.png"

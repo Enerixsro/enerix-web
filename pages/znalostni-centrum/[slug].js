@@ -8,6 +8,10 @@ import { absoluteUrl } from "../../data/knowledgeCenterArticleMeta";
 import NzuSeriesCover from "../../components/NzuSeriesCover";
 import CookieSettingsLink from "../../components/CookieSettingsLink";
 
+const SHOW_REFERENCE_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_REFERENCE_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+
 const safetyNote =
   "Informace v článku jsou orientační a vycházejí z podmínek známých v době přípravy textu. Programy podpory se mohou měnit a konkrétní možnost podpory vždy závisí na aktuálních pravidlech, typu domu, vlastnictví, domácnosti, rozsahu opatření a schválení příslušnými institucemi.";
 
@@ -784,6 +788,30 @@ export default function KnowledgeCenterArticle({ article }) {
         <meta property="og:title" content={article.seoTitle} />
         <meta property="og:description" content={article.seoDescription} />
         <meta property="og:image" content={coverImageUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.seoTitle} />
+        <meta name="twitter:description" content={article.seoDescription} />
+        <meta name="twitter:image" content={coverImageUrl} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: article.title,
+              description: article.seoDescription,
+              image: coverImageUrl,
+              mainEntityOfPage: canonicalUrl,
+              datePublished: article.updatedAt || undefined,
+              dateModified: article.updatedAt || undefined,
+              author: { "@type": "Organization", name: "Enerix" },
+              publisher: { "@type": "Organization", name: "Enerix" },
+            }),
+          }}
+        />
       </Head>
 
       <div className="min-h-screen bg-white text-slate-900">
@@ -805,9 +833,11 @@ export default function KnowledgeCenterArticle({ article }) {
               <a href="/#sluzby" className="hover:text-green-700">
                 Služby
               </a>
-              <a href="/#realizace" className="hover:text-green-700">
-                Realizace
-              </a>
+              {SHOW_REFERENCE_CONTENT && (
+                <a href="/#realizace" className="hover:text-green-700">
+                  Realizace
+                </a>
+              )}
               <a href="/o-enerixu" className="hover:text-green-700">
                 O Enerixu
               </a>
@@ -824,7 +854,7 @@ export default function KnowledgeCenterArticle({ article }) {
           </div>
         </header>
 
-        <main>
+        <main id="main-content">
           <article>
             <div className="mx-auto max-w-4xl px-6 pb-12 pt-10 md:px-10 md:pt-14">
               <a
@@ -1025,8 +1055,15 @@ export default function KnowledgeCenterArticle({ article }) {
 }
 
 export function getStaticPaths() {
+  const includeDrafts =
+    process.env.NEXT_PUBLIC_SHOW_DRAFT_CONTENT === "true" ||
+    process.env.VERCEL_ENV !== "production";
+  const visibleArticles = demoArticles.filter(
+    (article) => includeDrafts || article.status === "published"
+  );
+
   return {
-    paths: demoArticles.map((article) => ({
+    paths: visibleArticles.map((article) => ({
       params: { slug: article.slug },
     })),
     fallback: false,

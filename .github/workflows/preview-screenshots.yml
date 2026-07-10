@@ -15,6 +15,28 @@ permissions:
   contents: read
 
 jobs:
+  build:
+    name: Verify production build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build website
+        run: npm run build
+        env:
+          VERCEL_ENV: production
+
   screenshots:
     name: Capture desktop and mobile screenshots
     runs-on: ubuntu-latest
@@ -44,7 +66,7 @@ jobs:
           echo "preview_url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
 
       - name: Install Chromium for Playwright
-        run: npx -y playwright@latest install --with-deps chromium
+        run: npx -y playwright@1.61.1 install --with-deps chromium
 
       - name: Capture screenshots
         shell: bash
@@ -60,8 +82,8 @@ jobs:
             echo "Waiting for preview to become available: attempt $attempt/24"
             sleep 10
           done
-          npx -y playwright@latest screenshot --browser=chromium --viewport-size=1440,1100 --full-page "$PREVIEW_URL" screenshots/desktop-home.png
-          npx -y playwright@latest screenshot --browser=chromium --viewport-size=390,844 --full-page "$PREVIEW_URL" screenshots/mobile-home.png
+          npx -y playwright@1.61.1 screenshot --browser=chromium --viewport-size=1440,1100 --full-page "$PREVIEW_URL" screenshots/desktop-home.png
+          npx -y playwright@1.61.1 screenshot --browser=chromium --viewport-size=390,844 --full-page "$PREVIEW_URL" screenshots/mobile-home.png
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4

@@ -11,15 +11,15 @@ vetvi nebo prostredi. Nejde o automaticke publikovani produkce.
 ## Pracovni misto a vetve
 
 - Pracuj primarne v:
-  `C:\Users\HP755G5\Documents\GitHub\enerix-web-preview`
+  `C:\Users\cecka\Documents\Codex\Repos\enerix-web`
 - Preview vetev:
   `codex/enerix-2-unified-preview`
 - Produkcni zaklad:
   `main`
 - Hlavni lokalni repo orientace:
-  `C:\Users\HP755G5\Documents\GitHub\enerix-web`
-- Nepouzivej jako hlavni pracovni misto:
-  `C:\Users\HP755G5\AppData\Local\Temp\enerix-2-unified`
+  `C:\Users\cecka\Documents\Codex\Repos\enerix-web`
+- Nepouzivej jako hlavni pracovni misto stare docasne nebo drive pouzivane
+  worktree mimo vyse uvedenou slozku.
 
 Pred kazdou upravou over:
 
