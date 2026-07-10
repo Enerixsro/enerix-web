@@ -3,9 +3,58 @@
 @tailwind utilities;
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
+  background-color: #ffffff;
 }
 
 body {
   margin: 0;
+  background-color: #ffffff;
+}
+
+header nav a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+}
+
+@media (max-width: 639px) {
+  header nav a {
+    justify-content: center;
+    padding-inline: 0.25rem;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 0.5rem;
+  background: #ffffff;
+  padding: 0.75rem 1rem;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgb(15 23 42 / 0.2);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

@@ -1,17 +1,48 @@
-import Script from "next/script";
+import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
+import CookieSettingsLink from "../components/CookieSettingsLink";
+import { absoluteUrl } from "../data/knowledgeCenterArticleMeta";
+import { markLeadSubmission, slugify } from "../lib/tracking";
+
+const FORM_ENDPOINT =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ||
+  "https://formspree.io/f/xrejyodb";
+const SHOW_PREVIEW_BADGES =
+  process.env.NEXT_PUBLIC_SHOW_PREVIEW_BADGES === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
+const SHOW_REFERENCE_CONTENT =
+  process.env.NEXT_PUBLIC_SHOW_REFERENCE_CONTENT === "true" ||
+  process.env.NEXT_PUBLIC_BUILD_ENV !== "production";
 
 export default function EnerixLandingPage() {
   const [activeService, setActiveService] = useState(null);
+  const [referencePage, setReferencePage] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
 
+    if (isSubmitting) return;
+
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const searchParams = new URLSearchParams(window.location.search);
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    formData.set("landing_page", window.location.href);
+    formData.set("referrer", document.referrer || "direct");
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(
+      (key) => {
+        const value = searchParams.get(key);
+        if (value) formData.set(key, value);
+      }
+    );
 
     try {
-      const response = await fetch("https://formspree.io/f/xrejyodb", {
+      const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         body: formData,
         headers: {
@@ -20,20 +51,19 @@ export default function EnerixLandingPage() {
       });
 
       if (response.ok) {
-        if (typeof window !== "undefined" && typeof window.fbq === "function") {
-          window.fbq("track", "Lead");
-        }
-
+        markLeadSubmission();
         window.location.href = "/dekujeme";
       } else {
-        alert(
+        setSubmitError(
           "Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nás kontaktujte e-mailem."
         );
+        setIsSubmitting(false);
       }
-    } catch (error) {
-      alert(
+    } catch {
+      setSubmitError(
         "Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nás kontaktujte e-mailem."
       );
+      setIsSubmitting(false);
     }
   }
 
@@ -281,41 +311,294 @@ export default function EnerixLandingPage() {
     },
   ];
 
-  const steps = [
-    "Nezávazná konzultace a základní posouzení domu",
-    "Návrh vhodných opatření a ekonomiky projektu",
-    "Vyřízení dotací a příprava realizace",
-    "Koordinace a realizace na klíč",
+  const cooperationSteps = [
+    {
+      title: "Úvodní konzultace a základní posouzení domu – zdarma",
+      text: "Krátce projdeme stav domu, vaše cíle a možnosti dalšího postupu. Cílem je zjistit, zda a jak dává smysl renovaci řešit.",
+    },
+    {
+      title: "Návrh renovace, dotací a financování",
+      text: "Navrhneme vhodné pořadí opatření, prověříme možnosti dotací a případně i financování.",
+    },
+    {
+      title: "Podklady, renovační pas a projektová příprava",
+      text: "Připravíme nebo pomůžeme zajistit potřebné podklady, renovační pas, energetické posouzení a další dokumentaci.",
+    },
+    {
+      title: "Koordinace realizace",
+      text: "Pokud se rozhodnete pokračovat do realizace, pomůžeme sladit jednotlivé profese a návaznosti tak, aby renovace dávala smysl jako celek.",
+    },
+    {
+      title: "Předání a další doporučení",
+      text: "Po dokončení zhodnotíme výsledek, doporučíme další kroky a pomůžeme plánovat případné další etapy renovace.",
+    },
   ];
+
+  const references = [
+    {
+      title: "Zateplení rodinného domu",
+      location: "Tábor",
+      type: "Fasáda + dotační podpora",
+      description:
+        "Klient chtěl začít zateplením fasády. Enerix pomohl ověřit dotační možnosti, připravit rozsah prací a sladit realizaci s dalšími možnými kroky renovace.",
+      results: [
+        "zateplení fasády",
+        "dotační podpora",
+        "příprava na další etapy",
+      ],
+      image: null,
+      imageAlt: "Ukázkový vizuál zateplení rodinného domu",
+      visual: "house",
+      visualClass: "bg-emerald-950",
+      preview: true,
+      href: null,
+    },
+    {
+      title: "Plán postupné renovace domu",
+      location: "Jihočeský kraj",
+      type: "Renovační pas",
+      description:
+        "Majitelé domu nevěděli, kde začít. Enerix pomohl pojmenovat priority, rozdělit renovaci do etap a posoudit, které kroky dávají technický i ekonomický smysl.",
+      results: [
+        "návrh etap renovace",
+        "orientační rozpočet",
+        "přehled dotačních možností",
+      ],
+      image: null,
+      imageAlt: "Ukázkový vizuál plánu postupné renovace domu",
+      visual: "plan",
+      visualClass: "bg-slate-800",
+      preview: true,
+      href: null,
+    },
+    {
+      title: "Energetická studie veřejné budovy",
+      location: "Jihočeský kraj",
+      type: "Studie + návrh opatření",
+      description:
+        "Projekt zaměřený na posouzení provozu budovy, návrh úsporných opatření a přípravu dalšího postupu. Ukazuje zkušenost Enerixu s komplexnějšími projekty a souvislostmi.",
+      results: [
+        "návrh opatření",
+        "ekonomické vyhodnocení",
+        "podklad pro rozhodování",
+      ],
+      image: null,
+      imageAlt: "Ukázkový vizuál energetické studie veřejné budovy",
+      visual: "study",
+      visualClass: "bg-stone-700",
+      preview: true,
+      href: null,
+    },
+  ];
+
+  const referencesPerPage = 3;
+  const referencePageCount = Math.ceil(
+    references.length / referencesPerPage
+  );
+  const visibleReferences = references.slice(
+    referencePage * referencesPerPage,
+    (referencePage + 1) * referencesPerPage
+  );
+
+  const showPreviousReferences = () => {
+    setReferencePage((currentPage) =>
+      currentPage === 0 ? referencePageCount - 1 : currentPage - 1
+    );
+  };
+
+  const showNextReferences = () => {
+    setReferencePage((currentPage) =>
+      currentPage === referencePageCount - 1 ? 0 : currentPage + 1
+    );
+  };
+
+  const contentAreas = [
+    {
+      title: "Z praxe Enerixu",
+      text: "Praktické zkušenosti z renovací, dotací a jednání s klienty.",
+    },
+    {
+      title: "Enerix Expert",
+      text: "Odbornější pohledy na pořadí renovace, energetiku, dotace, financování a časté chyby.",
+    },
+    {
+      title: "Rady a novinky",
+      text: "Praktické články a novinky z oblasti renovací, dotací a energetiky.",
+    },
+  ];
+
+  const renderReferencePlaceholder = (reference) => (
+    <div
+      role="img"
+      aria-label={reference.imageAlt}
+      className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden ${reference.visualClass}`}
+    >
+      {SHOW_PREVIEW_BADGES && (
+        <div className="absolute right-4 top-4 z-10 rounded-full border border-amber-200 bg-white/95 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">
+          Čeká na fotky
+        </div>
+      )}
+      <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:32px_32px]" />
+      <svg
+        viewBox="0 0 120 120"
+        fill="none"
+        aria-hidden="true"
+        className="relative h-24 w-24 text-white/90"
+      >
+        {reference.visual === "house" && (
+          <>
+            <path
+              d="M20 57 60 24l40 33"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M30 52v44h60V52M50 96V70h20v26"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M90 36V23H78"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        )}
+        {reference.visual === "plan" && (
+          <>
+            <path
+              d="M29 20h48l14 14v66H29V20Z"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M76 20v16h15M43 51h34M43 65h34M43 79h23"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        )}
+        {reference.visual === "study" && (
+          <>
+            <path
+              d="M22 96h76M30 96V43h60v53M24 43l36-21 36 21"
+              stroke="currentColor"
+              strokeWidth="5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M43 56h10v10H43zM67 56h10v10H67zM43 75h10v10H43zM67 75h10v10H67z"
+              fill="currentColor"
+            />
+          </>
+        )}
+      </svg>
+      {SHOW_PREVIEW_BADGES && (
+        <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+          Ukázkový vizuál
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <>
-      <Script id="meta-pixel" strategy="afterInteractive">
-        {`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;
-          n.version='2.0';n.queue=[];t=b.createElement(e);
-          t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1547450486949189');
-          fbq('track', 'PageView');
-        `}
-      </Script>
-
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=1547450486949189&ev=PageView&noscript=1"
-          alt=""
+      <Head>
+        <title>Enerix | Chytrá renovace domu</title>
+        <meta
+          name="description"
+          content="Enerix pomáhá s renovací domu, energetickým poradenstvím, dotacemi a realizací opatření od zateplení po fotovoltaiku."
         />
-      </noscript>
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={absoluteUrl("/")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:title" content="Enerix | Chytrá renovace domu" />
+        <meta property="og:description" content="Renovace domu, energetické poradenství, dotace a realizace opatření od zateplení po fotovoltaiku." />
+        <meta property="og:url" content={absoluteUrl("/")} />
+        <meta property="og:image" content={absoluteUrl("/FrontPageImg.png")} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Enerix s.r.o.",
+              url: absoluteUrl("/"),
+              image: absoluteUrl("/FrontPageImg.png"),
+              telephone: "+420720480861",
+              email: "jiri.cecka@enerix.cz",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Nádražní 641",
+                postalCode: "379 01",
+                addressLocality: "Třeboň",
+                addressCountry: "CZ",
+              },
+              areaServed: "Jihočeský kraj",
+            }),
+          }}
+        />
+      </Head>
 
       <div className="min-h-screen bg-white text-slate-900">
+        <header className="border-b border-slate-200 bg-white">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4 md:px-10">
+            <a href="/" className="flex items-center gap-3">
+              <img
+                src="/enerix-symbol.png"
+                alt=""
+                className="h-10 w-10"
+              />
+              <div>
+                <div className="font-bold tracking-wide text-slate-900">
+                  ENERIX
+                </div>
+                <div className="text-xs text-slate-500">
+                  Chytré renovace pro váš dům
+                </div>
+              </div>
+            </a>
+
+            <nav
+              aria-label="Hlavní navigace"
+              className="grid w-full grid-cols-3 gap-1 text-center text-xs font-semibold text-slate-700 sm:flex sm:w-auto sm:items-center sm:gap-x-5 sm:text-left sm:text-sm"
+            >
+              <a href="#sluzby" className="transition hover:text-green-700">
+                Služby
+              </a>
+              {SHOW_REFERENCE_CONTENT && (
+                <a href="#realizace" className="transition hover:text-green-700">
+                  Realizace
+                </a>
+              )}
+              <a href="/o-enerixu" className="transition hover:text-green-700">
+                O Enerixu
+              </a>
+              <a href="/spoluprace" className="transition hover:text-green-700">
+                Spolupráce
+              </a>
+              <a href="/blog" className="transition hover:text-green-700">
+                Znalostní centrum
+              </a>
+              <a href="#kontakt" className="transition hover:text-green-700">
+                Kontakt
+              </a>
+            </nav>
+          </div>
+        </header>
+
+        <main id="main-content">
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-green-50">
           <div className="absolute inset-0 opacity-40">
             <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-green-200 blur-3xl" />
@@ -374,9 +657,13 @@ export default function EnerixLandingPage() {
 
             <div className="relative">
               <div className="rounded-[2rem] border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-200">
-                <img
+                <Image
                   src="/FrontPageImg.png"
                   alt="Moderní rodinný dům po renovaci"
+                  width={1536}
+                  height={1024}
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="h-[520px] w-full rounded-[1.5rem] object-cover"
                 />
               </div>
@@ -467,6 +754,8 @@ export default function EnerixLandingPage() {
               <div key={service.title}>
                 <button
                   type="button"
+                  data-service-slug={slugify(service.title)}
+                  data-cta-location="services_grid"
                   onClick={() =>
                     setActiveService(
                       activeService === service.title ? null : service.title
@@ -519,54 +808,304 @@ export default function EnerixLandingPage() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-2">
-          <div>
+        <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+          <div className="max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-              Jak spolupráce probíhá
+              Jak probíhá spolupráce s Enerixem
             </div>
 
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Jednoduchý a srozumitelný postup
+              Jasný postup od prvního rozhovoru po další etapy renovace
             </h2>
 
-            <div className="mt-8 space-y-4">
-              {steps.map((step, index) => (
-                <div
-                  key={step}
-                  className="flex items-start gap-4 rounded-2xl border border-slate-200 p-5 shadow-sm"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-600 font-bold text-white">
-                    {index + 1}
-                  </div>
-                  <div className="pt-1 text-slate-700">{step}</div>
-                </div>
-              ))}
-            </div>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              Každý dům i záměr jsou jiné. Proto nejdřív skládáme dohromady
+              technické možnosti, dotace, financování a správné pořadí kroků.
+            </p>
           </div>
 
-          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {cooperationSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-600 font-bold text-white">
+                  {index + 1}
+                </div>
+                <h3 className="mt-5 font-semibold leading-6 text-slate-900">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  {step.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {SHOW_REFERENCE_CONTENT && references.length > 0 && (
+          <section
+            id="realizace"
+            className="scroll-mt-6 border-y border-slate-200 bg-slate-50 px-6 py-20 md:px-10"
+          >
+            <div className="mx-auto max-w-7xl">
+              <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+                <div className="max-w-3xl">
+                  <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                    Reference a projekty
+                  </div>
+                  <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                    Vybrané realizace a projekty
+                  </h2>
+                  <p className="mt-4 text-lg leading-8 text-slate-600">
+                    Ukázky typů projektů, které Enerix pomáhá připravovat,
+                    koordinovat nebo realizovat.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  {referencePageCount > 1 && (
+                    <div
+                      className="flex items-center gap-2"
+                      aria-label="Procházení referencí"
+                    >
+                      <button
+                        type="button"
+                        onClick={showPreviousReferences}
+                        aria-label="Předchozí reference"
+                        title="Předchozí reference"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                          className="h-5 w-5"
+                        >
+                          <path
+                            d="m15 18-6-6 6-6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                      <span className="min-w-12 text-center text-sm font-semibold text-slate-500">
+                        {referencePage + 1} / {referencePageCount}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={showNextReferences}
+                        aria-label="Další reference"
+                        title="Další reference"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-300 bg-white text-slate-700 transition hover:border-green-500 hover:text-green-700"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                          className="h-5 w-5"
+                        >
+                          <path
+                            d="m9 18 6-6-6-6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-10 grid gap-6 lg:grid-cols-3">
+                {visibleReferences.map((reference) => (
+                  <article
+                    key={reference.title}
+                    className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-200/70"
+                  >
+                    {reference.image ? (
+                      <img
+                        src={reference.image}
+                        alt={reference.imageAlt}
+                        className="aspect-[16/10] w-full object-cover"
+                      />
+                    ) : (
+                      renderReferencePlaceholder(reference)
+                    )}
+
+                    <div className="p-6">
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
+                        <span className="rounded-full bg-green-50 px-3 py-1 text-green-800">
+                          {reference.type}
+                        </span>
+                        <span className="text-slate-500">
+                          {reference.location}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-4 text-xl font-bold leading-7 text-slate-900">
+                        {reference.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-slate-600">
+                        {reference.description}
+                      </p>
+
+                      <div className="mt-6 border-t border-slate-100 pt-5">
+                        <div className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                          Rozsah a výstupy
+                        </div>
+                        <ul className="mt-3 space-y-2">
+                          {reference.results.map((result) => (
+                            <li
+                              key={result}
+                              className="flex items-center gap-3 text-sm font-medium text-slate-700"
+                            >
+                              <span className="h-2 w-2 shrink-0 rounded-full bg-green-600" />
+                              {result}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {reference.href && (
+                        <a
+                          href={reference.href}
+                          className="mt-6 inline-flex items-center font-semibold text-green-700 transition hover:text-green-800"
+                        >
+                          Zobrazit detail projektu →
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <section className="bg-slate-50 px-6 py-16 md:px-10">
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+            <div>
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                Kdo za Enerixem stojí
+              </div>
+              <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                Odpovědnost za celý kontext renovace
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+                Enerix vede Jiří Čečka. Při přípravě renovací propojuje zkušenosti
+                s energetikou, dotačními projekty a projektovým řízením tak, aby
+                klient dostal srozumitelný plán a jedno místo pro koordinaci dalších
+                kroků.
+              </p>
+              <a
+                href="/o-enerixu"
+                className="mt-6 inline-flex items-center font-semibold text-green-700 transition hover:text-green-800"
+              >
+                Více o Enerixu a jeho přístupu →
+              </a>
+            </div>
+
+            <div className="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm">
+              <div className="flex items-center gap-5">
+                <img
+                  src="/enerix-symbol.png"
+                  alt=""
+                  className="h-16 w-16 rounded-2xl border border-green-100 bg-white p-2"
+                />
+                <div>
+                  <div className="text-xl font-bold text-slate-900">
+                    Enerix s.r.o.
+                  </div>
+                  <div className="mt-1 text-sm text-slate-500">
+                    Chytré renovace pro váš dům
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 border-l-4 border-green-500 pl-5 text-slate-600">
+                Renovaci posuzujeme jako celek: technicky, energeticky,
+                ekonomicky i z pohledu dostupné podpory.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-2">
+          <div>
             <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
               Proč Enerix
             </div>
 
-            <h3 className="mt-3 text-3xl font-bold">
-              Nehledáme jen řešení, které jde udělat. Hledáme řešení, které dává
-              smysl.
-            </h3>
+            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+              Renovace musí fungovat jako jeden celek
+            </h2>
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              Naší výhodou není jen samotná realizace. Každý projekt posuzujeme i z
-              pohledu energetiky, návratnosti a dostupných dotací. Díky tomu klient
-              ví, co se vyplatí udělat hned, co později a kde naopak neutrácet
+              Naší výhodou není jen samotná realizace. Každý projekt posuzujeme
+              také z pohledu energetiky, návratnosti a dostupných dotací. Klient
+              tak ví, co se vyplatí udělat hned, co později a kde naopak neutrácet
               zbytečně.
             </p>
+          </div>
 
-            <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm">
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+            <h3 className="text-2xl font-bold">
+              Nejdřív souvislosti, potom jednotlivá opatření
+            </h3>
+
+            <div className="mt-6 rounded-2xl bg-white p-6 shadow-sm">
               <div className="font-semibold">Typický cíl klienta</div>
               <div className="mt-2 text-slate-600">
                 Snížit náklady na energie, zvýšit komfort bydlení a zhodnotit dům
                 bez zbytečných chyb v pořadí renovace.
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-slate-200 bg-white px-6 py-20 md:px-10">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
+                  Z praxe a poradny Enerixu
+                </div>
+                <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+                  Zkušenosti, souvislosti a praktické rady
+                </h2>
+                <p className="mt-4 text-lg leading-8 text-slate-600">
+                  Obsah rozdělujeme podle toho, zda vychází z praxe, jde více do
+                  odborné hloubky, nebo shrnuje aktuální změny a doporučení.
+                </p>
+              </div>
+              <a
+                href="/blog"
+                className="inline-flex items-center font-semibold text-green-700 transition hover:text-green-800"
+              >
+                Přejít na blog →
+              </a>
+            </div>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {contentAreas.map((area) => (
+                <a
+                  key={area.title}
+                  href="/blog"
+                  className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-green-300 hover:bg-green-50/50"
+                >
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    {area.title}
+                  </h3>
+                  <p className="mt-3 leading-7 text-slate-600">{area.text}</p>
+                  <div className="mt-5 text-sm font-semibold text-green-700">
+                    Číst články →
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </section>
@@ -608,16 +1147,24 @@ export default function EnerixLandingPage() {
                 <div className="mt-10 grid gap-4 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
                     <div className="text-sm text-slate-300">Telefon</div>
-                    <div className="mt-1 text-xl font-semibold">
+                    <a
+                      href="tel:+420720480861"
+                      data-cta-location="contact_panel"
+                      className="mt-1 block text-xl font-semibold transition hover:text-green-200"
+                    >
                       720 480 861
-                    </div>
+                    </a>
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur">
                     <div className="text-sm text-slate-300">E-mail</div>
-                    <div className="mt-1 break-all text-xl font-semibold">
+                    <a
+                      href="mailto:jiri.cecka@enerix.cz"
+                      data-cta-location="contact_panel"
+                      className="mt-1 block break-all text-base font-semibold transition hover:text-green-200 xl:text-lg"
+                    >
                       jiri.cecka@enerix.cz
-                    </div>
+                    </a>
                   </div>
                 </div>
 
@@ -634,6 +1181,9 @@ export default function EnerixLandingPage() {
             </div>
 
             <form
+              id="contact_form"
+              action={FORM_ENDPOINT}
+              method="POST"
               onSubmit={handleSubmit}
               className="rounded-[2rem] border border-slate-200 bg-white p-6 text-slate-900 shadow-xl md:p-8"
             >
@@ -652,47 +1202,77 @@ export default function EnerixLandingPage() {
               </div>
 
               <div className="space-y-4">
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="contact-company">Firma (nevyplňujte)</label>
+                  <input
+                    id="contact-company"
+                    type="text"
+                    name="_gotcha"
+                    tabIndex="-1"
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <input
-                    type="text"
-                    name="jmeno"
-                    placeholder="Jméno"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-first-name">
+                    Jméno
+                    <input
+                      id="contact-first-name"
+                      type="text"
+                      name="jmeno"
+                      autoComplete="given-name"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
 
-                  <input
-                    type="text"
-                    name="prijmeni"
-                    placeholder="Příjmení"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-last-name">
+                    Příjmení
+                    <input
+                      id="contact-last-name"
+                      type="text"
+                      name="prijmeni"
+                      autoComplete="family-name"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
-                  <input
-                    type="tel"
-                    name="telefon"
-                    placeholder="Telefon"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-phone">
+                    Telefon
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      name="telefon"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
 
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                    required
-                    className="rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                  />
+                  <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-email">
+                    E-mail
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      autoComplete="email"
+                      required
+                      className="rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </label>
                 </div>
 
-                <select
-                  name="okres"
-                  required
-                  className="w-full rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                >
+                <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-district">
+                  Okres
+                  <select
+                    id="contact-district"
+                    name="okres"
+                    required
+                    className="w-full rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                  >
                   <option value="">Vyberte okres</option>
                   <option>České Budějovice</option>
                   <option>Český Krumlov</option>
@@ -702,12 +1282,13 @@ export default function EnerixLandingPage() {
                   <option>Strakonice</option>
                   <option>Tábor</option>
                   <option>Jiný okres</option>
-                </select>
+                  </select>
+                </label>
 
-                <div className="rounded-xl border border-slate-300 p-4 text-left">
-                  <div className="mb-3 text-sm font-semibold text-slate-700">
+                <fieldset className="rounded-xl border border-slate-300 p-4 text-left">
+                  <legend className="px-1 text-sm font-semibold text-slate-700">
                     O jaké služby máte zájem?
-                  </div>
+                  </legend>
 
                   <div className="grid gap-3 md:grid-cols-2">
                     {[
@@ -736,14 +1317,18 @@ export default function EnerixLandingPage() {
                       </label>
                     ))}
                   </div>
-                </div>
+                </fieldset>
 
-                <textarea
-                  name="zprava"
-                  placeholder="Popište váš projekt. Fotografie, projektovou dokumentaci nebo jiné podklady k rekonstrukci či dotaci nám můžete následně zaslat e-mailem."
-                  rows="5"
-                  className="w-full rounded-xl border border-slate-300 p-4 outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
-                />
+                <label className="grid gap-2 text-sm font-semibold text-slate-700" htmlFor="contact-message">
+                  Popis projektu
+                  <textarea
+                    id="contact-message"
+                    name="zprava"
+                    placeholder="Fotografie, projektovou dokumentaci nebo jiné podklady nám můžete následně zaslat e-mailem."
+                    rows="5"
+                    className="w-full rounded-xl border border-slate-300 p-4 font-normal outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                  />
+                </label>
 
                 <label className="flex items-start gap-3 text-left text-sm text-slate-600">
                   <input
@@ -766,16 +1351,25 @@ export default function EnerixLandingPage() {
                   </span>
                 </label>
 
+                {submitError && (
+                  <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm font-semibold text-red-800">
+                    {submitError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full rounded-2xl bg-green-600 px-6 py-4 text-lg font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-700"
+                  disabled={isSubmitting}
+                  className="w-full rounded-2xl bg-green-700 px-6 py-4 text-lg font-semibold text-white shadow-lg shadow-green-100 transition hover:bg-green-800 disabled:cursor-wait disabled:opacity-70"
                 >
-                  Odeslat nezávaznou poptávku
+                  {isSubmitting ? "Odesíláme…" : "Odeslat nezávaznou poptávku"}
                 </button>
               </div>
             </form>
           </div>
         </section>
+
+        </main>
 
         <footer className="bg-[#0b1120] px-6 py-14 text-gray-300">
           <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
@@ -819,6 +1413,7 @@ export default function EnerixLandingPage() {
                 >
                   Ochrana osobních údajů
                 </a>
+                <CookieSettingsLink className="w-fit text-left transition hover:text-white" />
               </div>
             </div>
           </div>

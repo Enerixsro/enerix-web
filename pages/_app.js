@@ -1,11 +1,13 @@
 import Head from "next/head";
-import Script from "next/script";
+import ConsentManager from "../components/ConsentManager";
 import "../styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <meta name="color-scheme" content="light" />
+        <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="icon"
@@ -15,46 +17,11 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
 
-      <Script
-        src="https://c.seznam.cz/js/rc.js"
-        strategy="afterInteractive"
-      />
-
-      <Script
-        id="sklik-retargeting"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function fireSklikRetargeting() {
-              function run() {
-                if (
-                  window.sznIVA &&
-                  window.sznIVA.IS &&
-                  window.rc &&
-                  window.rc.retargetingHit
-                ) {
-                  window.sznIVA.IS.updateIdentities({
-                    eid: null
-                  });
-
-                  var retargetingConf = {
-                    rtgId: 1688154,
-                    consent: 0
-                  };
-
-                  window.rc.retargetingHit(retargetingConf);
-                } else {
-                  setTimeout(run, 300);
-                }
-              }
-
-              run();
-            })();
-          `,
-        }}
-      />
-
+      <a className="skip-link" href="#main-content">
+        Přeskočit na hlavní obsah
+      </a>
       <Component {...pageProps} />
+      <ConsentManager />
     </>
   );
 }
