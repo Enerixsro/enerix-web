@@ -165,8 +165,18 @@ function trackBusinessPageEvents(path) {
     hasRecentLeadSubmission() &&
     !wasLeadConversionTracked()
   ) {
+    const isRenovationPassOrder = path.startsWith(
+      "/dekujeme-renovacni-pas"
+    );
+
     trackEvent("lead_form_submit", {
       cta_location: "thank_you_page",
+      lead_type: isRenovationPassOrder
+        ? "renovation_pass_order"
+        : "consultation",
+      content_name: isRenovationPassOrder
+        ? "Renovační pas NZÚ"
+        : "Konzultace renovace a NZÚ",
     });
     fireSklikConversion();
     markLeadConversionTracked();
@@ -300,6 +310,14 @@ export default function ConsentManager() {
         trackEvent("service_click", {
           service_slug: target.dataset.serviceSlug,
           cta_location: target.dataset.ctaLocation || "services_grid",
+        });
+        return;
+      }
+
+      if (target.dataset.campaignCta) {
+        trackEvent("campaign_cta_click", {
+          cta_name: target.dataset.campaignCta,
+          cta_location: target.dataset.ctaLocation || "campaign_page",
         });
         return;
       }
