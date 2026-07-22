@@ -104,13 +104,13 @@ export default function PlanRenovace() {
                   Než objednáte okna, fasádu nebo tepelné čerpadlo, zjistěte, co váš dům potřebuje jako první.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700 sm:text-xl">
-                  V krátké nezávazné konzultaci projdeme váš záměr, doporučíme další krok a prověříme, zda pro vás připadá v úvahu dotace NZÚ Light nebo bezúročný úvěr NZÚ. Enerix pak může zajistit přípravu i realizaci.
+                  Nejsme jen dotační administrativa. V krátké nezávazné konzultaci projdeme váš záměr, doporučíme další krok a prověříme možnosti NZÚ. Navržená opatření pak umíme také zrealizovat — od zateplení a výměny oken po fotovoltaiku a tepelné čerpadlo.
                 </p>
 
                 <ul className="mt-7 grid gap-3 text-sm font-semibold text-slate-800 sm:grid-cols-2 sm:text-base">
                   {[
                     "Správné pořadí jednotlivých úprav",
-                    "Jeden partner od návrhu po realizaci",
+                    "Realizujeme zateplení, okna, FVE i tepelná čerpadla",
                     "NZÚ Light nebo bezúročný úvěr",
                     "Řešení podle konkrétního domu",
                   ].map((item) => (
@@ -265,7 +265,7 @@ export default function PlanRenovace() {
                   Nemusíte skládat renovaci z pěti nesouvisejících nabídek.
                 </h2>
                 <p className="mt-5 text-lg leading-8 text-slate-600">
-                  Díváme se na technické řešení, podporu i realizaci společně. Díky tomu víte, proč se daný krok dělá a co na něj bude navazovat.
+                  Nevyřídíme jen podklady k dotaci a tím nekončíme. Díváme se na technické řešení, podporu i samotnou realizaci společně a vybraná opatření provedeme s návazností na celý plán domu.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -273,7 +273,7 @@ export default function PlanRenovace() {
                   ["Návrh řešení", "Rozsah a pořadí opatření podle stavu domu a vašich priorit."],
                   ["NZÚ a financování", "Prověření NZÚ Light nebo bezúročného úvěru a zajištění potřebných podkladů."],
                   ["Koordinace profesí", "Jedno hlavní kontaktní místo a návaznost jednotlivých částí renovace."],
-                  ["Realizace", "Možnost pokračovat od přípravy až k provedení prací na domě."],
+                  ["Realizace opatření", "Zajistíme zateplení, výměnu oken, fotovoltaiku i tepelné čerpadlo — samostatně nebo jako navazující části renovace."],
                 ].map(([title, text]) => (
                   <article key={title} className="rounded-2xl border border-slate-200 p-6">
                     <h3 className="font-bold text-slate-950">{title}</h3>

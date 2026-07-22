@@ -115,7 +115,7 @@ export default function RenovacniPas() {
                   Získejte jasný plán renovace dřív, než začnete utrácet.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-                  Oficiální průvodce energetickou renovací domu: současný stav, doporučená opatření a jejich pořadí, předpokládaná investice i očekávané energetické úspory.
+                  Oficiální průvodce energetickou renovací domu: současný stav, doporučená opatření, jejich pořadí, investice a očekávané úspory. U Enerixu ale nezůstane jen u dokumentu — zateplení, okna, fotovoltaiku i tepelné čerpadlo umíme také zrealizovat.
                 </p>
 
                 <div className="mt-8 grid gap-4 sm:grid-cols-[auto_1fr] sm:items-center">
@@ -147,7 +147,7 @@ export default function RenovacniPas() {
 
               <div id="objednavka" className="scroll-mt-6">
                 <div className="mb-4 rounded-2xl border border-amber-300 bg-amber-100 px-5 py-4 text-sm leading-6 text-amber-950">
-                  <strong>Zaváděcí nabídka do 31. 8. 2026:</strong> prvních 10 objednávek získá kontrolu jedné dodavatelské nabídky zdarma v hodnotě 5 900 Kč. Každý měsíc přijímáme pouze 8 nových domů.
+                  <strong>Od plánu k realizaci:</strong> pokud s námi následně zrealizujete vybrané opatření, zaplacených 4 800 Kč za renovační pas odečteme z ceny zakázky. Každý měsíc přijímáme pouze 8 nových domů.
                 </div>
                 <CampaignForm variant="order" />
               </div>
@@ -160,7 +160,7 @@ export default function RenovacniPas() {
               <span className="hidden h-1 w-1 rounded-full bg-slate-400 sm:block" />
               <span>Podklad pro dílčí renovaci</span>
               <span className="hidden h-1 w-1 rounded-full bg-slate-400 sm:block" />
-              <span>Především Jihočeský kraj a okolí</span>
+              <span>Navazující realizace opatření</span>
             </div>
           </section>
 
@@ -227,15 +227,15 @@ export default function RenovacniPas() {
           <section className="bg-amber-50 px-5 py-16 md:px-10 md:py-20">
             <div className="mx-auto grid max-w-6xl gap-8 rounded-3xl border border-amber-200 bg-white p-7 shadow-xl shadow-amber-900/5 sm:p-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
               <div>
-                <div className="text-xs font-bold uppercase tracking-[0.18em] text-amber-800">Zaváděcí nabídka · do 31. 8. 2026</div>
-                <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Renovační pas za 4 800 Kč a kontrola nabídky zdarma.</h2>
+                <div className="text-xs font-bold uppercase tracking-[0.18em] text-amber-800">Od plánu k realizaci</div>
+                <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Při realizaci s Enerixem vám cenu pasu odečteme.</h2>
                 <p className="mt-5 text-lg leading-8 text-slate-600">
-                  Prvním 10 zákazníkům prověříme jednu dodavatelskou nabídku na zateplení, střechu, okna, vytápění nebo jinou významnou část renovace. Běžná hodnota kontroly je 5 900 Kč.
+                  Renovační pas vám ukáže správný směr a Enerix může navázat samotným provedením. Pokud si u nás objednáte zateplení, výměnu oken, fotovoltaiku, tepelné čerpadlo nebo jiné doporučené opatření, zaplacených 4 800 Kč odečteme z ceny realizace.
                 </p>
               </div>
               <div className="rounded-2xl bg-slate-950 p-6 text-white">
                 <ul className="space-y-4 text-sm leading-6 text-slate-200">
-                  <li className="flex gap-3"><span className="font-black text-green-400">✓</span><span>Pokud realizaci svěříte Enerixu, 4 800 Kč odečteme z ceny zakázky.</span></li>
+                  <li className="flex gap-3"><span className="font-black text-green-400">✓</span><span>Neřešíme jen dotaci — doporučená opatření umíme také dodat a provést.</span></li>
                   <li className="flex gap-3"><span className="font-black text-green-400">✓</span><span>Pokud vám ani po předání a konzultaci nebude další postup jasný, cenu služby vrátíme.</span></li>
                   <li className="flex gap-3"><span className="font-black text-green-400">✓</span><span>Každý měsíc přijímáme pouze 8 nových domů.</span></li>
                 </ul>
@@ -391,7 +391,7 @@ export default function RenovacniPas() {
                   {ctaLabel}
                 </a>
                 <p className="mt-7 border-t border-white/20 pt-6 text-sm leading-6 text-green-100">
-                  <strong>P. P. S.</strong> Každý měsíc přijímáme pouze 8 nových domů. Bonus v podobě kontroly jedné dodavatelské nabídky zdarma platí pro prvních 10 objednávek, nejpozději do 31. 8. 2026.
+                  <strong>P. P. S.</strong> Každý měsíc přijímáme pouze 8 nových domů. Pokud s námi následně zrealizujete vybrané opatření, cenu renovačního pasu 4 800 Kč odečteme z realizační zakázky.
                 </p>
               </div>
             </div>
